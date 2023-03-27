@@ -7,7 +7,8 @@ import { Box, Button, InputLabel, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import "./style.css";
-
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
 function ReadEtudiant() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
@@ -158,6 +159,9 @@ function ReadEtudiant() {
         }}
       >
         <div style={{ height: 400 }}>
+        <IconButton aria-label="add" color="secondary">
+  <AddIcon />
+</IconButton>
           <DataGrid
             rows={rows}
             columns={columns}
