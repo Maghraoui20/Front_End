@@ -9,10 +9,13 @@ import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import "./style.css";
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from "react-router-dom";
+import { blue } from "@mui/material/colors";
+
 function ReadEtudiant() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
-
+const navigate= useNavigate();
   const handleDelete = async () => {
     try {
        await api.deleteEtudiant(idSelected);
@@ -22,7 +25,9 @@ function ReadEtudiant() {
     }
   };
 
- 
+ const handlenavigate = async()=>{
+  navigate("/create-etudiant")
+ }
   const columns = [
     { field: "firstname", headerName: "Nom", width: 130 },
     { field: "lastname", headerName: "Prénom", width: 130 },
@@ -159,9 +164,12 @@ function ReadEtudiant() {
         }}
       >
         <div style={{ height: 400 }}>
-        <IconButton aria-label="add" color="secondary">
+          <div style={{display:"flex"}}>
+        <IconButton aria-label="add" color="secondary" onClick={handlenavigate} style={{ color:"#000"}} >
   <AddIcon />
 </IconButton>
+
+          </div>
           <DataGrid
             rows={rows}
             columns={columns}
