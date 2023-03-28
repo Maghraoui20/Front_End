@@ -50,7 +50,8 @@ function CreateEtudiant() {
     try {
       const newEtudiant = await api.createEtudiant(EtudiantData);
       console.log(newEtudiant);
-      navigate("/");
+      navigate("/readall-etudiant");
+      
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +68,7 @@ function CreateEtudiant() {
             alignItems: "center",
           }}
         >
+          
           <form onSubmit={handleSubmit}>
             <div className="grid">
               <Typography component="h1" variant="h5">
