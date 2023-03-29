@@ -15,6 +15,7 @@ import {
   import * as api from "../../service/etudiant.js";
   import { useNavigate , useParams} from "react-router-dom";
   import moment from "moment";
+  import FileBase from 'react-file-base64';
 
 function UpdateEtudiant() {
     
@@ -30,6 +31,7 @@ function UpdateEtudiant() {
       const navigate = useNavigate();
       const [niveau, setNiveau] = React.useState("");
       const [status, setStatus] = React.useState("");
+      const [file, setFile] = useState();
     
       const handleChange = (e) => {
           setEtudiantData({ ...EtudiantData, [e.target.name]: e.target.value });
@@ -66,6 +68,32 @@ function UpdateEtudiant() {
               console.log(e)
             }}
             fetchData()}, []) 
+
+    function handleFile(event){
+        setFile(event.target.files[0])
+        console.log(event.target.files[0])
+    }
+
+
+    function handleUpload(){
+        const formData = new FormData()
+        formData.append('file', file)
+        fetch(
+            'url',
+            {
+                method : "POST",
+                body: formData
+            }
+        ).then ((response) => response.json()).then(
+            (result) => {
+                console.log('success', result)
+            }
+        )
+        .catch(error => {
+            console.error("error:", error)
+        })
+    }
+
         return (  <Container>
     
         <Paper elevation={3} className="paper"> 
@@ -167,6 +195,14 @@ sx={{
           <MenuItem value={"actuel"}>Actuel</MenuItem>
         </Select>
       </FormControl>
+    </Grid>
+    <Grid item xs={6}>
+    <Typography> Importer votre CV </Typography>
+    <FileBase 
+    type="file" 
+    name="choisir un CV" 
+    multiple={false} 
+    onDone={({ base64 }) => setEtudiantData({ ...EtudiantData, Cv: base64 })} />
     </Grid>
     <Grid item xs={3}></Grid>
     <Grid item xs={6}>
