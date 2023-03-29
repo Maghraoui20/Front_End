@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+
+import {
+  BrowserRouter as Router,Routes , Route
+} from 'react-router-dom'
+import CreateEvenement from './components/crud_evenement/create_evenement/create_evenement';
+import UpdateEvenement from './components/crud_evenement/update_evenement/update_evenement';
+import ReadEvenement from './components/crud_evenement/read_evenement/read_evenement';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <Routes>
+    <Route path="/create-evenement" element ={<CreateEvenement/>} />
+    <Route path="/update-evenement/:id" element ={<UpdateEvenement/>} />
+    <Route path="/readall-evenement" element ={<ReadEvenement/>} />
+  
+    </Routes>
+    </Router>
+
+    
     </div>
   );
 }
