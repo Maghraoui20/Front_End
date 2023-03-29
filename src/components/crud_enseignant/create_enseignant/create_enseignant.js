@@ -13,11 +13,11 @@ import {
   import React, { useState } from "react";
   import Box from "@mui/material/Box";
   import "./style.css"
-  import * as api from "../../../services/evenement.js";
+  import * as api from "../../../services/enseignant.js";
   import { useNavigate } from "react-router-dom";
   
-  function CreateEvenement() {
-    const [EvenementData, setEvenementData] = useState({
+  function CreateEnseignant() {
+    const [EnseignantData, setEnseignantData] = useState({
       eventName: "",
       eventDate: "",
       eventType: "",
@@ -29,22 +29,22 @@ import {
     const [eventType, setEventType] = React.useState("");
   
     const handleChange = (e) => {
-      setEvenementData({ ...EvenementData, [e.target.name]: e.target.value });
-      console.log(EvenementData);
+      setEnseignantData({ ...EnseignantData, [e.target.name]: e.target.value });
+      console.log(EnseignantData);
     };
 
     const handleChangeEventType = (e) => {
         setEventType(e.target.value);
-        setEvenementData({ ...EvenementData, eventType: e.target.value });
+        setEnseignantData({ ...EnseignantData, eventType: e.target.value });
       };
   
     const handleSubmit = async (event) => {
       event.preventDefault();
   
       try {
-        const newEvenement = await api.createEvenement(EvenementData);
-        console.log(newEvenement);
-        navigate("/readall-evenement");
+        const newEnseignant = await api.createEnseignant(EnseignantData);
+        console.log(newEnseignant);
+        navigate("/readall-enseignant");
       } catch (error) {
         console.log(error);
       }
@@ -163,5 +163,5 @@ import {
     );
   }
   
-  export default CreateEvenement;
+  export default CreateEnseignant;
   

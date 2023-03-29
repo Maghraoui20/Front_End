@@ -12,8 +12,8 @@ import {
   import { Container } from "@mui/system";
   import React, { useEffect, useState } from "react";
   import Box from "@mui/material/Box";
-  import "../create_evenement/style.css"
-  import * as api from "../../../services/evenement.js";
+  import "../create_enseignant/style.css"
+  import * as api from "../../../services/enseignant.js";
   import { useNavigate , useParams} from "react-router-dom";
   import moment from "moment";
 

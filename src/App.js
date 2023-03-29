@@ -3,18 +3,18 @@ import './App.css';
 import {
   BrowserRouter as Router,Routes , Route
 } from 'react-router-dom'
-import CreateEvenement from './components/crud_evenement/create_evenement/create_evenement';
-import UpdateEvenement from './components/crud_evenement/update_evenement/update_evenement';
-import ReadEvenement from './components/crud_evenement/read_evenement/read_evenement';
+import CreateEnseignant from './components/crud_enseignant/create_enseignant/create_enseignant';
+import UpdateEnseignant from './components/crud_enseignant/update_enseignant/update_enseignant';
+import ReadEnseignant from './components/crud_enseignant/read_enseignant/read_enseignant';
 
 function App() {
   return (
     <div className="App">
     <Router>
     <Routes>
-    <Route path="/create-evenement" element ={<CreateEvenement/>} />
-    <Route path="/update-evenement/:id" element ={<UpdateEvenement/>} />
-    <Route path="/readall-evenement" element ={<ReadEvenement/>} />
+    <Route path="/create-enseignant" element ={<CreateEnseignant/>} />
+    <Route path="/update-enseignant/:id" element ={<UpdateEnseignant/>} />
+    <Route path="/readall-enseignant" element ={<ReadEnseignant/>} />
   
     </Routes>
     </Router>
