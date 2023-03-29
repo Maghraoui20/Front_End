@@ -1,22 +1,33 @@
-import './App.css';
+import "./App.css";
+import { createContext, useState } from "react";
+import ReactSwitch from "react-switch";
 
-import {
-  BrowserRouter as Router,Routes , Route
-} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import UpdateEtudiant from './components/update_etudiant/update_etudiant';
-// import ReadEtudiant from './components/crud_etudiant/read_etudiant/read_etudiant';
+import UpdateEtudiant from "./components/update_etudiant/update_etudiant";
+
+export const ThemeContext = createContext(null);
 
 function App() {
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
   return (
-    <div className="App">
-<Router>
-  <Routes>
-   <Route path="/update-etudiant/:id" element ={<UpdateEtudiant/>} />
-   {/*<Route path="/readall-etudiant" element ={<ReadEtudiant/>} />*/}
-  </Routes>
-</Router>
-    </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className="App" id={theme}>
+        <Router>
+          <Routes>
+            <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
+          </Routes>
+        </Router>
+        <div className="switch">
+          <label> {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
+          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+        </div>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 

@@ -69,30 +69,6 @@ function UpdateEtudiant() {
             }}
             fetchData()}, []) 
 
-    function handleFile(event){
-        setFile(event.target.files[0])
-        console.log(event.target.files[0])
-    }
-
-
-    function handleUpload(){
-        const formData = new FormData()
-        formData.append('file', file)
-        fetch(
-            'url',
-            {
-                method : "POST",
-                body: formData
-            }
-        ).then ((response) => response.json()).then(
-            (result) => {
-                console.log('success', result)
-            }
-        )
-        .catch(error => {
-            console.error("error:", error)
-        })
-    }
 
         return (  <Container>
     
@@ -106,9 +82,9 @@ sx={{
 }}
 >
 <form onSubmit={handleSubmit}>
-  <div       className="grid">
+  <div     className="grid" >
 <Typography component="h1" variant="h5">
-  Créer un étudiant{" "}
+  Modifier mon Profil {" "}
 </Typography>
   <Grid
     container
