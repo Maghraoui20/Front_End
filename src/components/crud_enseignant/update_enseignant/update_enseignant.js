@@ -17,37 +17,31 @@ import {
   import { useNavigate , useParams} from "react-router-dom";
   import moment from "moment";
 
-function UpdateEvenement() {
+function UpdateEnseignant() {
     
     const params = useParams();
-    const [EvenementData, setEvenementData] = useState({
-        eventName: "",
-        eventDate: "",
-        eventType: "",
-        description: "",
-        location: ""
+    const [EnseignantData, setEnseignantData] = useState({
+        firstname: "",
+        lastname: "",
+        login: "",
+        password: ""
     });
       const navigate = useNavigate();
-      const [eventType, setEventType] = React.useState("");
      
     
       const handleChange = (e) => {
-          setEvenementData({ ...EvenementData, [e.target.name]: e.target.value });
-          console.log(EvenementData);
+          setEnseignantData({ ...EnseignantData, [e.target.name]: e.target.value });
+          console.log(EnseignantData);
         };
         
-        const handleChangeEventType = (e) => {
-            setEventType(e.target.value);
-            setEvenementData({ ...EvenementData, niveau: e.target.value });
-        };
 
         const handleSubmit = async (event) => {
             event.preventDefault();
             
             try {
-                const updateEvenement = await api.updateEvenement(EvenementData, params.id);
-                console.log(updateEvenement);
-                navigate("/readall-evenement");
+                const updateEnseignant = await api.updateEnseignant(EnseignantData, params.id);
+                console.log(updateEnseignant);
+                navigate("/readall-enseignant");
             } catch (error) {
                 console.log(error);
             }
@@ -57,8 +51,8 @@ function UpdateEvenement() {
         useEffect(() => {
             async function fetchData() {
               try{
-              const result = await api.getEvenementbyid(params.id)
-              setEvenementData(result)
+              const result = await api.getEnseignantbyid(params.id)
+              setEnseignantData(result)
             } catch (e) {
               console.log(e)
             }}
@@ -76,7 +70,7 @@ function UpdateEvenement() {
 <form onSubmit={handleSubmit}>
   <div className="grid">
 <Typography component="h1" variant="h5">
-  modifier un evenement{" "}
+  modifier un enseignant{" "}
 </Typography>
   <Grid
     container
@@ -87,42 +81,23 @@ function UpdateEvenement() {
       <TextField
         margin="normal"
         required
-        value={EvenementData.eventName}
+        value={EnseignantData.firstname}
         fullWidth
-        id="eventName"
-        label="titre "
-        name="eventName"
+        id="firstname"
+        label="prenom "
+        name="firstname"
         autoFocus
         onChange={handleChange}
       />
       
-        <FormControl fullWidth>
-        <InputLabel id="eventType">Type</InputLabel>
-        <Select
-         labelId="eventType"
-         id="eventType"
-         value={EvenementData.eventType}
-         label="Type"
-         name="eventType"
-          onChange={handleChangeEventType}
-         >
-         <MenuItem value={"JPO"}>JPO</MenuItem>
-         <MenuItem value={"Formation"}>Formation</MenuItem>
-         <MenuItem value={"Journée d'integration"}>Journée d'integration</MenuItem>
-         </Select>
-         </FormControl>
-
          <TextField
         margin="normal"
         required
         fullWidth
-        value={moment(EvenementData.eventDate).format('YYYY-MM-DD')}
-
-        id="eventDate"
-        label="date"
-        name="eventDate"
+        id="lastname"
+        label="nom"
+        name="lastname"
         autoFocus
-        type="date"
         onChange={handleChange}
       />
   
@@ -133,10 +108,10 @@ function UpdateEvenement() {
         margin="normal"
         required
         fullWidth
-        id="description"
-        value={EvenementData.description}
-        label="description "
-        name="description"
+        id="login"
+        value={EnseignantData.login}
+        label="login "
+        name="login"
         autoFocus
         onChange={handleChange}
          />
@@ -145,10 +120,10 @@ function UpdateEvenement() {
         margin="normal"
         required
         fullWidth
-        id="location"
-        value={EvenementData.location}
-        label="location"
-        name="location"
+        id="password"
+        value={EnseignantData.password}
+        label="password"
+        name="password"
         autoFocus
         onChange={handleChange}
     />
@@ -178,4 +153,4 @@ function UpdateEvenement() {
 </Container> );
 }
 
-export default UpdateEvenement;
+export default UpdateEnseignant;

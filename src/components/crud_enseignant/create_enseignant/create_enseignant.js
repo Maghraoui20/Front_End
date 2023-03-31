@@ -18,28 +18,25 @@ import {
   
   function CreateEnseignant() {
     const [EnseignantData, setEnseignantData] = useState({
-      eventName: "",
-      eventDate: "",
-      eventType: "",
-      description: "",
-      location: ""
+      lastname: "",
+      firstname: "",
+      email: "",
+      login: "",
+      password: "",
+      phone: ""
     });
     const navigate = useNavigate();
 
-    const [eventType, setEventType] = React.useState("");
   
     const handleChange = (e) => {
       setEnseignantData({ ...EnseignantData, [e.target.name]: e.target.value });
       console.log(EnseignantData);
     };
 
-    const handleChangeEventType = (e) => {
-        setEventType(e.target.value);
-        setEnseignantData({ ...EnseignantData, eventType: e.target.value });
-      };
+ 
   
-    const handleSubmit = async (event) => {
-      event.preventDefault();
+    const handleSubmit = async (enseignant) => {
+      enseignant.preventDefault();
   
       try {
         const newEnseignant = await api.createEnseignant(EnseignantData);
@@ -65,7 +62,7 @@ import {
           <form onSubmit={handleSubmit}>
             <div       className="grid">
           <Typography component="h1" variant="h5">
-            Créer un évènement{" "}
+            Ajouter un enseignant {" "}
           </Typography>
             <Grid
               container
@@ -77,9 +74,9 @@ import {
                   margin="normal"
                   required
                   fullWidth
-                  id="eventName"
-                  label="titre "
-                  name="eventName"
+                  id="firstname"
+                  label="prenom "
+                  name="firstname"
                   autoFocus
                   onChange={handleChange}
                 />
@@ -87,39 +84,9 @@ import {
                   margin="normal"
                   required
                   fullWidth
-                  id="eventDate"
-                  label="date"
-                  name="eventDate"
-                  autoFocus
-                  type="date"
-                  onChange={handleChange}
-                />
-                <FormControl fullWidth>
-                <InputLabel id="eventType">Type</InputLabel>
-                <Select
-                  labelId="eventType"
-                  id="eventType"
-                  value={eventType}
-                  label="Type"
-                  name="eventType"
-                  onChange={handleChangeEventType}
-                >
-                  <MenuItem value={"JPO"}>JPO</MenuItem>
-                  <MenuItem value={"Formation"}>Formation</MenuItem>
-                  <MenuItem value={"Journée d'integration"}>Journée d'integration</MenuItem>
-                </Select>
-              </FormControl>
-  
-    
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="description"
-                  label="description"
-                  name="description"
+                  id="lastname"
+                  label="nom"
+                  name="lastname"
                   autoFocus
                   onChange={handleChange}
                 />
@@ -128,9 +95,43 @@ import {
                   margin="normal"
                   required
                   fullWidth
-                  id="location"
-                  label="location"
-                  name="location"
+                  id="email"
+                  label="email"
+                  name="email"
+                  autoFocus
+                  onChange={handleChange}
+                />
+               
+              </Grid>
+              <Grid item xs={6}>
+              <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="phone"
+                  label="numero de telephone"
+                  name="phone"
+                  autoFocus
+                  onChange={handleChange}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="login"
+                  label="login"
+                  name="login"
+                  autoFocus
+                  onChange={handleChange}
+                />
+
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="password"
+                  label="password"
+                  name="password"
                   autoFocus
                   onChange={handleChange}
                 />

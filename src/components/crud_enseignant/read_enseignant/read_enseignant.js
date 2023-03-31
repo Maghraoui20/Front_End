@@ -14,13 +14,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
-function ReadEvenement() {
+function ReadEnseignant() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
 
   const handleDelete = async () => {
     try {
-       await api.deleteEvenement(idSelected);
+       await api.deleteEnseignant(idSelected);
        window.location.reload(false)
           } catch (error) {
       console.log(error);
@@ -30,13 +30,13 @@ function ReadEvenement() {
   const navigate= useNavigate();
 
   const handleCreate = async()=>{
-    navigate("/create-evenement")
+    navigate("/create-enseignant")
    }
 
  useEffect(() => {
     async function fetchData() {
       try {
-        const result = await api.getAllEvenement();
+        const result = await api.getAllEnseignant();
         setRows(result);
       } catch (e) {
         console.log(e);
@@ -46,22 +46,24 @@ function ReadEvenement() {
   }, []);
  
   const columns = [
-    { field: "eventName", headerName: "Titre", width: 130 },
+    { field: "firstname", headerName: "prenom", width: 130 },
     {
-      field: "eventDate",
-      headerName: "Date ",
-      width: 160,
-      renderCell: (params) => {
-        return (
-          <Typography>
-            {moment(params.row.eventDate).format("YYYY-MM-DD")}
-          </Typography>
-        );
-      },
+      field: "lastname",
+      headerName: "nom ",
+      width: 160
     },
-    { field: "eventType", headerName: "Type ", width: 130 },
-    { field: "description", headerName: "description ", width: 130 },
-    { field: "location", headerName: "location ", width: 130 },
+    {
+      field: "email",
+      headerName: "email ",
+      width: 160
+    },
+    {
+      field: "phone",
+      headerName: "numero de telephone ",
+      width: 160
+    },
+    { field: "login", headerName: "login ", width: 130 },
+    { field: "password", headerName: "password ", width: 130 },
     {
       field: "modifer",
       headerName: "Modifier",
@@ -70,7 +72,7 @@ function ReadEvenement() {
         return (
           <Button
             variant="contained"
-            href={`/update-evenement/${idSelected}`}
+            href={`/update-enseignant/${idSelected}`}
             sx={{
               backgroundColor: "#00A36C",
               ":hover": { backgroundColor: "#00A36C" },
@@ -116,7 +118,7 @@ function ReadEvenement() {
                     }}
                   >
                     <Typography>
-                      Voulez vous vraiment supprimer cet evenement
+                      Voulez vous vraiment supprimer cet enseignant
                     </Typography>
                     <div className="buttons">
                       <Button
@@ -167,7 +169,7 @@ function ReadEvenement() {
         }}
       >
         <div style={{ height: 400 }}>
-        <div><h1><b>Liste des evenements</b></h1></div>
+        <div><h1><b>Liste des enseignants</b></h1></div>
         <div style={{float : "right"}}>
         <IconButton 
         aria-label="add" 
@@ -204,4 +206,4 @@ function ReadEvenement() {
   );
 }
 
-export default ReadEvenement;
+export default ReadEnseignant;
