@@ -46,24 +46,27 @@ function ReadEnseignant() {
   }, []);
  
   const columns = [
-    { field: "firstname", headerName: "prenom", width: 130 },
+    { field: "firstname",
+     headerName: "prenom",
+      width: 100 },
     {
       field: "lastname",
-      headerName: "nom ",
-      width: 160
+      headerName: "nom",
+      width: 100
     },
     {
       field: "email",
-      headerName: "email ",
-      width: 160
+      headerName: "email",
+      width: 100
     },
     {
       field: "phone",
-      headerName: "numero de telephone ",
-      width: 160
+      headerName: "numero de telephone",
+      width: 100
     },
-    { field: "login", headerName: "login ", width: 130 },
-    { field: "password", headerName: "password ", width: 130 },
+    { field: "login", headerName: "login", width: 100 },
+    { field: "password", headerName: "password", width: 100 },
+    { field: "status", headerName: "status", width: 100 },
     {
       field: "modifer",
       headerName: "Modifier",

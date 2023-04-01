@@ -24,14 +24,22 @@ function UpdateEnseignant() {
         firstname: "",
         lastname: "",
         login: "",
-        password: ""
-    });
+        password: "",
+        email: "",
+        phone: "",
+        status: ""
+    })
       const navigate = useNavigate();
-     
+      const [status, setStatus] = React.useState("");
     
       const handleChange = (e) => {
           setEnseignantData({ ...EnseignantData, [e.target.name]: e.target.value });
           console.log(EnseignantData);
+        };
+
+        const handleChangeStatus = (e) => {
+            setStatus(e.target.value);
+            setEnseignantData({ ...EnseignantData, status: e.target.value });
         };
         
 
@@ -94,6 +102,7 @@ function UpdateEnseignant() {
         margin="normal"
         required
         fullWidth
+        value={EnseignantData.lastname}
         id="lastname"
         label="nom"
         name="lastname"
@@ -101,6 +110,17 @@ function UpdateEnseignant() {
         onChange={handleChange}
       />
   
+  <TextField
+        margin="normal"
+        required
+        fullWidth
+        value={EnseignantData.email}
+        id="email"
+        label="email"
+        name="email"
+        autoFocus
+        onChange={handleChange}
+      />
     
     </Grid>
     <Grid item xs={6}>
@@ -127,7 +147,30 @@ function UpdateEnseignant() {
         autoFocus
         onChange={handleChange}
     />
-
+         <TextField
+        margin="normal"
+        required
+        fullWidth
+        value={EnseignantData.phone}
+        id="phone"
+        label="numero de telephone"
+        name="phone"
+        autoFocus
+        onChange={handleChange}
+      />
+   <FormControl fullWidth>
+        <InputLabel id="staus">Status</InputLabel>
+        <Select
+          labelId="status"
+          id="status"
+          value={EnseignantData.status}
+          label="status"
+          onChange={handleChangeStatus}
+        >
+          <MenuItem value={"enseignant"}>enseignant</MenuItem>
+          <MenuItem value={"responsable formation"}>responsable formation</MenuItem>
+        </Select>
+      </FormControl>
 
     </Grid>
     <Grid item xs={3}></Grid>
