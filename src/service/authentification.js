@@ -5,6 +5,8 @@ export const header = () => ({
   },
 })
 export const signin = async (signinData) => {
+  console.log(signinData,"signinData");
   const result = await Axios.post("http://localhost:5000/users/signin", signinData)
+  console.log(result,"result");
   return result.data
 }

@@ -42,38 +42,46 @@ function Signin() {
 
     try {
       const data  = await api.signin(signinData);
-      if (data.model.Role === 'administratif') {
+      if (data.model.role === 'administratif') {
     console.log(data,"data");
       localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
        const token = data.mytoken;
       localStorage.setItem('token', token)
-      navigate('/');
+      navigate('/readall-administratif');
 
     }
-    if (data.model.Role === 'enseignant') {
+    if (data.model.role === 'enseignant') {
       console.log(data,"data");
         localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
          const token = data.mytoken;
         localStorage.setItem('token', token)
-        navigate('/');
+        navigate('/readall-enseignant');
   
       }
-      if (data.model.Role === 'alumni') {
+      if (data.model.role === 'alumni') {
         console.log(data,"data");
           localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
            const token = data.mytoken;
           localStorage.setItem('token', token)
-          navigate('/');
+          navigate('/readall-alumni');
       }
 
-        if (data.model.Role === 'etudiant') {
+        if (data.model.role === 'etudiant') {
           console.log(data,"data");
             localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
              const token = data.mytoken;
             localStorage.setItem('token', token)
-            navigate('/');
+            navigate('/readall-etudiant');
       
           }
+          if (data.model.role === 'directeur') {
+            console.log(data,"data");
+              localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
+               const token = data.mytoken;
+              localStorage.setItem('token', token)
+              navigate('/readall-diracteur');
+        
+            }
     } catch (error) {
       console.log(error);
     }
@@ -81,88 +89,11 @@ function Signin() {
 
 
   return (
-  /*   <Container maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 10,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-        <Typography component="h1" variant="h5">
-          Se connecter
-        </Typography>
-        
-        <form onSubmit={handleSubmit}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="phone"
-            label="Phone"
-            name="phone"
-            autoFocus
-            onChange={handleChangePhone}
-          />
-
-          <FormControl
-            fullWidth
-            margin="normal"
-            required
-            label="Mot de passe"
-            variant="outlined"
-          >
-            <InputLabel htmlFor="outlined-adornment-password">
-              Mot de passe
-            </InputLabel>
-            <OutlinedInput
-              onChange={handleChangePassword}
-              variant="outlined"
-              type={showPassword ? "text" : "password"}
-              id="password"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Se connecter
-          </Button>
-          <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Mot de passe oublié?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                Vous n'avez pas de compte ? S'inscrire
-                </Link>
-              </Grid>
-            </Grid>
-        </form>
-      </Box>
-    </Container> */
+ 
     <Container component="main" maxWidth="lg">
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 15,
         }}
       >
         <Grid container>
@@ -172,7 +103,7 @@ function Signin() {
            component={Paper}
             item
             elevation={6}
-            square
+            
             xs={false}
             sm={4}
             md={7}
@@ -194,7 +125,7 @@ function Signin() {
             md={5}
             component={Paper}
             elevation={6}
-            square
+       
           >
             <Box
               sx={{
