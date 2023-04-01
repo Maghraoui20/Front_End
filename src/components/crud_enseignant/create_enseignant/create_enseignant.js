@@ -24,7 +24,8 @@ import {
       login: "",
       password: "",
       phone: "",
-      status: ""
+      status: "",
+      role: "enseignant"
     });
     const navigate = useNavigate();
     const [status, setStatus] = React.useState("");
