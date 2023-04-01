@@ -23,9 +23,12 @@ function CreateEtudiant() {
     niveau: "",
     classe: "",
     Birth_date: "",
-    status: "",
+    etat: "",
     phone: "",
     password: "",
+    role: "etudiant",
+    email:"",
+    login:"",
   });
   const navigate = useNavigate();
   const [niveau, setNiveau] = React.useState("");
@@ -42,16 +45,14 @@ function CreateEtudiant() {
   };
   const handleChangeStatus = (e) => {
     setStatus(e.target.value);
-    setEtudiantData({ ...EtudiantData, status: e.target.value });
+    setEtudiantData({ ...EtudiantData, etat: e.target.value });
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const newEtudiant = await api.createEtudiant(EtudiantData);
-      console.log(newEtudiant);
       navigate("/readall-etudiant");
-      
     } catch (error) {
       console.log(error);
     }
@@ -68,7 +69,6 @@ function CreateEtudiant() {
             alignItems: "center",
           }}
         >
-          
           <form onSubmit={handleSubmit}>
             <div className="grid">
               <Typography component="h1" variant="h5">
@@ -113,7 +113,33 @@ function CreateEtudiant() {
                     autoFocus
                     onChange={handleChange}
                   />
-                  <TextField
+                 
+                 <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="email"
+                    name="email"
+                   
+                    autoFocus
+                    onChange={handleChange}
+                  />
+                  
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="login"
+                    label="login"
+                    name="login"
+                   
+                    autoFocus
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                <TextField
                     margin="normal"
                     required
                     fullWidth
@@ -124,9 +150,6 @@ function CreateEtudiant() {
                     autoFocus
                     onChange={handleChange}
                   />
-
-                </Grid>
-                <Grid item xs={6}>
                   <TextField
                     margin="normal"
                     required
@@ -168,12 +191,12 @@ function CreateEtudiant() {
                   </FormControl>
 
                   <FormControl fullWidth sx={{mt:3}}>
-                    <InputLabel id="staus">Status</InputLabel>
+                    <InputLabel id="staus">Etat</InputLabel>
                     <Select
-                      labelId="status"
-                      id="status"
+                      labelId="etat"
+                      id="etat"
                       value={status}
-                      label="status"
+                      label="etat"
                       onChange={handleChangeStatus}
                     >
                       <MenuItem value={"alumni"}>Alumni</MenuItem>

@@ -50,7 +50,7 @@ const navigate= useNavigate();
     },
     { field: "niveau", headerName: "Niveau ", width: 130 },
     { field: "classe", headerName: "Classe ", width: 130 },
-    { field: "status", headerName: "Status ", width: 130 },
+    { field: "etat", headerName: "etat ", width: 130 },
     {
       field: "modifer",
       headerName: "Modifier",
@@ -145,6 +145,7 @@ const navigate= useNavigate();
     async function fetchData() {
       try {
         const result = await api.getAllEtudiant();
+        console.log(result);
         setRows(result);
       } catch (e) {
         console.log(e);
@@ -183,7 +184,7 @@ const navigate= useNavigate();
             pageSizeOptions={[5]}
             checkboxSelection
             disableRowSelectionOnClick
-hideFooter="true"
+
             getRowId={(row) => row._id}
             onRowSelectionModelChange={(newRowSelectionModel) => {
               setIdSelected(newRowSelectionModel.toString());
