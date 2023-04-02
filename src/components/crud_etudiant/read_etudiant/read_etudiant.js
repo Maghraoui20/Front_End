@@ -9,6 +9,7 @@ import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import "./style.css";
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 import { useNavigate } from "react-router-dom";
 import { blue } from "@mui/material/colors";
 
@@ -28,6 +29,11 @@ const navigate= useNavigate();
  const handlenavigate = async()=>{
   navigate("/create-etudiant")
  }
+
+ const handleupload = async()=>{
+  navigate("/uploadfilecsv-etudiant")
+ }
+
   const columns = [
     { field: "firstname", headerName: "Nom", width: 130 },
     { field: "lastname", headerName: "Prénom", width: 130 },
@@ -165,13 +171,20 @@ const navigate= useNavigate();
         }}
       >
         <div style={{ height: 400 }}>
+         <div style={{float:"left"}}>
+        <IconButton aria-label="add" color="secondary" onClick={handleupload} style={{ color:"#000"}} >
+  <UploadFileIcon />
+</IconButton>
+
+          </div>
           <div style={{display:"flex"}}>
         <IconButton aria-label="add" color="secondary" onClick={handlenavigate} style={{ color:"#000"}} >
   <AddIcon />
 </IconButton>
 
           </div>
-          <DataGrid
+          
+        <DataGrid
             rows={rows}
             columns={columns}
             initialState={{
