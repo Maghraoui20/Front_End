@@ -42,7 +42,7 @@ function Signin() {
 
     try {
       const data  = await api.signin(signinData);
-      if (data.model.role === 'administratif') {
+      if (data.model.Role === 'administratif') {
     console.log(data,"data");
       localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
        const token = data.mytoken;
@@ -79,7 +79,7 @@ function Signin() {
               localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
                const token = data.mytoken;
               localStorage.setItem('token', token)
-              navigate('/readall-diracteur');
+              navigate('/readall-directeur');
         
             }
     } catch (error) {
