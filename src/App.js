@@ -21,7 +21,7 @@ import UpdateEvenement from './components/crud_evenement/update_evenement/update
 import ReadEvenement from './components/crud_evenement/read_evenement/read_evenement';
 export const ThemeContext = createContext(null);
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
@@ -40,7 +40,7 @@ function App() {
    <Route path="/create-etudiant" element ={<CreateEtudiant/>} />
    <Route path="/update-etudiant/:id" element ={<UpdateEtudiant/>} />
    <Route path="/readall-etudiant" element ={<ReadEtudiant/>} />
-   <Route path="/update-etudiant-cv/:id" element={<UpdateEtudiantCV />} />
+   <Route path="/update-etudiant-cv" element={<UpdateEtudiantCV />} />
     <Route path="/uploadfilecsv-etudiant" element ={<UploadFileCSV/>} />
 
     <Route path="/create-evenement" element ={<CreateEvenement/>} />
