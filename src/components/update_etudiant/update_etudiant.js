@@ -34,6 +34,9 @@ function UpdateEtudiant() {
   const navigate = useNavigate();
   const [niveau, setNiveau] = React.useState("");
   const [etat, setEtat] = React.useState("");
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const idu = user?._id;
+  const iduser = idu;
 
   const handleChange = (e) => {
     setEtudiantData({ ...EtudiantData, [e.target.name]: e.target.value });
@@ -51,7 +54,7 @@ function UpdateEtudiant() {
     event.preventDefault();
 
     try {
-      const updateEtudiant = await api.updateEtudiant(EtudiantData, params.id);
+      const updateEtudiant = await api.updateEtudiant(EtudiantData, iduser);
       console.log(updateEtudiant, "update");
       navigate("/");
     } catch (error) {
@@ -62,7 +65,8 @@ function UpdateEtudiant() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await api.getEtudiantbyid(params.id);
+        console.log(iduser,"iduser");
+        const result = await api.getEtudiantbyid(iduser);
         setEtudiantData(result);
       } catch (e) {
         console.log(e);
@@ -215,8 +219,6 @@ function UpdateEtudiant() {
                         <MenuItem value={"actuel"}>Actuel</MenuItem>
                       </Select>
                     </FormControl>
-                  </Grid>
-                  <Grid item xs={6}>
                     <Typography> Importer votre CV </Typography>
                     <FileBase
                       type="file"
@@ -255,3 +257,4 @@ function UpdateEtudiant() {
 }
 
 export default UpdateEtudiant;
+
