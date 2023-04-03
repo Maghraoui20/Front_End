@@ -42,12 +42,12 @@ function Signin() {
 
     try {
       const data  = await api.signin(signinData);
-      if (data.model.Role === 'administratif') {
+      if (data.model.role === 'administratif') {
     console.log(data,"data");
       localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
        const token = data.mytoken;
       localStorage.setItem('token', token)
-      navigate('/readall-administratif');
+      navigate('/administratif');
 
     }
     if (data.model.role === 'enseignant') {
@@ -71,7 +71,7 @@ function Signin() {
             localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
              const token = data.mytoken;
             localStorage.setItem('token', token)
-            navigate('/readall-etudiant');
+            navigate('/update-etudiant-cv');
       
           }
           if (data.model.role === 'directeur') {
@@ -91,11 +91,7 @@ function Signin() {
   return (
  
     <Container component="main" maxWidth="lg">
-      <Box
-        sx={{
-          marginTop: 15,
-        }}
-      >
+     
         <Grid container>
           <CssBaseline />
 
@@ -210,7 +206,7 @@ function Signin() {
             </Box>
           </Grid>
         </Grid>
-      </Box>
+  
     </Container>
   
   );
