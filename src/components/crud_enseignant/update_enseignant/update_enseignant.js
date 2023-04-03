@@ -13,7 +13,7 @@ import {
   import React, { useEffect, useState } from "react";
   import Box from "@mui/material/Box";
   import "../create_enseignant/style.css"
-  import * as api from "../../../services/enseignant.js";
+  import * as api from "../../../service/enseignant.js";
   import { useNavigate , useParams} from "react-router-dom";
   import moment from "moment";
 

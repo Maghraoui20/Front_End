@@ -13,7 +13,7 @@ import {
   import React, { useState } from "react";
   import Box from "@mui/material/Box";
   import "./style.css"
-  import * as api from "../../../services/evenement.js";
+  import * as api from "../../../service/evenement.js";
   import { useNavigate } from "react-router-dom";
   
   function CreateEvenement() {

@@ -1,6 +1,6 @@
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import * as api from "../../../services/evenement.js";
+import * as api from "../../../service/evenement.js";
 import { DataGrid } from "@mui/x-data-grid";
 import moment from "moment";
 import { Box, Button, Paper, Typography } from "@mui/material";
