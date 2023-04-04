@@ -66,7 +66,6 @@ function ReadEnseignant() {
       width: 100
     },
     { field: "login", headerName: "login", width: 100 },
-    { field: "password", headerName: "password", width: 100 },
     { field: "status", headerName: "status", width: 100 },
     {
       field: "modifer",
