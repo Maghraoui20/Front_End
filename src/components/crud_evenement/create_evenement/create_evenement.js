@@ -15,6 +15,7 @@ import {
   import "./style.css"
   import * as api from "../../../service/evenement.js";
   import { useNavigate } from "react-router-dom";
+import MySideNav from "../../sidenavAdmin";
   
 
 function CreateEvenement() {
@@ -53,6 +54,7 @@ function CreateEvenement() {
 
   return (
     <Container>
+      <MySideNav />
       <Paper elevation={3} className="paper">
         <Box
           sx={{

@@ -16,6 +16,7 @@ import "../create_etudiant/style.css";
 import * as api from "../../../service/etudiant.js";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
+import MySideNav from "../../sidenavAdmin";
 
 function UpdateEtudiant() {
   const params = useParams();
@@ -77,10 +78,14 @@ function UpdateEtudiant() {
 
   return (
     <Container>
-      <Paper elevation={3} className="paper">
+                     <MySideNav />
+
+      <Paper elevation={3}   sx={{
+        height:600
+          }}>
         <Box
           sx={{
-            marginTop: 10,
+            marginTop: 4,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

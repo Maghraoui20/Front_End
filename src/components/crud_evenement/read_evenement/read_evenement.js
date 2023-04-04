@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import MySideNav from "../../sidenavAdmin.js";
 
 function ReadEvenement() {
   const [rows, setRows] = useState([]);
@@ -152,6 +153,7 @@ function ReadEvenement() {
 
   return (
     <Container>
+      <MySideNav/>
       <Box
         sx={{
           marginTop: 10,

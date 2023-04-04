@@ -16,6 +16,7 @@ import {
   import * as api from "../../../service/enseignant.js";
   import { useNavigate , useParams} from "react-router-dom";
   import moment from "moment";
+import MySideNav from "../../sidenavAdmin";
 
 function UpdateEnseignant() {
     
@@ -24,7 +25,6 @@ function UpdateEnseignant() {
         firstname: "",
         lastname: "",
         login: "",
-        password: "",
         email: "",
         phone: "",
         status: ""
@@ -66,7 +66,8 @@ function UpdateEnseignant() {
             }}
             fetchData()}, []) 
         return (  <Container>
-    
+            <MySideNav/>
+
         <Paper elevation={3} className="paper"> 
         <Box sx={{
             marginTop: 10,
@@ -136,17 +137,7 @@ function UpdateEnseignant() {
         onChange={handleChange}
          />
 
-    <TextField
-        margin="normal"
-        required
-        fullWidth
-        id="password"
-        value={EnseignantData.password}
-        label="password"
-        name="password"
-        autoFocus
-        onChange={handleChange}
-    />
+    
          <TextField
         margin="normal"
         required

@@ -9,9 +9,9 @@ import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import "./style.css";
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
-import UploadFileIcon from '@mui/icons-material/UploadFile';
 import { useNavigate } from "react-router-dom";
 import { blue } from "@mui/material/colors";
+import MySideNav from "../../sidenavAdmin.js";
 
 function ReadEtudiant() {
   const [rows, setRows] = useState([]);
@@ -162,6 +162,8 @@ const navigate= useNavigate();
 
   return (
     <Container maxWidth="md">
+               <MySideNav />
+
       <Box
         sx={{
           marginTop: 10,
@@ -171,12 +173,7 @@ const navigate= useNavigate();
         }}
       >
         <div style={{ height: 400 }}>
-         <div style={{float:"left"}}>
-        <IconButton aria-label="add" color="secondary" onClick={handleupload} style={{ color:"#000"}} >
-  <UploadFileIcon />
-</IconButton>
-
-          </div>
+        
           <div style={{display:"flex"}}>
         <IconButton aria-label="add" color="secondary" onClick={handlenavigate} style={{ color:"#000"}} >
   <AddIcon />

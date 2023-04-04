@@ -51,19 +51,19 @@ const Main = () => {
   return (
     <div className={styles.signup_container}>
       <MySideNav />
-      <nav className={styles.navbar}>
-        <h1>Bienvenue Etudiant</h1>
-        <button className={styles.white_btn} onClick={handleLogout}>
-          Logout
-        </button>
-      </nav>
+    
 
+      <div className={styles.signup_form_container}>
+<div className={styles.message}>
       {msg === "validé" && <h1> Votre compte Alumni est validé</h1>}
       {msg === "non validé" && (
         <h1> Votre compte Alumni est encore non validé</h1>
       )}
 
-      <div className={styles.signup_form_container}>
+</div>
+      
+
+     
         <div className={styles.right}>
           <form className={styles.form_container} onSubmit={handleSubmit}>
             <h1>Vos données alumni</h1>
@@ -72,7 +72,7 @@ const Main = () => {
               onChange={handleChange}
               value={data.pays}
               required
-              className={styles.input}
+              className={styles.input1}
             >
               <option value="France" selected="selected">
                 France
@@ -382,7 +382,8 @@ const Main = () => {
             </button>
           </form>
         </div>
-      </div>
+        </div>
+     
     </div>
   );
 };

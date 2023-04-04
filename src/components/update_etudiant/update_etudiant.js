@@ -16,6 +16,7 @@ import * as api from "../../service/etudiant.js";
 import { useNavigate , useParams} from "react-router-dom";
 import moment from "moment";
 import FileBase from 'react-file-base64';
+import MySideNav from "../compte_alumni/sidenav.js";
 
 function UpdateEtudiant() {
   const params = useParams();
@@ -77,10 +78,18 @@ function UpdateEtudiant() {
 
   return (
     <Container>
+            <MySideNav />
       <Paper elevation={3}  sx={{
-              height:600
+              height:600,
                 }}>
-       
+        <Box
+          sx={{
+            marginTop: 10,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <form onSubmit={handleSubmit}>
             <div className="grid">
               <Typography component="h1" variant="h5">
@@ -245,6 +254,7 @@ function UpdateEtudiant() {
               </Box>
             </div>
           </form>
+          </Box>
       </Paper>
     </Container>
   );

@@ -66,6 +66,16 @@
   font-size: 40px;
   margin-top: 0;
 }
+.message{
+  width: 370px;
+  padding: 15px;
+  margin: 5px 0;
+  font-size: 14px;
+  background-color: #f34646;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
 
 .input {
   outline: none;
@@ -77,7 +87,16 @@
   margin: 5px 0;
   font-size: 14px;
 }
-
+.input1 {
+  outline: none;
+  border: none;
+  width: 400px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #edf5f3;
+  margin: 5px 0;
+  font-size: 14px;
+}
 .error_msg {
   width: 370px;
   padding: 15px;

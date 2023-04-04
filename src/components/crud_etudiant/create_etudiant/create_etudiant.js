@@ -15,6 +15,7 @@ import Box from "@mui/material/Box";
 import "./style.css";
 import * as api from "../../../service/etudiant.js";
 import { useNavigate } from "react-router-dom";
+import MySideNav from "../../sidenavAdmin";
 
 function CreateEtudiant() {
   const [EtudiantData, setEtudiantData] = useState({
@@ -60,10 +61,13 @@ function CreateEtudiant() {
 
   return (
     <Container>
-      <Paper elevation={3} className="paper">
+         <MySideNav />
+      <Paper elevation={3}  sx={{
+        height:600
+          }}>
         <Box
           sx={{
-            marginTop: 10,
+            marginTop: 4,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

@@ -13,6 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import MySideNav from "../../sidenavAdmin.js";
 
 function ReadEnseignant() {
   const [rows, setRows] = useState([]);
@@ -162,7 +163,7 @@ function ReadEnseignant() {
 
   return (
     <Container >
-        
+        <MySideNav/>
       <Box
         sx={{
           marginTop: 10,
@@ -196,7 +197,6 @@ function ReadEnseignant() {
             pageSizeOptions={[5]}
             checkboxSelection
             disableRowSelectionOnClick
-            hideFooter="true"
             getRowId={(row) => row._id}
             onRowSelectionModelChange={(newRowSelectionModel) => {
               setIdSelected(newRowSelectionModel.toString());

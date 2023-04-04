@@ -75,11 +75,13 @@ function Signin() {
       }
 
         if (data.model.role === 'etudiant') {
-          console.log(data,"data");
+
+            console.log(data,"data");
             localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
              const token = data.mytoken;
             localStorage.setItem('token', token)
-            navigate('/update-etudiant-cv');
+            navigate('/espace-etudiant');
+
       
           }
           if (data.model.role === 'directeur') {

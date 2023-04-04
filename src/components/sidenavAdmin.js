@@ -6,6 +6,8 @@ function MySideNav() {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("profile");
+    localStorage.removeItem("token");
+
    
   };
   return (
@@ -24,44 +26,28 @@ function MySideNav() {
           </NavIcon>
           <NavText>Home</NavText>
         </NavItem>
-        <NavItem eventKey="create-etudiant">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Ajouter Etudiant</NavText>
-        </NavItem>
-
         <NavItem eventKey="readall-etudiant">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
-          <NavText>Liste etudiants</NavText>
-        </NavItem>
-        <NavItem eventKey="create-enseignant">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Ajouter Enseignant</NavText>
+          <NavText>Gestion Etudiant</NavText>
         </NavItem>
 
+        
         <NavItem eventKey="readall-enseignant">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
-          <NavText>Liste enseignants</NavText>
+          <NavText>Gestion Enseignant</NavText>
         </NavItem>
-        <NavItem eventKey="create-evenement">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Ajouter evenement</NavText>
-        </NavItem>
+
+       
 
         <NavItem eventKey="readall-evenement">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
-          <NavText>Liste evenement</NavText>
+          <NavText>Gestion evenement</NavText>
         </NavItem>
 
         <NavItem eventKey="signin">

@@ -1,9 +1,15 @@
+import { Button } from "@mui/material";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { useNavigate } from "react-router-dom";
 function MySideNav() {
   const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("profile");
+    localStorage.removeItem("token");
 
+   
+  };
   return (
     <SideNav
       onSelect={(selected) => {
@@ -14,18 +20,26 @@ function MySideNav() {
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="readall-etudiant">
-          <NavIcon>
-            <i className="fa fa-fw fa-home" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Home</NavText>
-        </NavItem>
+      
 
         <NavItem eventKey="add-Alumni">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
-          <NavText>Ajouter Alumni</NavText>
+          <NavText>Demande Compte Alumni</NavText>
+        </NavItem>
+        <NavItem eventKey="update-etudiant-cv">
+          <NavIcon>
+            <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Modifier profil</NavText>
+        </NavItem>
+        <NavItem eventKey="signin">
+        <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText><Button onClick={handleLogout}>Logout</Button></NavText>
+       
         </NavItem>
       </SideNav.Nav>
     </SideNav>
