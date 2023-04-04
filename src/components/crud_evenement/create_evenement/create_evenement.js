@@ -67,7 +67,7 @@ function CreateEvenement() {
           <form onSubmit={handleSubmit}>
             <div className="grid">
               <Typography component="h1" variant="h5">
-                Créer un évènement{" "}
+                Ajouter un évènement{" "}
               </Typography>
               <Grid
                 container
