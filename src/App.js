@@ -17,6 +17,7 @@ import CreateEvenement from "./components/crud_evenement/create_evenement/create
 import UpdateEvenement from "./components/crud_evenement/update_evenement/update_evenement";
 import ReadEvenement from "./components/crud_evenement/read_evenement/read_evenement";
 import AddAlumni from "./components/compte_alumni/addAlumni/index";
+import Administratif from "./components/administratif/index";
 import PrivateRoute from "./components/PrivateRoutes/privateroute.js";
 export const ThemeContext = createContext(null);
 function App() {
@@ -28,22 +29,28 @@ function App() {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="App" id={theme}>
-        <Router>
+      <Router>
           <Routes>
             <Route path="/signin" element={<Signin />} />
+
             <Route path="/" element={<PrivateRoute />}>
               <Route path="/create-enseignant" element={<CreateEnseignant />} />
               <Route
                 path="/update-enseignant/:id"
                 element={<UpdateEnseignant />}
               />
+                <Route
+                path="/administratif"
+                element={<Administratif />}
+              />
               <Route path="/readall-enseignant" element={<ReadEnseignant />} />
 
               <Route path="/create-etudiant" element={<CreateEtudiant />} />
               <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
               <Route path="/readall-etudiant" element={<ReadEtudiant />} />
+              <Route path="/add-Alumni" element={<AddAlumni />} />
               <Route
-                path="/update-etudiant-cv/:id"
+                path="/update-etudiant-cv"
                 element={<UpdateEtudiantCV />}
               />
               <Route
@@ -51,29 +58,22 @@ function App() {
                 element={<UploadFileCSV />}
               />
 
-   <Route path="/create-etudiant" element ={<CreateEtudiant/>} />
-   <Route path="/update-etudiant/:id" element ={<UpdateEtudiant/>} />
-   <Route path="/readall-etudiant" element ={<ReadEtudiant/>} />
-   <Route path="/update-etudiant-cv" element={<UpdateEtudiantCV />} />
-    <Route path="/uploadfilecsv-etudiant" element ={<UploadFileCSV/>} />
-
-    <Route path="/create-evenement" element ={<CreateEvenement/>} />
-    <Route path="/update-evenement/:id" element ={<UpdateEvenement/>} />
-    <Route path="/readall-evenement" element ={<ReadEvenement/>} />
               <Route path="/create-evenement" element={<CreateEvenement />} />
               <Route
                 path="/update-evenement/:id"
                 element={<UpdateEvenement />}
               />
               <Route path="/readall-evenement" element={<ReadEvenement />} />
-              <Route path="/add-Alumni" element={<AddAlumni />} />
             </Route>
           </Routes>
         </Router>
-        <div className="switch">
+       </div>
+      <div className="switch">
           <label> {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
           <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
-        </div>
+      
+  
+       
       </div>
     </ThemeContext.Provider>
   );

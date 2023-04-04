@@ -56,7 +56,7 @@ function UpdateEtudiant() {
     try {
       const updateEtudiant = await api.updateEtudiant(EtudiantData, iduser);
       console.log(updateEtudiant, "update");
-      navigate("/");
+      window.location.reload(false)
     } catch (error) {
       console.log(error);
     }
@@ -77,15 +77,10 @@ function UpdateEtudiant() {
 
   return (
     <Container>
-      <Paper elevation={3} className="paper">
-        <Box
-          sx={{
-            marginTop: 10,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+      <Paper elevation={3}  sx={{
+              height:600
+                }}>
+       
           <form onSubmit={handleSubmit}>
             <div className="grid">
               <Typography component="h1" variant="h5">
@@ -250,7 +245,6 @@ function UpdateEtudiant() {
               </Box>
             </div>
           </form>
-        </Box>
       </Paper>
     </Container>
   );
