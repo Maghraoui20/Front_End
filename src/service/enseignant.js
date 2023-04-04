@@ -1,5 +1,4 @@
 import Axios from "axios"
-
 export const createEnseignant = async (EnseignantData) => {
   const result = await Axios.post("http://localhost:5000/users/create", EnseignantData)
   return result.data

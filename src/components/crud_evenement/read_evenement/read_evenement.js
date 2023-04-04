@@ -6,11 +6,11 @@ import moment from "moment";
 import { Box, Button, Paper, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
-import IconButton from '@mui/material/IconButton';
-import AddIcon from '@mui/icons-material/Add';
-import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
+import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
@@ -20,20 +20,20 @@ function ReadEvenement() {
 
   const handleDelete = async () => {
     try {
-       await api.deleteEvenement(idSelected);
-       window.location.reload(false)
-          } catch (error) {
+      await api.deleteEvenement(idSelected);
+      window.location.reload(false);
+    } catch (error) {
       console.log(error);
     }
   };
 
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
-  const handleCreate = async()=>{
-    navigate("/create-evenement")
-   }
+  const handleCreate = async () => {
+    navigate("/create-evenement");
+  };
 
- useEffect(() => {
+  useEffect(() => {
     async function fetchData() {
       try {
         const result = await api.getAllEvenement();
@@ -44,7 +44,7 @@ function ReadEvenement() {
     }
     fetchData();
   }, []);
- 
+
   const columns = [
     { field: "eventName", headerName: "Titre", width: 130 },
     {
@@ -76,8 +76,7 @@ function ReadEvenement() {
               ":hover": { backgroundColor: "#00A36C" },
             }}
           >
-            
-            <EditIcon/>
+            <EditIcon />
           </Button>
         );
       },
@@ -90,7 +89,6 @@ function ReadEvenement() {
         return (
           <PopupState variant="popover" popupId="demo-popup-popover">
             {(popupState) => (
-            
               <div>
                 <Button
                   variant="contained"
@@ -100,13 +98,9 @@ function ReadEvenement() {
                     ":hover": { backgroundColor: "#FC4343" },
                   }}
                 >
-                  
                   <DeleteIcon />
                 </Button>
-                <Popover
-                  {...bindPopover(popupState)}
-               
-                >
+                <Popover {...bindPopover(popupState)}>
                   <Box
                     sx={{
                       p: 5,
@@ -127,7 +121,10 @@ function ReadEvenement() {
                           backgroundColor: "#00A36C",
                           ":hover": { backgroundColor: "#00A36C" },
                         }}
-                        onClick={()=>{handleDelete(); popupState.close()}}
+                        onClick={() => {
+                          handleDelete();
+                          popupState.close();
+                        }}
                       >
                         Oui
                       </Button>
@@ -139,7 +136,7 @@ function ReadEvenement() {
                           ":hover": { backgroundColor: "#FC4343" },
                         }}
                         onClick={popupState.close}
->
+                      >
                         Annuler
                       </Button>
                     </div>
@@ -151,13 +148,10 @@ function ReadEvenement() {
         );
       },
     },
-  
   ];
 
-
   return (
-    <Container >
-        
+    <Container>
       <Box
         sx={{
           marginTop: 10,
@@ -167,17 +161,22 @@ function ReadEvenement() {
         }}
       >
         <div style={{ height: 400 }}>
-        <div><h1><b>Liste des evenements</b></h1></div>
-        <div style={{float : "right"}}>
-        <IconButton 
-        aria-label="add" 
-        color="secondary"
-         onClick={handleCreate} 
-         style={{ color:"#000"}} >
-       <AddBoxRoundedIcon />
-       </IconButton>
+          <div>
+            <h1>
+              <b>Liste des evenements</b>
+            </h1>
           </div>
-         
+          <div style={{ float: "right" }}>
+            <IconButton
+              aria-label="add"
+              color="secondary"
+              onClick={handleCreate}
+              style={{ color: "#000" }}
+            >
+              <AddBoxRoundedIcon />
+            </IconButton>
+          </div>
+
           <DataGrid
             rows={rows}
             columns={columns}
@@ -199,7 +198,6 @@ function ReadEvenement() {
           />
         </div>
       </Box>
-    
     </Container>
   );
 }
