@@ -16,15 +16,6 @@ import {
   import * as api from "../../../service/evenement.js";
   import { useNavigate } from "react-router-dom";
   
-  function CreateEvenement() {
-    const [EvenementData, setEvenementData] = useState({
-      eventName: "",
-      eventDate: "",
-      eventType: "",
-      description: "",
-      location: ""
-    });
-    const navigate = useNavigate();
 
 function CreateEvenement() {
   const [EvenementData, setEvenementData] = useState({

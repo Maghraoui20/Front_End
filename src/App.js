@@ -18,6 +18,8 @@ import UpdateEvenement from "./components/crud_evenement/update_evenement/update
 import ReadEvenement from "./components/crud_evenement/read_evenement/read_evenement";
 import AddAlumni from "./components/compte_alumni/addAlumni/index";
 import Administratif from "./components/administratif/index";
+import ForgotPassword from "./components/forgot_password/index";
+import PasswordReset from "./components/PasswordReset/index";
 import PrivateRoute from "./components/PrivateRoutes/privateroute.js";
 export const ThemeContext = createContext(null);
 function App() {
@@ -58,12 +60,19 @@ function App() {
                 element={<UploadFileCSV />}
               />
 
+
+
               <Route path="/create-evenement" element={<CreateEvenement />} />
               <Route
                 path="/update-evenement/:id"
                 element={<UpdateEvenement />}
               />
               <Route path="/readall-evenement" element={<ReadEvenement />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route
+                path="/password-reset/:id/:token"
+                element={<PasswordReset />}
+              />
             </Route>
           </Routes>
         </Router>

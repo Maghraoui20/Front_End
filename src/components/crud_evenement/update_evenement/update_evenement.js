@@ -36,7 +36,7 @@ function UpdateEvenement() {
 
   const handleChangeEventType = (e) => {
     seteventType(e.target.value);
-    setEvenementData({ ...EvenementData, eventType: e.target.value });
+    setEvenementData({ ...EvenementData, eventType: eventType });
   };
 
   const handleSubmit = async (event) => {
@@ -64,7 +64,7 @@ function UpdateEvenement() {
       }
     }
     fetchData();
-  }, []);
+  }, [params.id]);
   return (
     <Container>
       <Paper elevation={3} className="paper">
