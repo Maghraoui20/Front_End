@@ -12,51 +12,57 @@ import {
 import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import * as api from "../../service/etudiant.js";
-import { useNavigate , useParams} from "react-router-dom";
+import * as api from "../../service/cv.js";
+import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import MySideNav from "../compte_alumni/sidenav.js";
+import FileBase from "react-file-base64";
 
-function UpdateEtudiant() {
+function UpdateCv() {
   const params = useParams();
-  const [EtudiantData, setEtudiantData] = useState({
+  const [CvData, setCvData] = useState({
     firstname: "",
     lastname: "",
     niveau: "",
     classe: "",
     Birth_date: "",
-    etat: "",
-    phone: "",
-    login: "",
+    adresse: "",
     email: "",
+    phone: "",
+    bio: "",
+    experience: "",
+    stage: "",
   });
 
   const navigate = useNavigate();
   const [niveau, setNiveau] = React.useState("");
-  const [etat, setEtat] = React.useState("");
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-  const idu = user?._id;
-  const iduser = idu;
+  const [stage, setStage] = React.useState("");
+
+  //const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  //const idu = user?._id;
+  //const iduser = idu;
 
   const handleChange = (e) => {
-    setEtudiantData({ ...EtudiantData, [e.target.name]: e.target.value });
+    setCvData({ ...CvData, [e.target.name]: e.target.value });
   };
 
   const handleChangeNiveau = (e) => {
     setNiveau(e.target.value);
-    setEtudiantData({ ...EtudiantData, niveau: e.target.value });
+    setCvData({ ...CvData, niveau: e.target.value });
   };
-  const handleChangeEtat = (e) => {
-    setEtat(e.target.value);
-    setEtudiantData({ ...EtudiantData, etat: e.target.value });
+
+  const handleChangeStage = (e) => {
+    setStage(e.target.value);
+    setCvData({ ...CvData, stage: e.target.value });
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const updateEtudiant = await api.updateEtudiant(EtudiantData, iduser);
-      console.log(updateEtudiant, "update");
-      window.location.reload(false)
+      const updateCv = await api.updateCv(CvData, params.id);
+      console.log(updateCv, "update");
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
     }
@@ -65,9 +71,9 @@ function UpdateEtudiant() {
   useEffect(() => {
     async function fetchData() {
       try {
-        console.log(iduser,"iduser");
-        const result = await api.getEtudiantbyid(iduser);
-        setEtudiantData(result);
+        //console.log(iduser, "iduser");
+        const result = await api.getCvbyid(params.id);
+        setCvData(result);
       } catch (e) {
         console.log(e);
       }
@@ -77,10 +83,13 @@ function UpdateEtudiant() {
 
   return (
     <Container>
-            <MySideNav />
-      <Paper elevation={3}  sx={{
-              height:600,
-                }}>
+      <MySideNav />
+      <Paper
+        elevation={3}
+        sx={{
+          height: 600,
+        }}
+      >
         <Box
           sx={{
             marginTop: 10,
@@ -92,7 +101,7 @@ function UpdateEtudiant() {
           <form onSubmit={handleSubmit}>
             <div className="grid">
               <Typography component="h1" variant="h5">
-                Modifier Compte étudiant{" "}
+                Modifier Mon CV{" "}
               </Typography>
               <Box
                 sx={{
@@ -111,7 +120,7 @@ function UpdateEtudiant() {
                     <TextField
                       margin="normal"
                       required
-                      value={EtudiantData.firstname}
+                      value={CvData.firstname}
                       fullWidth
                       id="firstname"
                       label="nom"
@@ -122,7 +131,7 @@ function UpdateEtudiant() {
                     <TextField
                       margin="normal"
                       required
-                      value={EtudiantData.lastname}
+                      value={CvData.lastname}
                       fullWidth
                       id="lastname"
                       label="prénom"
@@ -134,10 +143,21 @@ function UpdateEtudiant() {
                       margin="normal"
                       required
                       fullWidth
-                      id="login"
-                      label="login"
-                      name="login"
-                      value={EtudiantData.login}
+                      id="bio"
+                      label="bio"
+                      name="bio"
+                      value={CvData.bio}
+                      autoFocus
+                      onChange={handleChange}
+                    />
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="adresse"
+                      label="adresse"
+                      name="adresse"
+                      value={CvData.adresse}
                       autoFocus
                       onChange={handleChange}
                     />
@@ -148,7 +168,7 @@ function UpdateEtudiant() {
                       id="email"
                       label="email"
                       name="email"
-                      value={EtudiantData.email}
+                      value={CvData.email}
                       autoFocus
                       onChange={handleChange}
                     />
@@ -159,7 +179,7 @@ function UpdateEtudiant() {
                       id="phone"
                       label="phone"
                       name="phone"
-                      value={EtudiantData.phone}
+                      value={CvData.phone}
                       autoFocus
                       onChange={handleChange}
                     />
@@ -169,10 +189,21 @@ function UpdateEtudiant() {
                       margin="normal"
                       required
                       fullWidth
-                      value={EtudiantData.classe}
+                      value={CvData.classe}
                       id="classe"
                       label="classe"
                       name="classe"
+                      autoFocus
+                      onChange={handleChange}
+                    />
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      value={CvData.experience}
+                      id="experience"
+                      label="experience"
+                      name="experience"
                       autoFocus
                       onChange={handleChange}
                     />
@@ -181,9 +212,7 @@ function UpdateEtudiant() {
                       margin="normal"
                       required
                       fullWidth
-                      value={moment(EtudiantData.Birth_date).format(
-                        "YYYY-MM-DD"
-                      )}
+                      value={moment(CvData.Birth_date).format("YYYY-MM-DD")}
                       id="Birth_date"
                       label="date"
                       name="Birth_date"
@@ -197,7 +226,7 @@ function UpdateEtudiant() {
                       <Select
                         labelId="Niveau"
                         id="Niveau"
-                        value={EtudiantData.niveau}
+                        value={CvData.niveau}
                         label="Niveau"
                         name="niveau"
                         onChange={handleChangeNiveau}
@@ -210,18 +239,27 @@ function UpdateEtudiant() {
                       </Select>
                     </FormControl>
                     <FormControl fullWidth sx={{ mt: 3 }}>
-                      <InputLabel id="staus">Etat</InputLabel>
+                      <InputLabel id="staus">Stage</InputLabel>
                       <Select
-                        labelId="etat"
-                        id="etat"
-                        value={EtudiantData.etat}
-                        label="etat"
-                        onChange={handleChangeEtat}
+                        labelId="stage"
+                        id="stage"
+                        value={CvData.Stage}
+                        label="stage"
+                        onChange={handleChangeStage}
                       >
-                        <MenuItem value={"alumni"}>Alumni</MenuItem>
-                        <MenuItem value={"actuel"}>Actuel</MenuItem>
+                        <MenuItem value={"stage été"}>Stage d'été</MenuItem>
+                        <MenuItem value={"stage pfe"}>Stage PFE</MenuItem>
                       </Select>
                     </FormControl>
+                    <Typography> Importer votre photo de profil </Typography>
+                    <FileBase
+                      type="file"
+                      name="choisir une photo"
+                      multiple={false}
+                      onDone={({ base64 }) =>
+                        setCvData({ ...CvData, photo: base64 })
+                      }
+                    />
                   </Grid>
                   <Grid item xs={3}></Grid>
                   <Grid item xs={6}>
@@ -244,11 +282,10 @@ function UpdateEtudiant() {
               </Box>
             </div>
           </form>
-          </Box>
+        </Box>
       </Paper>
     </Container>
   );
 }
 
-export default UpdateEtudiant;
-
+export default UpdateCv;

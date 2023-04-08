@@ -28,11 +28,17 @@ function MySideNav() {
           </NavIcon>
           <NavText>Demande Compte Alumni</NavText>
         </NavItem>
-        <NavItem eventKey="update-etudiant-cv">
+        <NavItem eventKey="update-etudiant">
           <NavIcon>
             <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Modifier profil</NavText>
+        </NavItem>
+        <NavItem eventKey="update-cv/:id">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Modifier CV</NavText>
         </NavItem>
         <NavItem eventKey="signin">
         <NavIcon>
