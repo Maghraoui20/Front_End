@@ -8,16 +8,156 @@ import {
   MenuItem,
   Grid,
   Paper,
+  ListItem,
+  List,
+  ListItemText,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import * as api from "../../service/cv.js";
+import * as api2 from "../../service/stage.js";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import MySideNav from "../compte_alumni/sidenav.js";
 import FileBase from "react-file-base64";
+import PortraitIcon from "@mui/icons-material/Portrait";
+import Avatar from "@mui/material/Avatar";
+/*
+function createStage() {
+  const initialState = {
+      sujet: "",
+      societe: "",
+      description: "",
+      duree: "",
+  };
+  const [StageData, setStageData] = initialState();
 
+  const handleChange = (e) => {
+    setStageData({ ...StageData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const newStage = await api2.createStage(StageData);
+      console.log(newStage);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <Container>
+      <MySideNav />
+      <Paper
+        elevation={3}
+        sx={{
+          height: 600,
+        }}
+      >
+        <Box
+          sx={{
+            marginTop: 10,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <form onSubmit={handleSubmit}>
+            <div className="grid">
+              <Typography component="h1" variant="h5">
+                Ajouter Mes Stages{" "}
+              </Typography>
+              <Box
+                sx={{
+                  marginTop: 5,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Grid
+                  container
+                  rowSpacing={1}
+                  columnSpacing={{ xs: 1, sm: 2, md: 12 }}
+                >
+                  <Grid item xs={6}>
+                    <TextField
+                      margin="normal"
+                      required
+                      value={StageData.sujet}
+                      fullWidth
+                      id="sujet"
+                      label="Sujet"
+                      name="sujet"
+                      autoFocus
+                      onChange={handleChange}
+                    />
+                    <TextField
+                      margin="normal"
+                      required
+                      value={StageData.description}
+                      fullWidth
+                      id="description"
+                      label="Description"
+                      name="description"
+                      autoFocus
+                      onChange={handleChange}
+                    />
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="duree"
+                      label="duree"
+                      name="duree"
+                      value={StageData.duree}
+                      autoFocus
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      value={StageData.societe}
+                      id="societe"
+                      label="societe"
+                      name="societe"
+                      autoFocus
+                      onChange={handleChange}
+                    />                
+                  </Grid>
+                  <Grid item xs={3}></Grid>
+                  <Grid item xs={6}>
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      sx={{
+                        mt: 3,
+                        mb: 2,
+                        m: 4,
+                        backgroundColor: "#00A36C",
+                        ":hover": { backgroundColor: "#00A36C" },
+                      }}
+                    >
+                      Valider{" "}
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Box>
+            </div>
+          </form>
+        </Box>
+      </Paper>
+    </Container>
+  );
+}
+*/
 function UpdateCv() {
   const params = useParams();
   const [CvData, setCvData] = useState({
@@ -29,14 +169,10 @@ function UpdateCv() {
     adresse: "",
     email: "",
     phone: "",
-    bio: "",
-    experience: "",
-    stage: "",
   });
 
   const navigate = useNavigate();
   const [niveau, setNiveau] = React.useState("");
-  const [stage, setStage] = React.useState("");
 
   //const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   //const idu = user?._id;
@@ -49,11 +185,6 @@ function UpdateCv() {
   const handleChangeNiveau = (e) => {
     setNiveau(e.target.value);
     setCvData({ ...CvData, niveau: e.target.value });
-  };
-
-  const handleChangeStage = (e) => {
-    setStage(e.target.value);
-    setCvData({ ...CvData, stage: e.target.value });
   };
 
   const handleSubmit = async (event) => {
@@ -143,17 +274,6 @@ function UpdateCv() {
                       margin="normal"
                       required
                       fullWidth
-                      id="bio"
-                      label="bio"
-                      name="bio"
-                      value={CvData.bio}
-                      autoFocus
-                      onChange={handleChange}
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
                       id="adresse"
                       label="adresse"
                       name="adresse"
@@ -183,8 +303,6 @@ function UpdateCv() {
                       autoFocus
                       onChange={handleChange}
                     />
-                  </Grid>
-                  <Grid item xs={6}>
                     <TextField
                       margin="normal"
                       required
@@ -200,19 +318,7 @@ function UpdateCv() {
                       margin="normal"
                       required
                       fullWidth
-                      value={CvData.experience}
-                      id="experience"
-                      label="experience"
-                      name="experience"
-                      autoFocus
-                      onChange={handleChange}
-                    />
-
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      value={moment(CvData.Birth_date).format("YYYY-MM-DD")}
+                      value={moment(CvData.Birth_date).format("DD-MM-YYYY")}
                       id="Birth_date"
                       label="date"
                       name="Birth_date"
@@ -220,7 +326,6 @@ function UpdateCv() {
                       type="date"
                       onChange={handleChange}
                     />
-
                     <FormControl fullWidth sx={{ mt: 3 }}>
                       <InputLabel id="Niveau">Niveau</InputLabel>
                       <Select
@@ -238,19 +343,6 @@ function UpdateCv() {
                         </MenuItem>
                       </Select>
                     </FormControl>
-                    <FormControl fullWidth sx={{ mt: 3 }}>
-                      <InputLabel id="staus">Stage</InputLabel>
-                      <Select
-                        labelId="stage"
-                        id="stage"
-                        value={CvData.Stage}
-                        label="stage"
-                        onChange={handleChangeStage}
-                      >
-                        <MenuItem value={"stage été"}>Stage d'été</MenuItem>
-                        <MenuItem value={"stage pfe"}>Stage PFE</MenuItem>
-                      </Select>
-                    </FormControl>
                     <Typography> Importer votre photo de profil </Typography>
                     <FileBase
                       type="file"
@@ -260,6 +352,59 @@ function UpdateCv() {
                         setCvData({ ...CvData, photo: base64 })
                       }
                     />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+                      <PortraitIcon />
+                    </Avatar>
+                    <React.Fragment>
+                      <Typography variant="h4" gutterBottom>
+                        Mon CV View
+                      </Typography>
+                      <List disablePadding>
+                        <ListItem key={CvData.firstname} sx={{ py: 1, px: 0 }}>
+                          <ListItemText
+                            primary={CvData.firstname}
+                            secondary={CvData.lastname}
+                          />
+                          <Typography variant="body2">
+                            Telephone : {CvData.phone}
+                          </Typography>
+                        </ListItem>
+                      </List>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                          <Typography variant="h6" gutterBottom>
+                            Date de naissance
+                          </Typography>
+                          <Typography gutterBottom>
+                            {CvData.Birth_date}
+                          </Typography>
+                          <Typography variant="h6" gutterBottom>
+                            Adresse
+                          </Typography>
+                          <Typography gutterBottom>{CvData.adresse}</Typography>
+                          <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
+                            Formations
+                          </Typography>
+                        </Grid>
+                        <Grid item container direction="column" xs={12} sm={6}>
+                          <Typography variant="h6" gutterBottom>
+                            Email
+                          </Typography>
+                          <Typography gutterBottom>{CvData.email}</Typography>
+                          <Typography variant="h6" gutterBottom>
+                            Niveau
+                          </Typography>
+                          <Typography gutterBottom>
+                            {CvData.classe} {CvData.niveau}
+                          </Typography>
+                          <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
+                            Stages
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </React.Fragment>
                   </Grid>
                   <Grid item xs={3}></Grid>
                   <Grid item xs={6}>
