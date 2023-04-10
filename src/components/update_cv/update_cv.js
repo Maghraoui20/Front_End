@@ -16,148 +16,14 @@ import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import * as api from "../../service/cv.js";
-import * as api2 from "../../service/stage.js";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import MySideNav from "../compte_alumni/sidenav.js";
 import FileBase from "react-file-base64";
 import PortraitIcon from "@mui/icons-material/Portrait";
-import Avatar from "@mui/material/Avatar";
-/*
-function createStage() {
-  const initialState = {
-      sujet: "",
-      societe: "",
-      description: "",
-      duree: "",
-  };
-  const [StageData, setStageData] = initialState();
+import emptyAvatar from "../../assets/emptyavatar.png";
+import Addmoreinput from "./Addmoreinput.js";
 
-  const handleChange = (e) => {
-    setStageData({ ...StageData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const newStage = await api2.createStage(StageData);
-      console.log(newStage);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return (
-    <Container>
-      <MySideNav />
-      <Paper
-        elevation={3}
-        sx={{
-          height: 600,
-        }}
-      >
-        <Box
-          sx={{
-            marginTop: 10,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <form onSubmit={handleSubmit}>
-            <div className="grid">
-              <Typography component="h1" variant="h5">
-                Ajouter Mes Stages{" "}
-              </Typography>
-              <Box
-                sx={{
-                  marginTop: 5,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Grid
-                  container
-                  rowSpacing={1}
-                  columnSpacing={{ xs: 1, sm: 2, md: 12 }}
-                >
-                  <Grid item xs={6}>
-                    <TextField
-                      margin="normal"
-                      required
-                      value={StageData.sujet}
-                      fullWidth
-                      id="sujet"
-                      label="Sujet"
-                      name="sujet"
-                      autoFocus
-                      onChange={handleChange}
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      value={StageData.description}
-                      fullWidth
-                      id="description"
-                      label="Description"
-                      name="description"
-                      autoFocus
-                      onChange={handleChange}
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      id="duree"
-                      label="duree"
-                      name="duree"
-                      value={StageData.duree}
-                      autoFocus
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      value={StageData.societe}
-                      id="societe"
-                      label="societe"
-                      name="societe"
-                      autoFocus
-                      onChange={handleChange}
-                    />                
-                  </Grid>
-                  <Grid item xs={3}></Grid>
-                  <Grid item xs={6}>
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      sx={{
-                        mt: 3,
-                        mb: 2,
-                        m: 4,
-                        backgroundColor: "#00A36C",
-                        ":hover": { backgroundColor: "#00A36C" },
-                      }}
-                    >
-                      Valider{" "}
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Box>
-            </div>
-          </form>
-        </Box>
-      </Paper>
-    </Container>
-  );
-}
-*/
 function UpdateCv() {
   const params = useParams();
   const [CvData, setCvData] = useState({
@@ -169,6 +35,23 @@ function UpdateCv() {
     adresse: "",
     email: "",
     phone: "",
+    experiences: [
+      {
+        title: "",
+        emplacement: "",
+        description: "",
+        date_debut: "",
+        date_fin: "",
+      },
+    ],
+    stages: [
+      {
+        sujet: "",
+        societe: "",
+        duree: "",
+        type: "",
+      },
+    ],
   });
 
   const navigate = useNavigate();
@@ -326,6 +209,51 @@ function UpdateCv() {
                       type="date"
                       onChange={handleChange}
                     />
+                    <TextField
+                      margin="normal"
+                      required
+                      value={CvData.sujet}
+                      fullWidth
+                      id="sujet"
+                      label="Sujet"
+                      name="sujet"
+                      autoFocus
+                      onChange={handleChange}
+                    />
+                    <TextField
+                      margin="normal"
+                      required
+                      value={CvData.description}
+                      fullWidth
+                      id="description"
+                      label="Description"
+                      name="description"
+                      autoFocus
+                      onChange={handleChange}
+                    />
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="duree"
+                      label="duree"
+                      name="duree"
+                      value={CvData.duree}
+                      autoFocus
+                      onChange={handleChange}
+                    />
+
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      value={CvData.societe}
+                      id="societe"
+                      label="societe"
+                      name="societe"
+                      autoFocus
+                      onChange={handleChange}
+                    />
                     <FormControl fullWidth sx={{ mt: 3 }}>
                       <InputLabel id="Niveau">Niveau</InputLabel>
                       <Select
@@ -352,11 +280,10 @@ function UpdateCv() {
                         setCvData({ ...CvData, photo: base64 })
                       }
                     />
+                    <Addmoreinput/>
                   </Grid>
                   <Grid item xs={6}>
-                    <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                      <PortraitIcon />
-                    </Avatar>
+                    <emptyAvatar />
                     <React.Fragment>
                       <Typography variant="h4" gutterBottom>
                         Mon CV View
@@ -385,7 +312,7 @@ function UpdateCv() {
                           </Typography>
                           <Typography gutterBottom>{CvData.adresse}</Typography>
                           <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
-                            Formations
+                            Experiences
                           </Typography>
                         </Grid>
                         <Grid item container direction="column" xs={12} sm={6}>
