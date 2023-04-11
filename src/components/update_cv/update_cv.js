@@ -20,9 +20,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import MySideNav from "../compte_alumni/sidenav.js";
 import FileBase from "react-file-base64";
-import PortraitIcon from "@mui/icons-material/Portrait";
-import emptyAvatar from "../../assets/emptyavatar.png";
-import Addmoreinput from "./Addmoreinput.js";
+
 
 function UpdateCv() {
   const params = useParams();
@@ -35,10 +33,9 @@ function UpdateCv() {
     adresse: "",
     email: "",
     phone: "",
-    experiences: [
+    experiences: [ 
       {
         title: "",
-        emplacement: "",
         description: "",
         date_debut: "",
         date_fin: "",
@@ -56,7 +53,40 @@ function UpdateCv() {
 
   const navigate = useNavigate();
   const [niveau, setNiveau] = React.useState("");
+  const [type, setType] = React.useState("");
 
+  const [inputList, setinputList] = useState([
+    { title: "", description: "", date_debut: "", date_fin: ""},
+  ]);
+  const [inputList2, setinputList2] = useState([
+    { sujet: "", societe: "", duree: "", type: "" },
+  ]);
+
+  const handleremove = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setinputList(list);
+  };
+
+  const handleremove2 = (index) => {
+    const list = [...inputList2];
+    list.splice(index, 1);
+    setinputList2(list);
+  };
+
+  const handleaddclick = () => {
+    setinputList([
+      ...inputList,
+      { title: "", description: "", date_debut: "", date_fin: "" },
+    ]);
+  };
+
+  const handleaddclick2 = () => {
+    setinputList2([
+      ...inputList,
+      { sujet: "", societe: "", duree: "", type: "" },
+    ]);
+  };
   //const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   //const idu = user?._id;
   //const iduser = idu;
@@ -68,6 +98,11 @@ function UpdateCv() {
   const handleChangeNiveau = (e) => {
     setNiveau(e.target.value);
     setCvData({ ...CvData, niveau: e.target.value });
+  };
+
+  const handleChangeType = (e) => {
+    setType(e.target.value);
+    setCvData({ ...CvData, type: e.target.value });
   };
 
   const handleSubmit = async (event) => {
@@ -201,57 +236,12 @@ function UpdateCv() {
                       margin="normal"
                       required
                       fullWidth
-                      value={moment(CvData.Birth_date).format("DD-MM-YYYY")}
+                      value={moment(CvData.Birth_date).format("YYYY-MM-DD")}
                       id="Birth_date"
                       label="date"
                       name="Birth_date"
                       autoFocus
                       type="date"
-                      onChange={handleChange}
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      value={CvData.sujet}
-                      fullWidth
-                      id="sujet"
-                      label="Sujet"
-                      name="sujet"
-                      autoFocus
-                      onChange={handleChange}
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      value={CvData.description}
-                      fullWidth
-                      id="description"
-                      label="Description"
-                      name="description"
-                      autoFocus
-                      onChange={handleChange}
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      id="duree"
-                      label="duree"
-                      name="duree"
-                      value={CvData.duree}
-                      autoFocus
-                      onChange={handleChange}
-                    />
-
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      value={CvData.societe}
-                      id="societe"
-                      label="societe"
-                      name="societe"
-                      autoFocus
                       onChange={handleChange}
                     />
                     <FormControl fullWidth sx={{ mt: 3 }}>
@@ -280,9 +270,163 @@ function UpdateCv() {
                         setCvData({ ...CvData, photo: base64 })
                       }
                     />
-                    <Addmoreinput/>
-                  </Grid>
-                  <Grid item xs={6}>
+                    <container>
+                      <Typography component="h1" variant="h6">
+                        Experiences{" "}
+                      </Typography>
+                      {inputList.map((x, i) => {
+                        return (
+                          <React.Fragment>
+                            <TextField
+                              margin="normal"
+                              required
+                              fullWidth
+                              value={CvData.title}
+                              id="title"
+                              label="title"
+                              name="title"
+                              autoFocus
+                              onChange={handleChange}
+                            />
+                            <TextField
+                              margin="normal"
+                              required
+                              fullWidth
+                              value={CvData.description}
+                              id="description"
+                              label="description"
+                              name="description"
+                              autoFocus
+                              onChange={handleChange}
+                            />
+                            <TextField
+                              margin="normal"
+                              required
+                              fullWidth
+                              value={moment(
+                              CvData.date_debut
+                              ).format("YYYY-MM-DD")}
+                              id="date_debut"
+                              label="date debut"
+                              name="date_debut"
+                              autoFocus
+                              type="date"
+                              onChange={handleChange}
+                            />
+                            <TextField
+                              margin="normal"
+                              required
+                              fullWidth
+                              value={moment(CvData.date_fin).format(
+                                "YYYY-MM-DD"
+                              )}
+                              id="date_fin"
+                              label="date fin"
+                              name="date_fin"
+                              autoFocus
+                              type="date"
+                              onChange={handleChange}
+                            />
+                            {inputList.length !== 1 && (
+                              <button
+                                className="btn btn-danger mx-1"
+                                onClick={() => handleremove(i)}
+                              >
+                                Remove
+                              </button>
+                            )}
+                            {inputList.length - 1 === i && (
+                              <button
+                                className="btn btn-success"
+                                onClick={handleaddclick}
+                              >
+                                Add More
+                              </button>
+                            )}
+                          </React.Fragment>
+                          
+                        );
+                      })}
+                    </container>
+                    <container>
+                      <Typography component="h1" variant="h6">
+                        Stages{" "}
+                      </Typography>
+                      {inputList2.map((x, i) => {
+                        return (
+                          <React.Fragment>
+                            <TextField
+                              margin="normal"
+                              required
+                              fullWidth
+                              value={CvData.sujet}
+                              id="sujet"
+                              label="sujet"
+                              name="sujet"
+                              autoFocus
+                              onChange={handleChange}
+                            />
+                            <TextField
+                              margin="normal"
+                              required
+                              fullWidth
+                              value={CvData.societe}
+                              id="societe"
+                              label="societe"
+                              name="societe"
+                              autoFocus
+                              onChange={handleChange}
+                            />
+                            <TextField
+                              margin="normal"
+                              required
+                              fullWidth
+                              value={CvData.duree}
+                              id="duree"
+                              label="duree"
+                              name="duree"
+                              autoFocus
+                              onChange={handleChange}
+                            />
+                            <FormControl fullWidth sx={{ mt: 3 }}>
+                              <InputLabel id="type">Type de Stage</InputLabel>
+                              <Select
+                                labelId="type"
+                                id="type"
+                                value={CvData.type}
+                                label="type"
+                                name="type"
+                                onChange={handleChangeType}
+                              >
+                                <MenuItem value={"stage d ete"}>
+                                  Stage d'été
+                                </MenuItem>
+                                <MenuItem value={"PFA"}>PFA</MenuItem>
+                                <MenuItem value={"PFE"}>PFE</MenuItem>
+                              </Select>
+                            </FormControl>
+                            {inputList2.length !== 1 && (
+                              <button
+                                className="btn btn-danger mx-1"
+                                onClick={() => handleremove2(i)}
+                              >
+                                Remove
+                              </button>
+                            )}
+                            {inputList2.length - 1 === i && (
+                              <button
+                                className="btn btn-success"
+                                onClick={handleaddclick2}
+                              >
+                                Add More
+                              </button>
+                            )}
+                            </React.Fragment>
+                        );
+                      })}
+                    </container>
+                    </Grid> 
+                    <Grid item xs={6}>
                     <emptyAvatar />
                     <React.Fragment>
                       <Typography variant="h4" gutterBottom>
@@ -314,6 +458,16 @@ function UpdateCv() {
                           <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
                             Experiences
                           </Typography>
+                          <Typography gutterBottom>{CvData.title}</Typography>
+                          <Typography gutterBottom>{CvData.description}</Typography>
+                          <List disablePadding>
+                        <ListItem key={CvData.date_debut} sx={{ py: 1, px: 0 }}>
+                          <ListItemText
+                            primary={CvData.date_fin}
+                            secondary={CvData.date_debut}
+                          />
+                        </ListItem>
+                      </List>
                         </Grid>
                         <Grid item container direction="column" xs={12} sm={6}>
                           <Typography variant="h6" gutterBottom>
@@ -329,6 +483,16 @@ function UpdateCv() {
                           <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
                             Stages
                           </Typography>
+                          <Typography gutterBottom>{CvData.sujet}</Typography>
+                          <Typography gutterBottom>{CvData.societe}</Typography>
+                          <List disablePadding>
+                        <ListItem key={CvData.duree} sx={{ py: 1, px: 0 }}>
+                          <ListItemText
+                            primary={CvData.type}
+                            secondary={CvData.duree}
+                          />
+                        </ListItem>
+                      </List>
                         </Grid>
                       </Grid>
                     </React.Fragment>
