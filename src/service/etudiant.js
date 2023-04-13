@@ -34,3 +34,8 @@ export const etatEtd = async (id) => {
   const result = await Axios.get("http://localhost:5000/users/findol/" + id);
   return result;
 };
+export const newAlumni = async (data) => {
+  console.log(data, "alumniData");
+  const result = await Axios.post("http://localhost:5000/alumnis/create", data);
+  return result.data;
+};
