@@ -16,11 +16,10 @@ import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import * as api from "../../service/cv.js";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import moment from "moment";
 import MySideNav from "../compte_alumni/sidenav.js";
 import FileBase from "react-file-base64";
-
 
 function UpdateCv() {
   const params = useParams();
@@ -33,7 +32,7 @@ function UpdateCv() {
     adresse: "",
     email: "",
     phone: "",
-    experiences: [ 
+    experiences: [
       {
         title: "",
         description: "",
@@ -51,45 +50,11 @@ function UpdateCv() {
     ],
   });
 
-  const navigate = useNavigate();
-  const [niveau, setNiveau] = React.useState("");
-  const [type, setType] = React.useState("");
-
-  const [inputList, setinputList] = useState([
-    { title: "", description: "", date_debut: "", date_fin: ""},
-  ]);
-  const [inputList2, setinputList2] = useState([
-    { sujet: "", societe: "", duree: "", type: "" },
-  ]);
-
-  const handleremove = (index) => {
-    const list = [...inputList];
-    list.splice(index, 1);
-    setinputList(list);
-  };
-
-  const handleremove2 = (index) => {
-    const list = [...inputList2];
-    list.splice(index, 1);
-    setinputList2(list);
-  };
-
-  const handleaddclick = () => {
-    setinputList([
-      ...inputList,
-      { title: "", description: "", date_debut: "", date_fin: "" },
-    ]);
-  };
-
-  const handleaddclick2 = () => {
-    setinputList2([
-      ...inputList,
-      { sujet: "", societe: "", duree: "", type: "" },
-    ]);
-  };
   //const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   //const idu = user?._id;
   //const iduser = idu;
+
+  const [niveau, setNiveau] = React.useState("");
 
   const handleChange = (e) => {
     setCvData({ ...CvData, [e.target.name]: e.target.value });
@@ -100,9 +65,83 @@ function UpdateCv() {
     setCvData({ ...CvData, niveau: e.target.value });
   };
 
-  const handleChangeType = (e) => {
-    setType(e.target.value);
-    setCvData({ ...CvData, type: e.target.value });
+  // Update the experiences array in CvData
+  const updateExperiences = (index, field, value) => {
+    const updatedExperiences = [...CvData.experiences];
+    updatedExperiences[index][field] = value; // Update the specific field with the new value
+    setCvData({ ...CvData, experiences: updatedExperiences }); // Update the CvData state with the updated experiences array
+  };
+
+  // Add a new experience object to the experiences array
+  const addExperience = () => {
+    setCvData({
+      ...CvData,
+      experiences: [
+        ...CvData.experiences,
+        {
+          title: "",
+          description: "",
+          date_debut: "",
+          date_fin: "",
+        },
+      ],
+    });
+  };
+
+  // Remove an experience object from the experiences array
+  const removeExperience = (index) => {
+    const updatedExperiences = [...CvData.experiences];
+    updatedExperiences.splice(index, 1); // Remove the experience object at the specified index
+    setCvData({ ...CvData, experiences: updatedExperiences }); // Update the CvData state with the updated experiences array
+  };
+
+  // Usage of the updateExperiences function
+  const handleInputChange = (index, field, event) => {
+    const { value } = event.target;
+    updateExperiences(index, field, value);
+  };
+
+  // Update the stages array in CvData
+  const updateStages = (index, field, value) => {
+    const updatedStages = [...CvData.stages];
+    updatedStages[index][field] = value; // Update the specific field with the new value
+    setCvData({ ...CvData, stages: updatedStages }); // Update the CvData state with the updated stages array
+  };
+
+  // Add a new stage object to the stages array
+  const addStage = () => {
+    setCvData({
+      ...CvData,
+      stages: [
+        ...CvData.stages,
+        {
+          sujet: "",
+          societe: "",
+          duree: "",
+          type: "",
+        },
+      ],
+    });
+  };
+
+  // Remove a stage object from the stages array
+  const removeStage = (index) => {
+    const updatedStages = [...CvData.stages];
+    updatedStages.splice(index, 1); // Remove the stage object at the specified index
+    setCvData({ ...CvData, stages: updatedStages }); // Update the CvData state with the updated stages array
+  };
+
+  const handleInputChange2 = (index, field, event) => {
+    const { value } = event.target;
+    updateStages(index, field, value);
+  };
+
+  const handleInputChangeType = (index, field, event) => {
+    const { value } = event.target;
+
+    const updatedStages = [...CvData.stages];
+    updatedStages[index][field] = value;
+    setCvData({ ...CvData, stages: updatedStages });
   };
 
   const handleSubmit = async (event) => {
@@ -136,7 +175,7 @@ function UpdateCv() {
       <Paper
         elevation={3}
         sx={{
-          height: 600,
+          height: 800,
         }}
       >
         <Box
@@ -166,6 +205,15 @@ function UpdateCv() {
                   columnSpacing={{ xs: 1, sm: 2, md: 12 }}
                 >
                   <Grid item xs={6}>
+                    <Typography> Importer votre photo de profil </Typography>
+                    <FileBase
+                      type="file"
+                      name="choisir une photo"
+                      multiple={false}
+                      onDone={({ base64 }) =>
+                        setCvData({ ...CvData, photo: base64 })
+                      }
+                    />
                     <TextField
                       margin="normal"
                       required
@@ -261,172 +309,155 @@ function UpdateCv() {
                         </MenuItem>
                       </Select>
                     </FormControl>
-                    <Typography> Importer votre photo de profil </Typography>
-                    <FileBase
-                      type="file"
-                      name="choisir une photo"
-                      multiple={false}
-                      onDone={({ base64 }) =>
-                        setCvData({ ...CvData, photo: base64 })
-                      }
-                    />
-                    <container>
-                      <Typography component="h1" variant="h6">
-                        Experiences{" "}
-                      </Typography>
-                      {inputList.map((x, i) => {
-                        return (
-                          <React.Fragment>
-                            <TextField
-                              margin="normal"
-                              required
-                              fullWidth
-                              value={CvData.title}
-                              id="title"
-                              label="title"
-                              name="title"
-                              autoFocus
-                              onChange={handleChange}
-                            />
-                            <TextField
-                              margin="normal"
-                              required
-                              fullWidth
-                              value={CvData.description}
-                              id="description"
-                              label="description"
-                              name="description"
-                              autoFocus
-                              onChange={handleChange}
-                            />
-                            <TextField
-                              margin="normal"
-                              required
-                              fullWidth
-                              value={moment(
-                              CvData.date_debut
-                              ).format("YYYY-MM-DD")}
-                              id="date_debut"
-                              label="date debut"
-                              name="date_debut"
-                              autoFocus
-                              type="date"
-                              onChange={handleChange}
-                            />
-                            <TextField
-                              margin="normal"
-                              required
-                              fullWidth
-                              value={moment(CvData.date_fin).format(
-                                "YYYY-MM-DD"
-                              )}
-                              id="date_fin"
-                              label="date fin"
-                              name="date_fin"
-                              autoFocus
-                              type="date"
-                              onChange={handleChange}
-                            />
-                            {inputList.length !== 1 && (
-                              <button
-                                className="btn btn-danger mx-1"
-                                onClick={() => handleremove(i)}
-                              >
-                                Remove
-                              </button>
+                    <div>
+                      {/* Render input fields for each experience */}
+                      {CvData.experiences.map((experience, index) => (
+                        <div key={index}>
+                          <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            value={experience.title}
+                            id="title"
+                            label="Title Formation"
+                            name="title"
+                            autoFocus
+                            onChange={(event) =>
+                              handleInputChange(index, "title", event)
+                            }
+                          />
+                          <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            value={experience.description}
+                            id="description"
+                            label="Description Formation"
+                            name="description"
+                            autoFocus
+                            onChange={(event) =>
+                              handleInputChange(index, "description", event)
+                            }
+                          />
+                          <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            value={moment(experience.date_debut).format(
+                              "YYYY-MM-DD"
                             )}
-                            {inputList.length - 1 === i && (
-                              <button
-                                className="btn btn-success"
-                                onClick={handleaddclick}
-                              >
-                                Add More
-                              </button>
+                            id="date_debut"
+                            label="Date début de la formation"
+                            name="date_debut"
+                            autoFocus
+                            type="date"
+                            onChange={(event) =>
+                              handleInputChange(index, "date_debut", event)
+                            }
+                          />
+
+                          <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            value={moment(experience.date_fin).format(
+                              "YYYY-MM-DD"
                             )}
-                          </React.Fragment>
-                          
-                        );
-                      })}
-                    </container>
-                    <container>
-                      <Typography component="h1" variant="h6">
-                        Stages{" "}
-                      </Typography>
-                      {inputList2.map((x, i) => {
-                        return (
-                          <React.Fragment>
-                            <TextField
-                              margin="normal"
-                              required
-                              fullWidth
-                              value={CvData.sujet}
-                              id="sujet"
-                              label="sujet"
-                              name="sujet"
-                              autoFocus
-                              onChange={handleChange}
-                            />
-                            <TextField
-                              margin="normal"
-                              required
-                              fullWidth
-                              value={CvData.societe}
-                              id="societe"
-                              label="societe"
-                              name="societe"
-                              autoFocus
-                              onChange={handleChange}
-                            />
-                            <TextField
-                              margin="normal"
-                              required
-                              fullWidth
-                              value={CvData.duree}
-                              id="duree"
-                              label="duree"
-                              name="duree"
-                              autoFocus
-                              onChange={handleChange}
-                            />
-                            <FormControl fullWidth sx={{ mt: 3 }}>
-                              <InputLabel id="type">Type de Stage</InputLabel>
-                              <Select
-                                labelId="type"
-                                id="type"
-                                value={CvData.type}
-                                label="type"
-                                name="type"
-                                onChange={handleChangeType}
-                              >
-                                <MenuItem value={"stage d ete"}>
-                                  Stage d'été
-                                </MenuItem>
-                                <MenuItem value={"PFA"}>PFA</MenuItem>
-                                <MenuItem value={"PFE"}>PFE</MenuItem>
-                              </Select>
-                            </FormControl>
-                            {inputList2.length !== 1 && (
-                              <button
-                                className="btn btn-danger mx-1"
-                                onClick={() => handleremove2(i)}
-                              >
-                                Remove
-                              </button>
-                            )}
-                            {inputList2.length - 1 === i && (
-                              <button
-                                className="btn btn-success"
-                                onClick={handleaddclick2}
-                              >
-                                Add More
-                              </button>
-                            )}
-                            </React.Fragment>
-                        );
-                      })}
-                    </container>
-                    </Grid> 
-                    <Grid item xs={6}>
+                            id="date_fin"
+                            label="Date fin de la formation"
+                            name="date_fin"
+                            autoFocus
+                            type="date"
+                            onChange={(event) =>
+                              handleInputChange(index, "date_fin", event)
+                            }
+                          />
+                          {/* Add more input fields for other properties of experience object */}
+                          {/* Add a button to remove the experience object */}
+                          <button onClick={() => removeExperience(index)}>
+                            Remove
+                          </button>
+                        </div>
+                      ))}
+                      {/* Add a button to add a new experience object */}
+                      <button onClick={addExperience}>Add Experience</button>
+                      {/* JSX code for other fields in your component */}
+                    </div>
+                    <div>
+                      {/* Render input fields for each stage */}
+                      {CvData.stages.map((stage, index) => (
+                        <div key={index}>
+                          <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            value={stage.sujet}
+                            id="sujet"
+                            label="Sujet stage"
+                            name="sujet"
+                            autoFocus
+                            onChange={(event) =>
+                              handleInputChange2(index, "sujet", event)
+                            }
+                          />
+                          <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            value={stage.societe}
+                            id="societe"
+                            label="Societe stage"
+                            name="societe"
+                            autoFocus
+                            onChange={(event) =>
+                              handleInputChange2(index, "societe", event)
+                            }
+                          />
+                          <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            value={stage.duree}
+                            id="duree"
+                            label="Duree stage"
+                            name="duree"
+                            autoFocus
+                            onChange={(event) =>
+                              handleInputChange2(index, "duree", event)
+                            }
+                          />
+                          <FormControl fullWidth sx={{ mt: 3 }}>
+                            <InputLabel id="Type">Type stage</InputLabel>
+                            <Select
+                              labelId="Type"
+                              id="Type"
+                              value={stage.type}
+                              label="Type stage"
+                              name="type"
+                              onChange={(event) =>
+                                handleInputChangeType(index, "type", event)
+                              }
+                            >
+                              <MenuItem value={"Stage d'été"}>
+                                Stage d'été
+                              </MenuItem>
+                              <MenuItem value={"PFA"}>PFA</MenuItem>
+                              <MenuItem value={"PFE"}>PFE</MenuItem>
+                            </Select>
+                          </FormControl>
+                          {/* Add more input fields for other properties of stage object */}
+                          {/* Add a button to remove the stage object */}
+                          <button onClick={() => removeStage(index)}>
+                            Remove
+                          </button>
+                        </div>
+                      ))}
+                      {/* Add a button to add a new stage object */}
+                      <button onClick={addStage}>Add Stage</button>
+                      {/* JSX code for other fields in your component */}
+                    </div>
+                  </Grid>
+                  <Grid item xs={6}>
                     <emptyAvatar />
                     <React.Fragment>
                       <Typography variant="h4" gutterBottom>
@@ -458,16 +489,29 @@ function UpdateCv() {
                           <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
                             Experiences
                           </Typography>
-                          <Typography gutterBottom>{CvData.title}</Typography>
-                          <Typography gutterBottom>{CvData.description}</Typography>
-                          <List disablePadding>
-                        <ListItem key={CvData.date_debut} sx={{ py: 1, px: 0 }}>
-                          <ListItemText
-                            primary={CvData.date_fin}
-                            secondary={CvData.date_debut}
-                          />
-                        </ListItem>
-                      </List>
+
+                          <div>
+                            {/* JSX code for rendering experience data */}
+                            <h1>Experiences</h1>
+                            <ul>
+                              {CvData.experiences.map((experience, index) => (
+                                <li key={index}>
+                                  <strong>Title: </strong>
+                                  {experience.title}
+                                  <br />
+                                  <strong>Description: </strong>
+                                  {experience.description}
+                                  <br />
+                                  <strong>Date Debut: </strong>
+                                  {experience.date_debut}
+                                  <br />
+                                  <strong>Date Fin: </strong>
+                                  {experience.date_fin}
+                                  <br />
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </Grid>
                         <Grid item container direction="column" xs={12} sm={6}>
                           <Typography variant="h6" gutterBottom>
@@ -483,16 +527,26 @@ function UpdateCv() {
                           <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
                             Stages
                           </Typography>
-                          <Typography gutterBottom>{CvData.sujet}</Typography>
-                          <Typography gutterBottom>{CvData.societe}</Typography>
-                          <List disablePadding>
-                        <ListItem key={CvData.duree} sx={{ py: 1, px: 0 }}>
-                          <ListItemText
-                            primary={CvData.type}
-                            secondary={CvData.duree}
-                          />
-                        </ListItem>
-                      </List>
+                          {/* JSX code for rendering stage data */}
+                          <h1>Stages</h1>
+                          <ul>
+                            {CvData.stages.map((stage, index) => (
+                              <li key={index}>
+                                <strong>Sujet: </strong>
+                                {stage.sujet}
+                                <br />
+                                <strong>Societe: </strong>
+                                {stage.societe}
+                                <br />
+                                <strong>Duree: </strong>
+                                {stage.duree}
+                                <br />
+                                <strong>Type: </strong>
+                                {stage.type}
+                                <br />
+                              </li>
+                            ))}
+                          </ul>
                         </Grid>
                       </Grid>
                     </React.Fragment>
@@ -523,5 +577,4 @@ function UpdateCv() {
     </Container>
   );
 }
-
 export default UpdateCv;
