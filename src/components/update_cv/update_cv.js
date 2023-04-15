@@ -20,6 +20,7 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import MySideNav from "../compte_alumni/sidenav.js";
 import FileBase from "react-file-base64";
+import ProfilePic from "../../../src/assets/profilepicture.PNG";
 
 function UpdateCv() {
   const params = useParams();
@@ -50,7 +51,7 @@ function UpdateCv() {
     ],
   });
 
-  //const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  //const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   //const idu = user?._id;
   //const iduser = idu;
 
@@ -458,11 +459,13 @@ function UpdateCv() {
                     </div>
                   </Grid>
                   <Grid item xs={6}>
-                    <emptyAvatar />
                     <React.Fragment>
                       <Typography variant="h4" gutterBottom>
                         Mon CV View
                       </Typography>
+                      <div>
+                        <img src={ProfilePic} alt="Mon Image" />
+                      </div>
                       <List disablePadding>
                         <ListItem key={CvData.firstname} sx={{ py: 1, px: 0 }}>
                           <ListItemText
@@ -492,7 +495,7 @@ function UpdateCv() {
 
                           <div>
                             {/* JSX code for rendering experience data */}
-                            <h1>Experiences</h1>
+
                             <ul>
                               {CvData.experiences.map((experience, index) => (
                                 <li key={index}>
@@ -528,7 +531,7 @@ function UpdateCv() {
                             Stages
                           </Typography>
                           {/* JSX code for rendering stage data */}
-                          <h1>Stages</h1>
+
                           <ul>
                             {CvData.stages.map((stage, index) => (
                               <li key={index}>
