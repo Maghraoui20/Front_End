@@ -4,6 +4,7 @@ const PrivateRoute = () => {
   const [userinfos, setuserinfos] = useState(
     JSON.parse(localStorage.getItem("profile"))
   );
+  setuserinfos(userinfos);
   return userinfos ? <Outlet /> : <Navigate to="/signin" />;
 };
 export default PrivateRoute;

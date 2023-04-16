@@ -27,3 +27,8 @@ export const new_password = async (id, token, password) => {
   const result = await Axios.post(url, { password });
   return result.data;
 };
+export const checkStatus = async (code) => {
+  const url = `http://localhost:5000/alumnis/check/${code}`;
+  const result = await Axios.get(url);
+  return result.data;
+};

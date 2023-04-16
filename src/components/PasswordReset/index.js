@@ -27,12 +27,9 @@ const PasswordReset = () => {
   const handleSubmit = async (e) => {
     console.log("1");
     e.preventDefault();
-    try {
-      console.log("2");
-      const { data } = await axios.post(url, { password });
-      console.log("3");
-      setMsg(data.message);
-      console.log("4");
+    try {     
+      const { data } = await axios.post(url, { password });      
+      setMsg(data.message);     
       setError("");
       window.location = "/signin";
     } catch (error) {

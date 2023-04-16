@@ -23,11 +23,7 @@ const Main = () => {
 
     const demande = data.data;
     setMsg(demande);
-  };
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
-  };
+  }; 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -13,13 +13,11 @@ import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import * as api from "../../service/etudiant.js";
-import { useNavigate , useParams} from "react-router-dom";
 import moment from "moment";
 import FileBase from 'react-file-base64';
 import MySideNav from "../compte_alumni/sidenav.js";
 
-function UpdateEtudiant() {
-  const params = useParams();
+function UpdateEtudiant() {  
   const [EtudiantData, setEtudiantData] = useState({
     firstname: "",
     lastname: "",
@@ -32,10 +30,11 @@ function UpdateEtudiant() {
     email: "",
   });
 
-  const navigate = useNavigate();
+  
   const [niveau, setNiveau] = React.useState("");
   const [etat, setEtat] = React.useState("");
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  setUser(user);
   const idu = user?._id;
   const iduser = idu;
 
@@ -45,11 +44,11 @@ function UpdateEtudiant() {
 
   const handleChangeNiveau = (e) => {
     setNiveau(e.target.value);
-    setEtudiantData({ ...EtudiantData, niveau: e.target.value });
+    setEtudiantData({ ...EtudiantData, niveau: niveau });
   };
   const handleChangeEtat = (e) => {
     setEtat(e.target.value);
-    setEtudiantData({ ...EtudiantData, etat: e.target.value });
+    setEtudiantData({ ...EtudiantData, etat: etat });
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -74,7 +73,7 @@ function UpdateEtudiant() {
       }
     }
     fetchData();
-  }, []);
+  }, [iduser]);
 
   return (
     <Container>

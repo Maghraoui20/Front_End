@@ -15,8 +15,7 @@ import {
   import "../create_enseignant/style.css"
   import * as api from "../../../service/enseignant.js";
   import { useNavigate , useParams} from "react-router-dom";
-  import moment from "moment";
-import MySideNav from "../../sidenavAdmin";
+  import MySideNav from "../../sidenavAdmin";
 
 function UpdateEnseignant() {
     
@@ -39,7 +38,7 @@ function UpdateEnseignant() {
 
         const handleChangeStatus = (e) => {
             setStatus(e.target.value);
-            setEnseignantData({ ...EnseignantData, status: e.target.value });
+            setEnseignantData({ ...EnseignantData, status: status });
         };
         
 
@@ -64,7 +63,7 @@ function UpdateEnseignant() {
             } catch (e) {
               console.log(e)
             }}
-            fetchData()}, []) 
+            fetchData()}, [params.id]) 
         return (  <Container>
             <MySideNav/>
 
