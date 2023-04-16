@@ -9,7 +9,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState, navigate } from "react";
+import { useState } from "react";
 import * as api from "../../../service/etudiant";
 
 const theme = createTheme();
@@ -28,8 +28,7 @@ export default function SignupAlumni() {
     societe: "",
     promotion: 2023,
     date_diplome: "",
-    date_embauche: "",
-    demande: false,
+    date_embauche: "",    
   });
   const handleChange = ({ currentTarget: input }) => {
     console.log(input.value);
@@ -39,7 +38,7 @@ export default function SignupAlumni() {
     e.preventDefault();
     try {
       await api.newAlumni(data);
-      navigate("/check");
+      window.location = "/check";
     } catch (error) {
       if (
         error.response &&
