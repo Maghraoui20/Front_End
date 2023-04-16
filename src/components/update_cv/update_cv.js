@@ -176,7 +176,8 @@ function UpdateCv() {
       <Paper
         elevation={3}
         sx={{
-          height: 800,
+          height: "100vh",
+          overflowY: "auto",
         }}
       >
         <Box
