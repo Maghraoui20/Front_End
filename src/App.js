@@ -21,6 +21,8 @@ import ForgotPassword from "./components/forgot_password/index";
 import PasswordReset from "./components/PasswordReset/index";
 import PrivateRoute from "./components/PrivateRoutes/privateroute.js";
 import EspacEtudiant from "./components/espaceEtudiant/espaceEtudiant";
+import CreateStageEté from "./components/stage/stage-été";
+import CreateStagePfe from "./components/stage/stage-pfe";
 /* export const ThemeContext = createContext(null);
  */
 function App() {
@@ -50,7 +52,7 @@ function App() {
              <Route path="/espace-etudiant" element={<EspacEtudiant />} />
 
               <Route path="/create-enseignant" element={<CreateEnseignant />} />
-              <Route         path="/update-enseignant/:id"    element={<UpdateEnseignant />}             />
+              <Route     path="/update-enseignant/:id"    element={<UpdateEnseignant />}             />
               <Route path="/administratif" element={<Administratif />} />
               <Route path="/readall-enseignant" element={<ReadEnseignant />} />
 
@@ -58,6 +60,9 @@ function App() {
               <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
               <Route path="/readall-etudiant" element={<ReadEtudiant />} />
               <Route path="/add-Alumni" element={<AddAlumni />} />
+              <Route path="/insérer-stage-été" element={<CreateStageEté />} />
+              <Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />
+
               <Route
                 path="/update-etudiant-cv" element={<UpdateEtudiantCV />}   />
 

@@ -17,6 +17,6 @@ export const getEnseignantbyid = async (id) => {
   return result.data
 }
 export const getAllEnseignant = async () => {
-  const result = await Axios.get("http://localhost:5000/users/getAll")
+  const result = await Axios.get("http://localhost:5000/users/getAllEnseignant")
   return result.data
 }
