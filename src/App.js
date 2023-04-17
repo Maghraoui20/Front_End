@@ -2,10 +2,16 @@ import "./App.css";
 import { createContext, useState } from "react";
 import ReactSwitch from "react-switch";
 
-import UpdateEtudiantCV from "./components/update_etudiant/update_etudiant";
+import UpdateProfileEtudiant from "./components/update_etudiant/update_etudiant";
 
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Signin from "./components/signin/signin.js";
+import UpdateCv from "./components/update_cv/update_cv";
 import CreateEnseignant from "./components/crud_enseignant/create_enseignant/create_enseignant";
 import UpdateEnseignant from "./components/crud_enseignant/update_enseignant/update_enseignant";
 import ReadEnseignant from "./components/crud_enseignant/read_enseignant/read_enseignant";
@@ -24,53 +30,60 @@ import EspacEtudiant from "./components/espaceEtudiant/espaceEtudiant";
 /* export const ThemeContext = createContext(null);
  */
 function App() {
-/*   const [theme, setTheme] = useState("light");
+  /*   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   }; */
 
   return (
-/*     <ThemeContext.Provider /* value={{ theme, toggleTheme }} >
- */      <div className="App" /* id={theme} */>
-     {/*  <div className="switch">
+    /*     <ThemeContext.Provider /* value={{ theme, toggleTheme }} >
+     */ <div className="App" /* id={theme} */>
+      {/*  <div className="switch">
         <label> {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
         <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
       </div> */}
-        <Router>
-          <Routes>
+      <Router>
+        <Routes>
           <Route path="/" element={<Navigate replace to="/signin" />} />
-            <Route path="/signin" element={<Signin />} />
+          <Route path="/signin" element={<Signin />} />
 
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route  path="/password-reset/:id/:token"   element={<PasswordReset />}   />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="/password-reset/:id/:token"
+            element={<PasswordReset />}
+          />
 
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="/espace-etudiant" element={<EspacEtudiant />} />
 
-             <Route path="/" element={<PrivateRoute />}>
-             <Route path="/espace-etudiant" element={<EspacEtudiant />} />
+            <Route path="/create-enseignant" element={<CreateEnseignant />} />
+            <Route
+              path="/update-enseignant/:id"
+              element={<UpdateEnseignant />}
+            />
+            <Route path="/administratif" element={<Administratif />} />
+            <Route path="/readall-enseignant" element={<ReadEnseignant />} />
 
-              <Route path="/create-enseignant" element={<CreateEnseignant />} />
-              <Route         path="/update-enseignant/:id"    element={<UpdateEnseignant />}             />
-              <Route path="/administratif" element={<Administratif />} />
-              <Route path="/readall-enseignant" element={<ReadEnseignant />} />
+            <Route path="/create-etudiant" element={<CreateEtudiant />} />
+            <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
+            <Route path="/readall-etudiant" element={<ReadEtudiant />} />
+            <Route path="/add-Alumni" element={<AddAlumni />} />
+            <Route
+              path="/update-etudiant"
+              element={<UpdateProfileEtudiant />}
+            />
+            <Route path="/update-cv/:id" element={<UpdateCv />} />
 
-              <Route path="/create-etudiant" element={<CreateEtudiant />} />
-              <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
-              <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-              <Route path="/add-Alumni" element={<AddAlumni />} />
-              <Route
-                path="/update-etudiant-cv" element={<UpdateEtudiantCV />}   />
+            <Route path="/create-evenement" element={<CreateEvenement />} />
+            <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
+            <Route path="/readall-evenement" element={<ReadEvenement />} />
+          </Route>
+        </Routes>
+      </Router>
+    </div>
 
-              <Route path="/create-evenement" element={<CreateEvenement />} />
-              <Route   path="/update-evenement/:id" element={<UpdateEvenement />}   />
-              <Route path="/readall-evenement" element={<ReadEvenement />} />
-            </Route>
-
-          </Routes>
-        </Router>
-      </div>
-    
-    // </ThemeContext.Provider> 
+    // </ThemeContext.Provider>
   );
 }
 

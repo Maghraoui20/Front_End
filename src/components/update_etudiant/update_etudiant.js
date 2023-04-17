@@ -15,7 +15,6 @@ import Box from "@mui/material/Box";
 import * as api from "../../service/etudiant.js";
 import { useNavigate , useParams} from "react-router-dom";
 import moment from "moment";
-import FileBase from 'react-file-base64';
 import MySideNav from "../compte_alumni/sidenav.js";
 
 function UpdateEtudiant() {
@@ -223,15 +222,6 @@ function UpdateEtudiant() {
                         <MenuItem value={"actuel"}>Actuel</MenuItem>
                       </Select>
                     </FormControl>
-                    <Typography> Importer votre CV </Typography>
-                    <FileBase
-                      type="file"
-                      name="choisir un CV"
-                      multiple={false}
-                      onDone={({ base64 }) =>
-                        setEtudiantData({ ...EtudiantData, Cv: base64 })
-                      }
-                    />
                   </Grid>
                   <Grid item xs={3}></Grid>
                   <Grid item xs={6}>
