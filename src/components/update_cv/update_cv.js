@@ -22,6 +22,7 @@ import MySideNav from "../compte_alumni/sidenav.js";
 import FileBase from "react-file-base64";
 import ProfilePic from "../../../src/assets/profilepicture.PNG";
 
+
 function UpdateCv() {
   const params = useParams();
   const [CvData, setCvData] = useState({
@@ -312,6 +313,7 @@ function UpdateCv() {
                       </Select>
                     </FormControl>
                     <div>
+                      <h3>Experiences</h3>
                       {/* Render input fields for each experience */}
                       {CvData.experiences.map((experience, index) => (
                         <div key={index}>
@@ -386,6 +388,7 @@ function UpdateCv() {
                       {/* JSX code for other fields in your component */}
                     </div>
                     <div>
+                    <h3>Stages</h3>
                       {/* Render input fields for each stage */}
                       {CvData.stages.map((stage, index) => (
                         <div key={index}>
@@ -460,13 +463,17 @@ function UpdateCv() {
                     </div>
                   </Grid>
                   <Grid item xs={6}>
+                    
                     <React.Fragment>
+                   
                       <Typography variant="h4" gutterBottom>
                         Mon CV View
+                      
                       </Typography>
                       <div>
                         <img src={ProfilePic} alt="Mon Image" />
                       </div>
+                     
                       <List disablePadding>
                         <ListItem key={CvData.firstname} sx={{ py: 1, px: 0 }}>
                           <ListItemText
