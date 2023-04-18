@@ -148,7 +148,7 @@ a {
   width: 100vw;
 
   margin-right: 10%;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: right;
 }
 

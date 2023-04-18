@@ -1,7 +1,4 @@
 import "./App.css";
-import { createContext, useState } from "react";
-import ReactSwitch from "react-switch";
-
 import UpdateEtudiantCV from "./components/update_etudiant/update_etudiant";
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
@@ -15,12 +12,13 @@ import ReadEtudiant from "./components/crud_etudiant/read_etudiant/read_etudiant
 import CreateEvenement from "./components/crud_evenement/create_evenement/create_evenement";
 import UpdateEvenement from "./components/crud_evenement/update_evenement/update_evenement";
 import ReadEvenement from "./components/crud_evenement/read_evenement/read_evenement";
-import AddAlumni from "./components/compte_alumni/addAlumni/index";
 import Administratif from "./components/administratif/index";
 import ForgotPassword from "./components/forgot_password/index";
 import PasswordReset from "./components/PasswordReset/index";
 import PrivateRoute from "./components/PrivateRoutes/privateroute.js";
 import EspacEtudiant from "./components/espaceEtudiant/espaceEtudiant";
+
+import ChangePassword from "./components/change_password";
 /* export const ThemeContext = createContext(null);
  */
 function App() {
@@ -43,7 +41,9 @@ function App() {
             <Route path="/signin" element={<Signin />} />
 
               <Route path="/forgot-password" element={<ForgotPassword />} />
+           
               <Route  path="/password-reset/:id/:token"   element={<PasswordReset />}   />
+              
 
 
              <Route path="/" element={<PrivateRoute />}>
@@ -57,7 +57,7 @@ function App() {
               <Route path="/create-etudiant" element={<CreateEtudiant />} />
               <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
               <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-              <Route path="/add-Alumni" element={<AddAlumni />} />
+              <Route path="/change-password" element={<ChangePassword/>}/>
               <Route
                 path="/update-etudiant-cv" element={<UpdateEtudiantCV />}   />
 

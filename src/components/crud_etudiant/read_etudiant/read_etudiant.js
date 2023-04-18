@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import * as api from "../../../service/etudiant.js";
 import { DataGrid } from "@mui/x-data-grid";
 import moment from "moment";
-import { Box, Button, InputLabel, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import "./style.css";
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
-import { blue } from "@mui/material/colors";
+
 import MySideNav from "../../sidenavAdmin.js";
 
 function ReadEtudiant() {
@@ -30,11 +30,7 @@ const navigate= useNavigate();
   navigate("/create-etudiant")
  }
 
- const handleupload = async()=>{
-  navigate("/uploadfilecsv-etudiant")
- }
-
-  const columns = [
+   const columns = [
     { field: "firstname", headerName: "Nom", width: 130 },
     { field: "lastname", headerName: "Prénom", width: 130 },
     {

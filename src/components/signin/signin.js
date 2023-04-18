@@ -71,7 +71,7 @@ function Signin() {
         localStorage.setItem("profile", JSON.stringify({ ...data?.model }));
         const token = data.mytoken;
         localStorage.setItem("token", token);
-        navigate("/readall-alumni");
+        navigate("/change-password");
       }
 
         if (data.model.role === 'etudiant') {

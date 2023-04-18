@@ -14,7 +14,7 @@
 }
 
 .white_btn {
-  justify-content: end;
+  justify-content: flex-end;
 display: flex;
   border: none;
   outline: none;

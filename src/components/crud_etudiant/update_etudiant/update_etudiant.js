@@ -46,11 +46,11 @@ function UpdateEtudiant() {
  
   const handleChangeNiveau = (e) => {
     setNiveau(e.target.value);
-    setEtudiantData({ ...EtudiantData, niveau: e.target.value });
+    setEtudiantData({ ...EtudiantData, niveau: niveau });
   };
   const handleChangeEtat = (e) => {
     setEtat(e.target.value);
-    setEtudiantData({ ...EtudiantData, etat: e.target.value });
+    setEtudiantData({ ...EtudiantData, etat: etat });
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -72,7 +72,7 @@ function UpdateEtudiant() {
     } catch (e) {
       console.log(e)
     }}
-    fetchData()}, []) 
+    fetchData()}, [params.id]) 
 
    
 

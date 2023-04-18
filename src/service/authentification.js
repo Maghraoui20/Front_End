@@ -27,3 +27,8 @@ export const new_password = async (id, token, password) => {
   const result = await Axios.post(url, { password });
   return result.data;
 };
+export const change_password = async (id, password) => {
+  const url = `http://localhost:5000/reset/${id}`;
+  const result = await Axios.post(url, { password });
+  return result.data;
+}; 

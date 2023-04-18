@@ -22,11 +22,11 @@ function MySideNav() {
       <SideNav.Nav defaultSelected="home">
       
 
-        <NavItem eventKey="add-Alumni">
+        <NavItem eventKey="change-password">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
-          <NavText>Demande Compte Alumni</NavText>
+          <NavText>Changer mot de passe</NavText>
         </NavItem>
         <NavItem eventKey="update-etudiant-cv">
           <NavIcon>
