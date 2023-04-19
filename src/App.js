@@ -11,7 +11,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Signin from "./components/signin/signin.js";
-import UpdateCv from "./components/update_cv/update_cv";
+import UpdateEtudiantCV from "./components/update_cv/update_cv";
 import CreateEnseignant from "./components/crud_enseignant/create_enseignant/create_enseignant";
 import UpdateEnseignant from "./components/crud_enseignant/update_enseignant/update_enseignant";
 import ReadEnseignant from "./components/crud_enseignant/read_enseignant/read_enseignant";
@@ -21,12 +21,13 @@ import ReadEtudiant from "./components/crud_etudiant/read_etudiant/read_etudiant
 import CreateEvenement from "./components/crud_evenement/create_evenement/create_evenement";
 import UpdateEvenement from "./components/crud_evenement/update_evenement/update_evenement";
 import ReadEvenement from "./components/crud_evenement/read_evenement/read_evenement";
-import AddAlumni from "./components/compte_alumni/addAlumni/index";
 import Administratif from "./components/administratif/index";
 import ForgotPassword from "./components/forgot_password/index";
 import PasswordReset from "./components/PasswordReset/index";
 import PrivateRoute from "./components/PrivateRoutes/privateroute.js";
 import EspacEtudiant from "./components/espaceEtudiant/espaceEtudiant";
+import SignupAlumni from "./components/compte_alumni/signUpAlumni/index";
+
 /* export const ThemeContext = createContext(null);
  */
 function App() {
@@ -47,34 +48,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
-
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route
-            path="/password-reset/:id/:token"
-            element={<PasswordReset />}
-          />
-
+          <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+          <Route path="/signupA" element={<SignupAlumni />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/espace-etudiant" element={<EspacEtudiant />} />
-
             <Route path="/create-enseignant" element={<CreateEnseignant />} />
-            <Route
-              path="/update-enseignant/:id"
-              element={<UpdateEnseignant />}
-            />
+            <Route path="/update-enseignant/:id" element={<UpdateEnseignant />} />
             <Route path="/administratif" element={<Administratif />} />
             <Route path="/readall-enseignant" element={<ReadEnseignant />} />
-
             <Route path="/create-etudiant" element={<CreateEtudiant />} />
             <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
-            <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-            <Route path="/add-Alumni" element={<AddAlumni />} />
-            <Route
-              path="/update-etudiant"
-              element={<UpdateProfileEtudiant />}
-            />
-            <Route path="/update-cv/:id" element={<UpdateCv />} />
-
+            <Route path="/readall-etudiant" element={<ReadEtudiant />} />           
+            <Route path="/update-etudiant-cv" element={<UpdateEtudiantCV />} />
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
