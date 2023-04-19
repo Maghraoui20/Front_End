@@ -28,6 +28,7 @@ import PrivateRoute from "./components/PrivateRoutes/privateroute.js";
 import EspacEtudiant from "./components/espaceEtudiant/espaceEtudiant";
 import SignupAlumni from "./components/compte_alumni/signUpAlumni/index";
 
+import CheckStatus from "./components/compte_alumni/check_status/index"
 /* export const ThemeContext = createContext(null);
  */
 function App() {
@@ -51,6 +52,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
           <Route path="/signupA" element={<SignupAlumni />} />
+          <Route  path="/check"   element={<CheckStatus />}   />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/espace-etudiant" element={<EspacEtudiant />} />
             <Route path="/create-enseignant" element={<CreateEnseignant />} />
