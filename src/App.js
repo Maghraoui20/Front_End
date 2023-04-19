@@ -29,6 +29,8 @@ import EspacEtudiant from "./components/espaceEtudiant/espaceEtudiant";
 import SignupAlumni from "./components/compte_alumni/signUpAlumni/index";
 
 import CheckStatus from "./components/compte_alumni/check_status/index"
+
+import ChangePassword from "./components/change_password";
 /* export const ThemeContext = createContext(null);
  */
 function App() {
@@ -50,6 +52,7 @@ function App() {
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/change-password" element={<ChangePassword/>}/>
           <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
           <Route path="/signupA" element={<SignupAlumni />} />
           <Route  path="/check"   element={<CheckStatus />}   />

@@ -53,7 +53,7 @@ function CreateEtudiant() {
 
     try {
       const newEtudiant = await api.createEtudiant(EtudiantData);
-      console.log (newEtudiant);
+      console.log(newEtudiant);
       navigate("/readall-etudiant");
     } catch (error) {
       console.log(error);

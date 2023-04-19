@@ -14,7 +14,8 @@ import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import * as api from "../../service/etudiant.js";
 import moment from "moment";
-import MySideNav from "../compte_alumni/sidenav.js";
+import FileBase from 'react-file-base64';
+import MySideNav from "../change_password/sidenav.js";
 
 function UpdateEtudiant() {  
   const [EtudiantData, setEtudiantData] = useState({
@@ -30,6 +31,7 @@ function UpdateEtudiant() {
   });
 
   
+ 
   const [niveau, setNiveau] = React.useState("");
   const [etat, setEtat] = React.useState("");
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
