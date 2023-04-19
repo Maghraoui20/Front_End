@@ -40,6 +40,7 @@ function App() {
           <Route path="/" element={<Navigate replace to="/signin" />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/change-password" element={<ChangePassword/>}/>
             <Route  path="/password-reset/:id/:token"   element={<PasswordReset />}   />
             <Route path="/" element={<PrivateRoute />}>
               <Route path="/espace-etudiant" element={<EspacEtudiant />} />
@@ -50,7 +51,7 @@ function App() {
               <Route path="/create-etudiant" element={<CreateEtudiant />} />
               <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
               <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-              <Route path="/change-password" element={<ChangePassword/>}/>
+              
               <Route path="/update-etudiant-cv" element={<UpdateEtudiantCV />}/>
               <Route path="/create-evenement" element={<CreateEvenement />} />
               <Route path="/update-evenement/:id" element={<UpdateEvenement />}   />

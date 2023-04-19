@@ -29,8 +29,8 @@ export default function SignupAlumni() {
     if (data.password === data.confirm){
       try {
         const item = await api.change_password(id,data.password);
-        console.log(item)
-        window.location = "/check";
+        console.log(item);
+        
       } catch (error) {
         if (
           error.response &&
@@ -78,8 +78,10 @@ export default function SignupAlumni() {
                   value={data.password}
                   label="Password"
                   name="password"
+                  type="password"
                   autoComplete="password"
                 />
+                
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -90,6 +92,7 @@ export default function SignupAlumni() {
                   id="confirm"
                   label="Confirm password"
                   name="confirm"
+                  type="password"
                   autoComplete="confirm"
                 />
               </Grid>
