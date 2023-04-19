@@ -11,7 +11,6 @@ import ReadEtudiant from "./components/crud_etudiant/read_etudiant/read_etudiant
 import CreateEvenement from "./components/crud_evenement/create_evenement/create_evenement";
 import UpdateEvenement from "./components/crud_evenement/update_evenement/update_evenement";
 import ReadEvenement from "./components/crud_evenement/read_evenement/read_evenement";
-import AddAlumni from "./components/compte_alumni/addAlumni/index";
 import Administratif from "./components/administratif/index";
 import ForgotPassword from "./components/forgot_password/index";
 import PasswordReset from "./components/PasswordReset/index";
@@ -38,15 +37,12 @@ function App() {
           <Routes>
           <Route path="/" element={<Navigate replace to="/signin" />} />
             <Route path="/signin" element={<Signin />} />
-
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route  path="/password-reset/:id/:token"   element={<PasswordReset />}   />
-
               <Route  path="/check"   element={<CheckStatus />}   />
-             <Route path="/" element={<PrivateRoute />}>
-             <Route path="/espace-etudiant" element={<EspacEtudiant />} />
-
-              <Route path="/create-enseignant" element={<CreateEnseignant />} />
+              <Route path="/" element={<PrivateRoute />}>
+                <Route path="/espace-etudiant" element={<EspacEtudiant />} />
+                <Route path="/create-enseignant" element={<CreateEnseignant />} />
               <Route         path="/update-enseignant/:id"    element={<UpdateEnseignant />}             />
               <Route path="/administratif" element={<Administratif />} />
               <Route path="/readall-enseignant" element={<ReadEnseignant />} />
@@ -54,7 +50,7 @@ function App() {
               <Route path="/create-etudiant" element={<CreateEtudiant />} />
               <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
               <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-              <Route path="/add-Alumni" element={<AddAlumni />} />
+             
               <Route
                 path="/update-etudiant-cv" element={<UpdateEtudiantCV />}   />
 
