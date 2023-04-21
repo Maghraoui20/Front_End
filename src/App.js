@@ -1,8 +1,8 @@
 import "./App.css";
-import { createContext, useState } from "react";
-import ReactSwitch from "react-switch";
+// import { createContext, useState } from "react";
+// import ReactSwitch from "react-switch";
 
-import UpdateProfileEtudiant from "./components/update_etudiant/update_etudiant";
+// import UpdateProfileEtudiant from "./components/update_etudiant/update_etudiant";
 
 import {
   BrowserRouter as Router,
@@ -26,10 +26,11 @@ import ForgotPassword from "./components/forgot_password/index";
 import PasswordReset from "./components/PasswordReset/index";
 import PrivateRoute from "./components/PrivateRoutes/privateroute.js";
 import EspacEtudiant from "./components/espaceEtudiant/espaceEtudiant";
+import EspaceEnseignant from "./components/espace_enseignant/index";
+import EspaceAlumni from "./components/compte_alumni/welcome_alumni/index";
+import EspaceDirecteur from "./components/espace_directeur/index";
 import SignupAlumni from "./components/compte_alumni/signUpAlumni/index";
-
-import CheckStatus from "./components/compte_alumni/check_status/index"
-
+import CheckStatus from "./components/compte_alumni/check_status/index";
 import ChangePassword from "./components/change_password";
 /* export const ThemeContext = createContext(null);
  */
@@ -52,19 +53,28 @@ function App() {
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/change-password" element={<ChangePassword/>}/>
-          <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+          <Route path="/change-password" element={<ChangePassword />} />
+          <Route
+            path="/password-reset/:id/:token"
+            element={<PasswordReset />}
+          />
           <Route path="/signupA" element={<SignupAlumni />} />
-          <Route  path="/check"   element={<CheckStatus />}   />
+          <Route path="/check" element={<CheckStatus />} />
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/espace-etudiant" element={<EspacEtudiant />} />
+            <Route path="/espace-alumni" element={<EspaceAlumni />} />
+            <Route path="/espace-directeur" element={<EspaceDirecteur />} />
+            <Route path="/espace-enseignant" element={<EspaceEnseignant />} />
             <Route path="/create-enseignant" element={<CreateEnseignant />} />
-            <Route path="/update-enseignant/:id" element={<UpdateEnseignant />} />
+            <Route
+              path="/update-enseignant/:id"
+              element={<UpdateEnseignant />}
+            />
             <Route path="/administratif" element={<Administratif />} />
             <Route path="/readall-enseignant" element={<ReadEnseignant />} />
             <Route path="/create-etudiant" element={<CreateEtudiant />} />
             <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
-            <Route path="/readall-etudiant" element={<ReadEtudiant />} />           
+            <Route path="/readall-etudiant" element={<ReadEtudiant />} />
             <Route path="/update-etudiant-cv" element={<UpdateEtudiantCV />} />
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />

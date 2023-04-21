@@ -18,10 +18,9 @@ import Box from "@mui/material/Box";
 import * as api from "../../service/cv.js";
 import { useParams } from "react-router-dom";
 import moment from "moment";
-import MySideNav from "../compte_alumni/sidenav.js";
+import MySideNav from "../sidenavs/sidenav.js";
 import FileBase from "react-file-base64";
 import ProfilePic from "../../../src/assets/profilepicture.PNG";
-
 
 function UpdateCv() {
   const params = useParams();
@@ -64,7 +63,7 @@ function UpdateCv() {
 
   const handleChangeNiveau = (e) => {
     setNiveau(e.target.value);
-    setCvData({ ...CvData, niveau: e.target.value });
+    setCvData({ ...CvData, niveau: niveau });
   };
 
   // Update the experiences array in CvData
@@ -169,7 +168,7 @@ function UpdateCv() {
       }
     }
     fetchData();
-  }, []);
+  }, [params.id]);
 
   return (
     <Container>
@@ -388,7 +387,7 @@ function UpdateCv() {
                       {/* JSX code for other fields in your component */}
                     </div>
                     <div>
-                    <h3>Stages</h3>
+                      <h3>Stages</h3>
                       {/* Render input fields for each stage */}
                       {CvData.stages.map((stage, index) => (
                         <div key={index}>
@@ -463,17 +462,14 @@ function UpdateCv() {
                     </div>
                   </Grid>
                   <Grid item xs={6}>
-                    
                     <React.Fragment>
-                   
                       <Typography variant="h4" gutterBottom>
                         Mon CV View
-                      
                       </Typography>
                       <div>
                         <img src={ProfilePic} alt="Mon Image" />
                       </div>
-                     
+
                       <List disablePadding>
                         <ListItem key={CvData.firstname} sx={{ py: 1, px: 0 }}>
                           <ListItemText

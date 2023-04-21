@@ -7,29 +7,29 @@ import { Box, Button, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import "./style.css";
-import IconButton from '@mui/material/IconButton';
-import AddIcon from '@mui/icons-material/Add';
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 
-import MySideNav from "../../sidenavAdmin.js";
+import MySideNav from "../../sidenavs/sidenavAdmin.js";
 
 function ReadEtudiant() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
-const navigate= useNavigate();
+  const navigate = useNavigate();
   const handleDelete = async () => {
     try {
-       await api.deleteEtudiant(idSelected);
-       window.location.reload(false)
-          } catch (error) {
+      await api.deleteEtudiant(idSelected);
+      window.location.reload(false);
+    } catch (error) {
       console.log(error);
     }
   };
 
- const handlenavigate = async()=>{
-  navigate("/create-etudiant")
- }
- 
+  const handlenavigate = async () => {
+    navigate("/create-etudiant");
+  };
+
   const columns = [
     { field: "firstname", headerName: "Nom", width: 130 },
     { field: "lastname", headerName: "Prénom", width: 130 },
@@ -80,7 +80,6 @@ const navigate= useNavigate();
         return (
           <PopupState variant="popover" popupId="demo-popup-popover">
             {(popupState) => (
-            
               <div>
                 <Button
                   variant="contained"
@@ -92,10 +91,7 @@ const navigate= useNavigate();
                 >
                   Supprimer
                 </Button>
-                <Popover
-                  {...bindPopover(popupState)}
-               
-                >
+                <Popover {...bindPopover(popupState)}>
                   <Box
                     sx={{
                       p: 5,
@@ -116,7 +112,10 @@ const navigate= useNavigate();
                           backgroundColor: "#00A36C",
                           ":hover": { backgroundColor: "#00A36C" },
                         }}
-                        onClick={()=>{handleDelete(); popupState.close()}}
+                        onClick={() => {
+                          handleDelete();
+                          popupState.close();
+                        }}
                       >
                         Oui
                       </Button>
@@ -128,7 +127,7 @@ const navigate= useNavigate();
                           ":hover": { backgroundColor: "#FC4343" },
                         }}
                         onClick={popupState.close}
->
+                      >
                         Annuler
                       </Button>
                     </div>
@@ -140,7 +139,6 @@ const navigate= useNavigate();
         );
       },
     },
-  
   ];
 
   useEffect(() => {
@@ -158,7 +156,7 @@ const navigate= useNavigate();
 
   return (
     <Container maxWidth="md">
-               <MySideNav />
+      <MySideNav />
 
       <Box
         sx={{
@@ -169,15 +167,18 @@ const navigate= useNavigate();
         }}
       >
         <div style={{ height: 400 }}>
-        
-          <div style={{display:"flex"}}>
-        <IconButton aria-label="add" color="secondary" onClick={handlenavigate} style={{ color:"#000"}} >
-  <AddIcon />
-</IconButton>
-
+          <div style={{ display: "flex" }}>
+            <IconButton
+              aria-label="add"
+              color="secondary"
+              onClick={handlenavigate}
+              style={{ color: "#000" }}
+            >
+              <AddIcon />
+            </IconButton>
           </div>
-          
-        <DataGrid
+
+          <DataGrid
             rows={rows}
             columns={columns}
             initialState={{
@@ -190,7 +191,6 @@ const navigate= useNavigate();
             pageSizeOptions={[5]}
             checkboxSelection
             disableRowSelectionOnClick
-
             getRowId={(row) => row._id}
             onRowSelectionModelChange={(newRowSelectionModel) => {
               setIdSelected(newRowSelectionModel.toString());

@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import Sidebar from "../sidenavs/sidenavAdmin";
+import Sidebar from "../sidenavs/sidenavens";
 const Main = () => {
   return (
     <div className={styles.main_container}>

@@ -14,10 +14,9 @@ import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import * as api from "../../service/etudiant.js";
 import moment from "moment";
-import FileBase from 'react-file-base64';
-import MySideNav from "../change_password/sidenav.js";
+import MySideNav from "../sidenavs/sidenav.js";
 
-function UpdateEtudiant() {  
+function UpdateEtudiant() {
   const [EtudiantData, setEtudiantData] = useState({
     firstname: "",
     lastname: "",
@@ -30,11 +29,9 @@ function UpdateEtudiant() {
     email: "",
   });
 
-  
- 
   const [niveau, setNiveau] = React.useState("");
   const [etat, setEtat] = React.useState("");
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   setUser(user);
   const idu = user?._id;
   const iduser = idu;
@@ -57,7 +54,7 @@ function UpdateEtudiant() {
     try {
       const updateEtudiant = await api.updateEtudiant(EtudiantData, iduser);
       console.log(updateEtudiant, "update");
-      window.location.reload(false)
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +63,7 @@ function UpdateEtudiant() {
   useEffect(() => {
     async function fetchData() {
       try {
-        console.log(iduser,"iduser");
+        console.log(iduser, "iduser");
         const result = await api.getEtudiantbyid(iduser);
         setEtudiantData(result);
       } catch (e) {
@@ -78,10 +75,13 @@ function UpdateEtudiant() {
 
   return (
     <Container>
-            <MySideNav />
-      <Paper elevation={3}  sx={{
-              height:600,
-                }}>
+      <MySideNav />
+      <Paper
+        elevation={3}
+        sx={{
+          height: 600,
+        }}
+      >
         <Box
           sx={{
             marginTop: 10,
@@ -245,11 +245,10 @@ function UpdateEtudiant() {
               </Box>
             </div>
           </form>
-          </Box>
+        </Box>
       </Paper>
     </Container>
   );
 }
 
 export default UpdateEtudiant;
-

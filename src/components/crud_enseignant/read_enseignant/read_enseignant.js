@@ -6,14 +6,14 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
-import IconButton from '@mui/material/IconButton';
+import IconButton from "@mui/material/IconButton";
 
-import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-import MySideNav from "../../sidenavAdmin.js";
+import MySideNav from "../../sidenavs/sidenavAdmin.js";
 
 function ReadEnseignant() {
   const [rows, setRows] = useState([]);
@@ -21,20 +21,20 @@ function ReadEnseignant() {
 
   const handleDelete = async () => {
     try {
-       await api.deleteEnseignant(idSelected);
-       window.location.reload(false)
-          } catch (error) {
+      await api.deleteEnseignant(idSelected);
+      window.location.reload(false);
+    } catch (error) {
       console.log(error);
     }
   };
 
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
-  const handleCreate = async()=>{
-    navigate("/create-enseignant")
-   }
+  const handleCreate = async () => {
+    navigate("/create-enseignant");
+  };
 
- useEffect(() => {
+  useEffect(() => {
     async function fetchData() {
       try {
         const result = await api.getAllEnseignant();
@@ -45,25 +45,23 @@ function ReadEnseignant() {
     }
     fetchData();
   }, []);
- 
+
   const columns = [
-    { field: "firstname",
-     headerName: "prenom",
-      width: 100 },
+    { field: "firstname", headerName: "prenom", width: 100 },
     {
       field: "lastname",
       headerName: "nom",
-      width: 100
+      width: 100,
     },
     {
       field: "email",
       headerName: "email",
-      width: 100
+      width: 100,
     },
     {
       field: "phone",
       headerName: "numero de telephone",
-      width: 100
+      width: 100,
     },
     { field: "login", headerName: "login", width: 100 },
     { field: "status", headerName: "status", width: 100 },
@@ -81,8 +79,7 @@ function ReadEnseignant() {
               ":hover": { backgroundColor: "#00A36C" },
             }}
           >
-            
-            <EditIcon/>
+            <EditIcon />
           </Button>
         );
       },
@@ -95,7 +92,6 @@ function ReadEnseignant() {
         return (
           <PopupState variant="popover" popupId="demo-popup-popover">
             {(popupState) => (
-            
               <div>
                 <Button
                   variant="contained"
@@ -105,13 +101,9 @@ function ReadEnseignant() {
                     ":hover": { backgroundColor: "#FC4343" },
                   }}
                 >
-                  
                   <DeleteIcon />
                 </Button>
-                <Popover
-                  {...bindPopover(popupState)}
-               
-                >
+                <Popover {...bindPopover(popupState)}>
                   <Box
                     sx={{
                       p: 5,
@@ -132,7 +124,10 @@ function ReadEnseignant() {
                           backgroundColor: "#00A36C",
                           ":hover": { backgroundColor: "#00A36C" },
                         }}
-                        onClick={()=>{handleDelete(); popupState.close()}}
+                        onClick={() => {
+                          handleDelete();
+                          popupState.close();
+                        }}
                       >
                         Oui
                       </Button>
@@ -144,7 +139,7 @@ function ReadEnseignant() {
                           ":hover": { backgroundColor: "#FC4343" },
                         }}
                         onClick={popupState.close}
->
+                      >
                         Annuler
                       </Button>
                     </div>
@@ -156,13 +151,11 @@ function ReadEnseignant() {
         );
       },
     },
-  
   ];
 
-
   return (
-    <Container >
-        <MySideNav/>
+    <Container>
+      <MySideNav />
       <Box
         sx={{
           marginTop: 10,
@@ -172,17 +165,22 @@ function ReadEnseignant() {
         }}
       >
         <div style={{ height: 400 }}>
-        <div><h1><b>Liste des enseignants</b></h1></div>
-        <div style={{float : "right"}}>
-        <IconButton 
-        aria-label="add" 
-        color="secondary"
-         onClick={handleCreate} 
-         style={{ color:"#000"}} >
-       <AddBoxRoundedIcon />
-       </IconButton>
+          <div>
+            <h1>
+              <b>Liste des enseignants</b>
+            </h1>
           </div>
-         
+          <div style={{ float: "right" }}>
+            <IconButton
+              aria-label="add"
+              color="secondary"
+              onClick={handleCreate}
+              style={{ color: "#000" }}
+            >
+              <AddBoxRoundedIcon />
+            </IconButton>
+          </div>
+
           <DataGrid
             rows={rows}
             columns={columns}
@@ -203,7 +201,6 @@ function ReadEnseignant() {
           />
         </div>
       </Box>
-    
     </Container>
   );
 }

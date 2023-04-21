@@ -7,8 +7,6 @@ function MySideNav() {
   const handleLogout = () => {
     localStorage.removeItem("profile");
     localStorage.removeItem("token");
-
-   
   };
   return (
     <SideNav
@@ -33,7 +31,6 @@ function MySideNav() {
           <NavText>Gestion Etudiant</NavText>
         </NavItem>
 
-        
         <NavItem eventKey="readall-enseignant">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
@@ -41,23 +38,27 @@ function MySideNav() {
           <NavText>Gestion Enseignant</NavText>
         </NavItem>
 
-       
-
         <NavItem eventKey="readall-evenement">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Gestion evenement</NavText>
         </NavItem>
-
-        <NavItem eventKey="signin">
-        <NavIcon>
+        <NavItem eventKey="change-password">
+          <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
-          <NavText><Button onClick={handleLogout}>Logout</Button></NavText>
-       
+          <NavText>Change mon Mot de passe</NavText>
         </NavItem>
-    
+
+        <NavItem eventKey="signin">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>
+            <Button onClick={handleLogout}>Logout</Button>
+          </NavText>
+        </NavItem>
       </SideNav.Nav>
     </SideNav>
   );

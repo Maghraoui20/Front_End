@@ -1,22 +1,21 @@
 import {
-    TextField,
-    Typography,
-    Button,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,
-    Grid,
-    Paper
-  } from "@mui/material";
-  import { Container } from "@mui/system";
-  import React, { useState } from "react";
-  import Box from "@mui/material/Box";
-  import "./style.css"
-  import * as api from "../../../service/evenement.js";
-  import { useNavigate } from "react-router-dom";
-import MySideNav from "../../sidenavAdmin";
-  
+  TextField,
+  Typography,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Grid,
+  Paper,
+} from "@mui/material";
+import { Container } from "@mui/system";
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import "./style.css";
+import * as api from "../../../service/evenement.js";
+import { useNavigate } from "react-router-dom";
+import MySideNav from "../../sidenavs/sidenavAdmin";
 
 function CreateEvenement() {
   const [EvenementData, setEvenementData] = useState({
