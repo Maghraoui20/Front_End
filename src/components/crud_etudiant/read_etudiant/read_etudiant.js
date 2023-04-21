@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
 
-import MySideNav from "../../sidenavAdmin.js";
+import MySideNav from "../../sidenavs/sidenavAdmin";
 
 function ReadEtudiant() {
   const [rows, setRows] = useState([]);

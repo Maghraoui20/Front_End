@@ -1,9 +1,5 @@
 import "./App.css";
-import { createContext, useState } from "react";
-import ReactSwitch from "react-switch";
-
-import UpdateProfileEtudiant from "./components/update_etudiant/update_etudiant";
-
+//import UpdateProfileEtudiant from "./components/update_etudiant/update_etudiant";
 import {
   BrowserRouter as Router,
   Routes,
@@ -27,10 +23,9 @@ import PasswordReset from "./components/PasswordReset/index";
 import PrivateRoute from "./components/PrivateRoutes/privateroute.js";
 import EspacEtudiant from "./components/espaceEtudiant/espaceEtudiant";
 import SignupAlumni from "./components/compte_alumni/signUpAlumni/index";
-
-import CheckStatus from "./components/compte_alumni/check_status/index"
-
+import CheckStatus from "./components/compte_alumni/check_status/index";
 import ChangePassword from "./components/change_password";
+import ValidAlumnis from "./components/compte_alumni/valider_compte_alumni";
 /* export const ThemeContext = createContext(null);
  */
 function App() {
@@ -56,6 +51,7 @@ function App() {
           <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
           <Route path="/signupA" element={<SignupAlumni />} />
           <Route  path="/check"   element={<CheckStatus />}   />
+          <Route path="/validAlumnis" element={<ValidAlumnis/>}/>
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/espace-etudiant" element={<EspacEtudiant />} />
             <Route path="/create-enseignant" element={<CreateEnseignant />} />

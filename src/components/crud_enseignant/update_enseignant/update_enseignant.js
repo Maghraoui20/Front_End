@@ -16,7 +16,7 @@ import {
   import * as api from "../../../service/enseignant.js";
   import { useNavigate , useParams} from "react-router-dom";
 
-  import MySideNav from "../../sidenavAdmin";
+  import MySideNav from "../../sidenavs/sidenavAdmin";
 
 function UpdateEnseignant() {
     

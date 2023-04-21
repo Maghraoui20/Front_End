@@ -1,4 +1,4 @@
-import MySideNav from "./sidenav";
+import MySideNav from "../sidenavs/sidenav";
 import Orders from "./fragment";
 
 export default function ChangePassword(){

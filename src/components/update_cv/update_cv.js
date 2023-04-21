@@ -18,7 +18,7 @@ import Box from "@mui/material/Box";
 import * as api from "../../service/cv.js";
 import { useParams } from "react-router-dom";
 import moment from "moment";
-import MySideNav from "../compte_alumni/sidenav.js";
+import MySideNav from "../sidenavs/sidenav.js";
 import FileBase from "react-file-base64";
 import ProfilePic from "../../../src/assets/profilepicture.PNG";
 
@@ -64,7 +64,7 @@ function UpdateCv() {
 
   const handleChangeNiveau = (e) => {
     setNiveau(e.target.value);
-    setCvData({ ...CvData, niveau: e.target.value });
+    setCvData({ ...CvData, niveau: niveau });
   };
 
   // Update the experiences array in CvData
@@ -169,7 +169,7 @@ function UpdateCv() {
       }
     }
     fetchData();
-  }, []);
+  }, [params.id]);
 
   return (
     <Container>
