@@ -34,6 +34,7 @@ import SignupAlumni from "./components/compte_alumni/signUpAlumni/index";
 import CheckStatus from "./components/compte_alumni/check_status/index";
 import ChangePassword from "./components/change_password";
 import ValidAlumnis from "./components/compte_alumni/valider_compte_alumni";
+import Charts from "./components/statistiques/vueStatistiques";
 /* export const ThemeContext = createContext(null);
  */
 function App() {
@@ -52,6 +53,7 @@ function App() {
       </div> */}
       <Router>
         <Routes>
+          <Route path="/charts" element={<Charts />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
