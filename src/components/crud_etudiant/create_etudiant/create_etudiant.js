@@ -28,8 +28,8 @@ function CreateEtudiant() {
     phone: "",
     password: "",
     role: "etudiant",
-    email:"",
-    login:"",
+    email: "",
+    login: "",
   });
   const navigate = useNavigate();
   const [niveau, setNiveau] = React.useState("");
@@ -62,10 +62,13 @@ function CreateEtudiant() {
 
   return (
     <Container>
-         <MySideNav />
-      <Paper elevation={3}  sx={{
-        height:600
-          }}>
+      <MySideNav />
+      <Paper
+        elevation={3}
+        sx={{
+          height: 600,
+        }}
+      >
         <Box
           sx={{
             marginTop: 4,
@@ -84,8 +87,6 @@ function CreateEtudiant() {
                 rowSpacing={1}
                 columnSpacing={{ xs: 1, sm: 2, md: 12 }}
               >
-
-                
                 <Grid item xs={6}>
                   <TextField
                     margin="normal"
@@ -118,33 +119,31 @@ function CreateEtudiant() {
                     autoFocus
                     onChange={handleChange}
                   />
-                 
-                 <TextField
+
+                  <TextField
                     margin="normal"
                     required
                     fullWidth
                     id="email"
                     label="email"
                     name="email"
-                   
                     autoFocus
                     onChange={handleChange}
                   />
-                  
-                <TextField
+
+                  <TextField
                     margin="normal"
                     required
                     fullWidth
                     id="login"
                     label="login"
                     name="login"
-                   
                     autoFocus
                     onChange={handleChange}
                   />
                 </Grid>
                 <Grid item xs={6}>
-                <TextField
+                  <TextField
                     margin="normal"
                     required
                     fullWidth
@@ -177,7 +176,7 @@ function CreateEtudiant() {
                     type="date"
                     onChange={handleChange}
                   />
-                  <FormControl fullWidth sx={{mt:2}}>
+                  <FormControl fullWidth sx={{ mt: 2 }}>
                     <InputLabel id="Niveau">Niveau</InputLabel>
                     <Select
                       labelId="Niveau"
@@ -195,7 +194,7 @@ function CreateEtudiant() {
                     </Select>
                   </FormControl>
 
-                  <FormControl fullWidth sx={{mt:3}}>
+                  <FormControl fullWidth sx={{ mt: 3 }}>
                     <InputLabel id="staus">Etat</InputLabel>
                     <Select
                       labelId="etat"

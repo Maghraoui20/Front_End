@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
-import MySideNav from "../sidenavs/sidenavetd";
-const EspacEtudiant = () => {
+import MySideNav from "../sidenavs/sidenavdir";
+const EspacDirecteur = () => {
   return (
     <div className={styles.main_container}>
       <MySideNav />
@@ -8,4 +8,4 @@ const EspacEtudiant = () => {
   );
 };
 
-export default EspacEtudiant;
+export default EspacDirecteur;

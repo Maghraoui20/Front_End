@@ -18,39 +18,42 @@ function MySideNav() {
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="administratif">
-          <NavIcon>
-            <i className="fa fa-fw fa-home" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Home</NavText>
-        </NavItem>
-        <NavItem eventKey="readall-etudiant">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Gestion Etudiant</NavText>
-        </NavItem>
-
-        <NavItem eventKey="readall-enseignant">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Gestion Enseignant</NavText>
-        </NavItem>
-
-        <NavItem eventKey="readall-evenement">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Gestion evenement</NavText>
-        </NavItem>
         <NavItem eventKey="change-password">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
-          <NavText>Change mon Mot de passe</NavText>
+          <NavText>Changer mot de passe</NavText>
         </NavItem>
-
+        <NavItem eventKey="update-etudiant">
+          <NavIcon>
+            <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Modifier profil</NavText>
+        </NavItem>
+        <NavItem eventKey="ajout-pfa">
+          <NavIcon>
+            <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Ajouter sujet PFA</NavText>
+        </NavItem>
+        <NavItem eventKey="ajout-pfe">
+          <NavIcon>
+            <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Ajouter sujet PFE</NavText>
+        </NavItem>
+        <NavItem eventKey="ajouter-stage">
+          <NavIcon>
+            <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Ajouter stage</NavText>
+        </NavItem>
+        <NavItem eventKey="update-cv/:id">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Modifier CV</NavText>
+        </NavItem>
         <NavItem eventKey="signin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
