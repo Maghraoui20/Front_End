@@ -16,7 +16,7 @@ import "../create_etudiant/style.css";
 import * as api from "../../../service/etudiant.js";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
-import MySideNav from "../../sidenavAdmin";
+import MySideNav from "../../sidenavs/sidenavAdmin";
 
 function UpdateEtudiant() {
   const params = useParams();

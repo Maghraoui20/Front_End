@@ -1,5 +1,5 @@
 import styles from "../administratif/styles.module.css";
-import MySideNav from "../change_password/sidenav";
+import MySideNav from "../sidenavs/sidenav";
 const EspacEtudiant = () => {
  
 

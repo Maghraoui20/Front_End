@@ -15,7 +15,7 @@ import Box from "@mui/material/Box";
 import "./style.css";
 import * as api from "../../../service/etudiant.js";
 import { useNavigate } from "react-router-dom";
-import MySideNav from "../../sidenavAdmin";
+import MySideNav from "../../sidenavs/sidenavAdmin";
 
 function CreateEtudiant() {
   const [EtudiantData, setEtudiantData] = useState({

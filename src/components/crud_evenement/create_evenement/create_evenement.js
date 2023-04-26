@@ -15,7 +15,7 @@ import {
   import "./style.css"
   import * as api from "../../../service/evenement.js";
   import { useNavigate } from "react-router-dom";
-import MySideNav from "../../sidenavAdmin";
+import MySideNav from "../../sidenavs/sidenavAdmin";
   
 
 function CreateEvenement() {
