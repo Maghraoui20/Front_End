@@ -24,13 +24,29 @@ function CreateEvenement() {
     eventType: "",
     description: "",
     location: "",
+    saison:""
   });
   const navigate = useNavigate();
 
   const [eventType, setEventType] = React.useState("");
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+      setOpen(false);
+    };
+  
+    const handleOpen = () => {
+      setOpen(true);
+    };
+    const [anneeUviv, setAnneeUviv] =useState({AnneeUniv:"" });
+    const [annee,setAnnee]=useState();
+    const handleChangeannee = (e) => {
+      setEvenementData({...EvenementData, saison: e.target.value});
 
+setAnnee(e.target.value);
+    }
   const handleChange = (e) => {
     setEvenementData({ ...EvenementData, [e.target.name]: e.target.value });
+
     console.log(EvenementData);
   };
 
@@ -135,6 +151,29 @@ function CreateEvenement() {
                     autoFocus
                     onChange={handleChange}
                   />
+                   <FormControl sx={{ mt: 5, }} fullWidth>
+        <InputLabel id="demo-controlled-open-select-label">Année universitaire</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={annee}
+          label="anneeUviv"
+          onChange={handleChangeannee}
+        >
+        
+          <MenuItem value={"2021-2022"}>2021-2022
+</MenuItem>
+          <MenuItem value={"2022-2023"}>2022-2023</MenuItem>
+          <MenuItem value={"2023-2024"}>2023-2024</MenuItem>
+          <MenuItem value={"2024-2025"}>2024-2025</MenuItem>
+          <MenuItem value={"2025-2026"}>2025-2026</MenuItem>
+          <MenuItem value={"2026-2027"}>2026-2027</MenuItem>
+
+        </Select>
+      </FormControl>
                 </Grid>
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6}>

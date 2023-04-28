@@ -51,6 +51,33 @@ function MySideNav() {
           <NavText>Change mon Mot de passe</NavText>
         </NavItem>
 
+        <NavItem eventKey="readall-pfe">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Liste des pfe</NavText>
+        </NavItem>
+
+        <NavItem eventKey="statistics-pfe">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Statistiques des pfe</NavText>
+        </NavItem>
+
+        <NavItem eventKey="anneeuniver">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Année universitaire</NavText>
+        </NavItem>
+        <NavItem eventKey="signin">
+        <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Change mon Mot de passe</NavText>
+        </NavItem>
+
         <NavItem eventKey="signin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />

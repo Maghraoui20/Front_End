@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import * as api from "../../../service/evenement.js";
 import { DataGrid } from "@mui/x-data-grid";
 import moment from "moment";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, FormControl, InputLabel, MenuItem, Paper, Select, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import IconButton from "@mui/material/IconButton";
@@ -27,6 +27,23 @@ function ReadEvenement() {
     }
   };
 
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+      setOpen(false);
+    };
+  
+    const handleOpen = () => {
+      setOpen(true);
+    };
+    const [annee,setAnnee]=useState();
+    const handleChangeAnnee =async (e) => {
+      setAnnee(e.target.value)
+      console.log(e.target.value);
+      const result = await api.getAllEvenementSaison(e.target.value);
+      console.log(result, "res");
+      setRows(result);
+
+    }
   const navigate = useNavigate();
 
   const handleCreate = async () => {
@@ -152,7 +169,30 @@ function ReadEvenement() {
 
   return (
     <Container>
-      <MySideNav />
+      <MySideNav/>
+      <FormControl sx={{ mt: 5, ml:10,width:250 }} >
+        <InputLabel id="demo-controlled-open-select-label">Année universitaire</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+           open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={annee}
+          label="anneeUviv"
+          onChange={handleChangeAnnee} 
+        >
+        
+          <MenuItem value={"2021-2022"}>2021-2022
+</MenuItem>
+          <MenuItem value={"2022-2023"}>2022-2023</MenuItem>
+          <MenuItem value={"2023-2024"}>2023-2024</MenuItem>
+          <MenuItem value={"2024-2025"}>2024-2025</MenuItem>
+          <MenuItem value={"2025-2026"}>2025-2026</MenuItem>
+          <MenuItem value={"2026-2027"}>2026-2027</MenuItem>
+
+        </Select>
+      </FormControl>
       <Box
         sx={{
           marginTop: 10,
@@ -161,6 +201,7 @@ function ReadEvenement() {
           alignItems: "center",
         }}
       >
+         
         <div style={{ height: 400 }}>
           <div>
             <h1>

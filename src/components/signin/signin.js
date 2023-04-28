@@ -12,7 +12,7 @@ import {
   Paper,
 } from "@mui/material";
 import { Container } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -32,6 +32,8 @@ function Signin() {
     setSigninData({ ...signinData, phone: e.target.value });
     console.log(signinData, "signinData");
   };
+
+  
   const handleChangePassword = (e) => {
     setSigninData({ ...signinData, password: e.target.value });
     /*     console.log(signinData,"signinData");
@@ -41,21 +43,24 @@ function Signin() {
     event.preventDefault();
 
     try {
-      const data = await api.signin(signinData);
-      if (data.model.role === "administratif") {
-        console.log(data, "data");
-        localStorage.setItem("profile", JSON.stringify({ ...data?.model }));
-        const token = data.mytoken;
-        localStorage.setItem("token", token);
-        navigate("/administratif");
+      const data  = await api.signin(signinData);
+      if (data.model.role === 'administratif') {
+      console.log(data,"data");
+      localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
+       const token = data.mytoken;
+      localStorage.setItem('token', token)
+      navigate('/administratif');
+
+    }
+    if (data.model.role === 'enseignant') {
+      console.log(data,"data");
+        localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
+         const token = data.mytoken;
+        localStorage.setItem('token', token)
+        navigate('/enseignant');
+  
       }
-      if (data.model.role === "enseignant") {
-        console.log(data, "data");
-        localStorage.setItem("profile", JSON.stringify({ ...data?.model }));
-        const token = data.mytoken;
-        localStorage.setItem("token", token);
-        navigate("/espace-enseignant");
-      }
+    
       if (data.model.role === "alumni") {
         console.log(data, "data");
         localStorage.setItem("profile", JSON.stringify({ ...data?.model }));
