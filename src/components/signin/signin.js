@@ -13,13 +13,14 @@ import {
  
 } from "@mui/material";
 import { Container } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import * as api from "../../service/authentification.js";
+
 import {  useNavigate } from "react-router-dom";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
@@ -33,6 +34,8 @@ function Signin() {
     setSigninData({ ...signinData, phone: e.target.value });
     console.log(signinData, "signinData");
   };
+
+  
   const handleChangePassword = (e) => {
     setSigninData({ ...signinData, password: e.target.value });
     /*     console.log(signinData,"signinData");
@@ -56,16 +59,10 @@ function Signin() {
         localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
          const token = data.mytoken;
         localStorage.setItem('token', token)
-        navigate('/readall-enseignant');
+        navigate('/enseignant');
   
       }
-      if (data.model.role === "enseignant") {
-        console.log(data, "data");
-        localStorage.setItem("profile", JSON.stringify({ ...data?.model }));
-        const token = data.mytoken;
-        localStorage.setItem("token", token);
-        navigate("/readall-enseignant");
-      }
+    
       if (data.model.role === "alumni") {
         console.log(data, "data");
         localStorage.setItem("profile", JSON.stringify({ ...data?.model }));

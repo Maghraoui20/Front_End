@@ -34,3 +34,16 @@ export const etatEtd = async (id) => {
   const result = await Axios.get("http://localhost:5000/users/findol/" + id);
   return result;
 };
+
+export const sendmail = async () => {
+  const result = await Axios.post("http://localhost:5000/users/sendmaildiplome" );
+  return result;
+};
+export const sendmailcmp = async () => {
+  const result = await Axios.post("http://localhost:5000/users/sendmailmajcompetences" );
+  return result;
+};
+export const sendmailtravail = async () => {
+  const result = await Axios.post("http://localhost:5000/users/sendmailtravail" );
+  return result;
+};

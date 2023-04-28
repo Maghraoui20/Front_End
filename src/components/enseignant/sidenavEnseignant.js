@@ -20,55 +20,26 @@ function MySideNav() {
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="administratif">
+        <NavItem eventKey="enseignant">
           <NavIcon>
             <i className="fa fa-fw fa-home" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Home</NavText>
         </NavItem>
-        <NavItem eventKey="readall-etudiant">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Gestion Etudiant</NavText>
-        </NavItem>
+   
 
-        
-        <NavItem eventKey="readall-enseignant">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Gestion Enseignant</NavText>
-        </NavItem>
-
-       
-
-        <NavItem eventKey="readall-evenement">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Gestion evenement</NavText>
-        </NavItem>
-
-        <NavItem eventKey="readall-pfe">
+        <NavItem eventKey="liste-pfe">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Liste des pfe</NavText>
         </NavItem>
-
-        <NavItem eventKey="statistics-pfe">
+        
+        <NavItem eventKey="liste-mes-pfe">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
-          <NavText>Statistiques des pfe</NavText>
-        </NavItem>
-
-        <NavItem eventKey="anneeuniver">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Année universitaire</NavText>
+          <NavText>mes pfe</NavText>
         </NavItem>
         <NavItem eventKey="signin">
         <NavIcon>

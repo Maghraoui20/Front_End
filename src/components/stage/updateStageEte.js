@@ -12,23 +12,16 @@ import {
   import { Container } from "@mui/system";
   import React, { useEffect, useState } from "react";
   import Box from "@mui/material/Box";
-  import "../crud_etudiant/create_etudiant/style.css";
-  import * as apiPFE from "../../service/stagePfe.js";
-  import * as apiEnseignant from "../../service/enseignant";
-
-  import { useNavigate } from "react-router-dom";
-  import MySideNav from "../compte_alumni/sidenav.js";
-  import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-  import SelectEneseignat from "./selectEnseignant.js";
-
-  function CreateStagePfe() {
+  import * as api from "../../service/stageEté.js";
+  import { useNavigate, useParams } from "react-router-dom";
+  import moment from "moment";
+  import MySideNav from "../compte_alumni/sidenav";
+  
+  function UpdateStage() {
+    const params = useParams();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const id_etudiant = user?._id;
-    console.log(user);
-    const [rows, setRows] = useState([]);
-
-    const [StagePfeData, setStagePfeData] = useState({
+    const [StageEtéData, setStageEtéData] = useState({
         description: "",
         sujet: "",
         technologies: "",
@@ -38,76 +31,53 @@ import {
         dateDébutStage: "",
         dateFinStage: "",
         id_etudiant:id_etudiant,
-        emailEtudiant:user.email,
-        pays:"",
-      
+
     });
+   
     const navigate = useNavigate();
     const [statutStage, setStatutStage] = React.useState("");
-    const [status, setStatus] = React.useState("");
 
-    const handleChange = (e) => {
-      setStagePfeData({ ...StagePfeData, [e.target.name]: e.target.value });
-      console.log(StagePfeData);
-    };
   
-    const handleChangeNiveau = (e) => {
-      setStatutStage(e.target.value);
-      setStagePfeData({ ...StagePfeData, statutStage: e.target.value });
+    const handleChange = (e) => {
+        setStageEtéData({ ...StageEtéData, [e.target.name]: e.target.value });
+      
     };
+   
+    const handleChangeNiveau = (e) => {
+        setStatutStage(e.target.value);
+        setStageEtéData({ ...StageEtéData, statutStage: e.target.value });
+      };
+    
   
     const handleSubmit = async (event) => {
       event.preventDefault();
   
       try {
-        await apiPFE.createStagePfe(StagePfeData);
-        toast("Stage ajouter avec succès!");
-
-       // navigate("/espace-etudiant");
+        const updateEtudiant = await api.updateStage(StageEtéData, params.id);
+        navigate("/mes-stage-été");
       } catch (error) {
         console.log(error);
       }
     };
+  
     useEffect(() => {
       async function fetchData() {
-        try {
-          const result = await apiPFE.getStagePfeByID(id_etudiant);
-          console.log(result);
-          setRows(result);
-        } catch (e) {
-          console.log(e);
-        }
-      }
-      fetchData();
-    }, []);
+        try{
+          console.log(params.id);
+        const result = await api.getStageid(params.id)
+        setStageEtéData(result)
+      } catch (e) {
+        console.log(e)
+      }}
+      fetchData()}, []) 
   
+     
   
-
     return (
       <Container>
-      <MySideNav />
-      {rows.length>0 ?  <Paper elevation={3}  sx={{
-          height:300
-            }}>
-          <Box
-            sx={{
-              marginTop: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          > 
-          </Box>
-          <Typography component="h1" variant="h5"   sx={{
-              margin: 10,
-              textAlign:"center",
-              color:"red"
-         
-            }}>
-                Vous avez déja un sujet de pfe
-                </Typography>
-</Paper>          
-          :  <Paper elevation={3}  sx={{
+                       <MySideNav />
+  
+        <Paper elevation={3}   sx={{
           height:600
             }}>
           <Box
@@ -118,21 +88,26 @@ import {
               alignItems: "center",
             }}
           >
-
             <form onSubmit={handleSubmit}>
               <div className="grid">
                 <Typography component="h1" variant="h5">
-                 Insérer sujet stage de pfe{" "}
+                  Modifier un stage d'été{" "}
                 </Typography>
+                <Box
+            sx={{
+              marginTop: 5,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
                 <Grid
                   container
                   rowSpacing={1}
                   columnSpacing={{ xs: 1, sm: 2, md: 12 }}
                 >
-  
-                  
                   <Grid item xs={6}>
-                    <TextField
+                  <TextField
                       margin="normal"
                       required
                       fullWidth
@@ -140,9 +115,10 @@ import {
                       label="sujet"
                       name="sujet"
                       autoFocus
+                      value={StageEtéData.sujet}
                       onChange={handleChange}
                     />
-                    <TextField
+                   <TextField
                       margin="normal"
                       required
                       fullWidth
@@ -150,9 +126,10 @@ import {
                       label="description"
                       name="description"
                       autoFocus
+                      value={StageEtéData.description}
                       onChange={handleChange}
                     />
-                    <TextField
+                     <TextField
                       margin="normal"
                       required
                       fullWidth
@@ -160,10 +137,10 @@ import {
                       label="societe"
                       name="societe"
                       autoFocus
+                      value={StageEtéData.societe}
                       onChange={handleChange}
                     />
-                   
-                   <TextField
+                    <TextField
                       margin="normal"
                       required
                       fullWidth
@@ -171,23 +148,14 @@ import {
                       label="duree"
                       name="duree"
                      type="number"
+                     value={StageEtéData.duree}
                       autoFocus
                       onChange={handleChange}
                     />
-                     
-                     <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      id="pays"
-                      label="pays"
-                      name="pays"
-                      autoFocus
-                      onChange={handleChange}
-                    />
+                  
+  
                   </Grid>
                   <Grid item xs={6}>
-               
                   <TextField
                       margin="normal"
                       required
@@ -195,20 +163,20 @@ import {
                       id="technologies"
                       label="technologies"
                       name="technologies"
-                     
+                     value={StageEtéData.technologies}
                       autoFocus
                       onChange={handleChange}
                     />
-  
-                    <TextField
+                   <TextField
                       margin="normal"
                       required
                       fullWidth
                       id="dateDébutStage"
                       label="Date début stage"
                       name="dateDébutStage"
+                      value={moment(StageEtéData.dateDébutStage).format("YYYY-MM-DD")}
                       autoFocus
-                      type="date"
+                      type="Date"
                       onChange={handleChange}
                     />
                        <TextField
@@ -218,18 +186,21 @@ import {
                       id="dateFinStage"
                       label="Date fin stage"
                       name="dateFinStage"
+                      value={moment(StageEtéData.dateFinStage).format("YYYY-MM-DD")}
+
                       autoFocus
                       type="date"
                       onChange={handleChange}
                     />
-                    <FormControl fullWidth sx={{mt:2}}>
-                      <InputLabel id="statutStage">Statut de Stage</InputLabel>
+  
+  <FormControl fullWidth sx={{mt:2}}>
+                      <InputLabel id="Niveau">Statut de Stage</InputLabel>
                       <Select
                         labelId="statutStage"
                         id="statutStage"
-                        value={statutStage}
                         label="statutStage"
                         name="statutStage"
+                        value={StageEtéData.statutStage}
                         onChange={handleChangeNiveau}
                       >
                         <MenuItem value={"pas encore commencé"}>pas encore commencé</MenuItem>
@@ -237,10 +208,7 @@ import {
                         <MenuItem value={"validé"}> validé   </MenuItem>
                       </Select>
                     </FormControl>
-
-                   
                   </Grid>
-  
                   <Grid item xs={3}></Grid>
                   <Grid item xs={6}>
                     <Button
@@ -255,20 +223,18 @@ import {
                         ":hover": { backgroundColor: "#00A36C" },
                       }}
                     >
-                      Ajouter{" "}
+                      Modifier{" "}
                     </Button>
-                    <ToastContainer/>
-
                   </Grid>
                 </Grid>
+                </Box>
               </div>
             </form>
           </Box>
-        </Paper>}
-
-       
+        </Paper>
       </Container>
     );
   }
   
-  export default CreateStagePfe;
+  export default UpdateStage;
+  

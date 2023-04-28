@@ -21,3 +21,8 @@ export const getAllEvenement = async () => {
   const result = await Axios.get("http://localhost:5000/evenements/getAll")
   return result.data
 }
+
+export const getAllEvenementSaison = async (annee) => {
+  const result = await Axios.get("http://localhost:5000/evenements/getAllEventSaison/"+annee)
+  return result.data
+}
