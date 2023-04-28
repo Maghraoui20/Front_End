@@ -1,6 +1,6 @@
 import { Badge, IconButton } from "@mui/material";
 import styles from "../administratif/styles.module.css";
-import MySideNav from "../compte_alumni/sidenav";
+import MySideNav from "../sidenavs/sidenav";
 import { MailLockOutlined } from "@mui/icons-material";
 const EspacEtudiant = () => {
  

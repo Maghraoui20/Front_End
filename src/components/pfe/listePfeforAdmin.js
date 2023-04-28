@@ -7,7 +7,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, Typography } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
-import MySideNav from "../sidenavAdmin.js";
+import MySideNav from "../sidenavs/sidenavAdmin.js";
 import moment from "moment";
 
 function ReadPFE() {

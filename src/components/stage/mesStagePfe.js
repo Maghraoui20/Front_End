@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
 import { blue } from "@mui/material/colors";
-import MySideNav from "../compte_alumni/sidenav.js";
+import MySideNav from "../sidenavs/sidenav.js";
 
 function MesStagePFE() {
   const [rows, setRows] = useState([]);

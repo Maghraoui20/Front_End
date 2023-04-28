@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import MySideNav from "../sidenavAdmin";
+import MySideNav from "../sidenavs/sidenavAdmin";
 import {
   PieChart,
   Pie,

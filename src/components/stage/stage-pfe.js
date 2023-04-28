@@ -17,7 +17,7 @@ import {
   import * as apiEnseignant from "../../service/enseignant";
 
   import { useNavigate } from "react-router-dom";
-  import MySideNav from "../compte_alumni/sidenav.js";
+  import MySideNav from "../sidenavs/sidenav";
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   import SelectEneseignat from "./selectEnseignant.js";

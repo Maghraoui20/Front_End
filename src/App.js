@@ -39,8 +39,7 @@ import CheckStatus from "./components/compte_alumni/check_status/index";
 import ChangePassword from "./components/change_password";
 import ValidAlumnis from "./components/compte_alumni/valider_compte_alumni";
 import Charts from "./components/statistiques/vueStatistiques";
-/* export const ThemeContext = createContext(null);
- */
+
 import CreateStageEté from "./components/stage/stage-été";
 import CreateStagePfe from "./components/stage/stage-pfe";
 import ReadPFE from "./components/pfe/listePfeforAdmin";
@@ -54,6 +53,7 @@ import Statistique from "./components/statistics/statistics";
 import AnneeUniv from "./components/administratif/annéeuniversitaire";
 import * as apiet from "./service/etudiant.js";
 import AllNotification from "./components/espaceEtudiant/allnotification";
+
 import { ToastContainer } from "react-toastify";
 
 function App() {
@@ -62,23 +62,17 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-
-        
-
         const result = await apiet.sendmail();
         const result2 = await apiet.sendmailcmp();
 
         const result3 = await apiet.sendmailtravail();
-
-  
-
       } catch (e) {
         console.log(e);
       }
     }
     fetchData();
   }, []);
-/*   const [theme, setTheme] = useState("light");
+  /*   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
@@ -105,7 +99,7 @@ function App() {
           <Route path="/signupA" element={<SignupAlumni />} />
           <Route path="/check" element={<CheckStatus />} />
           <Route path="/validAlumnis" element={<ValidAlumnis />} />
-          <Route path="/" element={<PrivateRoute />}>
+       
             <Route path="/espace-etudiant" element={<EspacEtudiant />} />
             <Route path="/espace-alumni" element={<EspaceAlumni />} />
             <Route path="/espace-directeur" element={<EspaceDirecteur />} />
@@ -115,6 +109,8 @@ function App() {
               path="/update-enseignant/:id"
               element={<UpdateEnseignant />}
             />
+                       
+
             <Route path="/administratif" element={<Administratif />} />
             <Route path="/readall-enseignant" element={<ReadEnseignant />} />
             <Route path="/create-etudiant" element={<CreateEtudiant />} />
@@ -124,41 +120,31 @@ function App() {
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
-<Route path="/enseignant" element={<Enseignant />} />
-<Route path="/insérer-stage-été" element={<CreateStageEté />} />
-<Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />
+            <Route path="/enseignant" element={<Enseignant />} />
+            <Route path="/insérer-stage-été" element={<CreateStageEté />} />
+            <Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />
 
-<Route
-  path="/update-etudiant-cv" element={<UpdateEtudiantCV />}   />
-<Route
-  path="/update-stageete/:id" element={<UpdateStage />}   />
+            <Route path="/update-etudiant-cv" element={<UpdateEtudiantCV />} />
+            <Route path="/update-stageete/:id" element={<UpdateStage />} />
 
-<Route
-  path="/update-stagePFE/:id" element={<UpdateStagePFE />}   />
-<Route path="/create-evenement" element={<CreateEvenement />} />
-<Route   path="/update-evenement/:id" element={<UpdateEvenement />}   />
-<Route path="/readall-evenement" element={<ReadEvenement />} />
-<Route path="/readall-pfe" element={<ReadPFE />} />
-<Route path="/mes-stage-été" element={<MesStageEte />} />
-<Route path="/mes-stage-pfe" element={<MesStagePFE />} />
-<Route path="/liste-mes-pfe" element={<MesPFE />} />
+            <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
+            <Route path="/create-evenement" element={<CreateEvenement />} />
+            <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
+            <Route path="/readall-evenement" element={<ReadEvenement />} />
+            <Route path="/readall-pfe" element={<ReadPFE />} />
+            <Route path="/mes-stage-été" element={<MesStageEte />} />
+            <Route path="/mes-stage-pfe" element={<MesStagePFE />} />
+            <Route path="/liste-mes-pfe" element={<MesPFE />} />
 
-<Route path="/liste-pfe" element={<PfeEnseignant />} />
-<Route path="/statistics-pfe" element={<Statistique />} />
-<Route path="anneeuniver" element={<AnneeUniv />} />
-<Route path="/allnotification" element={<AllNotification />} />
-          </Route>
+            <Route path="/liste-pfe" element={<PfeEnseignant />} />
+            <Route path="/statistics-pfe" element={<Statistique />} />
+            <Route path="anneeuniver" element={<AnneeUniv />} />
+            <Route path="/allnotification" element={<AllNotification />} />
+       
         </Routes>
       </Router>
+      <ToastContainer/>
     </div>
-
-
-
-
-
-
-
-    
   );
 }
 

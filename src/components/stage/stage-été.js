@@ -15,7 +15,7 @@ import {
   import "../crud_etudiant/create_etudiant/style.css";
   import * as api from "../../service/stageEté.js";
   import { useNavigate } from "react-router-dom";
-  import MySideNav from "../compte_alumni/sidenav.js";
+  import MySideNav from "../sidenavs/sidenav"
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
