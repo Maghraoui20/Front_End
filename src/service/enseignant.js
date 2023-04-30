@@ -49,6 +49,3 @@ export const getStats = async () => {
   const result = await Axios.get("http://localhost:5000/alumnis/stat");
   return result.data;
 };
-  const result = await Axios.get("http://localhost:5000/users/getAllEnseignant")
-  return result.data
-}

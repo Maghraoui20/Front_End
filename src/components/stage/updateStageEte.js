@@ -15,7 +15,7 @@ import {
   import * as api from "../../service/stageEté.js";
   import { useNavigate, useParams } from "react-router-dom";
   import moment from "moment";
-  import MySideNav from "../compte_alumni/sidenav";
+  import MySideNav from "../sidenavs/sidenav.js";
   
   function UpdateStage() {
     const params = useParams();

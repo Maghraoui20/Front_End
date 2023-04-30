@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
-import Sidebar from "../sidenavAdmin";
+import Sidebar from "../sidenavs/sidenavAdmin";
 import { Box, Button, FormControl, InputLabel, MenuItem, Paper, Select, Typography } from "@mui/material";
 import { useState } from "react";
 import * as api from '../../service/saison'

@@ -1,5 +1,5 @@
 import SideNavAdmin from "../sidenavs/sidenavAdmin";
-import SideNavEtd from "../sidenavs/sidenavetd";
+import SideNavEtd from "../sidenavs/sidenav";
 import MySideNavAlum from "../sidenavs/sidenav";
 import SideNavEns from "../sidenavs/sidenavens";
 import SideNavDir from "../sidenavs/sidenavdir";
