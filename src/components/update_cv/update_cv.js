@@ -21,14 +21,14 @@ import moment from "moment";
 import MySideNav from "../compte_alumni/sidenav.js";
 import FileBase from "react-file-base64";
 import ProfilePic from "../../../src/assets/profilepicture.PNG";
-// import DarkMode from "./DarkMode.js"
 import Switch from "@mui/material/Switch";
 import { withStyles } from "@mui/styles";
 import { ReactComponent as Sun } from "./Sun.svg";
 import { ReactComponent as Moon } from "./Moon.svg";
 
 function UpdateCv() {
-  const params = useParams();
+  // const params = useParams();
+  const { iduser } = useParams();
   const [CvData, setCvData] = useState({
     firstname: "",
     lastname: "",
@@ -218,7 +218,7 @@ function UpdateCv() {
     event.preventDefault();
 
     try {
-      const updateCv = await api.updateCv(CvData, params.id);
+      const updateCv = await api.updateCv(CvData, iduser);
       console.log(updateCv, "update");
       window.location.reload(false);
     } catch (error) {
@@ -230,14 +230,14 @@ function UpdateCv() {
     async function fetchData() {
       try {
         //console.log(iduser, "iduser");
-        const result = await api.getCvbyid(params.id);
+        const result = await api.getCvbyiduser(iduser);
         setCvData(result);
       } catch (e) {
         console.log(e);
       }
     }
     fetchData();
-  }, [params.id]);
+  }, []);
 
   return (
     <Container>
