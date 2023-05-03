@@ -237,7 +237,7 @@ function UpdateCv() {
       }
     }
     fetchData();
-  }, [params.id]);
+  }, []);
 
   return (
     <Container>
