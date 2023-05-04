@@ -2,6 +2,7 @@ import "./App.css";
 //import UpdateProfileEtudiant from "./components/update_etudiant/update_etudiant";
 // import { createContext, useState } from "react";
 // import ReactSwitch from "react-switch";
+import React, { Component }  from 'react';
 import { createContext, useEffect, useState } from "react";
 import ReactSwitch from "react-switch";
 
@@ -14,7 +15,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import Signin from "./components/signin/signin.js";
-import UpdateEtudiantCV from "./components/update_cv/update_cv";
+import UpdateCV from "./components/update_cv/update_cv"
+import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
 import CreateEnseignant from "./components/crud_enseignant/create_enseignant/create_enseignant";
 import UpdateEnseignant from "./components/crud_enseignant/update_enseignant/update_enseignant";
 import ReadEnseignant from "./components/crud_enseignant/read_enseignant/read_enseignant";
@@ -116,7 +118,7 @@ function App() {
             <Route path="/create-etudiant" element={<CreateEtudiant />} />
             <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
             <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-            <Route path="/update-etudiant-cv" element={<UpdateEtudiantCV />} />
+            <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
@@ -124,7 +126,8 @@ function App() {
             <Route path="/insérer-stage-été" element={<CreateStageEté />} />
             <Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />
 
-            <Route path="/update-etudiant-cv" element={<UpdateEtudiantCV />} />
+            <Route path="/update-cv/:id" element={<UpdateCV />} />
+            <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
             <Route path="/update-stageete/:id" element={<UpdateStage />} />
 
             <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />

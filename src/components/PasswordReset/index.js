@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../../service/authentification.js";

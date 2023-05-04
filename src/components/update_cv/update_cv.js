@@ -27,8 +27,8 @@ import { ReactComponent as Sun } from "./Sun.svg";
 import { ReactComponent as Moon } from "./Moon.svg";
 
 function UpdateCv() {
-  // const params = useParams();
-  const { iduser } = useParams();
+  const params = useParams();
+  //const { iduser } = useParams();
   const [CvData, setCvData] = useState({
     firstname: "",
     lastname: "",
@@ -218,7 +218,7 @@ function UpdateCv() {
     event.preventDefault();
 
     try {
-      const updateCv = await api.updateCv(CvData, iduser);
+      const updateCv = await api.updateCv(CvData, params.id);
       console.log(updateCv, "update");
       window.location.reload(false);
     } catch (error) {
@@ -230,14 +230,14 @@ function UpdateCv() {
     async function fetchData() {
       try {
         //console.log(iduser, "iduser");
-        const result = await api.getCvbyiduser(iduser);
+        const result = await api.getCvbyid(params.id);
         setCvData(result);
       } catch (e) {
         console.log(e);
       }
     }
     fetchData();
-  }, [params.id]);
+  }, []);
 
   return (
     <Container>

@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import { Box, Container, Paper, Typography } from "@mui/material";
 import MySideNav from "../sidenavs/sidenav";
 import { useEffect, useState } from "react";

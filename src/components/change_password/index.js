@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import SideNavAdmin from "../sidenavs/sidenavAdmin";
 import SideNavEtd from "../sidenavs/sidenav";
 import MySideNavAlum from "../sidenavs/sidenav";
