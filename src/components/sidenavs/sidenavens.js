@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import { Button } from "@mui/material";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";

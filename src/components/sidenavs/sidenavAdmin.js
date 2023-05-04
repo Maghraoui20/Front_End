@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import { Button } from "@mui/material";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
@@ -71,13 +72,6 @@ function MySideNav() {
           </NavIcon>
           <NavText>Année universitaire</NavText>
         </NavItem>
-        <NavItem eventKey="signin">
-        <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Change mon Mot de passe</NavText>
-        </NavItem>
-
         <NavItem eventKey="signin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />

@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import { MailLockOutlined } from "@mui/icons-material";
 import { Badge, Button, IconButton } from "@mui/material";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
@@ -75,13 +76,18 @@ const result = await  api.updateNotif(user._id);
           </NavIcon>
           <NavText>Changer mot de passe</NavText>
         </NavItem>
-        <NavItem eventKey="update-etudiant-cv">
+        <NavItem eventKey="update-etudiant">
           <NavIcon>
             <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Modifier profil</NavText>
         </NavItem>
-
+        <NavItem eventKey="update-cv/:id">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Modifier CV</NavText>
+        </NavItem>
         {statutEtudiant == "actuel" ? (
           <NavItem eventKey="insérer-stage-été">
             <NavIcon>

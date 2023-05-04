@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import styles from "./styles.module.css";
 import Sidebar from "../sidenavs/sidenavens";
 const Main = () => {
