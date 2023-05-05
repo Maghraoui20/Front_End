@@ -28,7 +28,9 @@ import UpdateEvenement from "./components/crud_evenement/update_evenement/update
 import ReadEvenement from "./components/crud_evenement/read_evenement/read_evenement";
 import Administratif from "./components/administratif/index";
 import Enseignant from "./components/enseignant/index";
-
+import CreatePfa from "./components/crud_pfa/create_pfa/create_pfa"
+import UpdatePfa from "./components/crud_pfa/update_pfa/update_pfa";
+import ReadPfa from "./components/crud_pfa/read_pfa/read_pfa";
 import ForgotPassword from "./components/forgot_password/index";
 import PasswordReset from "./components/PasswordReset/index";
 import PrivateRoute from "./components/PrivateRoutes/privateroute.js";
@@ -122,6 +124,11 @@ function App() {
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
+
+            <Route path="/create-pfa" element={<CreatePfa />} />
+            <Route path="/update-pfa/:id" element={<UpdatePfa />} />
+            <Route path="/readall-pfa" element={<ReadPfa />} />
+
             <Route path="/enseignant" element={<Enseignant />} />
             <Route path="/insérer-stage-été" element={<CreateStageEté />} />
             <Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />

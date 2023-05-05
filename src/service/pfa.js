@@ -8,6 +8,16 @@ export const createPfa = async (PfaData) => {
   );
   return result.data;
 };
+
+export const createTechnologie = async (TechnologieData) => {
+  console.log(TechnologieData, "TechnologieData");
+  const result = await Axios.post(
+    "http://localhost:5000/technologie/createtechnologie",
+    TechnologieData
+  );
+  return result.data;
+};
+
 export const updatePfa = async (PfaData, id) => {
   const result = await Axios.put(
     "http://localhost:5000/pfa/updatepfa/" + id,
@@ -32,7 +42,7 @@ export const getAllPfa = async () => {
   return result.data;
 };
 
-export const getTechnologies = async () => {
+export const getAllTechnologies = async () => {
     const result = await Axios.get("http://localhost:5000/technologie/getAllTechnologies");
     return result.data;
   };
