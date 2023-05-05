@@ -67,6 +67,7 @@ function UpdateEnseignant() {
     }
     fetchData();
   }, [params.id]);
+  
   return (
     <Container>
       <MySideNav />
