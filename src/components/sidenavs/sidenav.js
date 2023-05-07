@@ -88,38 +88,37 @@ const result = await  api.updateNotif(user._id);
           </NavIcon>
           <NavText>Modifier CV</NavText>
         </NavItem>
-        {statutEtudiant == "actuel" ? (
+      
           <NavItem eventKey="insérer-stage-été">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
             <NavText>Stage été</NavText>
           </NavItem>
-        ) : null}
-          {statutEtudiant == "actuel" ? (
+     
           <NavItem eventKey="mes-stage-été">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
             <NavText>Mes Stage d'été</NavText>
           </NavItem>
-        ) : null}
-        {statutEtudiant == "actuel" ? (
+     
+       
           <NavItem eventKey="insérer-stage-pfe">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
             <NavText>Stage pfe</NavText>
           </NavItem>
-        ) : null}
-         {statutEtudiant == "actuel" ? (
+     
+      
           <NavItem eventKey="mes-stage-pfe">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
             <NavText>Mes Stage de pfe</NavText>
           </NavItem>
-        ) : null}
+    
         <NavItem eventKey="signin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
@@ -128,7 +127,7 @@ const result = await  api.updateNotif(user._id);
             <Button onClick={handleLogout}>Logout</Button>
           </NavText>
         </NavItem>
-        {statutEtudiant == "actuel" ? (
+     
 
       <div style={{display:"flex", flexDirection:"column"}}  
            
@@ -138,7 +137,7 @@ const result = await  api.updateNotif(user._id);
     <NotificationsActiveIcon />
   </Badge>  
 </IconButton>
-      </div>):null}
+      </div>
       </SideNav.Nav>
 
     </SideNav>
