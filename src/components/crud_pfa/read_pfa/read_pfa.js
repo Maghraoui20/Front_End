@@ -39,31 +39,45 @@ function ReadPfa() {
     async function fetchData() {
       try {
         const result = await api.getAllPfa();
-        setRows(result);
+        const updatedRows = await Promise.all(result.map(async pfa => {
+          const technologies = await api.getTechnologiesByPfaId(pfa._id);
+          const technologyTitles = technologies.map(tech => tech.title);
+          const student = await api.getStudentByPfaId(pfa._id);
+          const studentNames = student.map(std => `${std.firstname} ${std.lastname}`);
+          return { ...pfa, technologyTitles, studentNames };
+        }));
+        setRows(updatedRows);
       } catch (e) {
         console.log(e);
       }
     }
     fetchData();
   }, []);
+  
+  
 
   const columns = [
-    { field: "titre", headerName: "sujet", width: 100 },
+    { field: "titre", headerName: "sujet", width: 200 },
     {
       field: "nbre_etudiant",
-      headerName: "nombre",
-      width: 100,
+      headerName: "Nombre d'étudiants",
+      width: 200,
     },
     {
-      field: "Description",
-      headerName: "Description",
-      width: 100,
+      field: "description",
+      headerName: "Description PFA",
+      width: 200,
     },
     {
-      field: "technologies",
+      field: "technologyTitles",
       headerName: "Technologies",
-      width: 100,
-    },
+      width: 200,
+    },  
+    {
+      field: 'studentNames',
+      headerName: 'Etudiant',
+      width: 200,
+    },  
     {
       field: "modifier",
       headerName: "Modifier",

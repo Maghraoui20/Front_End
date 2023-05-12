@@ -27,7 +27,7 @@ function CreatePfa() {
   const [technologies, setTechnologies] = React.useState([]);
   const [newTechnology, setNewTechnology] = React.useState("");
   const [PfaData, setPfaData] = useState({
-    Description: "",
+    description: "",
     titre: "",
     sujet: "",
     nbre_etudiant: "",
@@ -49,14 +49,15 @@ function CreatePfa() {
 
   const handleTechnologiesChange = (event, values) => {
     console.log("Selected Technologies:", values);
-    setPfaData({ ...PfaData, technologies: values.map((tech) => tech._id) }); // stocker les ObjectIds des technologies sélectionnées
+    setPfaData({ ...PfaData, technologies: values.map((tech) => tech.title) }); // stocker les ObjectIds des technologies sélectionnées
   };
 
   const handleNewTechnologyChange = (event) => {
     setNewTechnology(event.target.value);
   };
 
-  const handleAddNewTechnology = async () => {
+  const handleAddNewTechnology = async (event) => {
+    event.preventDefault();
     if (newTechnology) {
       try {
         // Ajouter la nouvelle technologie à la table "technologie"
@@ -65,7 +66,10 @@ function CreatePfa() {
         // Mettre à jour la liste des technologies
         setTechnologies([...technologies, newTech]);
         // Ajouter la nouvelle technologie aux technologies sélectionnées
-        setPfaData({ ...PfaData, technologies: [...PfaData.technologies, newTech._id] });
+        setPfaData({
+          ...PfaData,
+          technologies: [...PfaData.technologies, newTech.title],
+        });
         // Vider le champ pour ajouter une nouvelle technologie
         setNewTechnology("");
       } catch (error) {
@@ -76,9 +80,9 @@ function CreatePfa() {
 
   const options = technologies.map((tech) => ({
     title: tech.title,
-    _id: tech._id
+    _id: tech._id,
   }));
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -168,33 +172,34 @@ function CreatePfa() {
                     id="nbre_etudiant"
                     label="Nombre d'étudiants"
                     name="nbre_etudiant"
-                    type={"number"}
+                    type="number"
                     autoFocus
                     onChange={handleChange}
                   />
-          <Autocomplete
-          multiple
-          id="technologies-autocomplete"
-          options={options}
-          getOptionLabel={(option) => option.title}
-          onChange={handleTechnologiesChange}
-          renderInput={(params) => (
-            <TextField
-            {...params}
-            variant="outlined"
-            label="Technologies"
-            placeholder="Sélectionnez des technologies"
-            />
-            )}
-            />
-            <TextField
-                 value={newTechnology}
-                 onChange={handleNewTechnologyChange}
-                 label="Add New Technology"
-                 variant="outlined"
-                 fullWidth
-               />
-            <button onClick={handleAddNewTechnology}>Add</button>
+
+                  <Autocomplete
+                    multiple
+                    id="technologies-autocomplete"
+                    options={options}
+                    getOptionLabel={(option) => option.title}
+                    onChange={handleTechnologiesChange}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        variant="outlined"
+                        label="Technologies"
+                        placeholder="Sélectionnez des technologies"
+                      />
+                    )}
+                  />
+                  <TextField
+                    value={newTechnology}
+                    onChange={handleNewTechnologyChange}
+                    label="Add New Technology"
+                    variant="outlined"
+                    fullWidth
+                  />
+                  <button onClick={handleAddNewTechnology}>Add</button>
                 </Grid>
 
                 <Grid item xs={3}></Grid>
