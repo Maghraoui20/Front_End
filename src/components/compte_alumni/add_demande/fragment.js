@@ -10,6 +10,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import * as api from "../../../service/etudiant";
 import styles from "./styles.module.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const theme = createTheme();
 
 export default function SignupAlumni() {
@@ -37,6 +39,35 @@ export default function SignupAlumni() {
         description: data.description,
       };
       const result = await api.addDemande(item);
+      toast("Votre de demande de vacation est ajouté avec succès");
+      setData({ matiere: "", description: "" });
+      console.log(result);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      }
+    }
+  };
+
+  const addDemExpert = async (e) => {
+    e.preventDefault();
+
+    try {
+      const item = {
+        idAlumni: id,
+        status: false,
+        vacation: false,
+        expert: true,
+        matiere: data.matiere,
+        description: data.description,
+      };
+      const result = await api.addDemande(item);
+      toast("Votre de demande de contrat expert est ajouté avec succès");
+      setData({ matiere: "", description: "" });
       console.log(result);
     } catch (error) {
       if (
@@ -106,6 +137,15 @@ export default function SignupAlumni() {
               sx={{ mt: 3, mb: 2 }}
             >
               Ajouter demande de vacation
+            </Button>
+            <Button
+              type="reset"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={addDemExpert}
+            >
+              Ajouter demande d'expert
             </Button>
           </Box>
         </Box>
