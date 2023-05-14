@@ -59,6 +59,7 @@ import * as apiet from "./service/etudiant.js";
 import AllNotification from "./components/espaceEtudiant/allnotification";
 
 import { ToastContainer } from "react-toastify";
+import PfaEtudiant from "./components/espaceEtudiant/monpfa";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -136,6 +137,7 @@ function App() {
             <Route path="/update-cv/:id" element={<UpdateCV />} />
             <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
             <Route path="/update-stageete/:id" element={<UpdateStage />} />
+            <Route path="/choisir-pfa" element={< PfaEtudiant />} />
 
             <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
             <Route path="/create-evenement" element={<CreateEvenement />} />
