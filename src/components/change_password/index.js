@@ -1,7 +1,7 @@
-import React, { Component }  from 'react';
+import React, { Component } from "react";
 import SideNavAdmin from "../sidenavs/sidenavAdmin";
-import SideNavEtd from "../sidenavs/sidenav";
-import MySideNavAlum from "../sidenavs/sidenav";
+import SideNavEtd from "../sidenavs/sidenavetd";
+import MySideNavAlum from "../sidenavs/sidenavAlum";
 import SideNavEns from "../sidenavs/sidenavens";
 import SideNavDir from "../sidenavs/sidenavdir";
 import Fragment from "./fragment";

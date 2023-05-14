@@ -56,6 +56,7 @@ import AnneeUniv from "./components/administratif/annéeuniversitaire";
 import * as apiet from "./service/etudiant.js";
 import AllNotification from "./components/espaceEtudiant/allnotification";
 import { ToastContainer } from "react-toastify";
+import AddAlumnis from "./components/compte_alumni/add_demande";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -89,6 +90,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/charts" element={<Charts />} />
+          <Route path="/addDemandes" element={<AddAlumnis />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />

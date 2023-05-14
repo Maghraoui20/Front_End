@@ -18,10 +18,9 @@ import Box from "@mui/material/Box";
 import * as api from "../../service/cv.js";
 import { useParams } from "react-router-dom";
 import moment from "moment";
-import MySideNav from "../sidenavs/sidenav.js";
+import MySideNav from "../sidenavs/sidenavAlum.js";
 import FileBase from "react-file-base64";
 import ProfilePic from "../../../src/assets/profilepicture.PNG";
-import Switch from "@mui/material/Switch";
 import { withStyles } from "@mui/styles";
 import { ReactComponent as Sun } from "./Sun.svg";
 import { ReactComponent as Moon } from "./Moon.svg";
@@ -103,19 +102,23 @@ function UpdateCv() {
     },
   })(({ classes, ...props }) => {
     return (
-      <label htmlFor='darkmode-toggle' className={classes.root}>
+      <label htmlFor="darkmode-toggle" className={classes.root}>
         <input
           {...props}
-          type='checkbox'
-          id='darkmode-toggle'
+          type="checkbox"
+          id="darkmode-toggle"
           checked={isDarkMode}
           onChange={toggleDarkMode}
-          className='dark_mode_input'
+          className="dark_mode_input"
         />
-        <span className={`${classes.thumb} ${isDarkMode ? classes.moonIcon : classes.sunIcon}`}>
-          {isDarkMode ? <Moon color='#fff' /> : <Sun color='#fdd835' />}
+        <span
+          className={`${classes.thumb} ${
+            isDarkMode ? classes.moonIcon : classes.sunIcon
+          }`}
+        >
+          {isDarkMode ? <Moon color="#fff" /> : <Sun color="#fdd835" />}
         </span>
-        <span className='dark_mode_label'></span>
+        <span className="dark_mode_label"></span>
       </label>
     );
   });
@@ -237,7 +240,7 @@ function UpdateCv() {
       }
     }
     fetchData();
-  }, []);
+  }, [params.id]);
 
   return (
     <Container>

@@ -6,4 +6,23 @@ describe("template spec", () => {
       }
     );
   });
+  describe("Test d'appel API avec un corps de demande", () => {
+    it("Effectue l'appel API", () => {
+      cy.request({
+        method: "POST",
+        url: "http://localhost:5000/alumnis/addDemande",
+        body: {
+          idAlumni: "6461223f921a0409473165a7",
+          idDirecteur: "6461223f921a0409473165a7",
+          status: false,
+          vacation: true,
+          expert: false,
+          matiere: "math",
+          description: "cours mathh",
+        },
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+      });
+    });
+  });
 });
