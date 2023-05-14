@@ -20,6 +20,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import ChartCountry from "./statsByCountry";
 import ChartGraduation from "./alumniByGraduationYear";
 import ChartCompany from "./alumniByCompany";
+import StatistiqueChomageLineChart from "./chomage";
 
 const drawerWidth = 240;
 
@@ -183,6 +184,23 @@ function DashboardContent() {
                   }}
                 >
                   <ChartCountry />
+                </Paper>
+              </Grid>
+            </Grid>
+          </Container>
+          {/* *********************************** */}
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    height: 300,
+                  }}
+                >
+                  <StatistiqueChomageLineChart />
                 </Paper>
               </Grid>
             </Grid>
