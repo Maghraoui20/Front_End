@@ -41,14 +41,27 @@ export const newAlumni = async (data) => {
 };
 
 export const sendmail = async () => {
-  const result = await Axios.post("http://localhost:5000/users/sendmaildiplome" );
+  const result = await Axios.post(
+    "http://localhost:5000/users/sendmaildiplome"
+  );
   return result;
 };
 export const sendmailcmp = async () => {
-  const result = await Axios.post("http://localhost:5000/users/sendmailmajcompetences" );
+  const result = await Axios.post(
+    "http://localhost:5000/users/sendmailmajcompetences"
+  );
   return result;
 };
 export const sendmailtravail = async () => {
-  const result = await Axios.post("http://localhost:5000/users/sendmailtravail" );
+  const result = await Axios.post(
+    "http://localhost:5000/users/sendmailtravail"
+  );
+  return result;
+};
+export const addDemande = async (data) => {
+  const result = await Axios.post(
+    "http://localhost:5000/alumnis/addDemande",
+    data
+  );
   return result;
 };

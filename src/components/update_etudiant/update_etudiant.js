@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import * as api from "../../service/etudiant.js";
 import moment from "moment";
-import MySideNav from "../sidenavs/sidenav.js";
+import MySideNav from "../sidenavs/sidenavAlum.js";
 
 function UpdateEtudiant() {
   const [EtudiantData, setEtudiantData] = useState({
@@ -31,8 +31,9 @@ function UpdateEtudiant() {
 
   const [niveau, setNiveau] = React.useState("");
   const [etat, setEtat] = React.useState("");
-  
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  setUser(user);
   const idu = user?._id;
   const iduser = idu;
 

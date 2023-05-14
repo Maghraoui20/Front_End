@@ -1,21 +1,20 @@
-import React, { Component }  from 'react';
+import React, { Component } from "react";
 import { MailLockOutlined } from "@mui/icons-material";
 import { Badge, Button, IconButton } from "@mui/material";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { ToastContainer, toast } from "react-toastify";
-import io from 'socket.io-client';
-import * as api from '../../service/notification';
+import io from "socket.io-client";
+import * as api from "../../service/notification";
 function MySideNav() {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("profile");
     localStorage.removeItem("token");
   };
-
 
   return (
     <SideNav
@@ -46,7 +45,13 @@ function MySideNav() {
           </NavIcon>
           <NavText>Modifier CV</NavText>
         </NavItem>
-     
+        <NavItem eventKey="addDemandes">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Ajouter demande de vacation/Expert </NavText>
+        </NavItem>
+
         <NavItem eventKey="signin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
@@ -55,9 +60,7 @@ function MySideNav() {
             <Button onClick={handleLogout}>Logout</Button>
           </NavText>
         </NavItem>
-    
       </SideNav.Nav>
-
     </SideNav>
   );
 }

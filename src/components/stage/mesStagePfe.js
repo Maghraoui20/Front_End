@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component } from "react";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import * as api from "../../service/stagePfe.js";
@@ -6,32 +6,30 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button, InputLabel, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
-import IconButton from '@mui/material/IconButton';
-import AddIcon from '@mui/icons-material/Add';
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-import { blue } from "@mui/material/colors";
-import MySideNav from "../sidenavs/sidenav.js";
+
+import MySideNav from "../sidenavs/sidenavAlum.js";
 
 function MesStagePFE() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const id = user?._id;
-const navigate= useNavigate();
+  const navigate = useNavigate();
   const handleDelete = async () => {
     try {
-       await api.deleteStagePfe(idSelected);
-       window.location.reload(false)
-          } catch (error) {
+      await api.deleteStagePfe(idSelected);
+      window.location.reload(false);
+    } catch (error) {
       console.log(error);
     }
   };
 
- const handlenavigate = async()=>{
-  navigate("/insérer-stage-pfe")
- }
-
-
+  const handlenavigate = async () => {
+    navigate("/insérer-stage-pfe");
+  };
 
   const columns = [
     { field: "sujet", headerName: "Sujet", width: 130 },
@@ -45,10 +43,9 @@ const navigate= useNavigate();
       field: "societe",
       headerName: "Société",
       width: 160,
-    
     },
     { field: "duree", headerName: "Durée  ", width: 130 },
-   
+
     {
       field: "modifer",
       headerName: "Modifier",
@@ -76,7 +73,6 @@ const navigate= useNavigate();
         return (
           <PopupState variant="popover" popupId="demo-popup-popover">
             {(popupState) => (
-            
               <div>
                 <Button
                   variant="contained"
@@ -88,10 +84,7 @@ const navigate= useNavigate();
                 >
                   Supprimer
                 </Button>
-                <Popover
-                  {...bindPopover(popupState)}
-               
-                >
+                <Popover {...bindPopover(popupState)}>
                   <Box
                     sx={{
                       p: 5,
@@ -112,7 +105,10 @@ const navigate= useNavigate();
                           backgroundColor: "#00A36C",
                           ":hover": { backgroundColor: "#00A36C" },
                         }}
-                        onClick={()=>{handleDelete(); popupState.close()}}
+                        onClick={() => {
+                          handleDelete();
+                          popupState.close();
+                        }}
                       >
                         Oui
                       </Button>
@@ -124,7 +120,7 @@ const navigate= useNavigate();
                           ":hover": { backgroundColor: "#FC4343" },
                         }}
                         onClick={popupState.close}
->
+                      >
                         Annuler
                       </Button>
                     </div>
@@ -136,7 +132,6 @@ const navigate= useNavigate();
         );
       },
     },
-  
   ];
 
   useEffect(() => {
@@ -165,15 +160,20 @@ const navigate= useNavigate();
         }}
       >
         <div style={{ height: 400 }}>
-        {rows.length >0 ? null :  <div style={{display:"flex"}}>
-        <IconButton aria-label="add" color="secondary" onClick={handlenavigate} style={{ color:"#000"}} >
-  <AddIcon />
-</IconButton>
+          {rows.length > 0 ? null : (
+            <div style={{ display: "flex" }}>
+              <IconButton
+                aria-label="add"
+                color="secondary"
+                onClick={handlenavigate}
+                style={{ color: "#000" }}
+              >
+                <AddIcon />
+              </IconButton>
+            </div>
+          )}
 
-          </div>}
-         
-          
-        <DataGrid
+          <DataGrid
             rows={rows}
             columns={columns}
             initialState={{
@@ -186,7 +186,6 @@ const navigate= useNavigate();
             pageSizeOptions={[5]}
             checkboxSelection
             disableRowSelectionOnClick
-
             getRowId={(row) => row._id}
             onRowSelectionModelChange={(newRowSelectionModel) => {
               setIdSelected(newRowSelectionModel.toString());
