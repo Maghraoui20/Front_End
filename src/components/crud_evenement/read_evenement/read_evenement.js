@@ -171,7 +171,7 @@ function ReadEvenement() {
   return (
     <Container>
       <MySideNav/>
-      <FormControl sx={{ mt: 5, ml:10,width:250 }} >
+      {/* <FormControl sx={{ mt: 5, ml:10,width:250 }} >
         <InputLabel id="demo-controlled-open-select-label">Année universitaire</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
@@ -193,7 +193,26 @@ function ReadEvenement() {
           <MenuItem value={"2026-2027"}>2026-2027</MenuItem>
 
         </Select>
-      </FormControl>
+      </FormControl> */}
+      <label for="Année universitaire">Année universitaire</label>
+
+<select
+   data-test="anneeUvivgenerate"
+   open={open}
+   onClose={handleClose}
+   onOpen={handleOpen}
+   value={annee}
+   label="anneeUviv"
+   onChange={handleChangeAnnee} 
+  style={{ width: "100%", height: "50px" }}
+>
+  <option value={"2021-2022"}>2021-2022</option>
+  <option value={"2022-2023"}>2022-2023</option>
+  <option value={"2023-2024"}>2023-2024</option>
+  <option value={"2024-2025"}>2024-2025</option>
+  <option value={"2026-2027"}>2026-2027</option>
+
+</select>
       <Box
         sx={{
           marginTop: 10,

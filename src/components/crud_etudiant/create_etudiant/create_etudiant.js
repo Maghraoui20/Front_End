@@ -95,6 +95,7 @@ function CreateEtudiant() {
                     id="firstname"
                     label="nom"
                     name="firstname"
+                    data-test="firstname"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -105,6 +106,7 @@ function CreateEtudiant() {
                     id="lastname"
                     label="prénom"
                     name="lastname"
+                    data-test="lastname"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -116,6 +118,7 @@ function CreateEtudiant() {
                     label="phone"
                     name="phone"
                     type={"number"}
+                    data-test="phone"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -127,6 +130,8 @@ function CreateEtudiant() {
                     id="email"
                     label="email"
                     name="email"
+                    data-test="email"
+                    
                     autoFocus
                     onChange={handleChange}
                   />
@@ -138,6 +143,7 @@ function CreateEtudiant() {
                     id="login"
                     label="login"
                     name="login"
+                    data-test="login"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -150,6 +156,7 @@ function CreateEtudiant() {
                     id="password"
                     label="password"
                     name="password"
+                    data-test="password"
                     type={"password"}
                     autoFocus
                     onChange={handleChange}
@@ -161,6 +168,7 @@ function CreateEtudiant() {
                     id="classe"
                     label="classe"
                     name="classe"
+                    data-test="classe"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -172,41 +180,76 @@ function CreateEtudiant() {
                     id="Birth_date"
                     label="date"
                     name="Birth_date"
+                    data-test="Birth_date"
                     autoFocus
                     type="date"
                     onChange={handleChange}
                   />
-                  <FormControl fullWidth sx={{ mt: 2 }}>
+                  {/*  <FormControl fullWidth sx={{ mt: 2 }}>
                     <InputLabel id="Niveau">Niveau</InputLabel>
-                    <Select
+                    <select
                       labelId="Niveau"
                       id="Niveau"
                       value={niveau}
                       label="Niveau"
                       name="niveau"
+                      data-test="niveau"
+
                       onChange={handleChangeNiveau}
                     >
-                      <MenuItem value={"licence"}>Licence</MenuItem>
-                      <MenuItem value={"master"}>Master</MenuItem>
-                      <MenuItem value={"cycle ingénieur"}>
+                      <option value={"licence"}  >Licence</option>
+                      <option value={"master"}>Master</option>
+                      <option value={"cycle ingénieur"}>
                         Cycle ingénieur
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
+                      </option>
+                    </select>
+                  </FormControl> */}
 
-                  <FormControl fullWidth sx={{ mt: 3 }}>
+                  <label for="niveau">Niveau</label>
+
+                  <select
+                    name="niveau"
+                    labelId="Niveau"
+                    id="Niveau"
+                    value={niveau}
+                    label="Niveau"
+                    data-test="niveau"
+                    style={{ width: "100%", height: "50px" }}
+                    onChange={handleChangeNiveau}
+                  >
+                    <option value={"licence"}>Licence</option>
+                    <option value={"master"}>Master</option>
+                    <option value={"cycle ingénieur"}>Cycle ingénieur</option>
+                  </select>
+
+                  <label for="niveau">Etat</label>
+
+                  <select
+                    labelId="etat"
+                    id="staus"
+                    value={status}
+                    data-test="etat"
+                    label="etat"
+                    onChange={handleChangeStatus}
+                    style={{ width: "100%", height: "50px" }}
+                  >
+                    <option value={"alumni"}>Alumni</option>
+                    <option value={"actuel"}>Actuel</option>
+                  </select>
+                  {/*   <FormControl fullWidth sx={{ mt: 3 }}>
                     <InputLabel id="staus">Etat</InputLabel>
                     <Select
                       labelId="etat"
                       id="etat"
                       value={status}
+                      data-test="etat"
                       label="etat"
                       onChange={handleChangeStatus}
                     >
                       <MenuItem value={"alumni"}>Alumni</MenuItem>
                       <MenuItem value={"actuel"}>Actuel</MenuItem>
                     </Select>
-                  </FormControl>
+                  </FormControl> */}
                 </Grid>
 
                 <Grid item xs={3}></Grid>
@@ -214,6 +257,7 @@ function CreateEtudiant() {
                   <Button
                     type="submit"
                     fullWidth
+                    data-test="ajouter"
                     variant="contained"
                     sx={{
                       mt: 3,

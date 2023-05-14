@@ -89,14 +89,14 @@ const result = await  api.updateNotif(user._id);
           <NavText>Modifier CV</NavText>
         </NavItem>
       
-          <NavItem eventKey="insérer-stage-été">
+          <NavItem eventKey="inserer-stage-ete" data-test="stage-ete">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
             <NavText>Stage été</NavText>
           </NavItem>
      
-          <NavItem eventKey="mes-stage-été">
+          <NavItem eventKey="mes-stage-ete">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
@@ -104,7 +104,7 @@ const result = await  api.updateNotif(user._id);
           </NavItem>
      
        
-          <NavItem eventKey="insérer-stage-pfe">
+          <NavItem eventKey="inserer-stage-pfe" data-test="stage-pfe">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>

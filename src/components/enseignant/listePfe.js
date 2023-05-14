@@ -97,6 +97,7 @@ const [StagePFEData, setStagePFEData] = useState({
               
                 <div>
                   <Button
+                  data-test="encadrer"
                     variant="contained"
                     {...bindTrigger(popupState)}
                     sx={{
@@ -123,6 +124,8 @@ const [StagePFEData, setStagePFEData] = useState({
                       </Typography>
                       <div className="buttons">
                         <Button
+                                          data-test="confirm-encadrer"
+
                           variant="contained"
                           className="confirm"
                           sx={{

@@ -17,7 +17,7 @@ import {
   import * as apiEnseignant from "../../service/enseignant";
 
   import { useNavigate } from "react-router-dom";
-  import MySideNav from "../sidenavs/sidenav";
+  import MySideNav from "../sidenavs/sidenavactuel";
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   import SelectEneseignat from "./selectEnseignant.js";
@@ -139,6 +139,8 @@ import {
                       id="sujet"
                       label="sujet"
                       name="sujet"
+                      data-test="sujet"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -149,6 +151,8 @@ import {
                       id="description"
                       label="description"
                       name="description"
+                      data-test="description"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -158,6 +162,8 @@ import {
                       fullWidth
                       id="societe"
                       label="societe"
+                      data-test="societe"
+
                       name="societe"
                       autoFocus
                       onChange={handleChange}
@@ -171,6 +177,8 @@ import {
                       label="duree"
                       name="duree"
                      type="number"
+                     data-test="duree"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -182,6 +190,8 @@ import {
                       id="pays"
                       label="pays"
                       name="pays"
+                      data-test="pays"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -195,7 +205,8 @@ import {
                       id="technologies"
                       label="technologies"
                       name="technologies"
-                     
+                      data-test="technologies"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -207,6 +218,8 @@ import {
                       id="dateDébutStage"
                       label="Date début stage"
                       name="dateDébutStage"
+                      data-test="dateDébutStage"
+
                       autoFocus
                       type="date"
                       onChange={handleChange}
@@ -218,26 +231,31 @@ import {
                       id="dateFinStage"
                       label="Date fin stage"
                       name="dateFinStage"
+                      data-test="dateFinStage"
+
                       autoFocus
                       type="date"
                       onChange={handleChange}
                     />
-                    <FormControl fullWidth sx={{mt:2}}>
-                      <InputLabel id="statutStage">Statut de Stage</InputLabel>
-                      <Select
-                        labelId="statutStage"
-                        id="statutStage"
-                        value={statutStage}
-                        label="statutStage"
-                        name="statutStage"
-                        onChange={handleChangeNiveau}
-                      >
-                        <MenuItem value={"pas encore commencé"}>pas encore commencé</MenuItem>
-                        <MenuItem value={"en cours"}>en cours</MenuItem>
-                        <MenuItem value={"validé"}> validé   </MenuItem>
-                      </Select>
-                    </FormControl>
+                   
 
+                    <select
+               labelId="statutStage"
+               id="statutStage"
+               data-test="statutStage"
+
+               value={statutStage}
+               label="statutStage"
+               name="statutStage"
+
+               style={{ width: "100%", height: "50px" }}
+
+               onChange={handleChangeNiveau}
+                               >
+                    <option value={"pas encore commencé"}> pas encore commencé</option>
+                    <option value={"en cours"}>en cours</option>
+                    <option value={"validé"}>validé</option>
+                  </select>
                    
                   </Grid>
   
@@ -246,6 +264,8 @@ import {
                     <Button
                       type="submit"
                       fullWidth
+                      data-test="ajouter"
+
                       variant="contained"
                       sx={{
                         mt: 3,

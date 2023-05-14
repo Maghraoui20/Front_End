@@ -6,7 +6,14 @@ import { useState } from "react";
 import * as api from '../../service/saison'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const ExistSaison=() =>{
+  return <div>
+    <p>Saison Existe déja</p>
+  </div>
+        }
 const AnneeUniv = () => {
+  const [existe, setExiste] = useState(false);
+
     const [open, setOpen] = useState(false);
     const handleClose = () => {
         setOpen(false);
@@ -27,8 +34,14 @@ const  handleSubmit = async(event)=>{
     event.preventDefault();
 
     try {
-        await api.createSaison(anneeUviv);
-        toast("Saison ajouter avec succès!");
+  
+
+   
+      await api.createSaison(anneeUviv);
+      toast("Saison ajouter avec succès!");
+      const findSaison=  await api.findSaison(anneeUviv);
+      if(findSaison){        setExiste(true)}
+     
 
      // navigate("/espace-etudiant");
     } catch (error) {
@@ -57,7 +70,7 @@ const  handleSubmit = async(event)=>{
               </Typography>
 
 
-              <FormControl sx={{ mt: 5, }} fullWidth>
+           {/*    <FormControl sx={{ mt: 5, }} fullWidth>
         <InputLabel id="demo-controlled-open-select-label">Année universitaire</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
@@ -80,9 +93,33 @@ const  handleSubmit = async(event)=>{
 
         </Select>
       </FormControl>
+ */}
+
+      <label for="Année universitaire">Année universitaire</label>
+
+<select
+   open={open}
+   data-test="anneeUvivgenerate"
+   onClose={handleClose}
+   onOpen={handleOpen}
+   value={annee}
+   label="anneeUviv"
+   onChange={handleChange}
+  style={{ width: "100%", height: "50px" }}
+>
+  <option value={"2021-2022"}>2021-2022</option>
+  <option value={"2022-2023"}>2022-2023</option>
+  <option value={"2023-2024"}>2023-2024</option>
+  <option value={"2024-2025"}>2024-2025</option>
+  <option value={"2026-2027"}>2026-2027</option>
+
+</select>
+
       <Button
                       type="submit"
                       fullWidth
+                      data-test="ajouteranneeUniv"
+
                       variant="contained"
                       sx={{
                         mt: 10,
@@ -96,6 +133,8 @@ const  handleSubmit = async(event)=>{
                     <ToastContainer/>
       </div>
       </form>
+
+    {existe ? < ExistSaison />: null} 
     </Box>
     </Paper>
     </div>

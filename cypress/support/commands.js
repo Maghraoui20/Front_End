@@ -16,6 +16,8 @@ Cypress.Commands.add("getByData", (selector) => {
       },
     }).then((resp) => {
       console.log(resp.body.model, "response");
+      localStorage.setItem("profile", JSON.stringify({ ...resp.body?.model }));
+
       window.localStorage.setItem("token", resp.body.mytoken)
       window.localStorage.setItem("role", resp.body.model.role)
 
@@ -31,7 +33,8 @@ Cypress.Commands.add("getByData", (selector) => {
         password: "123",
       },
     }).then((resp) => {
-      console.log(resp, "response");
+      console.log(resp.body, "response signi");
+      localStorage.setItem("profile", JSON.stringify({ ...resp.body?.model }));
 
       window.localStorage.setItem("token", resp.body.mytoken)
       window.localStorage.setItem("role", resp.body.model.role)    })
@@ -47,6 +50,24 @@ Cypress.Commands.add("getByData", (selector) => {
       },
     }).then((resp) => {
       console.log(resp, "response");
+      localStorage.setItem("profile", JSON.stringify({ ...resp.body?.model }));
+
+      window.localStorage.setItem("token", resp.body.mytoken)
+      window.localStorage.setItem("role", resp.body.model.role)    })
+  })
+
+  Cypress.Commands.add("loginasalumni", () => {
+    cy.request({
+      method: "POST",
+      url: Cypress.env("urlBackend") + "/users/signin",
+      failOnStatusCode: false,
+      body: {
+        phone: "+2168596754",
+        password: "123",
+      },
+    }).then((resp) => {
+      console.log(resp, "response");
+      localStorage.setItem("profile", JSON.stringify({ ...resp.body?.model }));
 
       window.localStorage.setItem("token", resp.body.mytoken)
       window.localStorage.setItem("role", resp.body.model.role)    })

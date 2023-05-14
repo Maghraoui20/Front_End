@@ -25,7 +25,8 @@ function MySideNav() {
           </NavIcon>
           <NavText>Home</NavText>
         </NavItem>
-        <NavItem eventKey="readall-etudiant">
+        <NavItem eventKey="readall-etudiant"  data-test="gestion-etudiant"
+>
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
@@ -39,7 +40,7 @@ function MySideNav() {
           <NavText>Gestion Enseignant</NavText>
         </NavItem>
 
-        <NavItem eventKey="readall-evenement">
+        <NavItem eventKey="readall-evenement" data-test='readall-evenement'>
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
@@ -52,21 +53,21 @@ function MySideNav() {
           <NavText>Change mon Mot de passe</NavText>
         </NavItem>
 
-        <NavItem eventKey="readall-pfe">
+        <NavItem eventKey="readall-pfe" data-test="readall-pfe">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Liste des pfe</NavText>
         </NavItem>
 
-        <NavItem eventKey="statistics-pfe">
+        <NavItem eventKey="statistics-pfe" data-test="readall-statistics" >
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Statistiques des pfe</NavText>
         </NavItem>
 
-        <NavItem eventKey="anneeuniver">
+        <NavItem eventKey="anneeuniver" data-test="anneeuniver">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>

@@ -13,6 +13,7 @@
     "@mui/x-data-grid": "^6.3.0",
     "@trendmicro/react-sidenav": "^0.5.0",
     "axios": "^1.4.0",
+    "bcryptjs": "^2.4.3",
     "chart.js": "^4.3.0",
     "d3": "^7.8.4",
     "material-ui-popup-state": "^5.0.8",

@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
 import { blue } from "@mui/material/colors";
-import MySideNav from "../sidenavs/sidenav.js";
+import MySideNav from "../sidenavs/sidenavactuel.js";
 
 function MesStagePFE() {
   const [rows, setRows] = useState([]);
@@ -28,7 +28,7 @@ const navigate= useNavigate();
   };
 
  const handlenavigate = async()=>{
-  navigate("/insérer-stage-pfe")
+  navigate("/inserer-stage-pfe")
  }
 
 
