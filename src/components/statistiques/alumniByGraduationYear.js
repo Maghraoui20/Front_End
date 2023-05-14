@@ -29,7 +29,6 @@ const App = () => {
   };
   // Sample data
   const [data, setData] = useState();
-  console.log(data);
 
   return (
     <React.Fragment>
