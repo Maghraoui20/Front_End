@@ -28,7 +28,9 @@ import { ReactComponent as Moon } from "./Moon.svg";
 
 function UpdateCv() {
   const params = useParams();
-  //const { iduser } = useParams();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const idu = user?._id;
+  const iduser = idu;
   const [CvData, setCvData] = useState({
     firstname: "",
     lastname: "",
@@ -54,6 +56,7 @@ function UpdateCv() {
         type: "",
       },
     ],
+    id_etudiant:iduser,
   });
 
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -119,10 +122,6 @@ function UpdateCv() {
       </label>
     );
   });
-
-  //const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-  //const idu = user?._id;
-  //const iduser = idu;
 
   const [niveau, setNiveau] = React.useState("");
 
@@ -218,7 +217,7 @@ function UpdateCv() {
     event.preventDefault();
 
     try {
-      const updateCv = await api.updateCv(CvData, params.id);
+      const updateCv = await api.updateCv(CvData, iduser);
       console.log(updateCv, "update");
       window.location.reload(false);
     } catch (error) {
@@ -230,7 +229,7 @@ function UpdateCv() {
     async function fetchData() {
       try {
         //console.log(iduser, "iduser");
-        const result = await api.getCvbyid(params.id);
+        const result = await api.getCvbyiduser(iduser);
         setCvData(result);
       } catch (e) {
         console.log(e);

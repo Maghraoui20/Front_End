@@ -81,7 +81,7 @@ function MySideNav() {
             </NavIcon>
             <NavText>Choisir Sujet PFA</NavText>
           </NavItem>
-        <NavItem eventKey="update-cv/:id">
+        <NavItem eventKey="update-cv">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>

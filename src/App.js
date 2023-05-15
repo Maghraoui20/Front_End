@@ -139,7 +139,7 @@ function App() {
             <Route path="/insérer-stage-été" element={<CreateStageEté />} />
             <Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />
 
-            <Route path="/update-cv/:id" element={<UpdateCV />} />
+            <Route path="/update-cv" element={<UpdateCV />} />
             <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
             <Route path="/update-stageete/:id" element={<UpdateStage />} />
             <Route path="/choisir-pfa" element={< PfaEtudiant />} />
