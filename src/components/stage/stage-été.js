@@ -14,13 +14,13 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import "../crud_etudiant/create_etudiant/style.css";
 import * as api from "../../service/stageEté.js";
-import MySideNav from "../sidenavs/sidenavAlum";
+import { useNavigate } from "react-router-dom";
+import MySideNav from "../sidenavs/sidenavactuel";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function CreateStageEté() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  setUser(user);
   const id_etudiant = user?._id;
   const [StageEtéData, setStageEtéData] = useState({
     description: "",
@@ -33,7 +33,7 @@ function CreateStageEté() {
     dateFinStage: "",
     id_etudiant: id_etudiant,
   });
-
+  const navigate = useNavigate();
   const [statutStage, setStatutStage] = React.useState("");
   const [status, setStatus] = React.useState("");
 
@@ -95,6 +95,7 @@ function CreateStageEté() {
                     id="sujet"
                     label="sujet"
                     name="sujet"
+                    data-test="sujet"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -105,6 +106,7 @@ function CreateStageEté() {
                     id="description"
                     label="description"
                     name="description"
+                    data-test="description"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -115,6 +117,7 @@ function CreateStageEté() {
                     id="societe"
                     label="societe"
                     name="societe"
+                    data-test="societe"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -126,6 +129,7 @@ function CreateStageEté() {
                     id="duree"
                     label="duree"
                     name="duree"
+                    data-test="duree"
                     type="number"
                     autoFocus
                     onChange={handleChange}
@@ -139,6 +143,7 @@ function CreateStageEté() {
                     id="technologies"
                     label="technologies"
                     name="technologies"
+                    data-test="technologies"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -150,6 +155,7 @@ function CreateStageEté() {
                     id="dateDébutStage"
                     label="Date début stage"
                     name="dateDébutStage"
+                    data-test="dateDébutStage"
                     autoFocus
                     type="date"
                     onChange={handleChange}
@@ -161,27 +167,30 @@ function CreateStageEté() {
                     id="dateFinStage"
                     label="Date fin stage"
                     name="dateFinStage"
+                    data-test="dateFinStage"
                     autoFocus
                     type="date"
                     onChange={handleChange}
                   />
-                  <FormControl fullWidth sx={{ mt: 2 }}>
-                    <InputLabel id="Niveau">Statut de Stage</InputLabel>
-                    <Select
-                      labelId="statutStage"
-                      id="statutStage"
-                      value={statutStage}
-                      label="statutStage"
-                      name="statutStage"
-                      onChange={handleChangeNiveau}
-                    >
-                      <MenuItem value={"pas encore commencé"}>
-                        pas encore commencé
-                      </MenuItem>
-                      <MenuItem value={"en cours"}>en cours</MenuItem>
-                      <MenuItem value={"validé"}> validé </MenuItem>
-                    </Select>
-                  </FormControl>
+                  <label for="niveau">Statut de Stage</label>
+
+                  <select
+               labelId="statutStage"
+               id="statutStage"
+               data-test="statutStage"
+
+               value={statutStage}
+               label="statutStage"
+               name="statutStage"
+               style={{ width: "100%", height: "50px" }}
+
+               onChange={handleChangeNiveau}
+                               >
+                    <option value={"pas encore commencé"}> pas encore commencé</option>
+                    <option value={"en cours"}>en cours</option>
+                    <option value={"validé"}>validé</option>
+                  </select>
+                 
                 </Grid>
 
                 <Grid item xs={3}></Grid>
@@ -189,6 +198,7 @@ function CreateStageEté() {
                   <Button
                     type="submit"
                     fullWidth
+                    data-test="ajouter"
                     variant="contained"
                     sx={{
                       mt: 3,

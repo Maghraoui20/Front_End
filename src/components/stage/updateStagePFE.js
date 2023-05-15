@@ -1,21 +1,22 @@
 import {
-  TextField,
-  Typography,
-  Button,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Grid,
-  Paper,
-} from "@mui/material";
-import { Container } from "@mui/system";
-import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import * as api from "../../service/stagePfe.js";
-import { useNavigate, useParams } from "react-router-dom";
-import moment from "moment";
-import MySideNav from "../sidenavs/sidenavAlum.js";
+    TextField,
+    Typography,
+    Button,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    Grid,
+    Paper,
+  } from "@mui/material";
+  import { Container } from "@mui/system";
+  import React, { useEffect, useState } from "react";
+  import Box from "@mui/material/Box";
+  import * as api from "../../service/stagePfe.js";
+  import { useNavigate, useParams } from "react-router-dom";
+  import moment from "moment";
+  import MySideNav from "../sidenavs/sidenavactuel.js";
+
 
 function UpdateStagePFE() {
   const params = useParams();

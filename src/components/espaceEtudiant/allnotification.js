@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Box, Container, Paper, Typography } from "@mui/material";
-import MySideNav from "../sidenavs/sidenavAlum";
+import MySideNav from "../sidenavs/sidenavactuel";
 import { useEffect, useState } from "react";
 import * as api from "../../service/notification";
 

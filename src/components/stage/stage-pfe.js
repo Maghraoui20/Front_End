@@ -15,10 +15,11 @@ import Box from "@mui/material/Box";
 import "../crud_etudiant/create_etudiant/style.css";
 import * as apiPFE from "../../service/stagePfe.js";
 
-import { useNavigate } from "react-router-dom";
-import MySideNav from "../sidenavs/sidenavAlum";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+  import { useNavigate } from "react-router-dom";
+  import MySideNav from "../sidenavs/sidenavactuel";
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+  import SelectEneseignat from "./selectEnseignant.js";
 
 function CreateStagePfe() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -141,6 +142,8 @@ function CreateStagePfe() {
                       id="sujet"
                       label="sujet"
                       name="sujet"
+                      data-test="sujet"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -151,6 +154,8 @@ function CreateStagePfe() {
                       id="description"
                       label="description"
                       name="description"
+                      data-test="description"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -160,6 +165,8 @@ function CreateStagePfe() {
                       fullWidth
                       id="societe"
                       label="societe"
+                      data-test="societe"
+
                       name="societe"
                       autoFocus
                       onChange={handleChange}
@@ -172,7 +179,9 @@ function CreateStagePfe() {
                       id="duree"
                       label="duree"
                       name="duree"
-                      type="number"
+                     type="number"
+                     data-test="duree"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -184,6 +193,8 @@ function CreateStagePfe() {
                       id="pays"
                       label="pays"
                       name="pays"
+                      data-test="pays"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -196,6 +207,8 @@ function CreateStagePfe() {
                       id="technologies"
                       label="technologies"
                       name="technologies"
+                      data-test="technologies"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -207,6 +220,8 @@ function CreateStagePfe() {
                       id="dateDébutStage"
                       label="Date début stage"
                       name="dateDébutStage"
+                      data-test="dateDébutStage"
+
                       autoFocus
                       type="date"
                       onChange={handleChange}
@@ -218,27 +233,32 @@ function CreateStagePfe() {
                       id="dateFinStage"
                       label="Date fin stage"
                       name="dateFinStage"
+                      data-test="dateFinStage"
+
                       autoFocus
                       type="date"
                       onChange={handleChange}
                     />
-                    <FormControl fullWidth sx={{ mt: 2 }}>
-                      <InputLabel id="statutStage">Statut de Stage</InputLabel>
-                      <Select
-                        labelId="statutStage"
-                        id="statutStage"
-                        value={statutStage}
-                        label="statutStage"
-                        name="statutStage"
-                        onChange={handleChangeNiveau}
-                      >
-                        <MenuItem value={"pas encore commencé"}>
-                          pas encore commencé
-                        </MenuItem>
-                        <MenuItem value={"en cours"}>en cours</MenuItem>
-                        <MenuItem value={"validé"}> validé </MenuItem>
-                      </Select>
-                    </FormControl>
+                   
+
+                    <select
+               labelId="statutStage"
+               id="statutStage"
+               data-test="statutStage"
+
+               value={statutStage}
+               label="statutStage"
+               name="statutStage"
+
+               style={{ width: "100%", height: "50px" }}
+
+               onChange={handleChangeNiveau}
+                               >
+                    <option value={"pas encore commencé"}> pas encore commencé</option>
+                    <option value={"en cours"}>en cours</option>
+                    <option value={"validé"}>validé</option>
+                  </select>
+                   
                   </Grid>
 
                   <Grid item xs={3}></Grid>
@@ -246,6 +266,8 @@ function CreateStagePfe() {
                     <Button
                       type="submit"
                       fullWidth
+                      data-test="ajouter"
+
                       variant="contained"
                       sx={{
                         mt: 3,

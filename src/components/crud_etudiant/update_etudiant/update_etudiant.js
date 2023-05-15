@@ -118,6 +118,8 @@ function UpdateEtudiant() {
                       id="firstname"
                       label="nom"
                       name="firstname"
+                      data-test="firstname"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -129,6 +131,8 @@ function UpdateEtudiant() {
                       id="lastname"
                       label="prénom"
                       name="lastname"
+                      data-test="lastname"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -139,6 +143,8 @@ function UpdateEtudiant() {
                       id="login"
                       label="login"
                       name="login"
+                      data-test="login"
+
                       value={EtudiantData.login}
                       autoFocus
                       onChange={handleChange}
@@ -148,6 +154,8 @@ function UpdateEtudiant() {
                       required
                       fullWidth
                       id="email"
+                      data-test="email"
+
                       label="email"
                       name="email"
                       value={EtudiantData.email}
@@ -161,6 +169,8 @@ function UpdateEtudiant() {
                       id="phone"
                       label="phone"
                       name="phone"
+                      data-test="phone"
+
                       value={EtudiantData.phone}
                       autoFocus
                       onChange={handleChange}
@@ -175,6 +185,8 @@ function UpdateEtudiant() {
                       id="classe"
                       label="classe"
                       name="classe"
+                      data-test="classe"
+
                       autoFocus
                       onChange={handleChange}
                     />
@@ -189,6 +201,8 @@ function UpdateEtudiant() {
                       id="Birth_date"
                       label="date"
                       name="Birth_date"
+                      data-test="Birth_date"
+
                       autoFocus
                       type="date"
                       onChange={handleChange}
@@ -202,6 +216,8 @@ function UpdateEtudiant() {
                         value={EtudiantData.niveau}
                         label="Niveau"
                         name="niveau"
+                        data-test="niveau"
+
                         onChange={handleChangeNiveau}
                       >
                         <MenuItem value={"licence"}>Licence</MenuItem>
@@ -216,6 +232,8 @@ function UpdateEtudiant() {
                       <Select
                         labelId="etat"
                         id="etat"
+                        data-test="etat"
+
                         value={EtudiantData.etat}
                         label="etat"
                         onChange={handleChangeEtat}
@@ -230,6 +248,8 @@ function UpdateEtudiant() {
                     <Button
                       type="submit"
                       fullWidth
+                      data-test="modifier"
+
                       variant="contained"
                       sx={{
                         mt: 3,

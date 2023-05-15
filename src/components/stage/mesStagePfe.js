@@ -9,8 +9,8 @@ import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-
-import MySideNav from "../sidenavs/sidenavAlum.js";
+import { blue } from "@mui/material/colors";
+import MySideNav from "../sidenavs/sidenavactuel.js";
 
 function MesStagePFE() {
   const [rows, setRows] = useState([]);
@@ -27,9 +27,11 @@ function MesStagePFE() {
     }
   };
 
-  const handlenavigate = async () => {
-    navigate("/insérer-stage-pfe");
-  };
+ const handlenavigate = async()=>{
+  navigate("/inserer-stage-pfe")
+ }
+
+
 
   const columns = [
     { field: "sujet", headerName: "Sujet", width: 130 },

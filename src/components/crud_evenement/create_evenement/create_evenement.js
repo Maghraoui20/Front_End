@@ -151,7 +151,7 @@ setAnnee(e.target.value);
                     autoFocus
                     onChange={handleChange}
                   />
-                   <FormControl sx={{ mt: 5, }} fullWidth>
+      {/*           <FormControl sx={{ mt: 5, }} fullWidth>
         <InputLabel id="demo-controlled-open-select-label">Année universitaire</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
@@ -173,7 +173,29 @@ setAnnee(e.target.value);
           <MenuItem value={"2026-2027"}>2026-2027</MenuItem>
 
         </Select>
-      </FormControl>
+      </FormControl>  */}
+      <label for="Année universitaire">Année universitaire</label>
+
+<select
+   data-test="anneeUvivgenerate"
+   open={open}
+   onClose={handleClose}
+   onOpen={handleOpen}
+   value={annee}
+   label="anneeUviv"
+   onChange={handleChangeannee}
+  style={{ width: "100%", height: "50px" }}
+>
+  <option value={"2021-2022"}>2021-2022</option>
+  <option value={"2022-2023"}>2022-2023</option>
+  <option value={"2023-2024"}>2023-2024</option>
+  <option value={"2024-2025"}>2024-2025</option>
+  <option value={"2026-2027"}>2026-2027</option>
+
+</select>
+
+
+
                 </Grid>
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6}>

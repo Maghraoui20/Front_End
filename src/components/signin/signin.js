@@ -131,6 +131,8 @@ function Signin() {
             <form onSubmit={handleSubmit}>
               <TextField
                 margin="normal"
+                data-test="phone"
+
                 required
                 fullWidth
                 id="phone"
@@ -144,6 +146,7 @@ function Signin() {
                 fullWidth
                 margin="normal"
                 required
+
                 label="Mot de passe"
                 variant="outlined"
               >
@@ -151,6 +154,8 @@ function Signin() {
                   Mot de passe
                 </InputLabel>
                 <OutlinedInput
+                   data-test="password"
+
                   onChange={handleChangePassword}
                   variant="outlined"
                   type={showPassword ? "text" : "password"}
@@ -170,6 +175,7 @@ function Signin() {
               <Button
                 type="submit"
                 fullWidth
+                data-test="connect"
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >

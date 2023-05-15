@@ -123,23 +123,19 @@ function App() {
           <Route path="/create-pfa" element={<CreatePfa />} />
           <Route path="/update-pfa/:id" element={<UpdatePfa />} />
           <Route path="/readall-pfa" element={<ReadPfa />} />
+            <Route path="/enseignant" element={<Enseignant />} />
+            <Route path="/inserer-stage-ete" element={<CreateStageEté />} />
+            <Route path="/inserer-stage-pfe" element={<CreateStagePfe />} />
 
-          <Route path="/enseignant" element={<Enseignant />} />
-          <Route path="/insérer-stage-été" element={<CreateStageEté />} />
-          <Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />
 
           <Route path="/update-cv/:id" element={<UpdateCV />} />
-          <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
-          <Route path="/update-stageete/:id" element={<UpdateStage />} />
+            <Route path="/readall-pfe" element={<ReadPFE />} />
+            <Route path="/mes-stage-ete" element={<MesStageEte />} />
+            <Route path="/mes-stage-pfe" element={<MesStagePFE />} />
+            <Route path="/liste-mes-pfe" element={<MesPFE />} />
 
           <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
-          <Route path="/create-evenement" element={<CreateEvenement />} />
-          <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
-          <Route path="/readall-evenement" element={<ReadEvenement />} />
-          <Route path="/readall-pfe" element={<ReadPFE />} />
-          <Route path="/mes-stage-été" element={<MesStageEte />} />
-          <Route path="/mes-stage-pfe" element={<MesStagePFE />} />
-          <Route path="/liste-mes-pfe" element={<MesPFE />} />
+          
 
           <Route path="/liste-pfe" element={<PfeEnseignant />} />
           <Route path="/statistics-pfe" element={<Statistique />} />

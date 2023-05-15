@@ -61,7 +61,8 @@ function ReadEtudiant() {
       renderCell: (params) => {
         return (
           <Button
-            variant="contained"
+          data-test="modify-etudiant"
+          variant="contained"
             href={`/update-etudiant/${idSelected}`}
             sx={{
               backgroundColor: "#00A36C",
@@ -83,6 +84,8 @@ function ReadEtudiant() {
             {(popupState) => (
               <div>
                 <Button
+                data-test="delete-etudiant"
+
                   variant="contained"
                   {...bindTrigger(popupState)}
                   sx={{
@@ -106,6 +109,8 @@ function ReadEtudiant() {
                     </Typography>
                     <div className="buttons">
                       <Button
+                       data-test="confirm-etudiant"
+
                         variant="contained"
                         className="confirm"
                         sx={{
@@ -170,6 +175,8 @@ function ReadEtudiant() {
         <div style={{ height: 400 }}>
           <div style={{ display: "flex" }}>
             <IconButton
+             data-test="add-etudiant"
+
               aria-label="add"
               color="secondary"
               onClick={handlenavigate}
@@ -180,6 +187,7 @@ function ReadEtudiant() {
           </div>
 
           <DataGrid
+          data-test="row-etudiant"
             rows={rows}
             columns={columns}
             initialState={{

@@ -15,7 +15,7 @@ import Box from "@mui/material/Box";
 import * as api from "../../service/stageEté.js";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
-import MySideNav from "../sidenavs/sidenavAlum.js";
+import MySideNav from "../sidenavs/sidenavactuel.js";
 
 function UpdateStage() {
   const params = useParams();
