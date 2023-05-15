@@ -34,6 +34,14 @@ export const updatePfaIdEtudiant = async (PfaData, id) => {
   return result.data;
 };
 
+export const updatePfaIsValidated = async (PfaData, id) => {
+  const result = await Axios.post(
+    "http://localhost:5000/pfa/updatevalidatepfa/" + id,
+    PfaData
+  );
+  return result.data;
+};
+
 export const deletePfa = async (id) => {
   const result = await Axios.delete(
     "http://localhost:5000/pfa/deletepfa/" + id
@@ -81,6 +89,10 @@ export const getAllTechnologies = async () => {
     return result.data;
   };
 
+  export const getPfaNotValidated = async () => {
+    const result = await Axios.get("http://localhost:5000/pfa/getpfanotvalidated");
+    return result.data;
+  };
 
   export const getPfaByEnseignant = async (id) => {
     const result = await Axios.get("http://localhost:5000/pfa/getpfabyenseignant/"+id);

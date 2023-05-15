@@ -14,6 +14,7 @@ function ValiderPfa() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
   const [filteredRows, setFilteredRows] = useState([]);
+  const [PfaData, setPfaData] = useState({ isValidated:"" });
   const [filter, setFilter] = useState({
     technology: "",
     teacherLastName: "",
@@ -28,7 +29,7 @@ function ValiderPfa() {
   const handleSubmit =  (event) => {
 
     try {
-       //api.getAllPfa();
+       api.updatePfaIsValidated(PfaData, idSelected);
       // navigate("/choisir-pfa");
   
     } catch (error) {
@@ -40,7 +41,7 @@ function ValiderPfa() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await api.getAllPfa();
+        const result = await api.getPfaNotValidated();
         const updatedRows = await Promise.all(
           result.map(async (pfa) => {
             const technologies = await api.getTechnologiesByPfaId(pfa._id);
@@ -53,7 +54,7 @@ function ValiderPfa() {
             const studentNames = student.map(
               (std) => `${std.firstname} ${std.lastname}`
             );
-            return { ...pfa, technologyTitles, teacherNames, studentNames };
+            return { ...pfa, technologyTitles, teacherNames};
           })
         );
         setRows(updatedRows);
