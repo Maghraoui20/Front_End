@@ -81,12 +81,22 @@ function MySideNav() {
             </NavIcon>
             <NavText>Choisir Sujet PFA</NavText>
           </NavItem>
+          {statutEtudiant == "actuel" ? (
         <NavItem eventKey="update-cv">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Modifier CV</NavText>
         </NavItem>
+        ) : null}
+        {statutEtudiant == "alumni" ? (
+           <NavItem eventKey="update-cv-alumni">
+           <NavIcon>
+             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+           </NavIcon>
+           <NavText>Modifier CV</NavText>
+         </NavItem>
+        ) : null}
         {statutEtudiant == "actuel" ? (
           <NavItem eventKey="insérer-stage-été">
             <NavIcon>

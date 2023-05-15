@@ -56,7 +56,7 @@ function UpdateCv() {
         type: "",
       },
     ],
-    id_etudiant:iduser,
+    id_user:iduser,
   });
 
   const [isDarkMode, setIsDarkMode] = useState(false);
