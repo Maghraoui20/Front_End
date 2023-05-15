@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import "./style.css";
 import MySideNav from "../sidenavs/sidenavAdmin.js";
 
-function ReadEnseignant() {
+function ReadVacation() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
 
@@ -198,4 +198,4 @@ function ReadEnseignant() {
   );
 }
 
-export default ReadEnseignant;
+export default ReadVacation;
