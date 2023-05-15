@@ -95,6 +95,8 @@ function App() {
       </div> */}
       <Router>
         <Routes>
+        <Route path="*" element={<Navigate to="/signin" replace />} />
+
           <Route path="/charts" element={<Charts />} />
           <Route path="/addDemandes" element={<AddAlumnis />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
