@@ -8,23 +8,14 @@ import { useNavigate } from "react-router-dom";
 import MySideNav from "../enseignant/sidenavEnseignant";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import Popover from "@mui/material/Popover";
-import SearchPfa from "./searchPfa";
 
 function ValiderPfa() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
-  const [filteredRows, setFilteredRows] = useState([]);
   const [PfaData, setPfaData] = useState({ isValidated:"" });
-  const [filter, setFilter] = useState({
-    technology: "",
-    teacherLastName: "",
-    teacherFirstName: "",
-  });
+ 
   const navigate = useNavigate();
 
-  const handleFilterChange = (newFilter) => {
-    setFilter(newFilter);
-  };
 
   const handleSubmit =  (event) => {
 
@@ -54,11 +45,10 @@ function ValiderPfa() {
             const studentNames = student.map(
               (std) => `${std.firstname} ${std.lastname}`
             );
-            return { ...pfa, technologyTitles, teacherNames};
+            return { ...pfa, technologyTitles, teacherNames, studentNames};
           })
         );
         setRows(updatedRows);
-        setFilteredRows(updatedRows);
       } catch (e) {
         console.log(e);
       }
@@ -172,7 +162,6 @@ function ValiderPfa() {
           alignItems: "center",
         }}
       >
-        <SearchPfa onFilterChange={handleFilterChange} />
         <div style={{ height: 400 }}>
           <DataGrid
             rows={rows}
