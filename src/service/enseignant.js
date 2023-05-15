@@ -53,3 +53,9 @@ export const getStatChomage = async () => {
   const result = await Axios.get("http://localhost:5000/alumnis/statchomage");
   return result.data;
 };
+export const getDemandes = async () => {
+  const result = await Axios.get(
+    "http://localhost:5000/administratif/getDemandesVacation"
+  );
+  return result.data;
+};

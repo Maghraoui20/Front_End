@@ -41,7 +41,6 @@ import CheckStatus from "./components/compte_alumni/check_status/index";
 import ChangePassword from "./components/change_password";
 import ValidAlumnis from "./components/compte_alumni/valider_compte_alumni";
 import Charts from "./components/statistiques/vueStatistiques";
-
 import CreateStageEté from "./components/stage/stage-été";
 import CreateStagePfe from "./components/stage/stage-pfe";
 import ReadPFE from "./components/pfe/listePfeforAdmin";
@@ -57,6 +56,7 @@ import * as apiet from "./service/etudiant.js";
 import AllNotification from "./components/espaceEtudiant/allnotification";
 import { ToastContainer } from "react-toastify";
 import AddAlumnis from "./components/compte_alumni/add_demande";
+import ListeVacation from "./components/valider_demande_vacation/index";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -91,6 +91,7 @@ function App() {
         <Routes>
           <Route path="/charts" element={<Charts />} />
           <Route path="/addDemandes" element={<AddAlumnis />} />
+          <Route path="/validDemand" element={<ListeVacation />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />

@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { useNavigate } from "react-router-dom";
+
 function MySideNav() {
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -71,6 +72,12 @@ function MySideNav() {
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Année universitaire</NavText>
+        </NavItem>
+        <NavItem eventKey="validDemand">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Demandes vacations</NavText>
         </NavItem>
         <NavItem eventKey="signin">
           <NavIcon>
