@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import * as api from "../../service/etudiant.js";
 import moment from "moment";
-import MySideNav from "../sidenavs/sidenav.js";
+import MySideNav from "../sidenavs/sidenavactuel.js";
 
 function UpdateEtudiant() {
   const [EtudiantData, setEtudiantData] = useState({

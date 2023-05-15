@@ -1,14 +1,16 @@
 /* eslint-disable no-undef */
 describe("login page", () => {
     // to preserve localstorage between tests see https://dev.to/javierbrea/how-to-preserve-localstorage-between-cypress-tests-19o1
-      it("connect as admin succcessfully", () => {
+      it.only("connect as admin succcessfully", () => {
       window.localStorage.removeItem("token")
       cy.visit("/signin")
       cy.getByData("phone").should("exist")
       cy.getByData("password").should("exist")
       cy.getByData("phone").type("23000000")
+      cy.getByData("connect").click()
       cy.getByData("password").type("123")
       cy.getByData("connect").click()
+
       cy.location("pathname").should("eq", "/administratif")
     })
     it("connect as admin directly if I have a token of admin", () => {
@@ -25,8 +27,10 @@ describe("login page", () => {
       cy.getByData("phone").should("exist")
       cy.getByData("password").should("exist")
       cy.getByData("phone").type("12300000")
+      cy.getByData("connect").click()
       cy.getByData("password").type("123")
       cy.getByData("connect").click()
+
       cy.location("pathname").should("eq", "/espace-etudiant")
     
     }) 
@@ -39,7 +43,7 @@ describe("login page", () => {
       cy.getByData("password").should("not.exist")
     })   
 
-    it.only("connect as enseignant succcessfully", () => {
+    it("connect as enseignant succcessfully", () => {
       window.localStorage.removeItem("token")
       cy.visit("/signin")
       cy.getByData("phone").should("exist")
@@ -51,7 +55,7 @@ describe("login page", () => {
     
     }) 
 
-    it.only("connect as enseignant directly if I have a token of enseignant", () => {
+    it("connect as enseignant directly if I have a token of enseignant", () => {
       cy.loginasenseignant()
       cy.visit("/enseignant")
       cy.location("pathname").should("eq", "/enseignant")

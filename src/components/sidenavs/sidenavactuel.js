@@ -37,9 +37,9 @@ setCount(result.length);
               }
             });
             socket.on('notification',  (notificationdata) => {
+              toast(notificationdata.title);
             console.log("noo");
               const result =   api.getNotification(user._id);
-              toast(notificationdata.title);
 
              
 setCount(result.length);
@@ -67,6 +67,8 @@ const result = await  api.updateNotif(user._id);
       }}
       style={{ backgroundColor: "#3bb19b" }}
     >
+      <ToastContainer/>
+
       <SideNav.Toggle />
 
       <SideNav.Nav defaultSelected="home">
@@ -139,7 +141,6 @@ const result = await  api.updateNotif(user._id);
 </IconButton>
       </div>
       </SideNav.Nav>
-
     </SideNav>
   );
 }
