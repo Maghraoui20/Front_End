@@ -46,6 +46,13 @@ function MySideNav() {
           </NavIcon>
           <NavText>mes pfe</NavText>
         </NavItem>
+
+        <NavItem eventKey="liste-mes-pfa">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Mes PFAs</NavText>
+        </NavItem>
         <NavItem eventKey="signin">
         <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />

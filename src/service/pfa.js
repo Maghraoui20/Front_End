@@ -55,6 +55,11 @@ export const getStudentByPfaId = async (id) => {
   return result.data;
 };
 
+export const getTeacherByPfaId = async (id) => {
+  const result = await Axios.get("http://localhost:5000/pfa/getteacherbypfaid/" + id);
+  return result.data;
+};
+
 export const getAllPfa = async () => {
   const result = await Axios.get("http://localhost:5000/pfa/getAllPfa");
   return result.data;
@@ -67,5 +72,11 @@ export const getAllTechnologies = async () => {
 
   export const getPfaWithoutEtudiant = async () => {
     const result = await Axios.get("http://localhost:5000/pfa/getpfawithoutetudiant");
+    return result.data;
+  };
+
+
+  export const getPfaByEnseignant = async (id) => {
+    const result = await Axios.get("http://localhost:5000/pfa/getpfabyenseignant/"+id);
     return result.data;
   };

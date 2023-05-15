@@ -19,12 +19,6 @@ function MySideNav() {
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
-      <NavItem eventKey="readall-pfa">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Gestion PFAs</NavText>
-        </NavItem>
         <NavItem eventKey="change-password">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />

@@ -60,6 +60,8 @@ import AllNotification from "./components/espaceEtudiant/allnotification";
 
 import { ToastContainer } from "react-toastify";
 import PfaEtudiant from "./components/espaceEtudiant/monpfa";
+import ReadPFA from "./components/pfa/listePfaAdmin";
+import MesPFA from "./components/enseignant/mesPfa";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -125,6 +127,7 @@ function App() {
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
+            <Route path="/readall-pfa-admin" element={<ReadPFA/>} />
 
             <Route path="/create-pfa" element={<CreatePfa />} />
             <Route path="/update-pfa/:id" element={<UpdatePfa />} />
@@ -147,6 +150,7 @@ function App() {
             <Route path="/mes-stage-été" element={<MesStageEte />} />
             <Route path="/mes-stage-pfe" element={<MesStagePFE />} />
             <Route path="/liste-mes-pfe" element={<MesPFE />} />
+            <Route path="/liste-mes-pfa" element={<MesPFA />} />
 
             <Route path="/liste-pfe" element={<PfeEnseignant />} />
             <Route path="/statistics-pfe" element={<Statistique />} />
