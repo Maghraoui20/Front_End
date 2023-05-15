@@ -5,7 +5,7 @@ import "./App.css";
 import React, { Component }  from 'react';
 import { createContext, useEffect, useState } from "react";
 import ReactSwitch from "react-switch";
-
+import UploadFileCSV from './components/crud_etudiant/import_file_csv/UploadFileCSV'
 // import UpdateProfileEtudiant from "./components/update_etudiant/update_etudiant";
 
 import {
@@ -150,6 +150,8 @@ function App() {
             <Route path="/statistics-pfe" element={<Statistique />} />
             <Route path="anneeuniver" element={<AnneeUniv />} />
             <Route path="/allnotification" element={<AllNotification />} />
+
+            <Route path="/uploadfilecsv-etudiant" element ={<UploadFileCSV/>} />
        
         </Routes>
       </Router>
