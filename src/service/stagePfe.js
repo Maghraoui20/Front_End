@@ -23,7 +23,7 @@ export const getAllPfe = async () => {
 
 export const getPfeByEnseignant = async (id) => {
   const result = await Axios.get("http://localhost:5000/pfe/"+id);
-  return result.data;;
+  return result.data;
 };
 
 export const getStagePfeByID = async (id) => {

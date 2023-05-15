@@ -30,12 +30,6 @@ function MySideNav() {
           </NavIcon>
           <NavText>Modifier profil</NavText>
         </NavItem>
-        <NavItem eventKey="ajout-pfa">
-          <NavIcon>
-            <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Ajouter sujet PFA</NavText>
-        </NavItem>
         <NavItem eventKey="ajout-pfe">
           <NavIcon>
             <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />

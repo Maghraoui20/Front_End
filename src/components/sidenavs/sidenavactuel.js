@@ -1,14 +1,14 @@
-import React, { Component }  from 'react';
+import React, { Component } from "react";
 import { MailLockOutlined } from "@mui/icons-material";
 import { Badge, Button, IconButton } from "@mui/material";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { ToastContainer, toast } from "react-toastify";
-import io from 'socket.io-client';
-import * as api from '../../service/notification';
+import io from "socket.io-client";
+import * as api from "../../service/notification";
 function MySideNav() {
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -19,8 +19,7 @@ function MySideNav() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const statutEtudiant = user?.etat;
   let socket = null;
-const [count, setCount]= useState();
-
+  const [count, setCount] = useState();
 
   useEffect(() => {
     async function fetchData() {
@@ -48,17 +47,19 @@ setCount(result.length);
             });
           }
 
+            setCount(result.length);
+          });
+        }
       } catch (e) {
         console.log(e);
       }
     }
     fetchData();
   }, []);
-const handleClick=async ()=>{
-navigate("/allnotification")
-const result = await  api.updateNotif(user._id);
-
-}
+  const handleClick = async () => {
+    navigate("/allnotification");
+    const result = await api.updateNotif(user._id);
+  };
   return (
     <SideNav
       onSelect={(selected) => {
@@ -84,6 +85,12 @@ const result = await  api.updateNotif(user._id);
           </NavIcon>
           <NavText>Modifier profil</NavText>
         </NavItem>
+        <NavItem eventKey="choisir-pfa">
+            <NavIcon>
+              <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+            </NavIcon>
+            <NavText>Choisir Sujet PFA</NavText>
+          </NavItem>
         <NavItem eventKey="update-cv/:id">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
