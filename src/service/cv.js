@@ -9,6 +9,11 @@ export const updateCv = async (CvData, id) => {
 };
 
 export const getCvbyid = async (id) => {
-  const result = await Axios.get("http://localhost:5000/cv/getbyid/" + id);
-  return result.data;
-};
+    const result = await Axios.get("http://localhost:5000/cv/getbyid/" + id);
+    return result.data;
+  };
+
+export const getCvbyiduser = async (id) => {
+    const result = await Axios.get("http://localhost:5000/cv/getbyiduser/" + id);
+    return result.data;
+  };

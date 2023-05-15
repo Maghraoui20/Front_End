@@ -42,7 +42,7 @@ function MySideNav() {
           </NavIcon>
           <NavText>Ajouter stage</NavText>
         </NavItem>
-        <NavItem eventKey="update-cv/:id">
+        <NavItem eventKey="update-cv">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
