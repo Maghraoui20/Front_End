@@ -90,20 +90,30 @@ const result = await  api.updateNotif(user._id);
             </NavIcon>
             <NavText>Choisir Sujet PFA</NavText>
           </NavItem>
+          {statutEtudiant == "actuel" ? (
         <NavItem eventKey="update-cv">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Modifier CV</NavText>
         </NavItem>
-      
-          <NavItem eventKey="inserer-stage-ete" data-test="stage-ete">
+        ) : null}
+        {statutEtudiant == "alumni" ? (
+           <NavItem eventKey="update-cv-alumni">
+           <NavIcon>
+             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+           </NavIcon>
+           <NavText>Modifier CV</NavText>
+         </NavItem>
+        ) : null}
+        {statutEtudiant == "actuel" ? (
+          <NavItem eventKey="insérer-stage-été">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
             <NavText>Stage été</NavText>
           </NavItem>
-     
+     ) : null}
           <NavItem eventKey="mes-stage-ete">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />

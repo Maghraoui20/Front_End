@@ -61,6 +61,7 @@ import PfaEtudiant from "./components/espaceEtudiant/monpfa";
 import ReadPFA from "./components/pfa/listePfaAdmin";
 import MesPFA from "./components/enseignant/mesPfa";
 import ValiderPfa from "./components/pfa/validerPfa";
+import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -143,6 +144,7 @@ function App() {
             <Route path="/inserer-stage-pfe" element={<CreateStagePfe />} />
 
             <Route path="/update-cv" element={<UpdateCV />} />
+            <Route path="/update-cv-alumni" element={<UpdateCvAlumni />} />
             <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
             <Route path="/update-stageete/:id" element={<UpdateStage />} />
             <Route path="/choisir-pfa" element={< PfaEtudiant />} />
