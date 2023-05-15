@@ -5,24 +5,31 @@ import * as api from "../../service/pfa";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button, InputLabel, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import MySideNav from "../sidenavs/sidenav";
+import MySideNav from "../enseignant/sidenavEnseignant";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import Popover from "@mui/material/Popover";
+import SearchPfa from "./searchPfa";
 
-function PfaEtudiant() {
+function ValiderPfa() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  const idu = user?._id;
-  const iduser = idu;
+  const [filteredRows, setFilteredRows] = useState([]);
+  const [filter, setFilter] = useState({
+    technology: "",
+    teacherLastName: "",
+    teacherFirstName: "",
+  });
   const navigate = useNavigate();
-  const [PfaData, setPfaData] = useState({ id_etudiant:iduser });
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+  };
 
   const handleSubmit =  (event) => {
 
     try {
-       api.updatePfaIdEtudiant(PfaData, idSelected);
-       navigate("/choisir-pfa");
+       //api.getAllPfa();
+      // navigate("/choisir-pfa");
   
     } catch (error) {
       console.log(error);
@@ -33,15 +40,24 @@ function PfaEtudiant() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await api.getPfaWithoutEtudiant();
+        const result = await api.getAllPfa();
         const updatedRows = await Promise.all(
           result.map(async (pfa) => {
             const technologies = await api.getTechnologiesByPfaId(pfa._id);
             const technologyTitles = technologies.map((tech) => tech.title);
-            return { ...pfa, technologyTitles };
+            const teacher = await api.getTeacherByPfaId(pfa._id);
+            const teacherNames = teacher.map(
+              (std) => `${std.firstname} ${std.lastname}`
+            );
+            const student = await api.getStudentByPfaId(pfa._id);
+            const studentNames = student.map(
+              (std) => `${std.firstname} ${std.lastname}`
+            );
+            return { ...pfa, technologyTitles, teacherNames, studentNames };
           })
         );
         setRows(updatedRows);
+        setFilteredRows(updatedRows);
       } catch (e) {
         console.log(e);
       }
@@ -67,8 +83,18 @@ function PfaEtudiant() {
       width: 200,
     },
     {
-      field: "choisir",
-      headerName: "Choisir",
+        field: "teacherNames",
+        headerName: "Enseignant",
+        width: 200,
+      },
+      {
+        field: "studentNames",
+        headerName: "Etudiant",
+        width: 200,
+      },
+    {
+      field: "valider",
+      headerName: "Valider",
       width: 130,
       renderCell: (params) => {
         return (
@@ -83,7 +109,7 @@ function PfaEtudiant() {
                     ":hover": { backgroundColor: "#FC4343" },
                   }}
                 >
-                  Choisir
+                  Valider
                 </Button>
                 <Popover {...bindPopover(popupState)}>
                   <Box
@@ -94,7 +120,7 @@ function PfaEtudiant() {
                       alignItems: "center",
                     }}
                   >
-                    <Typography>Voulez vous choisir ce sujet de PFA</Typography>
+                    <Typography>Voulez vous valider ce sujet de PFA</Typography>
                     <div className="buttons">
                       <Button
                         variant="contained"
@@ -135,7 +161,8 @@ function PfaEtudiant() {
 
   return (
     <Container maxWidth="md">
-<MySideNav/>
+      <MySideNav />
+
       <Box
         sx={{
           marginTop: 10,
@@ -144,6 +171,7 @@ function PfaEtudiant() {
           alignItems: "center",
         }}
       >
+        <SearchPfa onFilterChange={handleFilterChange} />
         <div style={{ height: 400 }}>
           <DataGrid
             rows={rows}
@@ -168,5 +196,4 @@ function PfaEtudiant() {
     </Container>
   );
 }
-
-export default PfaEtudiant;
+export default ValiderPfa;

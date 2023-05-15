@@ -62,6 +62,7 @@ import { ToastContainer } from "react-toastify";
 import PfaEtudiant from "./components/espaceEtudiant/monpfa";
 import ReadPFA from "./components/pfa/listePfaAdmin";
 import MesPFA from "./components/enseignant/mesPfa";
+import ValiderPfa from "./components/pfa/validerPfa";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -128,6 +129,7 @@ function App() {
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
             <Route path="/readall-pfa-admin" element={<ReadPFA/>} />
+            <Route path="/valider-pfa" element={< ValiderPfa/>} />
 
             <Route path="/create-pfa" element={<CreatePfa />} />
             <Route path="/update-pfa/:id" element={<UpdatePfa />} />

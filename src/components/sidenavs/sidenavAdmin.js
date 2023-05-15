@@ -45,6 +45,7 @@ function MySideNav() {
           </NavIcon>
           <NavText>Gestion evenement</NavText>
         </NavItem>
+
         <NavItem eventKey="change-password">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />

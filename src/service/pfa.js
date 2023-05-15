@@ -40,6 +40,7 @@ export const deletePfa = async (id) => {
   );
   return result.data;
 };
+
 export const getPfabyid = async (id) => {
   const result = await Axios.get("http://localhost:5000/pfa/getpfabyid/" + id);
   return result.data;
@@ -67,6 +68,11 @@ export const getAllPfa = async () => {
 
 export const getAllTechnologies = async () => {
     const result = await Axios.get("http://localhost:5000/technologie/getAllTechnologies");
+    return result.data;
+  };
+
+  export const getAllTeachers = async () => {
+    const result = await Axios.get("http://localhost:5000/pfa/getallteachers");
     return result.data;
   };
 
