@@ -25,8 +25,7 @@ function MySideNav() {
           </NavIcon>
           <NavText>Home</NavText>
         </NavItem>
-        <NavItem eventKey="readall-etudiant"  data-test="gestion-etudiant"
->
+        <NavItem eventKey="readall-etudiant" data-test="gestion-etudiant">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
@@ -40,7 +39,7 @@ function MySideNav() {
           <NavText>Gestion Enseignant</NavText>
         </NavItem>
 
-        <NavItem eventKey="readall-evenement" data-test='readall-evenement'>
+        <NavItem eventKey="readall-evenement" data-test="readall-evenement">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
@@ -53,26 +52,20 @@ function MySideNav() {
           </NavIcon>
           <NavText>Change mon Mot de passe</NavText>
         </NavItem>
-
-<<<<<<< HEAD
-        <NavItem eventKey="readall-pfe" data-test="readall-pfe">
-=======
         <NavItem eventKey="readall-pfa-admin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Liste des pfa</NavText>
         </NavItem>
-
         <NavItem eventKey="readall-pfe">
->>>>>>> origin/crud_pfas
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Liste des pfe</NavText>
         </NavItem>
 
-        <NavItem eventKey="statistics-pfe" data-test="readall-statistics" >
+        <NavItem eventKey="statistics-pfe" data-test="readall-statistics">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
