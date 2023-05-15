@@ -19,7 +19,8 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 //import { importExcel } from "../../../service/etudiant.js";
 
 
-import Papa from 'papaparse'; // Import PapaParse library for CSV parsing
+//import papaparse from 'papaparse'; // Import PapaParse library for CSV parsing
+
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'; // Import components for the modal
 
 
