@@ -12,6 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from "react-router-dom";
 //import "./style.css";
 import MySideNav from "../../enseignant/sidenavEnseignant";
@@ -61,7 +62,7 @@ function ReadPfa() {
     {
       field: "nbre_etudiant",
       headerName: "Nombre d'étudiants",
-      width: 200,
+      width: 100,
     },
     {
       field: "description",
@@ -78,6 +79,25 @@ function ReadPfa() {
       headerName: 'Etudiant',
       width: 200,
     },  
+    {
+      field: "cv",
+      headerName: "Voir CV",
+      width: 130,
+      renderCell: (params) => {
+        return (
+          <Button
+            variant="contained"
+            href={`/cv-view`}
+            sx={{
+              backgroundColor: "#2979ff",
+              ":hover": { backgroundColor: "#2979ff" },
+            }}
+          >
+            <PersonIcon />
+          </Button>
+        );
+      },
+    },
     {
       field: "modifier",
       headerName: "Modifier",
