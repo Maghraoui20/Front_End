@@ -11,6 +11,7 @@ import "./style.css";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
+import PersonIcon from '@mui/icons-material/Person';
 
 import MySideNav from "../../sidenavs/sidenavAdmin.js";
 
@@ -54,6 +55,25 @@ function ReadEtudiant() {
     { field: "niveau", headerName: "Niveau ", width: 130 },
     { field: "classe", headerName: "Classe ", width: 130 },
     { field: "etat", headerName: "etat ", width: 130 },
+    {
+      field: "cv",
+      headerName: "Voir Detail ",
+      width: 130,
+      renderCell: (params) => {
+        return (
+          <Button
+            variant="contained"
+            href={`/detail_etudiant/${idSelected}`}
+            sx={{
+              backgroundColor: "#2979ff",
+              ":hover": { backgroundColor: "#2979ff" },
+            }}
+          >
+            <PersonIcon />
+          </Button>
+        );
+      },
+    },
     {
       field: "modifer",
       headerName: "Modifier",
