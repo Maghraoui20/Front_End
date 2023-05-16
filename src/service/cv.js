@@ -17,3 +17,8 @@ export const getCvbyiduser = async (id) => {
     const result = await Axios.get("http://localhost:5000/cv/getbyiduser/" + id);
     return result.data;
   };
+
+  export const getCvByUser = async () => {
+    const result = await Axios.get("http://localhost:5000/cv/getbyuser");
+    return result.data;
+  };

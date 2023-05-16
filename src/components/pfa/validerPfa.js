@@ -8,27 +8,19 @@ import { useNavigate } from "react-router-dom";
 import MySideNav from "../enseignant/sidenavEnseignant";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import Popover from "@mui/material/Popover";
-import SearchPfa from "./searchPfa";
 
 function ValiderPfa() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
-  const [filteredRows, setFilteredRows] = useState([]);
-  const [filter, setFilter] = useState({
-    technology: "",
-    teacherLastName: "",
-    teacherFirstName: "",
-  });
+  const [PfaData, setPfaData] = useState({ isValidated:"" });
+ 
   const navigate = useNavigate();
 
-  const handleFilterChange = (newFilter) => {
-    setFilter(newFilter);
-  };
 
   const handleSubmit =  (event) => {
 
     try {
-       //api.getAllPfa();
+       api.updatePfaIsValidated(PfaData, idSelected);
       // navigate("/choisir-pfa");
   
     } catch (error) {
@@ -40,7 +32,7 @@ function ValiderPfa() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await api.getAllPfa();
+        const result = await api.getPfaNotValidated();
         const updatedRows = await Promise.all(
           result.map(async (pfa) => {
             const technologies = await api.getTechnologiesByPfaId(pfa._id);
@@ -53,11 +45,10 @@ function ValiderPfa() {
             const studentNames = student.map(
               (std) => `${std.firstname} ${std.lastname}`
             );
-            return { ...pfa, technologyTitles, teacherNames, studentNames };
+            return { ...pfa, technologyTitles, teacherNames, studentNames};
           })
         );
         setRows(updatedRows);
-        setFilteredRows(updatedRows);
       } catch (e) {
         console.log(e);
       }
@@ -171,7 +162,6 @@ function ValiderPfa() {
           alignItems: "center",
         }}
       >
-        <SearchPfa onFilterChange={handleFilterChange} />
         <div style={{ height: 400 }}>
           <DataGrid
             rows={rows}
