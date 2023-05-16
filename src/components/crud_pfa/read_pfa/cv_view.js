@@ -123,23 +123,11 @@ import {
       );
     });
   
-   /* const handleSubmit = async (event) => {
-      event.preventDefault();
-  
-      try {
-        const updateCv = await api.updateCv(CvData, iduser);
-        console.log(updateCv, "update");
-        window.location.reload(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };*/
-  
     useEffect(() => {
       async function fetchData() {
         try {
           //console.log(iduser, "iduser");
-          const result = await api.getCvbyiduser();
+          const result = await api.getCvByUser();
           setCvData(result);
         } catch (e) {
           console.log(e);

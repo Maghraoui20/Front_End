@@ -18,7 +18,13 @@ export const getCvbyiduser = async (id) => {
     return result.data;
   };
 
-  export const getCvByUser = async () => {
-    const result = await Axios.get("http://localhost:5000/cv/getbyuser");
+  export const getCvByUser = async (firstname, lastname) => {
+    const result = await Axios.get("http://localhost:5000/cv/getbyuser", {
+      params: {
+        firstname,
+        lastname,
+      },
+    });
     return result.data;
   };
+  
