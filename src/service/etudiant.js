@@ -65,3 +65,8 @@ export const addDemande = async (data) => {
   );
   return result;
 };
+export const getPublicCompteEtudiant = async () => {
+  const result = await Axios.get(
+    "http://localhost:5000/users/public-users" );
+    return result.data;
+  };

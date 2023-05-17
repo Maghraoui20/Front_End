@@ -63,6 +63,7 @@ import MesPFA from "./components/enseignant/mesPfa";
 import ValiderPfa from "./components/pfa/validerPfa";
 import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 import CvView from "./components/crud_pfa/read_pfa/cv_view";
+import CompteEtudiantPublic from "./components/compte_etudiant_public/CompteEtudiantPublic";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -163,6 +164,7 @@ function App() {
 
           <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
           
+          <Route path="/comptes-publics" element={<CompteEtudiantPublic />} />
 
           <Route path="/liste-pfe" element={<PfeEnseignant />} />
           <Route path="/statistics-pfe" element={<Statistique />} />
