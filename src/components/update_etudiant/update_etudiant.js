@@ -237,7 +237,7 @@ function UpdateEtudiant() {
     <Select
       labelId="visibility"
       id="visibility"
-      value={visibility}
+      value={EtudiantData.visibility}
       label="Visibility"
       onChange={(e) => setVisibility(e.target.value)}
     >
