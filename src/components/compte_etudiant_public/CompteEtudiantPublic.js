@@ -6,7 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 
 import { Box, Button } from "@mui/material";
 
-
+import "./style.css";
 
 import { useNavigate } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
@@ -38,7 +38,7 @@ import PersonIcon from '@mui/icons-material/Person';
           return (
             <Button
               variant="contained"
-              href={`/detail_etudiant/${idSelected}`}
+              href={`/detail_etudiant_public_compte/${idSelected}`}
               sx={{
                 backgroundColor: "#2979ff",
                 ":hover": { backgroundColor: "#2979ff" },
@@ -74,9 +74,16 @@ import PersonIcon from '@mui/icons-material/Person';
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+           
           }}
         >
+        
           <div style={{ height: 400 }}>
+          <div>
+            <h2>
+              <b>Liste des comptes publics</b>
+            </h2>
+          </div>
            
   
             <DataGrid
@@ -97,6 +104,10 @@ import PersonIcon from '@mui/icons-material/Person';
               onRowSelectionModelChange={(newRowSelectionModel) => {
                 setIdSelected(newRowSelectionModel.toString());
               }}
+
+              autoHeight  // Add this line to enable auto-height feature
+              className="custom-data-grid" // Add a custom class name for further styling
+            
             />
           </div>
         </Box>
