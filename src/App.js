@@ -63,6 +63,7 @@ import MesPFA from "./components/enseignant/mesPfa";
 import ValiderPfa from "./components/pfa/validerPfa";
 import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 import CvView from "./components/crud_pfa/read_pfa/cv_view";
+import CalendarYear from "./components/espaceEtudiant/Calendar";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -168,6 +169,8 @@ function App() {
           <Route path="/statistics-pfe" element={<Statistique />} />
           <Route path="anneeuniver" element={<AnneeUniv />} />
           <Route path="/allnotification" element={<AllNotification />} />
+
+          <Route path="/calendar" element={<CalendarYear />} />
         </Routes>
       </Router>
       <ToastContainer />
