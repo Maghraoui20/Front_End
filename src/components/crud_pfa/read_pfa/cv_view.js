@@ -16,6 +16,7 @@ import {
   import React, { useEffect, useState } from "react";
   import Box from "@mui/material/Box";
   import * as api from "../../../service/cv";
+  import { getStudentIdOfPFA } from "../../../service/pfa";
   import { useParams } from "react-router-dom";
   import moment from "moment";
   import MySideNav from "../../enseignant/sidenavEnseignant";
@@ -28,9 +29,20 @@ import {
   
   function CvView() {
     const params = useParams();
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    const idu = user?._id;
-    const iduser = idu;
+    const id = params.id;
+   // const [loading, setLoading] = useState(true);
+
+   const [EtudiantData, setEtudiantData] = useState({
+    firstname: "",
+    lastname: "",
+    niveau: "",
+    classe: "",
+    Birth_date: "",
+    etat: "",
+    email: "",
+    phone: "",
+  });
+
     const [CvData, setCvData] = useState({
       firstname: "",
       lastname: "",
@@ -56,85 +68,88 @@ import {
           type: "",
         },
       ],
-      id_user:iduser,
     });
   
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const toggleDarkMode = () => {
-      setIsDarkMode((prevMode) => !prevMode);
-    };
-  
-    const CustomSwitch = withStyles({
-      root: {
-        width: 64,
-        height: 36,
-        padding: 0,
-        display: "flex",
-        alignItems: "center",
-      },
-      switchBase: {
-        padding: 1,
-        "&$checked": {
-          transform: "translateX(28px)",
-          color: "#fff",
-          "& + $track": {
-            backgroundColor: "#52d869",
-          },
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
+  const CustomSwitch = withStyles({
+    root: {
+      width: 64,
+      height: 36,
+      padding: 0,
+      display: "flex",
+      alignItems: "center",
+    },
+    switchBase: {
+      padding: 1,
+      "&$checked": {
+        transform: "translateX(28px)",
+        color: "#fff",
+        "& + $track": {
+          backgroundColor: "#52d869",
         },
       },
-      thumb: {
-        width: 34,
-        height: 34,
-        backgroundColor: "#f5f5f5",
-        borderRadius: "50%",
-        transition: "transform 0.3s cubic-bezier(.78,.14,.15,.86)",
-      },
-      track: {
-        width: 64,
-        height: 36,
-        borderRadius: 36 / 2,
-        backgroundColor: "#bdbdbd",
-        opacity: 1,
-        transition: "background-color 0.3s cubic-bezier(.78,.14,.15,.86)",
-      },
-      checked: {},
-      moonIcon: {
-        marginRight: "-24px",
-      },
-      sunIcon: {
-        marginLeft: "-24px",
-      },
-    })(({ classes, ...props }) => {
-      return (
-        <label htmlFor='darkmode-toggle' className={classes.root}>
-          <input
-            {...props}
-            type='checkbox'
-            id='darkmode-toggle'
-            checked={isDarkMode}
-            onChange={toggleDarkMode}
-            className='dark_mode_input'
-          />
-          <span className={`${classes.thumb} ${isDarkMode ? classes.moonIcon : classes.sunIcon}`}>
-            {isDarkMode ? <Moon color='#fff' /> : <Sun color='#fdd835' />}
-          </span>
-          <span className='dark_mode_label'></span>
-        </label>
-      );
-    });
-  
-    useEffect(() => {
-      async function fetchData() {
-        try {
-          //console.log(iduser, "iduser");
-          const result = await api.getCvByUser();
-          setCvData(result);
-        } catch (e) {
-          console.log(e);
-        }
+    },
+    thumb: {
+      width: 34,
+      height: 34,
+      backgroundColor: "#f5f5f5",
+      borderRadius: "50%",
+      transition: "transform 0.3s cubic-bezier(.78,.14,.15,.86)",
+    },
+    track: {
+      width: 64,
+      height: 36,
+      borderRadius: 36 / 2,
+      backgroundColor: "#bdbdbd",
+      opacity: 1,
+      transition: "background-color 0.3s cubic-bezier(.78,.14,.15,.86)",
+    },
+    checked: {},
+    moonIcon: {
+      marginRight: "-24px",
+    },
+    sunIcon: {
+      marginLeft: "-24px",
+    },
+  })(({ classes, ...props }) => {
+    return (
+      <label htmlFor='darkmode-toggle' className={classes.root}>
+        <input
+          {...props}
+          type='checkbox'
+          id='darkmode-toggle'
+          checked={isDarkMode}
+          onChange={toggleDarkMode}
+          className='dark_mode_input'
+        />
+        <span className={`${classes.thumb} ${isDarkMode ? classes.moonIcon : classes.sunIcon}`}>
+          {isDarkMode ? <Moon color='#fff' /> : <Sun color='#fdd835' />}
+        </span>
+        <span className='dark_mode_label'></span>
+      </label>
+    );
+  });
+
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await getStudentIdOfPFA(id);
+        const etudiantId = result.studentId;
+        setEtudiantData(result);
+        const result1 = await api.getCvbyiduser(etudiantId);
+        setCvData(result1);
+      } catch (error) {
+        console.log(error);
       }
-      fetchData();
-    }, []);
+    }
+  
+    fetchData();
+  }, [id]);
   
     return (
       <Container>

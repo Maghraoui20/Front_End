@@ -14,13 +14,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
-//import "./style.css";
+//import { getCvbyiduser } from "../../../service/cv.js";
 import MySideNav from "../../enseignant/sidenavEnseignant";
 
 function ReadPfa() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
-  const [cvData, setCvData] = useState();
 
   const handleDelete = async () => {
     try {
@@ -103,9 +102,8 @@ function ReadPfa() {
         const studentName = params.value;
         return (
           <Button
-            href={`/cv-view`}
             variant="contained"
-            onClick={() => handleCVView(studentName)}
+            href={`/cv-view/${idSelected}`}
             sx={{
               backgroundColor: "#2979ff",
               ":hover": { backgroundColor: "#2979ff" },
