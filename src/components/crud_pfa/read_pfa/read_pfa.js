@@ -14,12 +14,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from "react-router-dom";
-//import "./style.css";
+//import { getCvbyiduser } from "../../../service/cv.js";
 import MySideNav from "../../enseignant/sidenavEnseignant";
 
 function ReadPfa() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
+  const [idStudent, setIdStudent] = useState();
 
   const handleDelete = async () => {
     try {
@@ -41,6 +42,8 @@ function ReadPfa() {
       try {
         const result = await api.getAllPfa();
         const updatedRows = await Promise.all(result.map(async pfa => {
+          const result2 = await api.getStudentIdOfPFA(pfa._id);
+       console.log(result2);
           const technologies = await api.getTechnologiesByPfaId(pfa._id);
           const technologyTitles = technologies.map(tech => tech.title);
           const student = await api.getStudentByPfaId(pfa._id);
@@ -87,7 +90,7 @@ function ReadPfa() {
         return (
           <Button
             variant="contained"
-            href={`/cv-view`}
+            href={`/cv-view/${idSelected}`}
             sx={{
               backgroundColor: "#2979ff",
               ":hover": { backgroundColor: "#2979ff" },

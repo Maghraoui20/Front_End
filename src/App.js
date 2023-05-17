@@ -139,7 +139,7 @@ function App() {
             <Route path="/create-pfa" element={<CreatePfa />} />
             <Route path="/update-pfa/:id" element={<UpdatePfa />} />
             <Route path="/readall-pfa" element={<ReadPfa />} />
-            <Route path="/cv-view" element={<CvView/>} />
+            <Route path="/cv-view/:id" element={<CvView/>} />
 
           <Route path="/create-pfa" element={<CreatePfa />} />
           <Route path="/update-pfa/:id" element={<UpdatePfa />} />
