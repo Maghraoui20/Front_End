@@ -65,3 +65,9 @@ export const addDemande = async (data) => {
   );
   return result;
 };
+
+export const importExcel = async (data) => {
+  console.log(data, "file csv");
+  const result = await Axios.post("http://localhost:5000/users/uploadFile", data);
+  return result.data;
+};

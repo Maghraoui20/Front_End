@@ -168,10 +168,15 @@ function App() {
           <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
           
 
-          <Route path="/liste-pfe" element={<PfeEnseignant />} />
-          <Route path="/statistics-pfe" element={<Statistique />} />
-          <Route path="anneeuniver" element={<AnneeUniv />} />
-          <Route path="/allnotification" element={<AllNotification />} />
+
+
+            <Route path="/liste-pfe" element={<PfeEnseignant />} />
+            <Route path="/statistics-pfe" element={<Statistique />} />
+            <Route path="anneeuniver" element={<AnneeUniv />} />
+            <Route path="/allnotification" element={<AllNotification />} />
+
+            
+       
         </Routes>
       </Router>
       <ToastContainer />
