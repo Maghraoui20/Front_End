@@ -71,6 +71,7 @@ import CvEtudiant from "./components/enseignant/cvEtudiant";
 import DetailEtudiant from "./components/crud_etudiant/Detail_etudiant/Detail_etudiant";
 import CalendarYear from "./components/espaceEtudiant/Calendar";
 import CompteEtudiantPublic from "./components/compte_etudiant_public/CompteEtudiantPublic";
+import DetailEtudiantPublicCompte from "./components/compte_etudiant_public/DetailEtudiantPublicCompte";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -191,6 +192,7 @@ function App() {
 
 
           <Route path="/detail_etudiant/:id" element={<DetailEtudiant />} />
+          <Route path="/detail_etudiant_public_compte/:id" element={<DetailEtudiantPublicCompte />} />
           <Route path="/calendar" element={<CalendarYear />} />
         </Routes>
       </Router>
