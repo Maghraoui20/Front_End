@@ -58,13 +58,11 @@ function ReadEtudiant() {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileUpload = (event) => {
-    //setSelectedFile(event.target.files[0]);
+  
 
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
-  //  const fileURL = URL.createObjectURL(selectedFile);
-   // console.log(fileURL , 'url');
-
+ 
   };
 
   useEffect(() => {}, []);

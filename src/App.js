@@ -72,6 +72,8 @@ import DetailEtudiant from "./components/crud_etudiant/Detail_etudiant/Detail_et
 import CalendarYear from "./components/espaceEtudiant/Calendar";
 import CompteEtudiantPublic from "./components/compte_etudiant_public/CompteEtudiantPublic";
 import DetailEtudiantPublicCompte from "./components/compte_etudiant_public/DetailEtudiantPublicCompte";
+import GererDoitAccess from "./components/administratif/gererdroitacces";
+import CreateAdministratif from "./components/administratif/create_administratif";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -194,6 +196,12 @@ function App() {
           <Route path="/detail_etudiant/:id" element={<DetailEtudiant />} />
           <Route path="/detail_etudiant_public_compte/:id" element={<DetailEtudiantPublicCompte />} />
           <Route path="/calendar" element={<CalendarYear />} />
+
+          <Route path="/gerer_droit_acces" element={<GererDoitAccess />} />
+
+          <Route path="/create-administratif" element={<CreateAdministratif />} />
+
+
         </Routes>
       </Router>
       <ToastContainer />
