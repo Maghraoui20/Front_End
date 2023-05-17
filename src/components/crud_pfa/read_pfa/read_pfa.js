@@ -8,13 +8,13 @@ import { Box, Button, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import IconButton from "@mui/material/IconButton";
-
+import { getCvByUser } from "../../../service/cv.js";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
-//import "./style.css";
+//import { getCvbyiduser } from "../../../service/cv.js";
 import MySideNav from "../../enseignant/sidenavEnseignant";
 
 function ReadPfa() {
@@ -40,13 +40,17 @@ function ReadPfa() {
     async function fetchData() {
       try {
         const result = await api.getAllPfa();
-        const updatedRows = await Promise.all(result.map(async pfa => {
-          const technologies = await api.getTechnologiesByPfaId(pfa._id);
-          const technologyTitles = technologies.map(tech => tech.title);
-          const student = await api.getStudentByPfaId(pfa._id);
-          const studentNames = student.map(std => `${std.firstname} ${std.lastname}`);
-          return { ...pfa, technologyTitles, studentNames };
-        }));
+        const updatedRows = await Promise.all(
+          result.map(async (pfa) => {
+            const technologies = await api.getTechnologiesByPfaId(pfa._id);
+            const technologyTitles = technologies.map((tech) => tech.title);
+            const student = await api.getStudentByPfaId(pfa._id);
+            const studentNames = student.map(
+              (std) => `${std.firstname} ${std.lastname}`
+            );
+            return { ...pfa, technologyTitles, studentNames };
+          })
+        );
         setRows(updatedRows);
       } catch (e) {
         console.log(e);
@@ -54,7 +58,18 @@ function ReadPfa() {
     }
     fetchData();
   }, []);
-  
+
+  const handleCVView = async (studentName) => {
+    const [firstname, lastname] = studentName.split(" ");
+    try {
+      const cvData = await getCvByUser(firstname, lastname);
+      // Navigate to the CV view page passing the student's CV data
+      navigate(`/cv-view`, { state: { cvData } });
+    } catch (error) {
+      console.error(error);
+      // Handle error
+    }
+  };
   
 
   const columns = [
@@ -73,21 +88,22 @@ function ReadPfa() {
       field: "technologyTitles",
       headerName: "Technologies",
       width: 200,
-    },  
+    },
     {
-      field: 'studentNames',
-      headerName: 'Etudiant',
+      field: "studentNames",
+      headerName: "Etudiant",
       width: 200,
-    },  
+    },
     {
       field: "cv",
       headerName: "Voir CV",
       width: 130,
       renderCell: (params) => {
+        const studentName = params.value;
         return (
           <Button
             variant="contained"
-            href={`/cv-view`}
+            href={`/cv-view/${idSelected}`}
             sx={{
               backgroundColor: "#2979ff",
               ":hover": { backgroundColor: "#2979ff" },
@@ -98,6 +114,7 @@ function ReadPfa() {
         );
       },
     },
+
     {
       field: "modifier",
       headerName: "Modifier",
