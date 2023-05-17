@@ -63,4 +63,7 @@ export const updateStage = async (StagePFEData, id) => {
   console.log(result,"res");
   return result.data;
 };
-
+export const getPfebyidEtudiant= async (id) => {
+  const result = await Axios.get("http://localhost:5000/pfe/getpfebyidetudiant/"+id);
+  return result.data;
+};
