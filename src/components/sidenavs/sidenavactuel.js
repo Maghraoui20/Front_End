@@ -136,6 +136,13 @@ const result = await  api.updateNotif(user._id);
             </NavIcon>
             <NavText>Mes Stage de pfe</NavText>
           </NavItem>
+
+          <NavItem eventKey="comptes-publics">
+            <NavIcon>
+              <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+            </NavIcon>
+            <NavText>Les comptes publics</NavText>
+          </NavItem>
     
         <NavItem eventKey="signin">
           <NavIcon>
