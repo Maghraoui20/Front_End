@@ -31,9 +31,8 @@ function UpdateEtudiant() {
 
   const [niveau, setNiveau] = React.useState("");
   const [etat, setEtat] = React.useState("");
-
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  setUser(user);
+  
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const idu = user?._id;
   const iduser = idu;
 

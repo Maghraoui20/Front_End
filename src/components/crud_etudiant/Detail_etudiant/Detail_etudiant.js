@@ -100,11 +100,15 @@ import { getPfebyidEtudiant } from "../../../service/stagePfe";
           try {
             const result = await api.getEtudiantbyid(iduser); 
             setEtudiantData(result);
-            const result1 = await getCvbyiduser(iduser); // Use the getCvbyiduser function from cv.service.js
+    
+
+            const result1 = await getCvbyiduser(iduser); // 
             setCvData(result1);
-            const result2 = await getPfabyidEtudiant(iduser); // Use the getCvbyiduser function from cv.service.js
+
+            const result2 = await getPfabyidEtudiant(iduser); // 
             setPfaData(result2);
-            const result3 = await getPfebyidEtudiant(iduser); // Use the getCvbyiduser function from cv.service.js
+
+            const result3 = await getPfebyidEtudiant(iduser); // 
             setPfeData(result3);
           } catch (error) {
             console.log(error);

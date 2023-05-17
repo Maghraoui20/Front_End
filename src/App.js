@@ -15,7 +15,9 @@ import {
 } from "react-router-dom";
 import Signin from "./components/signin/signin.js";
 import UpdateCV from "./components/update_cv/update_cv";
+
 import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
+
 import CreateEnseignant from "./components/crud_enseignant/create_enseignant/create_enseignant";
 import UpdateEnseignant from "./components/crud_enseignant/update_enseignant/update_enseignant";
 import ReadEnseignant from "./components/crud_enseignant/read_enseignant/read_enseignant";
@@ -67,6 +69,7 @@ import ReadEvenementByStudent from "./components/crud_evenement/ReadEvenementByS
 import ListeEtudiants from "./components/enseignant/ListeEtudiants";
 import CvEtudiant from "./components/enseignant/cvEtudiant";
 import DetailEtudiant from "./components/crud_etudiant/Detail_etudiant/Detail_etudiant";
+import CalendarYear from "./components/espaceEtudiant/Calendar";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -126,7 +129,10 @@ function App() {
             <Route path="/create-etudiant" element={<CreateEtudiant />} />
             <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
             <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-            <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
+
+
+         
+
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
@@ -139,7 +145,7 @@ function App() {
           <Route path="/create-etudiant" element={<CreateEtudiant />} />
           <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
           <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-          <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
+      
           <Route path="/create-evenement" element={<CreateEvenement />} />
           <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
           <Route path="/readall-evenement" element={<ReadEvenement />} />
@@ -157,7 +163,9 @@ function App() {
 
             <Route path="/update-cv" element={<UpdateCV />} />
             <Route path="/update-cv-alumni" element={<UpdateCvAlumni />} />
+
             <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
+            
             <Route path="/update-stageete/:id" element={<UpdateStage />} />
             <Route path="/choisir-pfa" element={< PfaEtudiant />} />
 
@@ -181,6 +189,7 @@ function App() {
 
 
           <Route path="/detail_etudiant/:id" element={<DetailEtudiant />} />
+          <Route path="/calendar" element={<CalendarYear />} />
         </Routes>
       </Router>
       <ToastContainer />
