@@ -63,6 +63,7 @@ import MesPFA from "./components/enseignant/mesPfa";
 import ValiderPfa from "./components/pfa/validerPfa";
 import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 import CvView from "./components/crud_pfa/read_pfa/cv_view";
+import ReadEvenementByStudent from "./components/crud_evenement/ReadEvenementByStudent/ReadEvenementByStudent";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -95,6 +96,8 @@ function App() {
       </div> */}
       <Router>
         <Routes>
+        <Route path="*" element={<Navigate to="/signin" replace />} />
+
           <Route path="/charts" element={<Charts />} />
           <Route path="/addDemandes" element={<AddAlumnis />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
@@ -124,6 +127,7 @@ function App() {
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
+            <Route path="/readall-evenement_by_etudiant" element={<ReadEvenementByStudent />} />
             <Route path="/readall-pfa-admin" element={<ReadPFA/>} />
             <Route path="/valider-pfa" element={< ValiderPfa/>} />
 
