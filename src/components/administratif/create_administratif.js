@@ -24,40 +24,36 @@ import {
       login: "",
       password: "",
       phone: "",
-
       role: "directeur",
       accessRights: []
     });
     const navigate = useNavigate();
-    const [accessRights, setAccesRights] = React.useState("");
+    const [accessRights, setAccessRights] = useState([]);
   
   
     const handleChange = (e) => {
       setAdministratifData({ ...AdministratifData, [e.target.name]: e.target.value });
       console.log(AdministratifData);
     };
+
+    const handleAccessChange = (event) => {
+      const { value } = event.target;
+      setAccessRights(value);
+      setAdministratifData({ ...AdministratifData, [event.target.name]: event.target.value });
+    };
+
     const handleAccesChange = (e) => {
-        if (e.target.name === "accessRights") {
-          const selectedOptions = Array.from(e.target.value)
-            .filter((option) => option.selected)
-            .map((option) => option.value);
-          setAccesRights(selectedOptions); // Update the accessRights state
-          setAdministratifData({ ...AdministratifData, [e.target.name]: selectedOptions });
-        } else {
-          setAdministratifData({ ...AdministratifData, [e.target.name]: e.target.value });
-        }
-      };
-      
-      const handleAccsChange = (e) => {
-        if (e.target.name === "accessRights") {
-          const selectedOptions = Array.from(e.target.selectedOptions)
-            .map((option) => option.value);
-          setAccesRights(selectedOptions); // Update the accessRights state
-          setAdministratifData({ ...AdministratifData, [e.target.name]: selectedOptions });
-        } else {
-          setAdministratifData({ ...AdministratifData, [e.target.name]: e.target.value });
-        }
-      };
+      if (e.target.name === "accessRights") {
+        const selectedOptions = Array.isArray(e.target.value)
+          ? e.target.value.filter((option) => option.selected).map((option) => option.value)
+          : [];
+        setAccessRights(selectedOptions); // Update the accessRights state
+        setAdministratifData({ ...AdministratifData, [e.target.name]: selectedOptions });
+      } else {
+        setAdministratifData({ ...AdministratifData, [e.target.name]: e.target.value });
+      }
+    };
+    
       
  
   
@@ -135,13 +131,13 @@ import {
       id="accessRights"
       name="accessRights"
       multiple
-      value={AdministratifData.accessRights}
-      onChange={handleAccsChange}
+      value={accessRights}
+      onChange={handleAccessChange}
       renderValue={(selected) => selected.join(", ")}
     >
-      <MenuItem value="gestion-etudiant">Gestion étudiant</MenuItem>
-      <MenuItem value="gestion-enseignant">Gestion enseignant</MenuItem>
-      <MenuItem value="gestion-evenement">Gestion événement</MenuItem>
+      <MenuItem value={"gestion-etudiant"}>Gestion étudiant</MenuItem>
+      <MenuItem value={"gestion-enseignant"}>Gestion enseignant</MenuItem>
+      <MenuItem value={"gestion-evenement"}>Gestion événement</MenuItem>
     </Select>
   </FormControl>
                   </Grid>
@@ -177,8 +173,7 @@ import {
                       autoFocus
                       onChange={handleChange}
                     />
-            
-
+     
 
 
                   </Grid>
