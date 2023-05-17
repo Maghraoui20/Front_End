@@ -27,7 +27,9 @@ function UpdateEtudiant() {
     phone: "",
     login: "",
     email: "",
+    visibility: "",
   });
+  const [visibility, setVisibility] = useState("");
 
   const [niveau, setNiveau] = React.useState("");
   const [etat, setEtat] = React.useState("");
@@ -50,9 +52,13 @@ function UpdateEtudiant() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      const updateEtudiant = await api.updateEtudiant(EtudiantData, iduser);
+      const updatedEtudiant = {
+        ...EtudiantData,
+        visibility: visibility,
+      };
+  
+      const updateEtudiant = await api.updateEtudiant(updatedEtudiant, iduser);
       console.log(updateEtudiant, "update");
       window.location.reload(false);
     } catch (error) {
@@ -192,6 +198,9 @@ function UpdateEtudiant() {
                       type="date"
                       onChange={handleChange}
                     />
+                               
+  
+
 
                     <FormControl fullWidth sx={{ mt: 3 }}>
                       <InputLabel id="Niveau">Niveau</InputLabel>
@@ -223,7 +232,22 @@ function UpdateEtudiant() {
                         <MenuItem value={"actuel"}>Actuel</MenuItem>
                       </Select>
                     </FormControl>
+                    <FormControl fullWidth sx={{ mt: 3 }}>
+    <InputLabel id="visibility">Visibility</InputLabel>
+    <Select
+      labelId="visibility"
+      id="visibility"
+      value={EtudiantData.visibility}
+      label="Visibility"
+      onChange={(e) => setVisibility(e.target.value)}
+    >
+      <MenuItem value={"private"}>Private</MenuItem>
+      <MenuItem value={"public"}>Public</MenuItem>
+    </Select>
+  </FormControl>
                   </Grid>
+     
+
                   <Grid item xs={3}></Grid>
                   <Grid item xs={6}>
                     <Button

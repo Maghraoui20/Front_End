@@ -70,6 +70,7 @@ import ListeEtudiants from "./components/enseignant/ListeEtudiants";
 import CvEtudiant from "./components/enseignant/cvEtudiant";
 import DetailEtudiant from "./components/crud_etudiant/Detail_etudiant/Detail_etudiant";
 import CalendarYear from "./components/espaceEtudiant/Calendar";
+import CompteEtudiantPublic from "./components/compte_etudiant_public/CompteEtudiantPublic";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -178,6 +179,7 @@ function App() {
 
           <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
           
+          <Route path="/comptes-publics" element={<CompteEtudiantPublic />} />
 
           <Route path="/liste-pfe" element={<PfeEnseignant />} />
 
