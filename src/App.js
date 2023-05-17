@@ -64,6 +64,8 @@ import ValiderPfa from "./components/pfa/validerPfa";
 import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 import CvView from "./components/crud_pfa/read_pfa/cv_view";
 import ReadEvenementByStudent from "./components/crud_evenement/ReadEvenementByStudent/ReadEvenementByStudent";
+import ListeEtudiants from "./components/enseignant/ListeEtudiants";
+import CvEtudiant from "./components/enseignant/cvEtudiant";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -168,15 +170,13 @@ function App() {
           <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
           
 
+          <Route path="/liste-pfe" element={<PfeEnseignant />} />
 
-
-            <Route path="/liste-pfe" element={<PfeEnseignant />} />
-            <Route path="/statistics-pfe" element={<Statistique />} />
-            <Route path="anneeuniver" element={<AnneeUniv />} />
-            <Route path="/allnotification" element={<AllNotification />} />
-
-            
-       
+          <Route path="/liste-des-etudiants" element={<ListeEtudiants />} />
+          <Route path="/cv-etudiant/:id" element={<CvEtudiant/>} />
+          <Route path="/statistics-pfe" element={<Statistique />} />
+          <Route path="anneeuniver" element={<AnneeUniv />} />
+          <Route path="/allnotification" element={<AllNotification />} />
         </Routes>
       </Router>
       <ToastContainer />
