@@ -15,7 +15,9 @@ import {
 } from "react-router-dom";
 import Signin from "./components/signin/signin.js";
 import UpdateCV from "./components/update_cv/update_cv";
+
 import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
+
 import CreateEnseignant from "./components/crud_enseignant/create_enseignant/create_enseignant";
 import UpdateEnseignant from "./components/crud_enseignant/update_enseignant/update_enseignant";
 import ReadEnseignant from "./components/crud_enseignant/read_enseignant/read_enseignant";
@@ -63,6 +65,13 @@ import MesPFA from "./components/enseignant/mesPfa";
 import ValiderPfa from "./components/pfa/validerPfa";
 import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 import CvView from "./components/crud_pfa/read_pfa/cv_view";
+import ReadEvenementByStudent from "./components/crud_evenement/ReadEvenementByStudent/ReadEvenementByStudent";
+import ListeEtudiants from "./components/enseignant/ListeEtudiants";
+import CvEtudiant from "./components/enseignant/cvEtudiant";
+import DetailEtudiant from "./components/crud_etudiant/Detail_etudiant/Detail_etudiant";
+import CalendarYear from "./components/espaceEtudiant/Calendar";
+import CompteEtudiantPublic from "./components/compte_etudiant_public/CompteEtudiantPublic";
+import DetailEtudiantPublicCompte from "./components/compte_etudiant_public/DetailEtudiantPublicCompte";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -95,6 +104,8 @@ function App() {
       </div> */}
       <Router>
         <Routes>
+        <Route path="*" element={<Navigate to="/signin" replace />} />
+
           <Route path="/charts" element={<Charts />} />
           <Route path="/addDemandes" element={<AddAlumnis />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
@@ -120,10 +131,14 @@ function App() {
             <Route path="/create-etudiant" element={<CreateEtudiant />} />
             <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
             <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-            <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
+
+
+         
+
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
+            <Route path="/readall-evenement_by_etudiant" element={<ReadEvenementByStudent />} />
             <Route path="/readall-pfa-admin" element={<ReadPFA/>} />
             <Route path="/valider-pfa" element={< ValiderPfa/>} />
 
@@ -132,7 +147,7 @@ function App() {
           <Route path="/create-etudiant" element={<CreateEtudiant />} />
           <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
           <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-          <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
+      
           <Route path="/create-evenement" element={<CreateEvenement />} />
           <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
           <Route path="/readall-evenement" element={<ReadEvenement />} />
@@ -150,7 +165,9 @@ function App() {
 
             <Route path="/update-cv" element={<UpdateCV />} />
             <Route path="/update-cv-alumni" element={<UpdateCvAlumni />} />
+
             <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
+            
             <Route path="/update-stageete/:id" element={<UpdateStage />} />
             <Route path="/choisir-pfa" element={< PfaEtudiant />} />
 
@@ -163,11 +180,20 @@ function App() {
 
           <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
           
+          <Route path="/comptes-publics" element={<CompteEtudiantPublic />} />
 
           <Route path="/liste-pfe" element={<PfeEnseignant />} />
+
+          <Route path="/liste-des-etudiants" element={<ListeEtudiants />} />
+          <Route path="/cv-etudiant/:id" element={<CvEtudiant/>} />
           <Route path="/statistics-pfe" element={<Statistique />} />
           <Route path="anneeuniver" element={<AnneeUniv />} />
           <Route path="/allnotification" element={<AllNotification />} />
+
+
+          <Route path="/detail_etudiant/:id" element={<DetailEtudiant />} />
+          <Route path="/detail_etudiant_public_compte/:id" element={<DetailEtudiantPublicCompte />} />
+          <Route path="/calendar" element={<CalendarYear />} />
         </Routes>
       </Router>
       <ToastContainer />

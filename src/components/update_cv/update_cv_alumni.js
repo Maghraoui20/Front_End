@@ -18,7 +18,7 @@ import {
   import * as api from "../../service/cv.js";
   import { useParams } from "react-router-dom";
   import moment from "moment";
-  import MySideNav from "../sidenavs/sidenav.js";
+  import MySideNav from "../sidenavs/sidenavAlum.js";
   import FileBase from "react-file-base64";
   import ProfilePic from "../../../src/assets/profilepicture.PNG";
   import Switch from "@mui/material/Switch";

@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import Axios from 'axios';
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import * as api from "../../../service/etudiant.js";
@@ -11,13 +12,36 @@ import "./style.css";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
+import PersonIcon from '@mui/icons-material/Person';
 
 import MySideNav from "../../sidenavs/sidenavAdmin.js";
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+
+//import { importExcel } from "../../../service/etudiant.js";
+
+
+//import papaparse from 'papaparse'; // Import PapaParse library for CSV parsing
+
+import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'; // Import components for the modal
+
 
 function ReadEtudiant() {
+  const [File, setFile] = useState(null);
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
+  const [openModal, setOpenModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
+
+  const openUploadModal = () => {
+    setOpenModal(true);
+  };
+  
+  const closeUploadModal = () => {
+    setOpenModal(false);
+  };
+  
   const handleDelete = async () => {
     try {
       await api.deleteEtudiant(idSelected);
@@ -30,6 +54,30 @@ function ReadEtudiant() {
   const handlenavigate = async () => {
     navigate("/create-etudiant");
   };
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileUpload = (event) => {
+    //setSelectedFile(event.target.files[0]);
+
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+  //  const fileURL = URL.createObjectURL(selectedFile);
+   // console.log(fileURL , 'url');
+
+  };
+
+  useEffect(() => {}, []);
+
+  const handleupload = () => {
+    const formData = new FormData(); // tab3thou lil backend sous formData 
+    formData.append("csvFile", File);
+    console.log(File);
+
+    api.importExcel(formData)
+    window.location.reload();
+  };
+
 
   const columns = [
     { field: "firstname", headerName: "Nom", width: 130 },
@@ -54,6 +102,25 @@ function ReadEtudiant() {
     { field: "niveau", headerName: "Niveau ", width: 130 },
     { field: "classe", headerName: "Classe ", width: 130 },
     { field: "etat", headerName: "etat ", width: 130 },
+    {
+      field: "cv",
+      headerName: "Voir Detail ",
+      width: 130,
+      renderCell: (params) => {
+        return (
+          <Button
+            variant="contained"
+            href={`/detail_etudiant/${idSelected}`}
+            sx={{
+              backgroundColor: "#2979ff",
+              ":hover": { backgroundColor: "#2979ff" },
+            }}
+          >
+            <PersonIcon />
+          </Button>
+        );
+      },
+    },
     {
       field: "modifer",
       headerName: "Modifier",
@@ -172,19 +239,49 @@ function ReadEtudiant() {
           alignItems: "center",
         }}
       >
-        <div style={{ height: 400 }}>
-          <div style={{ display: "flex" }}>
-            <IconButton
-             data-test="add-etudiant"
+        
 
-              aria-label="add"
-              color="secondary"
-              onClick={handlenavigate}
-              style={{ color: "#000" }}
-            >
-              <AddIcon />
-            </IconButton>
+   
+
+          <div style={{ height: 400 }}>
+         <div style={{float:"left"}}>
+        <IconButton aria-label="add" color="secondary"  onClick={openUploadModal} style={{ color:"#000"}} >
+        <UploadFileIcon />
+
+      </IconButton>
+      <Box >
+
+  <Dialog 
+  open={openModal} 
+  onClose={closeUploadModal}>
+
+    <DialogTitle>Upload CSV</DialogTitle>
+
+    <DialogContent>
+      <input id="csvFileInput" type="file" accept=".csv" 
+      onChange={handleFileUpload} />
+    </DialogContent>
+    <DialogActions>
+
+    <Button onClick={closeUploadModal}>Cancel</Button>
+
+    <Button onClick={handleupload}>ajouter</Button>
+    </DialogActions>
+  </Dialog>
+</Box>
+
           </div>
+          
+          <div style={{display:"flex"}}>
+        <IconButton aria-label="add" color="secondary" onClick={handlenavigate} style={{ color:"#000"}} >
+         <AddIcon />
+          </IconButton>
+
+
+          </div>
+
+     
+
 
           <DataGrid
           data-test="row-etudiant"

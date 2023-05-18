@@ -52,6 +52,9 @@ function MySideNav() {
           </NavIcon>
           <NavText>Change mon Mot de passe</NavText>
         </NavItem>
+
+    
+
         <NavItem eventKey="readall-pfa-admin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
@@ -63,7 +66,7 @@ function MySideNav() {
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Liste des pfe</NavText>
-        </NavItem>
+        </NavItem>    
 
         <NavItem eventKey="statistics-pfe" data-test="readall-statistics">
           <NavIcon>

@@ -54,11 +54,11 @@ setCount(result.length);
     }
     fetchData();
   }, []);
-const handleClick=async ()=>{
+   const handleClick=async ()=>{
 navigate("/allnotification")
 const result = await  api.updateNotif(user._id);
 
-}
+   }
   return (
     <SideNav
       onSelect={(selected) => {
@@ -136,7 +136,27 @@ const result = await  api.updateNotif(user._id);
             </NavIcon>
             <NavText>Mes Stage de pfe</NavText>
           </NavItem>
+
+          <NavItem eventKey="calendar">
+            <NavIcon>
+              <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+            </NavIcon>
+            <NavText>Calendrier</NavText>
+            </NavItem>
+          <NavItem eventKey="comptes-publics">
+            <NavIcon>
+              <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+            </NavIcon>
+            <NavText>Les comptes publics</NavText>
+          </NavItem>
     
+          <NavItem eventKey="readall-evenement_by_etudiant">
+            <NavIcon>
+              <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
+            </NavIcon>
+            <NavText>Liste des evenements </NavText>
+          </NavItem>
+
         <NavItem eventKey="signin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
@@ -158,6 +178,6 @@ const result = await  api.updateNotif(user._id);
       </div>
       </SideNav.Nav>
     </SideNav>
-  );
-}
+  )
+        }
 export default MySideNav;

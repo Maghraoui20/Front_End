@@ -65,3 +65,14 @@ export const addDemande = async (data) => {
   );
   return result;
 };
+
+export const importExcel = async (data) => {
+  console.log(data, "file csv");
+  const result = await Axios.post("http://localhost:5000/users/uploadFile", data);
+  return result.data;
+};
+export const getPublicCompteEtudiant = async () => {
+  const result = await Axios.get(
+    "http://localhost:5000/users/public-users" );
+    return result.data;
+  };

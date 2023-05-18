@@ -113,7 +113,7 @@ function MySideNav() {
             <NavText>Mes Stage d'été</NavText>
           </NavItem>
         ) : null}
-        {statutEtudiant == "actuel" ? (
+        {statutEtudiant === "actuel" ? (
           <NavItem eventKey="insérer-stage-pfe">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
@@ -121,7 +121,7 @@ function MySideNav() {
             <NavText>Stage pfe</NavText>
           </NavItem>
         ) : null}
-        {statutEtudiant == "actuel" ? (
+        {statutEtudiant === "actuel" ? (
           <NavItem eventKey="mes-stage-pfe">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
@@ -137,7 +137,7 @@ function MySideNav() {
             <Button onClick={handleLogout}>Logout</Button>
           </NavText>
         </NavItem>
-        {statutEtudiant == "actuel" ? (
+        {statutEtudiant === "actuel" ? (
           <div style={{ display: "flex", flexDirection: "column" }}>
             <IconButton>
               <Badge
