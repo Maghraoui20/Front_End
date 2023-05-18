@@ -1,14 +1,67 @@
-import React, { Component }  from 'react';
+import React from 'react';
 import { Button } from "@mui/material";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 function MySideNav() {
   const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("profile");
     localStorage.removeItem("token");
   };
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const accessRights = user?.accessRights;
+  const renderSideNavItem = (eventKey, iconClass, text) => (
+    <NavItem eventKey={eventKey}>
+      <NavIcon>
+        <i className={iconClass} style={{ fontSize: "1em" }} />
+      </NavIcon>
+      <NavText>{text}</NavText>
+    </NavItem>
+  );
+
+  const renderSideNavItems = () => {
+    const sideNavItems = [];
+
+    // Add access control logic here
+   
+     
+      if (accessRights.includes("gestion-evenement")) {
+        sideNavItems.push(renderSideNavItem("readall-evenement", "fa fa-fw fa-hashtag", "Gestion événement"));
+      
+     }
+
+    if (accessRights.includes("gestion-enseignant")) {
+      sideNavItems.push(renderSideNavItem("readall-enseignant", "fa fa-fw fa-hashtag", "Gestion enseignant"));
+    
+   }
+
+  if (accessRights.includes("gestion-etudiant")) {
+    sideNavItems.push(renderSideNavItem("readall-etudiant", "fa fa-fw fa-hashtag", "Gestion etudiant"));
+  
+  }
+
+  if (accessRights.includes("gestion-pfas")) {
+    sideNavItems.push(renderSideNavItem("readall-pfa-admin", "fa fa-fw fa-hashtag", "Gestion pfas"));
+  
+  }
+
+  if (accessRights.includes("gestion-pfas")) {
+    sideNavItems.push(renderSideNavItem("change-password", "fa-regular fa-hashtag", "Changer mot de passe"));
+    
+  }
+    sideNavItems.push(
+      renderSideNavItem("signin", "fa-regular fa-hashtag", (
+        <Button onClick={handleLogout}>Logout</Button>
+      ))
+    );
+
+    return sideNavItems;
+  };
+
   return (
     <SideNav
       onSelect={(selected) => {
@@ -19,28 +72,16 @@ function MySideNav() {
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="change-password">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Changer mot de passe</NavText>
-        </NavItem>
-        <NavItem eventKey="update-enseignant">
-          <NavIcon>
-            <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Modifier profil</NavText>
-        </NavItem>
-        <NavItem eventKey="signin">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>
-            <Button onClick={handleLogout}>Logout</Button>
-          </NavText>
-        </NavItem>
+
+        {renderSideNavItems()}
+        <NavItem eventKey="change-password"></NavItem>
+        <NavItem eventKey="readall-evenement"></NavItem>
+        <NavItem eventKey="readall-etudiant"></NavItem>
+        <NavItem eventKey="readall-enseignant"></NavItem>
+        <NavItem eventKey="readall-pfa-admin"></NavItem>
       </SideNav.Nav>
     </SideNav>
   );
 }
+
 export default MySideNav;

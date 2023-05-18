@@ -13,11 +13,17 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-import MySideNav from "../../sidenavs/sidenavAdmin.js";
+import MySideNavAdmin from "../../sidenavs/sidenavAdmin.js";
+
+import MySideNavDir from "../../sidenavs/sidenavdir.js";
 
 function ReadEvenement() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const role = user?.role;
 
   const handleDelete = async () => {
     try {
@@ -170,30 +176,10 @@ function ReadEvenement() {
 
   return (
     <Container>
-      <MySideNav/>
-      {/* <FormControl sx={{ mt: 5, ml:10,width:250 }} >
-        <InputLabel id="demo-controlled-open-select-label">Année universitaire</InputLabel>
-        <Select
-          labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
-           open={open}
-          onClose={handleClose}
-          onOpen={handleOpen}
-          value={annee}
-          label="anneeUviv"
-          onChange={handleChangeAnnee} 
-        >
-        
-          <MenuItem value={"2021-2022"}>2021-2022
-</MenuItem>
-          <MenuItem value={"2022-2023"}>2022-2023</MenuItem>
-          <MenuItem value={"2023-2024"}>2023-2024</MenuItem>
-          <MenuItem value={"2024-2025"}>2024-2025</MenuItem>
-          <MenuItem value={"2025-2026"}>2025-2026</MenuItem>
-          <MenuItem value={"2026-2027"}>2026-2027</MenuItem>
 
-        </Select>
-      </FormControl> */}
+{role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
+         
+   
       <label for="Année universitaire">Année universitaire</label>
 
 <select
