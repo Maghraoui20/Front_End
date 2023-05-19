@@ -22,7 +22,7 @@ import MySideNav from "../../enseignant/sidenavEnseignant";
 function UpdatePfa() {
   const params = useParams();
 
-  const [technologies, setTechnologies] = React.useState([ ]);
+  const [technologies, setTechnologies] = React.useState([]);
   const [newTechnology, setNewTechnology] = React.useState("");
   const [PfaData, setPfaData] = useState({
     description: "",
@@ -32,9 +32,9 @@ function UpdatePfa() {
     technologies: [], // utiliser un tableau vide pour stocker les technologies sélectionnées
   });
 
-  const [TechnologieData, setTechnologieData] = useState([{
+  const [TechnologieData, setTechnologieData] = useState({
     title: "",
-  }]);
+  });
 
   const navigate = useNavigate();
 
@@ -47,7 +47,7 @@ function UpdatePfa() {
 
   const handleTechnologiesChange = (event, values) => {
     console.log("Selected Technologies:", values);
-    setPfaData({ ...PfaData, TechnologieData:TechnologieData }); // stocker les ObjectIds des technologies sélectionnées
+    setPfaData({ ...PfaData, technologies: values.map((tech) => tech.title) }); // stocker les ObjectIds des technologies sélectionnées
   };
 
   const handleNewTechnologyChange = (event) => {
@@ -77,12 +77,10 @@ function UpdatePfa() {
   };
 
   const options = technologies.map((tech) => ({
-    title: tech.title, // Change this to tech.title to use technology titles
+    title: tech.title,
     _id: tech._id,
   }));
 
-
-  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -102,7 +100,7 @@ function UpdatePfa() {
         setPfaData(pfaResult);
 
         const technologiesResult = await api.getTechnologiesByPfaId(params.id);
-        setTechnologieData(technologiesResult);
+        setTechnologies(technologiesResult);
       } catch (e) {
         console.log(e);
       }
@@ -186,38 +184,34 @@ function UpdatePfa() {
                     onChange={handleChange}
                   />
 
-  <Autocomplete
-    multiple
-    id="technologies-autocomplete"
-    options={options}
- 
-    value = {PfaData.technologies}
-    getOptionLabel={(option) => option.title}
-    onChange={handleTechnologiesChange}
-
-    renderTags={(value, getTagProps) =>
-      value.map((option, index) => (
-        <Chip
-          key={option._id}
-          variant="outlined"
-          label={option.title}
-          {...getTagProps({ index })}
-        />
-      ))
-    }
-    renderInput={(params) => (
-      <TextField
-        {...params}
-        variant="outlined"
-        label="TechnologieData"
-        placeholder="Sélectionnez des technologies"
-      />
-    )}
-  />
-
-
-
-
+                  <Autocomplete
+                    multiple
+                    id="technologies-autocomplete"
+                    options={options}
+                    getOptionLabel={(option) => option.title}
+                    onChange={handleTechnologiesChange}
+                    value = {technologies}
+                  
+                
+                    renderTags={(value, getTagProps) =>
+                      value.map((option, index) => (
+                        <Chip
+                          key={option._id}
+                          variant="outlined"
+                          label={option.title}
+                          {...getTagProps({ index })}
+                        />
+                      ))
+                    }
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        variant="outlined"
+                        label="Technologies"
+                        placeholder="Sélectionnez des technologies"
+                      />
+                    )}
+                  />
                   <TextField
                     value={newTechnology}
                     onChange={handleNewTechnologyChange}
