@@ -30,7 +30,6 @@ import {
   function CvView() {
     const params = useParams();
     const id = params.id;
-   // const [loading, setLoading] = useState(true);
 
    const [EtudiantData, setEtudiantData] = useState({
     firstname: "",
