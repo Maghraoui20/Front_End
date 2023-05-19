@@ -14,11 +14,16 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-import MySideNav from "../../sidenavs/sidenavAdmin.js";
+import MySideNavAdmin  from "../../sidenavs/sidenavAdmin.js";
+import MySideNavDir from "../../sidenavs/sidenavdir.js";
 
 function ReadEnseignant() {
   const [rows, setRows] = useState([]);
   const [idSelected, setIdSelected] = useState();
+  
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const role = user?.role;
 
   const handleDelete = async () => {
     try {
@@ -156,7 +161,8 @@ function ReadEnseignant() {
 
   return (
     <Container>
-      <MySideNav />
+    
+      {role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
       <Box
         sx={{
           marginTop: 10,
@@ -167,9 +173,10 @@ function ReadEnseignant() {
       >
         <div style={{ height: 400 }}>
           <div>
-            <h1>
+            <center>
+            <h2>
               <b>Liste des enseignants</b>
-            </h1>
+            </h2></center>
           </div>
           <div style={{ float: "right" }}>
             <IconButton

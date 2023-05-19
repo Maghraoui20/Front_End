@@ -45,20 +45,31 @@ function MySideNav() {
   }
 
   if (accessRights.includes("gestion-pfas")) {
-    sideNavItems.push(renderSideNavItem("readall-pfa-admin", "fa fa-fw fa-hashtag", "Gestion pfas"));
+    sideNavItems.push(renderSideNavItem("readall-pfa-admin", "fa fa-fw fa-hashtag", "Liste des  pfas"));
   
   }
 
-  if (accessRights.includes("gestion-pfas")) {
-    sideNavItems.push(renderSideNavItem("change-password", "fa-regular fa-hashtag", "Changer mot de passe"));
+  if (accessRights.includes("gestion-pfes")) {
+    sideNavItems.push(renderSideNavItem("readall-pfe", "fa fa-fw fa-hashtag", "Liste des  pfes"));
+  
+  }
+
+  if (accessRights.includes("gestion-anneeUniversitaire")) {
+    sideNavItems.push(renderSideNavItem("anneeuniver", "fa-regular fa-hashtag", "Ajouter Annee universitaire"));
     
   }
+
+  if (accessRights.includes("gestion-administratif")) {
+    sideNavItems.push(renderSideNavItem("gerer_droit_acces", "fa-regular fa-hashtag", "Gestion administratif"));
+    
+  }
+
+    sideNavItems.push(renderSideNavItem("change-password", "fa-regular fa-hashtag", "Changer mot de passe"));
     sideNavItems.push(
       renderSideNavItem("signin", "fa-regular fa-hashtag", (
         <Button onClick={handleLogout}>Logout</Button>
       ))
     );
-
     return sideNavItems;
   };
 

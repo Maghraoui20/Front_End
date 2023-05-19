@@ -210,9 +210,11 @@ function ReadEvenement() {
          
         <div style={{ height: 400 }}>
           <div>
-            <h1>
+            <center>
+            <h2>
               <b>Liste des evenements</b>
-            </h1>
+            </h2>
+            </center>
           </div>
           <div style={{ float: "right" }}>
             <IconButton

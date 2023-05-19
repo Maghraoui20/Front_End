@@ -23,12 +23,21 @@ import PersonIcon from '@mui/icons-material/Person';
   import MySideNav from "../../components/sidenavs/sidenavAdmin";
  
   import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
+
+  import MySideNavAdmin from "../../components/sidenavs/sidenavAdmin.js";
+
+
+  
+import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
  
   
   function GererDoitAccess() {
     const [rows, setRows] = useState([]);
     const [idSelected, setIdSelected] = useState();
     const navigate = useNavigate();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+    const role = user?.role;
 
     const handleDelete = async () => {
         try {
@@ -61,7 +70,7 @@ import PersonIcon from '@mui/icons-material/Person';
           return (
             <Button
               variant="contained"
-              href={`/update-enseignant/${idSelected}`}
+              href={`/update-administratif/${idSelected}`}
               sx={{
                 backgroundColor: "#00A36C",
                 ":hover": { backgroundColor: "#00A36C" },
@@ -156,7 +165,8 @@ import PersonIcon from '@mui/icons-material/Person';
   
     return (
       <Container maxWidth="md">
-        <MySideNav />
+      
+        {role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
   
         <Box
           sx={{
@@ -170,9 +180,11 @@ import PersonIcon from '@mui/icons-material/Person';
         
           <div style={{ height: 400 }}>
           <div>
+            <center>
             <h2>
               <b>Liste des administratifs</b>
             </h2>
+            </center>
           </div>
 
           <div style={{ float: "right" }}>

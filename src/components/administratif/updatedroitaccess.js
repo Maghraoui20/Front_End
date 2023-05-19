@@ -10,76 +10,68 @@ import {
     Paper,
   } from "@mui/material";
   import { Container } from "@mui/system";
-  import React, { useState } from "react";
+  import React, { useEffect, useState } from "react";
   import Box from "@mui/material/Box";
   import * as api from "../../service/administratif";
-  import { useNavigate } from "react-router-dom";
-  import MySideNav from "../../components/sidenavs/sidenavAdmin";
-  import MySideNavAdmin from "../../components/sidenavs/sidenavAdmin.js";
-
-import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
-
+  import { useNavigate, useParams } from "react-router-dom";
   
-  function CreateAdministratif() {
+  import MySideNav from "../sidenavs/sidenavAdmin";
+  
+  function UpdateAdministratif() {
+    const params = useParams();
     const [AdministratifData, setAdministratifData] = useState({
-      lastname: "",
-      firstname: "",
-      email: "",
-      login: "",
-      password: "",
-      phone: "",
-      role: "directeur",
-      accessRights: []
+        lastname: "",
+        firstname: "",
+        email: "",
+        login: "",
+        password: "",
+        phone: "",
+        role: "directeur",
+        accessRights: []
     });
     const navigate = useNavigate();
-    const [accessRights, setAccessRights] = useState([]);
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
-    const role = user?.role;
-  
+    const [accessRights, setAccessRights] = React.useState([]);
   
     const handleChange = (e) => {
       setAdministratifData({ ...AdministratifData, [e.target.name]: e.target.value });
       console.log(AdministratifData);
     };
-
-    const handleAccessChange = (event) => {
-      const { value } = event.target;
-      setAccessRights(value);
-      setAdministratifData({ ...AdministratifData, [event.target.name]: event.target.value });
-    };
-
-    const handleAccesChange = (e) => {
-      if (e.target.name === "accessRights") {
-        const selectedOptions = Array.isArray(e.target.value)
-          ? e.target.value.filter((option) => option.selected).map((option) => option.value)
-          : [];
-        setAccessRights(selectedOptions); // Update the accessRights state
-        setAdministratifData({ ...AdministratifData, [e.target.name]: selectedOptions });
-      } else {
-        setAdministratifData({ ...AdministratifData, [e.target.name]: e.target.value });
-      }
-    };
-    
-      
- 
   
-    const handleSubmit = async (administratif) => {
-      administratif.preventDefault();
+    const handleChangeAccessrights = (e) => {
+      setAccessRights(e.target.value);
+      setAdministratifData({ ...AdministratifData, accessRights: accessRights });
+    };
+  
+    const handleSubmit = async (event) => {
+      event.preventDefault();
   
       try {
-        const newAdministratif = await api.createAdministratif(AdministratifData);
-        console.log(newAdministratif);
+        const Updateadministratif = await api.updateAdministratif(
+          AdministratifData,
+          params.id
+        );
+        console.log(Updateadministratif);
         navigate("/gerer_droit_acces");
       } catch (error) {
         console.log(error);
       }
     };
   
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          const result = await api.getAdministratifbyid(params.id);
+          setAdministratifData(result);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      fetchData();
+    }, [params.id]);
+    
     return (
       <Container>
-       
-           {role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
+        <MySideNav />
   
         <Paper elevation={3} className="paper">
           <Box
@@ -93,7 +85,7 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
             <form onSubmit={handleSubmit}>
               <div className="grid">
                 <Typography component="h1" variant="h5">
-                  Ajouter un administratif{" "}
+                  modifier un administratif{" "}
                 </Typography>
                 <Grid
                   container
@@ -104,6 +96,7 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
                     <TextField
                       margin="normal"
                       required
+                      value={AdministratifData.firstname}
                       fullWidth
                       id="firstname"
                       label="prenom "
@@ -111,10 +104,12 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
                       autoFocus
                       onChange={handleChange}
                     />
+  
                     <TextField
                       margin="normal"
                       required
                       fullWidth
+                      value={AdministratifData.lastname}
                       id="lastname"
                       label="nom"
                       name="lastname"
@@ -126,50 +121,22 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
                       margin="normal"
                       required
                       fullWidth
+                      value={AdministratifData.email}
                       id="email"
                       label="email"
                       name="email"
                       autoFocus
                       onChange={handleChange}
                     />
-                      <FormControl fullWidth>
-    <InputLabel id="accessRights-label">Droits d'accès</InputLabel>
-    <Select
-      labelId="accessRights-label"
-      id="accessRights"
-      name="accessRights"
-      multiple
-      value={accessRights}
-      onChange={handleAccessChange}
-      renderValue={(selected) => selected.join(", ")}
-    >
-      <MenuItem value={"gestion-etudiant"}>Gestion étudiant</MenuItem>
-      <MenuItem value={"gestion-enseignant"}>Gestion enseignant</MenuItem>
-      <MenuItem value={"gestion-evenement"}>Gestion événement</MenuItem>
-      <MenuItem value={"gestion-pfas"}>Liste des pfas</MenuItem>
-      <MenuItem value={"gestion-pfes"}>Liste des pfes</MenuItem>
-      <MenuItem value={"gestion-anneeUniversitaire"}>Ajouter annee universitaire</MenuItem>
-      <MenuItem value={"gestion-administratif"}>Ajouter annee universitaire</MenuItem>
-    </Select>
-  </FormControl>
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
                       margin="normal"
                       required
                       fullWidth
-                      id="phone"
-                      label="numero de telephone"
-                      name="phone"
-                      autoFocus
-                      onChange={handleChange}
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
                       id="login"
-                      label="login"
+                      value={AdministratifData.login}
+                      label="login "
                       name="login"
                       autoFocus
                       onChange={handleChange}
@@ -179,15 +146,32 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
                       margin="normal"
                       required
                       fullWidth
-                      id="password"
-                      label="password"
-                      name="password"
+                      value={AdministratifData.phone}
+                      id="phone"
+                      label="numero de telephone"
+                      name="phone"
                       autoFocus
                       onChange={handleChange}
                     />
-     
-
-
+                    <FormControl fullWidth>
+                      <InputLabel id=" accessRights">Droit d'acces</InputLabel>
+                      <Select
+                        labelId=" accessRights"
+                        id=" accessRights"
+                        value={AdministratifData.accessRights}
+                        multiple
+                        label=" accessRights"
+                        onChange={handleChangeAccessrights}
+                      >
+                        <MenuItem value={"gestion-enseignant"}>gestion enseignant</MenuItem>
+                        <MenuItem value={"gestion-etudiant"}>gestion etudiant</MenuItem>
+                        <MenuItem value={"gestion-evenement"}>gestion evenement</MenuItem>
+                        <MenuItem value={"gestion-pfas"}>Liste des pfas</MenuItem>
+                       <MenuItem value={"gestion-pfes"}>Liste des pfes</MenuItem>
+                       <MenuItem value={"gestion-anneeUniversitaire"}>Ajouter annee universitaire</MenuItem>
+                       <MenuItem value={"gestion-administratif"}>Gestion administratif</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Grid>
                   <Grid item xs={3}></Grid>
                   <Grid item xs={6}>
@@ -203,7 +187,7 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
                         ":hover": { backgroundColor: "#00A36C" },
                       }}
                     >
-                      Ajouter{" "}
+                      Modifier{" "}
                     </Button>
                   </Grid>
                 </Grid>
@@ -215,5 +199,5 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
     );
   }
   
-  export default CreateAdministratif;
+  export default UpdateAdministratif;
   

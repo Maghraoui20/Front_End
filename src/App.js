@@ -74,6 +74,8 @@ import CompteEtudiantPublic from "./components/compte_etudiant_public/CompteEtud
 import DetailEtudiantPublicCompte from "./components/compte_etudiant_public/DetailEtudiantPublicCompte";
 import GererDoitAccess from "./components/administratif/gererdroitacces";
 import CreateAdministratif from "./components/administratif/create_administratif";
+import { Update } from "@mui/icons-material";
+import UpdateAdministratif from "./components/administratif/updatedroitaccess";
 
 function App() {
   // const [theme, setTheme] = useState("light");
@@ -135,6 +137,7 @@ function App() {
             <Route path="/readall-etudiant" element={<ReadEtudiant />} />
 
 
+            <Route path="/update-administratif/:id" element={<UpdateAdministratif />} />
          
 
             <Route path="/create-evenement" element={<CreateEvenement />} />
