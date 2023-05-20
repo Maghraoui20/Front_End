@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component } from "react";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import * as api from "../../../service/enseignant.js";
@@ -174,7 +174,7 @@ function ValidAlumnis() {
                     }}
                   >
                     <Typography>
-                      Voulez vous vraiment supprimer cet enseignant
+                      Voulez vous vraiment reporter cette demande?
                     </Typography>
                     <div className="buttons">
                       <Button
