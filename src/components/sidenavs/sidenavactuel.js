@@ -29,6 +29,7 @@ const [count, setCount]= useState();
         const result =  await api.getNotification(user._id);
 setCount(result.length);
           if(!socket){
+            
             // eslint-disable-next-line react-hooks/exhaustive-deps
             socket = io("http://localhost:5000");
             socket.emit('join', user._id, (error) => {
@@ -36,13 +37,12 @@ setCount(result.length);
                 alert(error);
               }
             });
-            socket.on('notification',  (notificationdata) => {
-              toast(notificationdata.title);
-            console.log("noo");
-              const result =   api.getNotification(user._id);
+            socket.on('notification', async (notificationdata) => {
+              const result =  await api.getNotification(user._id);
 
-             
-setCount(result.length);
+              
+              setCount(result.length);
+              toast(notificationdata.title);
          
              
             });
@@ -53,7 +53,7 @@ setCount(result.length);
       }
     }
     fetchData();
-  }, []);
+  }, [user]);
 const handleClick=async ()=>{
 navigate("/allnotification")
 const result = await  api.updateNotif(user._id);
