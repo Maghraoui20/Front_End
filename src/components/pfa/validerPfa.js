@@ -21,8 +21,7 @@ function ValiderPfa() {
 
     try {
        api.updatePfaIsValidated(PfaData, idSelected);
-      // navigate("/choisir-pfa");
-  
+       window.location.reload();  
     } catch (error) {
       console.log(error);
     }
