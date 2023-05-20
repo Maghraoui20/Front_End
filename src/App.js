@@ -108,14 +108,24 @@ function App() {
       <Router>
         <Routes>
           <Route path="*" element={<Navigate to="/signin" replace />} />
-
-          <Route path="/charts" element={<Charts />} />
+          {/* Dorra */}
+          <Route path="/charts" element={<Charts />} /> {/*fonctionne*/}
           <Route path="/addDemandes" element={<AddAlumnis />} />
-          <Route path="/validDemand" element={<ListeVacation />} />
+          {/*fonctionne*/}
+          <Route path="/validDemand" element={<ListeVacation />} />{" "}
+          {/*fonctionne*/}
           <Route path="/validExpert" element={<ListeExpert />} />
-          <Route path="/list-posts" element={<ListPost />} />
-          <Route path="/ajouter-post" element={<AddPost />} />
-          <Route path="/modifier-post/:id" element={<ModifPost />} />
+          {/*fonctionne*/}
+          <Route path="/list-posts" element={<ListPost />} /> {/*fonctionne*/}
+          <Route path="/ajouter-post" element={<AddPost />} /> {/*fonctionne*/}
+          <Route path="/modifier-post/:id" element={<ModifPost />} />{" "}
+          {/*fonctionne*/}
+          <Route path="/signupA" element={<SignupAlumni />} /> {/*fonctionne*/}
+          <Route path="/check" element={<CheckStatus />} />
+          {/*fonctionne*/}
+          <Route path="/validAlumnis" element={<ValidAlumnis />} />
+          {/*fonctionne*/}
+          {/* End Dorra */}
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -124,10 +134,6 @@ function App() {
             path="/password-reset/:id/:token"
             element={<PasswordReset />}
           />
-          <Route path="/signupA" element={<SignupAlumni />} />
-          <Route path="/check" element={<CheckStatus />} />
-          <Route path="/validAlumnis" element={<ValidAlumnis />} />
-
           <Route path="/espace-etudiant" element={<EspacEtudiant />} />
           <Route path="/espace-alumni" element={<EspaceAlumni />} />
           <Route path="/espace-directeur" element={<EspaceDirecteur />} />
@@ -139,7 +145,6 @@ function App() {
           <Route path="/create-etudiant" element={<CreateEtudiant />} />
           <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
           <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-
           <Route path="/create-evenement" element={<CreateEvenement />} />
           <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
           <Route path="/readall-evenement" element={<ReadEvenement />} />
@@ -149,13 +154,11 @@ function App() {
           />
           <Route path="/readall-pfa-admin" element={<ReadPFA />} />
           <Route path="/valider-pfa" element={<ValiderPfa />} />
-
           <Route path="/administratif" element={<Administratif />} />
           <Route path="/readall-enseignant" element={<ReadEnseignant />} />
           <Route path="/create-etudiant" element={<CreateEtudiant />} />
           <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
           <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-
           <Route path="/create-evenement" element={<CreateEvenement />} />
           <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
           <Route path="/readall-evenement" element={<ReadEvenement />} />
@@ -163,41 +166,31 @@ function App() {
           <Route path="/update-pfa/:id" element={<UpdatePfa />} />
           <Route path="/readall-pfa" element={<ReadPfa />} />
           <Route path="/cv-view/:id" element={<CvView />} />
-
           <Route path="/create-pfa" element={<CreatePfa />} />
           <Route path="/update-pfa/:id" element={<UpdatePfa />} />
           <Route path="/readall-pfa" element={<ReadPfa />} />
           <Route path="/enseignant" element={<Enseignant />} />
           <Route path="/inserer-stage-ete" element={<CreateStageEté />} />
           <Route path="/inserer-stage-pfe" element={<CreateStagePfe />} />
-
           <Route path="/update-cv" element={<UpdateCV />} />
           <Route path="/update-cv-alumni" element={<UpdateCvAlumni />} />
-
           <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
-
           <Route path="/update-stageete/:id" element={<UpdateStage />} />
           <Route path="/choisir-pfa" element={<PfaEtudiant />} />
-
           <Route path="/update-cv/:id" element={<UpdateCV />} />
           <Route path="/readall-pfe" element={<ReadPFE />} />
           <Route path="/mes-stage-ete" element={<MesStageEte />} />
           <Route path="/mes-stage-pfe" element={<MesStagePFE />} />
           <Route path="/liste-mes-pfe" element={<MesPFE />} />
           <Route path="/liste-mes-pfa" element={<MesPFA />} />
-
           <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
-
           <Route path="/comptes-publics" element={<CompteEtudiantPublic />} />
-
           <Route path="/liste-pfe" element={<PfeEnseignant />} />
-
           <Route path="/liste-des-etudiants" element={<ListeEtudiants />} />
           <Route path="/cv-etudiant/:id" element={<CvEtudiant />} />
           <Route path="/statistics-pfe" element={<Statistique />} />
           <Route path="anneeuniver" element={<AnneeUniv />} />
           <Route path="/allnotification" element={<AllNotification />} />
-
           <Route path="/detail_etudiant/:id" element={<DetailEtudiant />} />
           <Route
             path="/detail_etudiant_public_compte/:id"

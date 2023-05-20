@@ -14,8 +14,8 @@
 }
 
 .white_btn {
-  justify-content: end;
-display: flex;
+  justify-content: flex-end;
+  display: flex-end;
   border: none;
   outline: none;
   padding: 12px 0;

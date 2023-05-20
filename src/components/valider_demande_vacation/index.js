@@ -28,9 +28,7 @@ function ListVacation() {
     async function fetchData() {
       try {
         const result = await api.getDemandes();
-        console.log(result);
         setRows(result["vacations"]);
-        console.log(rows);
       } catch (e) {
         console.log(e);
       }
