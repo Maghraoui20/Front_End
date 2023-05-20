@@ -2,7 +2,6 @@ import "./App.css";
 import React, { Component }  from 'react';
 import { createContext, useEffect, useState } from "react";
 import ReactSwitch from "react-switch";
-import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
 
 import {
   BrowserRouter as Router,
@@ -53,6 +52,7 @@ import AnneeUniv from "./components/administratif/annéeuniversitaire";
 import * as apiet from "./service/etudiant.js";
 import AllNotification from "./components/espaceEtudiant/allnotification";
 
+
 import { ToastContainer } from "react-toastify";
 import PfaEtudiant from "./components/espaceEtudiant/monpfa";
 import ReadPFA from "./components/pfa/listePfaAdmin";
@@ -60,6 +60,7 @@ import MesPFA from "./components/enseignant/mesPfa";
 import ValiderPfa from "./components/pfa/validerPfa";
 import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 import CvView from "./components/crud_pfa/read_pfa/cv_view";
+import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
 
 function App() {
   const [theme, setTheme] = useState("light");
