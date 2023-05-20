@@ -72,7 +72,7 @@ import CalendarYear from "./components/espaceEtudiant/Calendar";
 import CompteEtudiantPublic from "./components/compte_etudiant_public/CompteEtudiantPublic";
 import DetailEtudiantPublicCompte from "./components/compte_etudiant_public/DetailEtudiantPublicCompte";
 import ListeVacation from "./components/valider_demande_vacation/index";
-
+import ListeExpert from "./components/valider_demande_expert/index";
 function App() {
   // const [theme, setTheme] = useState("light");
 
@@ -109,6 +109,7 @@ function App() {
           <Route path="/charts" element={<Charts />} />
           <Route path="/addDemandes" element={<AddAlumnis />} />
           <Route path="/validDemand" element={<ListeVacation />} />
+          <Route path="/validExpert" element={<ListeExpert />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
