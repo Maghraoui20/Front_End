@@ -1,11 +1,8 @@
 import "./App.css";
-//import UpdateProfileEtudiant from "./components/update_etudiant/update_etudiant";
 // import { createContext, useState } from "react";
 // import ReactSwitch from "react-switch";
 import React from "react";
 import { useEffect } from "react";
-
-// import UpdateProfileEtudiant from "./components/update_etudiant/update_etudiant";
 
 import {
   BrowserRouter as Router,
