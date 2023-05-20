@@ -76,6 +76,11 @@ import ListeExpert from "./components/valider_demande_expert/index";
 import ListPost from "./components/crud_posts/listPosts/index";
 import AddPost from "./components/crud_posts/addPost/index";
 import ModifPost from "./components/crud_posts/modifierPost/index";
+import GererDoitAccess from "./components/administratif/gererdroitacces";
+import CreateAdministratif from "./components/administratif/create_administratif";
+import { Update } from "@mui/icons-material";
+import UpdateAdministratif from "./components/administratif/updatedroitaccess";
+
 function App() {
   // const [theme, setTheme] = useState("light");
 
@@ -130,6 +135,16 @@ function App() {
           <Route path="/readall-pfa-admin" element={<ReadPFA />} />
           <Route path="/valider-pfa" element={<ValiderPfa />} />
 
+            <Route path="/update-administratif/:id" element={<UpdateAdministratif />} />
+         
+
+            <Route path="/create-evenement" element={<CreateEvenement />} />
+            <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
+            <Route path="/readall-evenement" element={<ReadEvenement />} />
+            <Route path="/readall-evenement_by_etudiant" element={<ReadEvenementByStudent />} />
+            <Route path="/readall-pfa-admin" element={<ReadPFA/>} />
+            <Route path="/valider-pfa" element={< ValiderPfa/>} />
+
           <Route path="/administratif" element={<Administratif />} />
           <Route path="/readall-enseignant" element={<ReadEnseignant />} />
           <Route path="/create-etudiant" element={<CreateEtudiant />} />
@@ -181,6 +196,12 @@ function App() {
             element={<DetailEtudiantPublicCompte />}
           />
           <Route path="/calendar" element={<CalendarYear />} />
+
+          <Route path="/gerer_droit_acces" element={<GererDoitAccess />} />
+
+          <Route path="/create-administratif" element={<CreateAdministratif />} />
+
+
         </Routes>
       </Router>
       <ToastContainer />

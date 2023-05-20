@@ -88,6 +88,15 @@ function MySideNav() {
           </NavIcon>
           <NavText>Demandes vacations</NavText>
         </NavItem>
+
+        <NavItem eventKey="gerer_droit_acces" data-test="anneeuniver">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Gestion des administratifs</NavText>
+        </NavItem>
+
+
         <NavItem eventKey="signin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
