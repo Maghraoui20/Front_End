@@ -14,7 +14,8 @@ import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 
-import MySideNav from "../../sidenavs/sidenavAdmin.js";
+import MySideNavAdmin  from "../../sidenavs/sidenavAdmin.js";
+import MySideNavDir from "../../sidenavs/sidenavdir.js";
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 //import { importExcel } from "../../../service/etudiant.js";
@@ -31,6 +32,10 @@ function ReadEtudiant() {
   const [idSelected, setIdSelected] = useState();
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const role = user?.role;
+
 
   const navigate = useNavigate();
 
@@ -58,13 +63,11 @@ function ReadEtudiant() {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileUpload = (event) => {
-    //setSelectedFile(event.target.files[0]);
+  
 
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
-  //  const fileURL = URL.createObjectURL(selectedFile);
-   // console.log(fileURL , 'url');
-
+ 
   };
 
   useEffect(() => {}, []);
@@ -229,7 +232,7 @@ function ReadEtudiant() {
 
   return (
     <Container maxWidth="md">
-      <MySideNav />
+      {role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
 
       <Box
         sx={{
@@ -239,11 +242,17 @@ function ReadEtudiant() {
           alignItems: "center",
         }}
       >
-        
+         <div style={{ height: 400 }}>
+          <div>
+            <center>
+            <h2>
+              <b>Liste des etudiants</b>
+            </h2></center>
+          </div>
 
    
 
-          <div style={{ height: 400 }}>
+        
          <div style={{float:"left"}}>
         <IconButton aria-label="add" color="secondary"  onClick={openUploadModal} style={{ color:"#000"}} >
         <UploadFileIcon />

@@ -1,100 +1,68 @@
-import React, { Component }  from 'react';
+import React from "react";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import * as api from "../../../service/evenement.js";
+import * as api from "../../service/enseignant.js";
 import { DataGrid } from "@mui/x-data-grid";
-import moment from "moment";
-import { Box, Button, FormControl, InputLabel, MenuItem, Paper, Select, Typography } from "@mui/material";
+
+import { Box, Button, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import IconButton from "@mui/material/IconButton";
+
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-import MySideNavAdmin from "../../sidenavs/sidenavAdmin.js";
+import MySideNav from "../sidenavs/sidenavAdmin.js";
 
-import MySideNavDir from "../../sidenavs/sidenavdir.js";
-
-function ReadEvenement() {
+function ListVacation() {
   const [rows, setRows] = useState([]);
-  const [idSelected, setIdSelected] = useState();
-
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
-  const role = user?.role;
-
-  const handleDelete = async () => {
-    try {
-      await api.deleteEvenement(idSelected);
-      window.location.reload(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const [open, setOpen] = useState(false);
-  const handleClose = () => {
-      setOpen(false);
-    };
-  
-    const handleOpen = () => {
-      setOpen(true);
-    };
-    const [annee,setAnnee]=useState();
-    const handleChangeAnnee =async (e) => {
-      setAnnee(e.target.value)
-      console.log(e.target.value);
-      const result = await api.getAllEvenementSaison(e.target.value);
-      console.log(result, "res");
-      setRows(result);
-
-    }
   const navigate = useNavigate();
 
   const handleCreate = async () => {
-    navigate("/create-evenement");
+    navigate("/");
   };
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await api.getAllEvenement();
-        setRows(result);
+        const result = await api.getDemandes();
+        setRows(result["vacations"]);
       } catch (e) {
         console.log(e);
       }
     }
     fetchData();
-  }, []);
+  }, [rows]);
 
   const columns = [
-    { field: "eventName", headerName: "Titre", width: 130 },
+    { field: "firstname", headerName: "prenom", width: 100 },
     {
-      field: "eventDate",
-      headerName: "Date ",
-      width: 160,
-      renderCell: (params) => {
-        return (
-          <Typography>
-            {moment(params.row.eventDate).format("YYYY-MM-DD")}
-          </Typography>
-        );
-      },
+      field: "lastname",
+      headerName: "nom",
+      width: 100,
     },
-    { field: "eventType", headerName: "Type ", width: 130 },
-    { field: "description", headerName: "description ", width: 130 },
-    { field: "location", headerName: "location ", width: 130 },
     {
-      field: "modifer",
-      headerName: "Modifier",
+      field: "email",
+      headerName: "email",
+      width: 100,
+    },
+    {
+      field: "phone",
+      headerName: "numero de telephone",
+      width: 100,
+    },
+    { field: "login", headerName: "login", width: 100 },
+    { field: "status", headerName: "status", width: 100 },
+    {
+      field: "accepter",
+      headerName: "Accepter",
       width: 130,
       renderCell: (params) => {
         return (
           <Button
             variant="contained"
-            href={`/update-evenement/${idSelected}`}
             sx={{
               backgroundColor: "#00A36C",
               ":hover": { backgroundColor: "#00A36C" },
@@ -106,8 +74,8 @@ function ReadEvenement() {
       },
     },
     {
-      field: "supprimer",
-      headerName: "Supprimer",
+      field: "refuser",
+      headerName: "Refuser",
       width: 130,
       renderCell: (params) => {
         return (
@@ -134,7 +102,7 @@ function ReadEvenement() {
                     }}
                   >
                     <Typography>
-                      Voulez vous vraiment supprimer cet evenement
+                      Voulez vous vraiment refuser cette demande
                     </Typography>
                     <div className="buttons">
                       <Button
@@ -146,7 +114,6 @@ function ReadEvenement() {
                           ":hover": { backgroundColor: "#00A36C" },
                         }}
                         onClick={() => {
-                          handleDelete();
                           popupState.close();
                         }}
                       >
@@ -176,29 +143,7 @@ function ReadEvenement() {
 
   return (
     <Container>
-
-{role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
-         
-   
-      <label for="Année universitaire">Année universitaire</label>
-
-<select
-   data-test="anneeUvivgenerate"
-   open={open}
-   onClose={handleClose}
-   onOpen={handleOpen}
-   value={annee}
-   label="anneeUviv"
-   onChange={handleChangeAnnee} 
-  style={{ width: "100%", height: "50px" }}
->
-  <option value={"2021-2022"}>2021-2022</option>
-  <option value={"2022-2023"}>2022-2023</option>
-  <option value={"2023-2024"}>2023-2024</option>
-  <option value={"2024-2025"}>2024-2025</option>
-  <option value={"2026-2027"}>2026-2027</option>
-
-</select>
+      <MySideNav />
       <Box
         sx={{
           marginTop: 10,
@@ -207,14 +152,11 @@ function ReadEvenement() {
           alignItems: "center",
         }}
       >
-         
         <div style={{ height: 400 }}>
           <div>
-            <center>
-            <h2>
-              <b>Liste des evenements</b>
-            </h2>
-            </center>
+            <h1>
+              <b>Liste des demandes de vacations</b>
+            </h1>
           </div>
           <div style={{ float: "right" }}>
             <IconButton
@@ -240,11 +182,7 @@ function ReadEvenement() {
             pageSizeOptions={[5]}
             checkboxSelection
             disableRowSelectionOnClick
-            hideFooter="true"
             getRowId={(row) => row._id}
-            onRowSelectionModelChange={(newRowSelectionModel) => {
-              setIdSelected(newRowSelectionModel.toString());
-            }}
           />
         </div>
       </Box>
@@ -252,4 +190,4 @@ function ReadEvenement() {
   );
 }
 
-export default ReadEvenement;
+export default ListVacation;

@@ -78,7 +78,7 @@ function UpdatePfa() {
 
   const options = technologies.map((tech) => ({
     title: tech.title,
-    _id: tech._id,
+    // _id: tech._id,
   }));
 
 

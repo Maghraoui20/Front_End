@@ -12,7 +12,7 @@ import {
   Paper,
 } from "@mui/material";
 import { Container } from "@mui/system";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -33,7 +33,6 @@ function Signin() {
     console.log(signinData, "signinData");
   };
 
-  
   const handleChangePassword = (e) => {
     setSigninData({ ...signinData, password: e.target.value });
     /*     console.log(signinData,"signinData");
@@ -43,24 +42,22 @@ function Signin() {
     event.preventDefault();
 
     try {
-      const data  = await api.signin(signinData);
-      if (data.model.role === 'administratif') {
-      console.log(data,"data");
-      localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
-       const token = data.mytoken;
-      localStorage.setItem('token', token)
-      navigate('/administratif');
-
-    }
-    if (data.model.role === 'enseignant') {
-      console.log(data,"data");
-        localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
-         const token = data.mytoken;
-        localStorage.setItem('token', token)
-        navigate('/enseignant');
-  
+      const data = await api.signin(signinData);
+      if (data.model.role === "administratif") {
+        console.log(data, "data");
+        localStorage.setItem("profile", JSON.stringify({ ...data?.model }));
+        const token = data.mytoken;
+        localStorage.setItem("token", token);
+        navigate("/administratif");
       }
-    
+      if (data.model.role === "enseignant") {
+        console.log(data, "data");
+        localStorage.setItem("profile", JSON.stringify({ ...data?.model }));
+        const token = data.mytoken;
+        localStorage.setItem("token", token);
+        navigate("/enseignant");
+      }
+
       if (data.model.role === "alumni") {
         console.log(data, "data");
         localStorage.setItem("profile", JSON.stringify({ ...data?.model }));
@@ -132,7 +129,6 @@ function Signin() {
               <TextField
                 margin="normal"
                 data-test="phone"
-
                 required
                 fullWidth
                 id="phone"
@@ -146,7 +142,6 @@ function Signin() {
                 fullWidth
                 margin="normal"
                 required
-
                 label="Mot de passe"
                 variant="outlined"
               >
@@ -154,8 +149,7 @@ function Signin() {
                   Mot de passe
                 </InputLabel>
                 <OutlinedInput
-                   data-test="password"
-
+                  data-test="password"
                   onChange={handleChangePassword}
                   variant="outlined"
                   type={showPassword ? "text" : "password"}
@@ -187,9 +181,16 @@ function Signin() {
                     Mot de passe oublié?
                   </Link>
                 </Grid>
+                <br />
                 <Grid item>
-                  <Link href="#" variant="body2">
-                    Vous n'avez pas de compte ? S'inscrire
+                  <Link href="/signupA" variant="body2">
+                    |Ajouter compte alumni
+                  </Link>
+                </Grid>
+                <Grid item></Grid>
+                <Grid item>
+                  <Link href="/check" variant="body2">
+                    |Vérifier compte
                   </Link>
                 </Grid>
               </Grid>

@@ -25,7 +25,9 @@ export const getEnseignantbyid = async (id) => {
   return result.data;
 };
 export const getAllEnseignant = async () => {
-  const result = await Axios.get("http://localhost:5000/users/getAllEnseignant");
+  const result = await Axios.get(
+    "http://localhost:5000/users/getAllEnseignant"
+  );
   return result.data;
 };
 export const getAlumnis = async () => {
@@ -51,5 +53,17 @@ export const getStats = async () => {
 };
 export const getStatChomage = async () => {
   const result = await Axios.get("http://localhost:5000/alumnis/statchomage");
+  return result.data;
+};
+export const getDemandes = async () => {
+  const result = await Axios.get(
+    "http://localhost:5000/administratif/getDemandesVacation"
+  );
+  return result.data;
+};
+export const getDemandesExpert = async () => {
+  const result = await Axios.get(
+    "http://localhost:5000/administratif/getDemandesExpert"
+  );
   return result.data;
 };
