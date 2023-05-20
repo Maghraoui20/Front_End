@@ -4,6 +4,7 @@ import "./App.css";
 import React, { Component }  from 'react';
 import { createContext, useEffect, useState } from "react";
 import ReactSwitch from "react-switch";
+import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
 
 import {
   BrowserRouter as Router,
@@ -13,7 +14,6 @@ import {
 } from "react-router-dom";
 import Signin from "./components/signin/signin.js";
 import UpdateCV from "./components/update_cv/update_cv"
-import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
 import CreateEnseignant from "./components/crud_enseignant/create_enseignant/create_enseignant";
 import UpdateEnseignant from "./components/crud_enseignant/update_enseignant/update_enseignant";
 import ReadEnseignant from "./components/crud_enseignant/read_enseignant/read_enseignant";
