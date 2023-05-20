@@ -73,6 +73,9 @@ import CompteEtudiantPublic from "./components/compte_etudiant_public/CompteEtud
 import DetailEtudiantPublicCompte from "./components/compte_etudiant_public/DetailEtudiantPublicCompte";
 import ListeVacation from "./components/valider_demande_vacation/index";
 import ListeExpert from "./components/valider_demande_expert/index";
+import ListPost from "./components/crud_posts/listPosts/index";
+import AddPost from "./components/crud_posts/addPost/index";
+import ModifPost from "./components/crud_posts/modifierPost/index";
 function App() {
   // const [theme, setTheme] = useState("light");
 
@@ -110,6 +113,9 @@ function App() {
           <Route path="/addDemandes" element={<AddAlumnis />} />
           <Route path="/validDemand" element={<ListeVacation />} />
           <Route path="/validExpert" element={<ListeExpert />} />
+          <Route path="/list-posts" element={<ListPost />} />
+          <Route path="/ajouter-post" element={<AddPost />} />
+          <Route path="/modifier-post/:id" element={<ModifPost />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />

@@ -33,8 +33,9 @@ function UpdateEtudiant() {
 
   const [niveau, setNiveau] = React.useState("");
   const [etat, setEtat] = React.useState("");
-  
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  setUser(user);
   const idu = user?._id;
   const iduser = idu;
 
@@ -57,7 +58,7 @@ function UpdateEtudiant() {
         ...EtudiantData,
         visibility: visibility,
       };
-  
+
       const updateEtudiant = await api.updateEtudiant(updatedEtudiant, iduser);
       console.log(updateEtudiant, "update");
       window.location.reload(false);
@@ -198,9 +199,6 @@ function UpdateEtudiant() {
                       type="date"
                       onChange={handleChange}
                     />
-                               
-  
-
 
                     <FormControl fullWidth sx={{ mt: 3 }}>
                       <InputLabel id="Niveau">Niveau</InputLabel>
@@ -233,20 +231,19 @@ function UpdateEtudiant() {
                       </Select>
                     </FormControl>
                     <FormControl fullWidth sx={{ mt: 3 }}>
-    <InputLabel id="visibility">Visibility</InputLabel>
-    <Select
-      labelId="visibility"
-      id="visibility"
-      value={EtudiantData.visibility}
-      label="Visibility"
-      onChange={(e) => setVisibility(e.target.value)}
-    >
-      <MenuItem value={"private"}>Private</MenuItem>
-      <MenuItem value={"public"}>Public</MenuItem>
-    </Select>
-  </FormControl>
+                      <InputLabel id="visibility">Visibility</InputLabel>
+                      <Select
+                        labelId="visibility"
+                        id="visibility"
+                        value={EtudiantData.visibility}
+                        label="Visibility"
+                        onChange={(e) => setVisibility(e.target.value)}
+                      >
+                        <MenuItem value={"private"}>Private</MenuItem>
+                        <MenuItem value={"public"}>Public</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Grid>
-     
 
                   <Grid item xs={3}></Grid>
                   <Grid item xs={6}>
