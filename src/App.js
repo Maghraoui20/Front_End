@@ -2,7 +2,7 @@ import "./App.css";
 import React, { Component }  from 'react';
 import { createContext, useEffect, useState } from "react";
 import ReactSwitch from "react-switch";
-import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
+//import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
 
 import {
   BrowserRouter as Router,
