@@ -144,7 +144,6 @@ function App() {
 
             <Route path="/update-cv" element={<UpdateCV />} />
             <Route path="/update-cv-alumni" element={<UpdateCvAlumni />} />
-            <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
             <Route path="/update-stageete/:id" element={<UpdateStage />} />
             <Route path="/choisir-pfa" element={< PfaEtudiant />} />
 

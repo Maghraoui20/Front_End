@@ -23,13 +23,16 @@ import { createFilterOptions } from "@material-ui/lab/Autocomplete";
 
 function CreatePfa() {
   const params = useParams();
-
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const idu = user?._id;
+  const iduser = idu;
   const [technologies, setTechnologies] = React.useState([]);
   const [newTechnology, setNewTechnology] = React.useState("");
   const [PfaData, setPfaData] = useState({
     description: "",
     titre: "",
     sujet: "",
+    id_enseignant:iduser,
     nbre_etudiant: "",
     technologies: [], // utiliser un tableau vide pour stocker les technologies sélectionnées
   });

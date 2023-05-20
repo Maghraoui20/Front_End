@@ -22,8 +22,7 @@ function PfaEtudiant() {
 
     try {
        api.updatePfaIdEtudiant(PfaData, idSelected);
-       navigate("/choisir-pfa");
-  
+       window.location.reload();  
     } catch (error) {
       console.log(error);
     }
