@@ -18,6 +18,7 @@ import MySideNav from "../sidenavs/sidenavAdmin.js";
 
 function ReadVacation() {
   const [rows, setRows] = useState([]);
+
   const navigate = useNavigate();
 
   const handleCreate = async () => {
@@ -27,16 +28,15 @@ function ReadVacation() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await api.getDemandes();
+        const result = await api.getDemandesExpert();
         console.log(result);
-        setRows(result["vacations"]);
-        console.log(rows);
+        setRows(result["experts"]);
       } catch (e) {
         console.log(e);
       }
     }
     fetchData();
-  }, [rows]);
+  }, []);
 
   const columns = [
     { field: "firstname", headerName: "prenom", width: 100 },
@@ -157,7 +157,7 @@ function ReadVacation() {
         <div style={{ height: 400 }}>
           <div>
             <h1>
-              <b>Liste des demandes de vacations</b>
+              <b>Liste des demandes de contrat expert</b>
             </h1>
           </div>
           <div style={{ float: "right" }}>
