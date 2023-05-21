@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as api from "../../../service/posts";
-import "./styles.css";
+//import "./styles.css";
 function AddPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

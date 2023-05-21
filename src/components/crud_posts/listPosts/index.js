@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as api from "../../../service/posts";
-import "./styles.css";
+//import "./styles.css";
 import { Link } from "react-router-dom";
 function ListPosts() {
   const [rows, setRows] = useState([]);

@@ -79,19 +79,7 @@ import ModifPost from "./components/crud_posts/modifierPost/index";
 function App() {
   // const [theme, setTheme] = useState("light");
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const result = await apiet.sendmail();
-        const result2 = await apiet.sendmailcmp();
-
-        const result3 = await apiet.sendmailtravail();
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    fetchData();
-  }, []);
+ 
   /*   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
@@ -134,15 +122,7 @@ function App() {
           <Route path="/espace-enseignant" element={<EspaceEnseignant />} />
           <Route path="/create-enseignant" element={<CreateEnseignant />} />
           <Route path="/update-enseignant/:id" element={<UpdateEnseignant />} />
-          <Route path="/administratif" element={<Administratif />} />
-          <Route path="/readall-enseignant" element={<ReadEnseignant />} />
-          <Route path="/create-etudiant" element={<CreateEtudiant />} />
-          <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
-          <Route path="/readall-etudiant" element={<ReadEtudiant />} />
 
-          <Route path="/create-evenement" element={<CreateEvenement />} />
-          <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
-          <Route path="/readall-evenement" element={<ReadEvenement />} />
           <Route
             path="/readall-evenement_by_etudiant"
             element={<ReadEvenementByStudent />}
@@ -159,9 +139,6 @@ function App() {
           <Route path="/create-evenement" element={<CreateEvenement />} />
           <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
           <Route path="/readall-evenement" element={<ReadEvenement />} />
-          <Route path="/create-pfa" element={<CreatePfa />} />
-          <Route path="/update-pfa/:id" element={<UpdatePfa />} />
-          <Route path="/readall-pfa" element={<ReadPfa />} />
           <Route path="/cv-view/:id" element={<CvView />} />
 
           <Route path="/create-pfa" element={<CreatePfa />} />

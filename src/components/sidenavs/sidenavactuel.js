@@ -107,7 +107,7 @@ const result = await  api.updateNotif(user._id);
          </NavItem>
         ) : null}
         {statutEtudiant == "actuel" ? (
-          <NavItem eventKey="insérer-stage-été">
+          <NavItem eventKey="inserer-stage-ete">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
