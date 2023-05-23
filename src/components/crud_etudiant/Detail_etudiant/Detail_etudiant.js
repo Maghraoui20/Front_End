@@ -17,18 +17,15 @@ import {
 
   import MySideNav from "../../sidenavs/sidenavAdmin";
  
-  //import ProfilePic from "../../../../src/assets/profilepicture.PNG";
- 
-  //import { withStyles } from "@mui/styles";
+
 import { getPfabyidEtudiant } from "../../../service/pfa";
 import { getPfebyidEtudiant } from "../../../service/stagePfe";
-  //import { ReactComponent as Sun } from "../../update_cv/Sun.svg";
-  //import { ReactComponent as Moon } from "../../update_cv/Moon.svg";
+ 
   
   function DetailEtudiant() {
     const params = useParams();
     const iduser = params.id;
-   // const [loading, setLoading] = useState(true);
+   
 
     const [CvData, setCvData] = useState({
       firstname: "",
@@ -67,6 +64,7 @@ import { getPfebyidEtudiant } from "../../../service/stagePfe";
         etat: "",
         email: "",
         phone: "",
+        
       });
   
   
@@ -189,16 +187,16 @@ import { getPfebyidEtudiant } from "../../../service/stagePfe";
                         {CvData.experiences.map((experience, index) => (
                           <li key={index}>
                             <strong>Title: </strong>
-                            {experience.title}
+                            {experience?.title}
                             <br />
                             <strong>Description: </strong>
-                            {experience.description}
+                            {experience?.description}
                             <br />
                             <strong>Date Debut: </strong>
-                            {experience.date_debut}
+                            {experience?.date_debut}
                             <br />
                             <strong>Date Fin: </strong>
-                            {experience.date_fin}
+                            {experience?.date_fin}
                             <br />
                           </li>
                         ))}
@@ -212,6 +210,7 @@ import { getPfebyidEtudiant } from "../../../service/stagePfe";
                     <Typography   variant="h6" gutterBottom>   Email :{EtudiantData.email}</Typography>
                    
                     <Typography variant="h6" gutterBottom>  Niveau :  {EtudiantData.niveau}   </Typography>
+                  
                     <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
                       Stages
                     </Typography>
@@ -244,9 +243,9 @@ import { getPfebyidEtudiant } from "../../../service/stagePfe";
                     <Typography variant="h5"gutterBottom> ..............................................................................................................................</Typography>  
                     <Typography variant="h5"gutterBottom> PFA</Typography>  
 
-                    <Typography variant="h6"gutterBottom> Description : {PfaData.description} </Typography>
-                    <Typography  variant="h6" gutterBottom>   Titre :  {PfaData.titre} </Typography>
-                    <Typography  variant="h6" gutterBottom>   Sujet :  {PfaData.sujet} </Typography>
+                    <Typography variant="h6"gutterBottom> Description : {PfaData?.description} </Typography>
+                    <Typography  variant="h6" gutterBottom>   Titre :  {PfaData?.titre} </Typography>
+                    <Typography  variant="h6" gutterBottom>   Sujet :  {PfaData?.sujet} </Typography>
                    
   
                   </Grid>
@@ -258,9 +257,9 @@ import { getPfebyidEtudiant } from "../../../service/stagePfe";
                    <Typography variant="h5"gutterBottom> ................</Typography>  
                    <Typography variant="h5"gutterBottom> PFE</Typography>  
 
-                   <Typography variant="h6"gutterBottom> Description : {PfeData.description} </Typography>
-                   <Typography  variant="h6" gutterBottom>   Societe :  {PfeData.societe} </Typography>
-                   <Typography  variant="h6" gutterBottom>   Sujet :  {PfeData.sujet} </Typography>
+                   <Typography variant="h6"gutterBottom> Description : {PfeData?.description} </Typography>
+                   <Typography  variant="h6" gutterBottom>   Societe :  {PfeData?.societe} </Typography>
+                   <Typography  variant="h6" gutterBottom>   Sujet :  {PfeData?.sujet} </Typography>
                   
  
                  </Grid>

@@ -25,7 +25,7 @@ import { getPfebyidEtudiant } from "../../service/stagePfe";
   function DetailEtudiantPublicCompte() {
     const params = useParams();
     const iduser = params.id;
-   // const [loading, setLoading] = useState(true);
+  
 
     const [CvData, setCvData] = useState({
       firstname: "",
@@ -124,10 +124,10 @@ import { getPfebyidEtudiant } from "../../service/stagePfe";
         <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Paper
           style={{
-            width: "100%",
+            width: "800%",
             padding: "20px",
             border: "1px solid black",
-            height: "55vh",
+            height: "80vh",
             overflowY: "auto",
           }}
       >
@@ -238,12 +238,12 @@ import { getPfebyidEtudiant } from "../../service/stagePfe";
                    
                     
 
-                    <Typography variant="h5"gutterBottom> ..............................................................................................................................</Typography>  
+                    <Typography variant="h5"gutterBottom> ............................................................</Typography>  
                     <Typography variant="h5"gutterBottom> PFA</Typography>  
 
-                    <Typography variant="h6"gutterBottom> Description : {PfaData.description} </Typography>
-                    <Typography  variant="h6" gutterBottom>   Titre :  {PfaData.titre} </Typography>
-                    <Typography  variant="h6" gutterBottom>   Sujet :  {PfaData.sujet} </Typography>
+                    <Typography variant="h6"gutterBottom> Description : {PfaData?.description} </Typography>
+                    <Typography  variant="h6" gutterBottom>   Titre :  {PfaData?.titre} </Typography>
+                    <Typography  variant="h6" gutterBottom>   Sujet :  {PfaData?.sujet} </Typography>
                    
   
                   </Grid>
@@ -252,12 +252,12 @@ import { getPfebyidEtudiant } from "../../service/stagePfe";
                    
                     
 
-                   <Typography variant="h5"gutterBottom> ................</Typography>  
+                    <Typography variant="h5"gutterBottom> ...............................................................</Typography>  
                    <Typography variant="h5"gutterBottom> PFE</Typography>  
 
-                   <Typography variant="h6"gutterBottom> Description : {PfeData.description} </Typography>
-                   <Typography  variant="h6" gutterBottom>   Societe :  {PfeData.societe} </Typography>
-                   <Typography  variant="h6" gutterBottom>   Sujet :  {PfeData.sujet} </Typography>
+                   <Typography variant="h6"gutterBottom> Description : {PfeData?.description} </Typography>
+                   <Typography  variant="h6" gutterBottom>   Societe :  {PfeData?.societe} </Typography>
+                   <Typography  variant="h6" gutterBottom>   Sujet :  {PfeData?.sujet} </Typography>
                   
  
                  </Grid>
