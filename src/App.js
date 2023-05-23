@@ -54,6 +54,7 @@ import AllNotification from "./components/espaceEtudiant/allnotification";
 
 
 import { ToastContainer } from "react-toastify";
+import AddAlumnis from "./components/compte_alumni/add_demande";
 import PfaEtudiant from "./components/espaceEtudiant/monpfa";
 import ReadPFA from "./components/pfa/listePfaAdmin";
 import MesPFA from "./components/enseignant/mesPfa";
@@ -61,6 +62,23 @@ import ValiderPfa from "./components/pfa/validerPfa";
 import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 import CvView from "./components/crud_pfa/read_pfa/cv_view";
 import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
+import ReadEvenementByStudent from "./components/crud_evenement/ReadEvenementByStudent/ReadEvenementByStudent";
+import ListeEtudiants from "./components/enseignant/ListeEtudiants";
+import CvEtudiant from "./components/enseignant/cvEtudiant";
+import DetailEtudiant from "./components/crud_etudiant/Detail_etudiant/Detail_etudiant";
+import CalendarYear from "./components/espaceEtudiant/Calendar";
+import CompteEtudiantPublic from "./components/compte_etudiant_public/CompteEtudiantPublic";
+import DetailEtudiantPublicCompte from "./components/compte_etudiant_public/DetailEtudiantPublicCompte";
+import ListeVacation from "./components/valider_demande_vacation/index";
+import ListeExpert from "./components/valider_demande_expert/index";
+import ListPost from "./components/crud_posts/listPosts/index";
+import AddPost from "./components/crud_posts/addPost/index";
+import ModifPost from "./components/crud_posts/modifierPost/index";
+import GererDoitAccess from "./components/administratif/gererdroitacces";
+import CreateAdministratif from "./components/administratif/create_administratif";
+import { Update } from "@mui/icons-material";
+import UpdateAdministratif from "./components/administratif/updatedroitaccess";
+
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -93,6 +111,26 @@ function App() {
       </div> */}
       <Router>
         <Routes>
+                <Route path="*" element={<Navigate to="/signin" replace />} />
+          {/* Dorra */}
+          <Route path="/charts" element={<Charts />} /> {/*fonctionne*/}
+          <Route path="/addDemandes" element={<AddAlumnis />} />
+          {/*fonctionne*/}
+          <Route path="/validDemand" element={<ListeVacation />} />{" "}
+          {/*fonctionne*/}
+          <Route path="/validExpert" element={<ListeExpert />} />
+          {/*fonctionne*/}
+          <Route path="/list-posts" element={<ListPost />} /> {/*fonctionne*/}
+          <Route path="/ajouter-post" element={<AddPost />} /> {/*fonctionne*/}
+          <Route path="/modifier-post/:id" element={<ModifPost />} />{" "}
+          {/*fonctionne*/}
+          <Route path="/signupA" element={<SignupAlumni />} /> {/*fonctionne*/}
+          <Route path="/check" element={<CheckStatus />} />
+          {/*fonctionne*/}
+          <Route path="/validAlumnis" element={<ValidAlumnis />} />
+          {/*fonctionne*/}
+          {/* End Dorra */}
+
           <Route path="/charts" element={<Charts />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
           <Route path="/signin" element={<Signin />} />
@@ -101,10 +139,10 @@ function App() {
           <Route
             path="/password-reset/:id/:token"
             element={<PasswordReset />}
+
+
           />
-          <Route path="/signupA" element={<SignupAlumni />} />
-          <Route path="/check" element={<CheckStatus />} />
-          <Route path="/validAlumnis" element={<ValidAlumnis />} />
+         
        
             <Route path="/espace-etudiant" element={<EspacEtudiant />} />
             <Route path="/espace-alumni" element={<EspaceAlumni />} />
@@ -115,7 +153,17 @@ function App() {
               path="/update-enseignant/:id"
               element={<UpdateEnseignant />}
             />
-                       
+
+            <Route
+            path="/update-administratif/:id"
+            element={<UpdateAdministratif />}
+          />
+          <Route
+            path="/readall-evenement_by_etudiant"
+            element={<ReadEvenementByStudent />}
+          />
+           
+
 
             <Route path="/administratif" element={<Administratif />} />
             <Route path="/readall-enseignant" element={<ReadEnseignant />} />
@@ -147,6 +195,7 @@ function App() {
             <Route path="/create-evenement" element={<CreateEvenement />} />
             <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
             <Route path="/readall-evenement" element={<ReadEvenement />} />
+
             <Route path="/readall-pfe" element={<ReadPFE />} />
             <Route path="/mes-stage-été" element={<MesStageEte />} />
             <Route path="/mes-stage-pfe" element={<MesStagePFE />} />
@@ -154,9 +203,29 @@ function App() {
             <Route path="/liste-mes-pfa" element={<MesPFA />} />
 
             <Route path="/liste-pfe" element={<PfeEnseignant />} />
+
+          <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
+          <Route path="/comptes-publics" element={<CompteEtudiantPublic />} />
+          <Route path="/liste-pfe" element={<PfeEnseignant />} />
+          <Route path="/liste-des-etudiants" element={<ListeEtudiants />} />
+          <Route path="/cv-etudiant/:id" element={<CvEtudiant />} />
+
+
             <Route path="/statistics-pfe" element={<Statistique />} />
             <Route path="anneeuniver" element={<AnneeUniv />} />
             <Route path="/allnotification" element={<AllNotification />} />
+            <Route path="/detail_etudiant/:id" element={<DetailEtudiant />} />
+          <Route
+            path="/detail_etudiant_public_compte/:id"
+            element={<DetailEtudiantPublicCompte />}
+          />
+          <Route path="/calendar" element={<CalendarYear />} />
+          <Route path="/gerer_droit_acces" element={<GererDoitAccess />} />
+          <Route
+            path="/create-administratif"
+            element={<CreateAdministratif />}
+          />
+            
        
         </Routes>
       </Router>

@@ -17,6 +17,11 @@ import moment from "moment";
 import MySideNav from "../sidenavs/sidenavactuel.js";
 
 function UpdateEtudiant() {
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  setUser(user);
+  const iduser = user?._id;
+ 
   const [EtudiantData, setEtudiantData] = useState({
     firstname: "",
     lastname: "",
@@ -34,10 +39,7 @@ function UpdateEtudiant() {
   const [niveau, setNiveau] = React.useState("");
   const [etat, setEtat] = React.useState("");
 
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  setUser(user);
-  const idu = user?._id;
-  const iduser = idu;
+ 
 
   const handleChange = (e) => {
     setEtudiantData({ ...EtudiantData, [e.target.name]: e.target.value });
@@ -54,14 +56,15 @@ function UpdateEtudiant() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const updatedEtudiant = {
+      
+      /*const updatedEtudiant = {
         ...EtudiantData,
         visibility: visibility,
-      };
+      };*/
 
-      const updateEtudiant = await api.updateEtudiant(updatedEtudiant, iduser);
+      const updateEtudiant = await api.updateEtudiant(EtudiantData, iduser);
       console.log(updateEtudiant, "update");
-      window.location.reload(false);
+     // window.location.reload(false);
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +73,7 @@ function UpdateEtudiant() {
   useEffect(() => {
     async function fetchData() {
       try {
-        console.log(iduser, "iduser");
+      
         const result = await api.getEtudiantbyid(iduser);
         setEtudiantData(result);
       } catch (e) {

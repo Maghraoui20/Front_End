@@ -15,17 +15,17 @@ import {
   import { useParams } from "react-router-dom";
 
   import MySideNav from "./sidenavEnseignant";
+  import { getPfabyidEtudiant } from "../../service/pfa";
+  import { getPfebyidEtudiant } from "../../service/stagePfe";
  
-  //import ProfilePic from "../../../../src/assets/profilepicture.PNG";
  
   import { withStyles } from "@mui/styles";
-  //import { ReactComponent as Sun } from "../../update_cv/Sun.svg";
-  //import { ReactComponent as Moon } from "../../update_cv/Moon.svg";
+
   
   function CvEtudiant() {
     const params = useParams();
     const iduser = params.id;
-   // const [loading, setLoading] = useState(true);
+
 
     const [CvData, setCvData] = useState({
       firstname: "",
@@ -54,6 +54,31 @@ import {
       ],
       id_user:iduser,
     });
+
+    
+    const [PfaData, setPfaData] = useState({
+      description: "",
+      titre: "",
+      sujet: "",
+      technologies: [], 
+      id_etudiant:iduser,
+    });
+  
+
+    const [PfeData, setPfeData] = useState({
+      description: "",
+      societe: "",
+      sujet: "",
+      statutStage: "",
+      duree: "",
+      pays: "",
+      emailEnseignant: "",
+      dateDébutStage: "",
+      dateFinStage: "",
+      technologies: "", 
+      id_etudiant:iduser,
+    });
+  
   
     const [isDarkMode, setIsDarkMode] = useState(false);
     const toggleDarkMode = () => {
@@ -118,42 +143,21 @@ import {
         </label>
       );
     });
-  
-   /* const handleSubmit = async (event) => {
-      event.preventDefault();
-  
-      try {
-        const updateCv = await api.updateCv(CvData, iduser);
-        console.log(updateCv, "update");
-        window.location.reload(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };*/
-  
 
-    
-        /* 
-            useEffect(() => {
-      async function fetchData() {
-        try {
-          //console.log(iduser, "iduser");
-          const result = await api.getCvbyiduser();
-          setCvData(result);
-        } catch (e) {
-          console.log(e);
-        }
-      }
-      fetchData();
-    }, []);*/
     
   
 
     useEffect(() => {
         async function fetchData() {
           try {
-            const result = await api.getCvbyiduser(iduser); // Use the getCvbyiduser function from cv.service.js
+            const result = await api.getCvbyiduser(iduser); 
             setCvData(result);
+
+            const result2 = await getPfabyidEtudiant(iduser); // 
+            setPfaData(result2);
+
+            const result3 = await getPfebyidEtudiant(iduser); // 
+            setPfeData(result3);
           } catch (error) {
             console.log(error);
           }
@@ -164,9 +168,10 @@ import {
 
      
     
-    if (!CvData) {
+    if (!CvData) 
         return <div>No CV found for this user.</div>;
-    }
+    
+  else
   
     return (
       <Container>
@@ -174,12 +179,10 @@ import {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Paper
           style={{
-            width: "100%",
+            width: "800%",
             padding: "20px",
             border: "1px solid black",
-            backgroundColor: isDarkMode ? "black" : "white",
-            color: isDarkMode ? "white" : "black",
-            height: "50vh",
+            height: "80vh",
             overflowY: "auto",
           }}
       >
@@ -204,8 +207,7 @@ import {
               
                 <Typography variant="h5"gutterBottom> Cv : {CvData.firstname} {CvData.lastname}</Typography>
 
-                <Typography variant="h5"gutterBottom> ..............................................</Typography>
-                  
+                <Typography variant="h5"gutterBottom> ...............................................................................</Typography>
                     <Typography variant="h6" gutterBottom> Nom :  {CvData.lastname}</Typography>
                   
                   
@@ -289,6 +291,34 @@ import {
                       ))}
                     </ul>
                   </Grid>
+                  <Grid item xs={12} sm={6}>
+                   
+                    
+
+                   <Typography variant="h5"gutterBottom> ................................................................................</Typography>  
+                   <Typography variant="h5"gutterBottom> PFA</Typography>  
+
+                   <Typography variant="h6"gutterBottom> Description : {PfaData?.description} </Typography>
+                   <Typography  variant="h6" gutterBottom>   Titre :  {PfaData?.titre} </Typography>
+                   <Typography  variant="h6" gutterBottom>   Sujet :  {PfaData?.sujet} </Typography>
+                  
+ 
+                 </Grid>
+
+                 <Grid item xs={12} sm={6}>
+                  
+                   
+
+                 <Typography variant="h5"gutterBottom> .............................................................................</Typography>  
+                 
+                  <Typography variant="h5"gutterBottom> PFE</Typography>  
+
+                  <Typography variant="h6"gutterBottom> Description : {PfeData?.description} </Typography>
+                  <Typography  variant="h6" gutterBottom>   Societe :  {PfeData?.societe} </Typography>
+                  <Typography  variant="h6" gutterBottom>   Sujet :  {PfeData?.sujet} </Typography>
+                 
+
+                </Grid>
                 </Grid>
               </React.Fragment>
             </Grid>

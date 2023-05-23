@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import MySideNav from "../sidenavs/sidenavactuel";
+import {  useParams } from "react-router-dom";
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, FormControl, InputLabel, Select, MenuItem, makeStyles } from '@material-ui/core';
 import * as api from "../../service/etudiant";
 const useStyles = makeStyles((theme) => ({
@@ -16,14 +17,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CalendarYear() {
+ 
   const [date, setDate] = useState(new Date());
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const idu = user?._id;
   const [showModal, setShowModal] = useState(false);
-  const [niveau, setNiveau] = useState('');
+  const [classe, setNiveau] = useState('');
   const [EtudiantData, setEtudiantData] = useState({
  
-    niveau: "",
+    classe: "",
   
   });
 
@@ -42,7 +44,7 @@ function CalendarYear() {
 
   const handleNiveauChange = (event) => {
     setNiveau(event.target.value);
-    setEtudiantData({ ...EtudiantData, niveau: event.target.value });
+    setEtudiantData({ ...EtudiantData, classe: event.target.value });
   };
 
   const handleCloseModal = () => {
@@ -50,21 +52,20 @@ function CalendarYear() {
     setNiveau('');
   };
 
-  const handleSubmitModal = () => {
+  const handleSubmitModal = async (event) => {
 
-  }
+      event.preventDefault();
+  
+      try {
+        const updateEtudiant = await api.updateEtudiant(EtudiantData, idu);
+        console.log(updateEtudiant, "upadate");
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
 
-    try {
-      const newEtudiant = await api.updateEtudiant(setEtudiantData ,idu);
-      console.log(newEtudiant);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="app">
@@ -89,8 +90,8 @@ function CalendarYear() {
             <InputLabel id="academic-progress-label">Niveau des etudes</InputLabel>
             <Select
               labelId="academic-progress-label"
-              id="niveau"
-              value={niveau}
+              id="classe"
+              value={EtudiantData.classe}
               onChange={handleNiveauChange}
             >
               <MenuItem value="1 ere ">1 ere</MenuItem>
@@ -100,7 +101,7 @@ function CalendarYear() {
           </FormControl>
         </DialogContent>
         <DialogActions>
-        <Button onClick={handleSubmit} color="primary">
+        <Button onClick={handleSubmitModal} color="primary">
            enregistrer
           </Button>
           <Button onClick={handleCloseModal} color="primary">

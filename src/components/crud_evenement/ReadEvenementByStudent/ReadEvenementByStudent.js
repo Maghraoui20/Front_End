@@ -4,23 +4,16 @@ import { useEffect, useState } from "react";
 import * as api from "../../../service/evenement.js";
 import { DataGrid } from "@mui/x-data-grid";
 import moment from "moment";
-import { Box, Button, FormControl, InputLabel, MenuItem, Paper, Select, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
-import { useNavigate } from "react-router-dom";
+
 
 import MySideNav from "../../sidenavs/sidenavactuel.js";
 
 function ReadEvenement() {
   const [rows, setRows] = useState([]);
   
-  const [open, setOpen] = useState(false);
-  const handleClose = () => {
-      setOpen(false);
-    };
-  
-    const handleOpen = () => {
-      setOpen(true);
-    };
+
 
 
   useEffect(() => {
@@ -59,43 +52,20 @@ function ReadEvenement() {
     <Container>
       <MySideNav/>
  
-    
-{
-    /*
-      <label for="Année universitaire">Année universitaire</label>
 
-    <select
-   data-test="anneeUvivgenerate"
-   open={open}
-   onClose={handleClose}
-   onOpen={handleOpen}
-   value={annee}
-   label="anneeUviv"
-   onChange={handleChangeAnnee} 
-  style={{ width: "100%", height: "50px" }}
->
-  <option value={"2021-2022"}>2021-2022</option>
-  <option value={"2022-2023"}>2022-2023</option>
-  <option value={"2023-2024"}>2023-2024</option>
-  <option value={"2024-2025"}>2024-2025</option>
-  <option value={"2026-2027"}>2026-2027</option>
-
-</select>
-    */
-
-}
 
       <Box
         sx={{
           marginTop: 10,
           display: "flex",
-        
+          height: "60vh",
+          width: "100vh",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
          
-        <div style={{ height: 400 }}>
+        <div style={{ height: 400 , width: 700 }}>
           <div>
             <h1><center> <b>Liste des evenements</b></center>
              
