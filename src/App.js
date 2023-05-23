@@ -61,6 +61,8 @@ import ValiderPfa from "./components/pfa/validerPfa";
 import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 import CvView from "./components/crud_pfa/read_pfa/cv_view";
 import UpdateEtudiantProfile from "./components/update_etudiant/update_etudiant";
+import DetailEtudiant from "./components/crud_etudiant/Detail_etudiant/Detail_etudiant";
+import GererDoitAccess from "./components/administratif/gererdroitacces";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -157,6 +159,9 @@ function App() {
             <Route path="/statistics-pfe" element={<Statistique />} />
             <Route path="anneeuniver" element={<AnneeUniv />} />
             <Route path="/allnotification" element={<AllNotification />} />
+            <Route path="/detail_etudiant/:id" element={<DetailEtudiant />} />
+            <Route path="/gerer_droit_acces" element={<GererDoitAccess />} />
+            
        
         </Routes>
       </Router>
