@@ -57,14 +57,14 @@ function UpdateEtudiant() {
     event.preventDefault();
     try {
       
-      /*const updatedEtudiant = {
+      const updatedEtudiant = {
         ...EtudiantData,
         visibility: visibility,
-      };*/
+      };
 
-      const updateEtudiant = await api.updateEtudiant(EtudiantData, iduser);
+      const updateEtudiant = await api.updateEtudiant(updatedEtudiant, iduser);
       console.log(updateEtudiant, "update");
-     // window.location.reload(false);
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
     }

@@ -16,8 +16,14 @@ import {
   import * as api from "../../../service/evenement.js";
   import { useNavigate , useParams} from "react-router-dom";
   import moment from "moment";
+  import MySideNavAdmin from "../../sidenavs/sidenavAdmin.js";
+
+  import MySideNavDir from "../../sidenavs/sidenavdir.js";
 
 function UpdateEvenement() {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const role = user?.role;
   const params = useParams();
   const [EvenementData, setEvenementData] = useState({
     eventName: "",
@@ -67,6 +73,7 @@ function UpdateEvenement() {
   }, [params.id]);
   return (
     <Container>
+     {role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
       <Paper elevation={3} className="paper">
         <Box
           sx={{

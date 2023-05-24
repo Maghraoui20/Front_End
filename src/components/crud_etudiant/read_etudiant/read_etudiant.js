@@ -16,14 +16,13 @@ import PersonIcon from '@mui/icons-material/Person';
 
 import MySideNavAdmin  from "../../sidenavs/sidenavAdmin.js";
 import MySideNavDir from "../../sidenavs/sidenavdir.js";
+
+
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 
-//import { importExcel } from "../../../service/etudiant.js";
 
 
-//import papaparse from 'papaparse'; // Import PapaParse library for CSV parsing
-
-import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'; // Import components for the modal
+import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'; 
 
 
 function ReadEtudiant() {
@@ -32,6 +31,8 @@ function ReadEtudiant() {
   const [idSelected, setIdSelected] = useState();
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(false);
+
+
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
   const role = user?.role;
@@ -245,9 +246,9 @@ function ReadEtudiant() {
          <div style={{ height: 400 }}>
           <div>
             <center>
-            <h2>
+            <h1>
               <b>Liste des etudiants</b>
-            </h2></center>
+            </h1></center>
           </div>
 
    
