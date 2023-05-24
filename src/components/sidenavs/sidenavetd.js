@@ -24,12 +24,6 @@ function MySideNav() {
           </NavIcon>
           <NavText>Changer mot de passe</NavText>
         </NavItem>
-        <NavItem eventKey="update-etudiant">
-          <NavIcon>
-            <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Modifier profil</NavText>
-        </NavItem>
         <NavItem eventKey="ajout-pfe">
           <NavIcon>
             <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />

@@ -76,7 +76,7 @@ function MySideNav() {
           </NavIcon>
           <NavText>Modifier profil</NavText>
         </NavItem>
-        {niveauEtudiant == "2eme" ? (
+        {statutEtudiant == "actuel" && niveauEtudiant == "2eme" ? (
         <NavItem eventKey="choisir-pfa">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
