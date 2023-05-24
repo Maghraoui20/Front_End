@@ -16,6 +16,9 @@ function MySideNav() {
     localStorage.removeItem("token");
   };
 
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const statutEtudiant = user?.etat;
+
   return (
     <SideNav
       onSelect={(selected) => {
@@ -33,18 +36,14 @@ function MySideNav() {
           </NavIcon>
           <NavText>Changer mot de passe</NavText>
         </NavItem>
-        <NavItem eventKey="update-etudiant">
-          <NavIcon>
-            <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Modifier profil</NavText>
-        </NavItem>
-        <NavItem eventKey="update-cv/:id">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Modifier CV</NavText>
-        </NavItem>
+        {statutEtudiant == "alumni" ? (
+           <NavItem eventKey="update-cv-alumni">
+           <NavIcon>
+             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+           </NavIcon>
+           <NavText>Modifier CV</NavText>
+         </NavItem>
+        ) : null}
         <NavItem eventKey="addDemandes">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
