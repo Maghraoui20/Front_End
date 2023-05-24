@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component } from "react";
 import { Button } from "@mui/material";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
@@ -24,46 +24,43 @@ function MySideNav() {
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="enseignant">
+        <NavItem eventKey="enseignant-responsable">
           <NavIcon>
             <i className="fa fa-fw fa-home" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Home</NavText>
         </NavItem>
-        <NavItem eventKey="readall-pfa">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Gestion PFAs</NavText>
-        </NavItem>
-        <NavItem eventKey="liste-pfe">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Liste des pfe</NavText>
-        </NavItem>
-        
-        <NavItem eventKey="liste-mes-pfe">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>mes pfe</NavText>
-        </NavItem>
-        
-        <NavItem eventKey="liste-mes-pfa">
-          <NavIcon>
-            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-          </NavIcon>
-          <NavText>Mes PFAs</NavText>
-        </NavItem>
+        {statutEnseignant == "responsable formation" ? (
+          <NavItem eventKey="list-pfa">
+            <NavIcon>
+              <i
+                className="fa-regular fa-hashtag"
+                style={{ fontSize: "1em" }}
+              />
+            </NavIcon>
+            <NavText>Liste PFAs</NavText>
+          </NavItem>
+        ) : null}
+        {statutEnseignant == "responsable formation" ? (
+          <NavItem eventKey="valider-pfa">
+            <NavIcon>
+              <i
+                className="fa-regular fa-hashtag"
+                style={{ fontSize: "1em" }}
+              />
+            </NavIcon>
+            <NavText>Valider PFAs</NavText>
+          </NavItem>
+        ) : null}
+
         <NavItem eventKey="signin">
-        <NavIcon>
+          <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
-          <NavText><Button onClick={handleLogout}>Logout</Button></NavText>
-       
+          <NavText>
+            <Button onClick={handleLogout}>Logout</Button>
+          </NavText>
         </NavItem>
-    
       </SideNav.Nav>
     </SideNav>
   );
