@@ -122,7 +122,7 @@ const result = await  api.updateNotif(user._id);
           </NavItem>
      
        
-          <NavItem eventKey="inserer-stage-pfe" data-test="stage-pfe">
+          <NavItem eventKey="insérer-stage-pfe" data-test="stage-pfe">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
