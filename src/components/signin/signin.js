@@ -58,6 +58,17 @@ function Signin() {
         navigate("/enseignant");
       }
 
+
+      if (data.model.status === 'responsable formation') {
+        console.log(data,"data");
+          localStorage.setItem('profile', JSON.stringify({ ...data?.model }))
+           const token = data.mytoken;
+          localStorage.setItem('token', token)
+          navigate('/enseignant-responsable');
+    
+        }
+
+    
       if (data.model.role === "alumni") {
         console.log(data, "data");
         localStorage.setItem("profile", JSON.stringify({ ...data?.model }));

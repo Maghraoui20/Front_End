@@ -36,17 +36,6 @@ function MySideNav() {
           </NavIcon>
           <NavText>Gestion PFAs</NavText>
         </NavItem>
-
-        {statutEnseignant == "responsable formation" ? (
-         
-        <NavItem eventKey="valider-pfa">
-        <NavIcon>
-          <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
-        </NavIcon>
-        <NavText>Valider PFAs</NavText>
-      </NavItem>
-        ) : null}
-
         <NavItem eventKey="liste-pfe">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />

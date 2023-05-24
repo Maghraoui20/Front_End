@@ -78,7 +78,7 @@ const result = await  api.updateNotif(user._id);
           </NavIcon>
           <NavText>Changer mot de passe</NavText>
         </NavItem>
-        <NavItem eventKey="update-etudiant">
+        <NavItem eventKey="update-etudiant-compte">
           <NavIcon>
             <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>

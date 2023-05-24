@@ -18,6 +18,7 @@ function MySideNav() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const statutEtudiant = user?.etat;
+  const niveauEtudiant = user?.classe;
   let socket = null;
   const [count, setCount] = useState();
 
@@ -69,18 +70,20 @@ function MySideNav() {
           </NavIcon>
           <NavText>Changer mot de passe</NavText>
         </NavItem>
-        <NavItem eventKey="update-etudiant">
+        <NavItem eventKey="update-etudiant-compte">
           <NavIcon>
             <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Modifier profil</NavText>
         </NavItem>
+        {statutEtudiant == "actuel" && niveauEtudiant == "2eme" ? (
         <NavItem eventKey="choisir-pfa">
             <NavIcon>
               <i className="fa fa-fw fa-hashtag" style={{ fontSize: "1em" }} />
             </NavIcon>
             <NavText>Choisir Sujet PFA</NavText>
           </NavItem>
+          ) : null}
           {statutEtudiant == "actuel" ? (
         <NavItem eventKey="update-cv">
           <NavIcon>
