@@ -16,10 +16,15 @@ import "../create_enseignant/style.css";
 import * as api from "../../../service/enseignant.js";
 import { useNavigate, useParams } from "react-router-dom";
 
-import MySideNav from "../../sidenavs/sidenavAdmin";
+import MySideNavAdmin  from "../../sidenavs/sidenavAdmin.js";
+import MySideNavDir from "../../sidenavs/sidenavdir.js";
 
 function UpdateEnseignant() {
   const params = useParams();
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const role = user?.role;
   const [EnseignantData, setEnseignantData] = useState({
     firstname: "",
     lastname: "",
@@ -70,7 +75,7 @@ function UpdateEnseignant() {
   
   return (
     <Container>
-      <MySideNav />
+      {role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
 
       <Paper elevation={3} className="paper">
         <Box

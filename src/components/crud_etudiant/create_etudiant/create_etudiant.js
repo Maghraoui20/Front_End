@@ -15,9 +15,13 @@ import Box from "@mui/material/Box";
 import "./style.css";
 import * as api from "../../../service/etudiant.js";
 import { useNavigate } from "react-router-dom";
-import MySideNav from "../../sidenavs/sidenavAdmin";
+import MySideNavAdmin  from "../../sidenavs/sidenavAdmin.js";
+import MySideNavDir from "../../sidenavs/sidenavdir.js";
 
 function CreateEtudiant() {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const role = user?.role;
   const [EtudiantData, setEtudiantData] = useState({
     firstname: "",
     lastname: "",
@@ -62,7 +66,7 @@ function CreateEtudiant() {
 
   return (
     <Container>
-      <MySideNav />
+    {role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
       <Paper
         elevation={3}
         sx={{
@@ -185,25 +189,7 @@ function CreateEtudiant() {
                     type="date"
                     onChange={handleChange}
                   />
-                  {/*  <FormControl fullWidth sx={{ mt: 2 }}>
-                    <InputLabel id="Niveau">Niveau</InputLabel>
-                    <select
-                      labelId="Niveau"
-                      id="Niveau"
-                      value={niveau}
-                      label="Niveau"
-                      name="niveau"
-                      data-test="niveau"
-
-                      onChange={handleChangeNiveau}
-                    >
-                      <option value={"licence"}  >Licence</option>
-                      <option value={"master"}>Master</option>
-                      <option value={"cycle ingénieur"}>
-                        Cycle ingénieur
-                      </option>
-                    </select>
-                  </FormControl> */}
+              
 
                   <label for="niveau">Niveau</label>
 

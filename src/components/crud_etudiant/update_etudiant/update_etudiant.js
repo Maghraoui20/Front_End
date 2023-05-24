@@ -16,9 +16,14 @@ import "../create_etudiant/style.css";
 import * as api from "../../../service/etudiant.js";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
-import MySideNav from "../../sidenavs/sidenavAdmin";
+import MySideNavAdmin  from "../../sidenavs/sidenavAdmin.js";
+import MySideNavDir from "../../sidenavs/sidenavdir.js";
 
 function UpdateEtudiant() {
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  const role = user?.role;
   const params = useParams();
   const [EtudiantData, setEtudiantData] = useState({
     firstname: "",
@@ -75,7 +80,7 @@ function UpdateEtudiant() {
 
   return (
     <Container>
-      <MySideNav />
+     {role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
 
       <Paper
         elevation={3}

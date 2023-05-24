@@ -15,7 +15,8 @@ import {
   import * as api from "../../../service/etudiant";
   import { useParams } from "react-router-dom";
 
-  import MySideNav from "../../sidenavs/sidenavAdmin";
+  import MySideNavAdmin  from "../../sidenavs/sidenavAdmin.js";
+  import MySideNavDir from "../../sidenavs/sidenavdir.js";
  
 
 import { getPfabyidEtudiant } from "../../../service/pfa";
@@ -23,6 +24,10 @@ import { getPfebyidEtudiant } from "../../../service/stagePfe";
  
   
   function DetailEtudiant() {
+
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+    const role = user?.role;
     const params = useParams();
     const iduser = params.id;
    
@@ -121,14 +126,14 @@ import { getPfebyidEtudiant } from "../../../service/stagePfe";
   
     return (
       <Container>
-        <MySideNav />
+     {role === "administratif" ? <MySideNavAdmin /> : <MySideNavDir />}
         <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Paper
           style={{
-            width: "100%",
+            width: "80%",
             padding: "20px",
             border: "1px solid black",
-            height: "55vh",
+            height: "80vh",
             overflowY: "auto",
           }}
       >
