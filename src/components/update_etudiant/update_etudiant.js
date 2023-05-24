@@ -19,7 +19,7 @@ import MySideNav from "../sidenavs/sidenavactuel.js";
 function UpdateEtudiant() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  setUser(user);
+ 
   const iduser = user?._id;
  
   const [EtudiantData, setEtudiantData] = useState({
