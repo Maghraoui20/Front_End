@@ -19,7 +19,7 @@ import MySideNav from "../sidenavs/sidenavactuel.js";
 function UpdateEtudiant() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  setUser(user);
+ 
   const iduser = user?._id;
  
   const [EtudiantData, setEtudiantData] = useState({
@@ -57,14 +57,14 @@ function UpdateEtudiant() {
     event.preventDefault();
     try {
       
-      /*const updatedEtudiant = {
+      const updatedEtudiant = {
         ...EtudiantData,
         visibility: visibility,
-      };*/
+      };
 
-      const updateEtudiant = await api.updateEtudiant(EtudiantData, iduser);
+      const updateEtudiant = await api.updateEtudiant(updatedEtudiant, iduser);
       console.log(updateEtudiant, "update");
-     // window.location.reload(false);
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
     }
