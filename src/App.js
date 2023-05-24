@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Component }  from 'react';
+import React, { Component } from "react";
 import { createContext, useEffect, useState } from "react";
 import ReactSwitch from "react-switch";
 
@@ -10,7 +10,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Signin from "./components/signin/signin.js";
-import UpdateCV from "./components/update_cv/update_cv"
+import UpdateCV from "./components/update_cv/update_cv";
 import CreateEnseignant from "./components/crud_enseignant/create_enseignant/create_enseignant";
 import UpdateEnseignant from "./components/crud_enseignant/update_enseignant/update_enseignant";
 import ReadEnseignant from "./components/crud_enseignant/read_enseignant/read_enseignant";
@@ -22,7 +22,8 @@ import UpdateEvenement from "./components/crud_evenement/update_evenement/update
 import ReadEvenement from "./components/crud_evenement/read_evenement/read_evenement";
 import Administratif from "./components/administratif/index";
 import Enseignant from "./components/enseignant/index";
-import CreatePfa from "./components/crud_pfa/create_pfa/create_pfa"
+import Responsable from "./components/responsable/index";
+import CreatePfa from "./components/crud_pfa/create_pfa/create_pfa";
 import UpdatePfa from "./components/crud_pfa/update_pfa/update_pfa";
 import ReadPfa from "./components/crud_pfa/read_pfa/read_pfa";
 import ForgotPassword from "./components/forgot_password/index";
@@ -79,6 +80,7 @@ import CreateAdministratif from "./components/administratif/create_administratif
 import { Update } from "@mui/icons-material";
 import UpdateAdministratif from "./components/administratif/updatedroitaccess";
 
+import ListPfa from "./components/pfa/listePfaResponsable";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -131,10 +133,12 @@ function App() {
           {/*fonctionne*/}
           {/* End Dorra */}
 
-          <Route path="/charts" element={<Charts />} />
           <Route path="/" element={<Navigate replace to="/signin" />} />
+          
           <Route path="/signin" element={<Signin />} />
+
           <Route path="/forgot-password" element={<ForgotPassword />} />
+
           <Route path="/change-password" element={<ChangePassword />} />
           <Route
             path="/password-reset/:id/:token"
@@ -144,11 +148,10 @@ function App() {
           />
          
        
-            <Route path="/espace-etudiant" element={<EspacEtudiant />} />
-            <Route path="/espace-alumni" element={<EspaceAlumni />} />
-            <Route path="/espace-directeur" element={<EspaceDirecteur />} />
-            <Route path="/espace-enseignant" element={<EspaceEnseignant />} />
-            <Route path="/create-enseignant" element={<CreateEnseignant />} />
+      
+  
+  
+        
             <Route
               path="/update-enseignant/:id"
               element={<UpdateEnseignant />}
@@ -164,62 +167,90 @@ function App() {
           />
            
 
+          <Route path="/espace-etudiant" element={<EspacEtudiant />} />
 
-            <Route path="/administratif" element={<Administratif />} />
-            <Route path="/readall-enseignant" element={<ReadEnseignant />} />
-            <Route path="/create-etudiant" element={<CreateEtudiant />} />
-            <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
-            <Route path="/readall-etudiant" element={<ReadEtudiant />} />
-            <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
-            <Route path="/create-evenement" element={<CreateEvenement />} />
-            <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
-            <Route path="/readall-evenement" element={<ReadEvenement />} />
-            <Route path="/readall-pfa-admin" element={<ReadPFA/>} />
-            <Route path="/valider-pfa" element={< ValiderPfa/>} />
+          <Route path="/espace-alumni" element={<EspaceAlumni />} />
 
-            <Route path="/create-pfa" element={<CreatePfa />} />
-            <Route path="/update-pfa/:id" element={<UpdatePfa />} />
-            <Route path="/readall-pfa" element={<ReadPfa />} />
-            <Route path="/cv-view/:id" element={<CvView/>} />
+          <Route path="/espace-directeur" element={<EspaceDirecteur />} />
 
-            <Route path="/enseignant" element={<Enseignant />} />
-            <Route path="/insérer-stage-été" element={<CreateStageEté />} />
-            <Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />
+          <Route path="/espace-enseignant" element={<EspaceEnseignant />} />
 
-            <Route path="/update-cv" element={<UpdateCV />} />
-            <Route path="/update-cv-alumni" element={<UpdateCvAlumni />} />
-            <Route path="/update-stageete/:id" element={<UpdateStage />} />
-            <Route path="/choisir-pfa" element={< PfaEtudiant />} />
+          <Route path="/create-enseignant" element={<CreateEnseignant />} />
 
-            <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
-            <Route path="/create-evenement" element={<CreateEvenement />} />
-            <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
-            <Route path="/readall-evenement" element={<ReadEvenement />} />
+          <Route path="/update-enseignant/:id" element={<UpdateEnseignant />} />
+
+          <Route path="/enseignant-responsable" element={<Responsable />} />
+
+          <Route path="/administratif" element={<Administratif />} />
+
+          <Route path="/readall-enseignant" element={<ReadEnseignant />} />
+
+          <Route path="/create-etudiant" element={<CreateEtudiant />} />
+
+          <Route path="/update-etudiant/:id" element={<UpdateEtudiant />} />
+
+          <Route path="/readall-etudiant" element={<ReadEtudiant />} />
+
+          <Route path="/update-etudiant" element={<UpdateEtudiantProfile />} />
+
+          <Route path="/create-evenement" element={<CreateEvenement />} />
+
+          <Route path="/update-evenement/:id" element={<UpdateEvenement />} />
+
+          <Route path="/readall-evenement" element={<ReadEvenement />} />
+
+          <Route path="/readall-pfa-admin" element={<ReadPFA />} />
+          <Route path="/valider-pfa" element={<ValiderPfa />} />
+
+          <Route path="/list-pfa" element={<ListPfa />} />
+
+          <Route path="/create-pfa" element={<CreatePfa />} />
+
+          <Route path="/update-pfa/:id" element={<UpdatePfa />} />
+
+          <Route path="/readall-pfa" element={<ReadPfa />} />
+
+          <Route path="/cv-view/:id" element={<CvView />} />
+
+          <Route path="/enseignant" element={<Enseignant />} />
+
+      
+  
+        
 
             <Route path="/readall-pfe" element={<ReadPFE />} />
+
             <Route path="/mes-stage-été" element={<MesStageEte />} />
+
             <Route path="/mes-stage-pfe" element={<MesStagePFE />} />
+
             <Route path="/liste-mes-pfe" element={<MesPFE />} />
+
             <Route path="/liste-mes-pfa" element={<MesPFA />} />
 
             <Route path="/liste-pfe" element={<PfeEnseignant />} />
 
           <Route path="/update-stagePFE/:id" element={<UpdateStagePFE />} />
           <Route path="/comptes-publics" element={<CompteEtudiantPublic />} />
-          <Route path="/liste-pfe" element={<PfeEnseignant />} />
+       
+
           <Route path="/liste-des-etudiants" element={<ListeEtudiants />} />
+
           <Route path="/cv-etudiant/:id" element={<CvEtudiant />} />
 
 
             <Route path="/statistics-pfe" element={<Statistique />} />
+
             <Route path="anneeuniver" element={<AnneeUniv />} />
-            <Route path="/allnotification" element={<AllNotification />} />
             <Route path="/detail_etudiant/:id" element={<DetailEtudiant />} />
+
           <Route
             path="/detail_etudiant_public_compte/:id"
             element={<DetailEtudiantPublicCompte />}
           />
+
           <Route path="/calendar" element={<CalendarYear />} />
+
           <Route path="/gerer_droit_acces" element={<GererDoitAccess />} />
           <Route
             path="/create-administratif"
@@ -227,9 +258,25 @@ function App() {
           />
             
        
+          <Route path="/insérer-stage-été" element={<CreateStageEté />} />
+
+          <Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />
+
+          <Route path="/update-cv" element={<UpdateCV />} />
+
+          <Route path="/update-cv-alumni" element={<UpdateCvAlumni />} />
+
+          <Route path="/update-stageete/:id" element={<UpdateStage />} />
+
+          <Route path="/choisir-pfa" element={<PfaEtudiant />} />  
+  
+      
+
+  
+          <Route path="/allnotification" element={<AllNotification />} />
         </Routes>
       </Router>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }
