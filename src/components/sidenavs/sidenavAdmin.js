@@ -32,6 +32,12 @@ function MySideNav() {
           </NavIcon>
           <NavText>Gestion Etudiant</NavText>
         </NavItem>
+        <NavItem eventKey="charts" data-test="gestion-etudiant">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Statistiques Etudiants</NavText>
+        </NavItem>
 
         <NavItem eventKey="readall-enseignant">
           <NavIcon>
@@ -54,8 +60,6 @@ function MySideNav() {
           <NavText>Change mon Mot de passe</NavText>
         </NavItem>
 
-    
-
         <NavItem eventKey="readall-pfa-admin">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
@@ -67,7 +71,7 @@ function MySideNav() {
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Liste des pfe</NavText>
-        </NavItem>    
+        </NavItem>
 
         <NavItem eventKey="statistics-pfe" data-test="readall-statistics">
           <NavIcon>
@@ -88,14 +92,18 @@ function MySideNav() {
           </NavIcon>
           <NavText>Demandes vacations</NavText>
         </NavItem>
-
+        <NavItem eventKey="validExpert">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Demandes contrat expert</NavText>
+        </NavItem>
         <NavItem eventKey="gerer_droit_acces" data-test="anneeuniver">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Gestion des administratifs</NavText>
         </NavItem>
-
 
         <NavItem eventKey="signin">
           <NavIcon>
