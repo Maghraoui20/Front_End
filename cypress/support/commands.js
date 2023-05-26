@@ -39,6 +39,8 @@ Cypress.Commands.add("getByData", (selector) => {
       window.localStorage.setItem("token", resp.body.mytoken)
       window.localStorage.setItem("role", resp.body.model.role)    })
   })
+
+
   Cypress.Commands.add("loginasenseignant", () => {
     cy.request({
       method: "POST",
