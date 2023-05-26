@@ -12,18 +12,11 @@ import IconButton from "@mui/material/IconButton";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { useNavigate } from "react-router-dom";
 import "./style.css";
 import MySideNav from "../sidenavs/sidenavAdmin.js";
 
 function ListeExpert() {
   const [rows, setRows] = useState([]);
-
-  const navigate = useNavigate();
-
-  const handleCreate = async () => {
-    navigate("/");
-  };
 
   useEffect(() => {
     async function fetchData() {
@@ -164,7 +157,6 @@ function ListeExpert() {
             <IconButton
               aria-label="add"
               color="secondary"
-              onClick={handleCreate}
               style={{ color: "#000" }}
             >
               <AddBoxRoundedIcon />

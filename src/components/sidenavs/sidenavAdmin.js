@@ -32,7 +32,7 @@ function MySideNav() {
           </NavIcon>
           <NavText>Gestion Etudiant</NavText>
         </NavItem>
-        <NavItem eventKey="charts" data-test="gestion-etudiant">
+        <NavItem eventKey="charts" data-test="chart-etudiant">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
@@ -85,6 +85,13 @@ function MySideNav() {
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
           <NavText>Année universitaire</NavText>
+        </NavItem>
+
+        <NavItem eventKey="validAlumnis" data-test="valider-alumni">
+          <NavIcon>
+            <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
+          </NavIcon>
+          <NavText>Valider compte alumni</NavText>
         </NavItem>
         <NavItem eventKey="validDemand">
           <NavIcon>

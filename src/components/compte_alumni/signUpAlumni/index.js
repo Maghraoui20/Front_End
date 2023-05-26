@@ -28,7 +28,7 @@ export default function SignupAlumni() {
     societe: "",
     promotion: 2023,
     date_diplome: "",
-    date_embauche: "",    
+    date_embauche: "",
   });
   const handleChange = ({ currentTarget: input }) => {
     console.log(input.value);
@@ -84,6 +84,7 @@ export default function SignupAlumni() {
                   onChange={handleChange}
                   value={data.firstname}
                   id="firstname"
+                  data-test="firstname"
                   label="First Name"
                   autoFocus
                 />
@@ -93,6 +94,7 @@ export default function SignupAlumni() {
                   required
                   fullWidth
                   id="lastname"
+                  data-test="lastname"
                   onChange={handleChange}
                   value={data.lastname}
                   label="Last Name"
@@ -109,6 +111,7 @@ export default function SignupAlumni() {
                   required
                   fullWidth
                   id="login"
+                  data-test="login"
                   label="login"
                   autoFocus
                 />
@@ -123,6 +126,7 @@ export default function SignupAlumni() {
                   label="Password"
                   type="password"
                   id="password"
+                  data-test="password"
                   autoComplete="new-password"
                 />
               </Grid>
@@ -131,6 +135,7 @@ export default function SignupAlumni() {
                   required
                   fullWidth
                   id="email"
+                  data-test="email"
                   onChange={handleChange}
                   value={data.email}
                   label="Email Address"
@@ -145,6 +150,7 @@ export default function SignupAlumni() {
                   onChange={handleChange}
                   value={data.phone}
                   id="phone"
+                  data-test="phone"
                   label="phone"
                   name="phone"
                   autoComplete="phone"
@@ -157,6 +163,7 @@ export default function SignupAlumni() {
                   onChange={handleChange}
                   value={data.Birth_date}
                   id="birth"
+                  data-test="birth"
                   label="Birth date"
                   name="Birth_date"
                   type="date"
@@ -169,6 +176,7 @@ export default function SignupAlumni() {
                   required
                   fullWidth
                   id="pays"
+                  data-test="pays"
                   onChange={handleChange}
                   value={data.pays}
                   label="Pays de résidence"
@@ -184,6 +192,7 @@ export default function SignupAlumni() {
                   onChange={handleChange}
                   value={data.societe}
                   label="Societé"
+                  data-test="societe"
                   name="societe"
                   autoComplete="societe"
                 />
@@ -193,6 +202,7 @@ export default function SignupAlumni() {
                   required
                   fullWidth
                   id="propotion"
+                  data-test="promotion"
                   onChange={handleChange}
                   value={data.promotion}
                   label="Promotion"
@@ -206,6 +216,7 @@ export default function SignupAlumni() {
                   required
                   fullWidth
                   id="datediplome"
+                  data-test="datediplome"
                   onChange={handleChange}
                   value={data.date_diplome}
                   label="Date d'obtention du diplome"
@@ -219,6 +230,7 @@ export default function SignupAlumni() {
                   required
                   fullWidth
                   id="embauche"
+                  data-test="embauche"
                   onChange={handleChange}
                   value={data.date_embauche}
                   label="Date d'embauche"

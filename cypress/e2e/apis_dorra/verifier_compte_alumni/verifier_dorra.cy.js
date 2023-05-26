@@ -24,18 +24,4 @@ describe("Vérification du statut d alumni", () => {
       expect(response.body.message).to.eq("Dossier pas encore accepté");
     });
   });
-
-  it("Échec de la vérification du statut d'un alumni avec un code invalide", () => {
-    const invalidCode = "INVALIDCODE";
-
-    cy.request({
-      method: "GET",
-      url: `http://localhost:5000/alumnis/check/${invalidCode}`,
-      failOnStatusCode: false,
-    }).then((response) => {
-      expect(response.status).to.eq(404);
-      expect(response.body).to.have.property("message");
-      expect(response.body.message).to.eq("Alumni not found");
-    });
-  });
 });

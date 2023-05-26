@@ -10,27 +10,28 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import * as api from "../../service/authentification";
 import styles from "./styles.module.css";
+
 const theme = createTheme();
 
 export default function SignupAlumni() {
   const [error, setError] = useState("");
+  const [res, setRes] = useState("");
   const [data, setData] = useState({
     password: "",
-    confirm: "",    
+    confirm: "",
   });
-  const user = JSON.parse(localStorage.getItem('profile'));
+  const user = JSON.parse(localStorage.getItem("profile"));
   const id = user._id;
   const handleChange = ({ currentTarget: input }) => {
-    console.log(input.value);
     setData({ ...data, [input.name]: input.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (data.password === data.confirm){
+    if (data.password === data.confirm) {
       try {
-        const item = await api.change_password(id,data.password);
+        const item = await api.change_password(id, data.password);
         console.log(item);
-        
+        setRes("Mot de passe changé avec succès");
       } catch (error) {
         if (
           error.response &&
@@ -40,10 +41,9 @@ export default function SignupAlumni() {
           setError(error.response.data.message);
         }
       }
-    }else{
-      setError("Mot de passes non conformes")
+    } else {
+      setError("Mot de passes non conformes");
     }
-    
   };
 
   return (
@@ -58,9 +58,8 @@ export default function SignupAlumni() {
             alignItems: "center",
           }}
         >
-         
           <Typography component="h1" variant="h5">
-           Changer mon mot de passe
+            Changer mon mot de passe
           </Typography>
           <Box
             component="form"
@@ -79,9 +78,9 @@ export default function SignupAlumni() {
                   label="Password"
                   name="password"
                   type="password"
+                  data-test="password-input"
                   autoComplete="password"
                 />
-                
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -93,12 +92,21 @@ export default function SignupAlumni() {
                   label="Confirm password"
                   name="confirm"
                   type="password"
+                  data-test="valid-password-input"
                   autoComplete="confirm"
                 />
               </Grid>
-              
             </Grid>
-            {error && <div className={styles.error_msg}>{error}</div>}
+            {res && (
+              <div className={styles.success_msg}>
+                <h3 data-test="success-message">{res}</h3>
+              </div>
+            )}
+            {error && (
+              <div className={styles.error_msg}>
+                <h3 data-test="error-message">{error}</h3>
+              </div>
+            )}
             <Button
               type="submit"
               fullWidth

@@ -88,6 +88,7 @@ function ValidAlumnis() {
             {(popupState) => (
               <div>
                 <Button
+                  data-test="Accepter"
                   variant="contained"
                   {...bindTrigger(popupState)}
                   sx={{
@@ -111,6 +112,7 @@ function ValidAlumnis() {
                     </Typography>
                     <div className="buttons">
                       <Button
+                        data-test="prouver-alumni"
                         variant="contained"
                         className="confirm"
                         sx={{
@@ -126,6 +128,7 @@ function ValidAlumnis() {
                         Oui
                       </Button>
                       <Button
+                        data-test="annuler-op"
                         variant="contained"
                         className="annuler"
                         sx={{
@@ -155,6 +158,7 @@ function ValidAlumnis() {
             {(popupState) => (
               <div>
                 <Button
+                  data-test="Reporter"
                   variant="contained"
                   {...bindTrigger(popupState)}
                   sx={{
@@ -178,6 +182,7 @@ function ValidAlumnis() {
                     </Typography>
                     <div className="buttons">
                       <Button
+                        data-test="confirm-op"
                         variant="contained"
                         className="confirm"
                         sx={{

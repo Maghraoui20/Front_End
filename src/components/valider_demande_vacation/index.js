@@ -7,22 +7,14 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
-import IconButton from "@mui/material/IconButton";
-
-import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { useNavigate } from "react-router-dom";
+
 import "./style.css";
 import MySideNav from "../sidenavs/sidenavAdmin.js";
 
 function ListVacation() {
   const [rows, setRows] = useState([]);
-  const navigate = useNavigate();
-
-  const handleCreate = async () => {
-    navigate("/");
-  };
 
   useEffect(() => {
     async function fetchData() {
@@ -157,16 +149,6 @@ function ListVacation() {
             <h1>
               <b>Liste des demandes de vacations</b>
             </h1>
-          </div>
-          <div style={{ float: "right" }}>
-            <IconButton
-              aria-label="add"
-              color="secondary"
-              onClick={handleCreate}
-              style={{ color: "#000" }}
-            >
-              <AddBoxRoundedIcon />
-            </IconButton>
           </div>
 
           <DataGrid
