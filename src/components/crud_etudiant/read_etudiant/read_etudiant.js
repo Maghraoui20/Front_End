@@ -1,5 +1,5 @@
-import React, { Component }  from 'react';
-import Axios from 'axios';
+import React, { Component } from "react";
+import Axios from "axios";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import * as api from "../../../service/etudiant.js";
@@ -12,18 +12,19 @@ import "./style.css";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from "@mui/icons-material/Person";
 
-import MySideNavAdmin  from "../../sidenavs/sidenavAdmin.js";
+import MySideNavAdmin from "../../sidenavs/sidenavAdmin.js";
 import MySideNavDir from "../../sidenavs/sidenavdir.js";
 
+import UploadFileIcon from "@mui/icons-material/UploadFile";
 
-import UploadFileIcon from '@mui/icons-material/UploadFile';
-
-
-
-import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'; 
-
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
 
 function ReadEtudiant() {
   const [File, setFile] = useState(null);
@@ -32,22 +33,20 @@ function ReadEtudiant() {
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
-
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   const role = user?.role;
-
 
   const navigate = useNavigate();
 
   const openUploadModal = () => {
     setOpenModal(true);
   };
-  
+
   const closeUploadModal = () => {
     setOpenModal(false);
   };
-  
+
   const handleDelete = async () => {
     try {
       await api.deleteEtudiant(idSelected);
@@ -64,24 +63,18 @@ function ReadEtudiant() {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileUpload = (event) => {
-  
-
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
- 
   };
 
-  useEffect(() => {}, []);
-
   const handleupload = () => {
-    const formData = new FormData(); // tab3thou lil backend sous formData 
+    const formData = new FormData(); // tab3thou lil backend sous formData
     formData.append("csvFile", File);
     console.log(File);
 
-    api.importExcel(formData)
+    api.importExcel(formData);
     window.location.reload();
   };
-
 
   const columns = [
     { field: "firstname", headerName: "Nom", width: 130 },
@@ -132,8 +125,8 @@ function ReadEtudiant() {
       renderCell: (params) => {
         return (
           <Button
-          data-test="modify-etudiant"
-          variant="contained"
+            data-test="modify-etudiant"
+            variant="contained"
             href={`/update-etudiant/${idSelected}`}
             sx={{
               backgroundColor: "#00A36C",
@@ -155,8 +148,7 @@ function ReadEtudiant() {
             {(popupState) => (
               <div>
                 <Button
-                data-test="delete-etudiant"
-
+                  data-test="delete-etudiant"
                   variant="contained"
                   {...bindTrigger(popupState)}
                   sx={{
@@ -180,8 +172,7 @@ function ReadEtudiant() {
                     </Typography>
                     <div className="buttons">
                       <Button
-                       data-test="confirm-etudiant"
-
+                        data-test="confirm-etudiant"
                         variant="contained"
                         className="confirm"
                         sx={{
@@ -243,58 +234,58 @@ function ReadEtudiant() {
           alignItems: "center",
         }}
       >
-         <div style={{ height: 400 }}>
+        <div style={{ height: 400 }}>
           <div>
             <center>
-            <h1>
-              <b>Liste des etudiants</b>
-            </h1></center>
+              <h1>
+                <b>Liste des etudiants</b>
+              </h1>
+            </center>
           </div>
 
-   
+          <div style={{ float: "left" }}>
+            <IconButton
+              aria-label="add"
+              color="secondary"
+              onClick={openUploadModal}
+              style={{ color: "#000" }}
+            >
+              <UploadFileIcon />
+            </IconButton>
+            <Box>
+              <Dialog open={openModal} onClose={closeUploadModal}>
+                <DialogTitle>Upload CSV</DialogTitle>
 
-        
-         <div style={{float:"left"}}>
-        <IconButton aria-label="add" color="secondary"  onClick={openUploadModal} style={{ color:"#000"}} >
-        <UploadFileIcon />
+                <DialogContent>
+                  <input
+                    id="csvFileInput"
+                    type="file"
+                    accept=".csv"
+                    onChange={handleFileUpload}
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={closeUploadModal}>Cancel</Button>
 
-      </IconButton>
-      <Box >
-
-  <Dialog 
-  open={openModal} 
-  onClose={closeUploadModal}>
-
-    <DialogTitle>Upload CSV</DialogTitle>
-
-    <DialogContent>
-      <input id="csvFileInput" type="file" accept=".csv" 
-      onChange={handleFileUpload} />
-    </DialogContent>
-    <DialogActions>
-
-    <Button onClick={closeUploadModal}>Cancel</Button>
-
-    <Button onClick={handleupload}>ajouter</Button>
-    </DialogActions>
-  </Dialog>
-</Box>
-
-          </div>
-          
-          <div style={{display:"flex"}}>
-        <IconButton aria-label="add" color="secondary" onClick={handlenavigate} style={{ color:"#000"}} >
-         <AddIcon />
-          </IconButton>
-
-
+                  <Button onClick={handleupload}>ajouter</Button>
+                </DialogActions>
+              </Dialog>
+            </Box>
           </div>
 
-     
-
+          <div style={{ display: "flex" }}>
+            <IconButton
+              aria-label="add"
+              color="secondary"
+              onClick={handlenavigate}
+              style={{ color: "#000" }}
+            >
+              <AddIcon />
+            </IconButton>
+          </div>
 
           <DataGrid
-          data-test="row-etudiant"
+            data-test="row-etudiant"
             rows={rows}
             columns={columns}
             initialState={{

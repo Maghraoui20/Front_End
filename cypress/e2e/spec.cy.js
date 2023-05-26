@@ -18,7 +18,7 @@ describe("template spec", () => {
           vacation: true,
           expert: false,
           matiere: "math",
-          description: "cours mathh",
+          description: "cours math",
         },
       }).then((response) => {
         expect(response.status).to.eq(200);
