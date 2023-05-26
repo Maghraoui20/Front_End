@@ -67,3 +67,8 @@ export const getPfebyidEtudiant= async (id) => {
   const result = await Axios.get("http://localhost:5000/pfe/getpfebyidetudiant/"+id);
   return result.data;
 };
+export const getStudentIdOfPFE = async (id) => {
+  const result = await Axios.get("http://localhost:5000/pfe/getstudent/"+id);
+console.log(result);
+  return result.data;
+}

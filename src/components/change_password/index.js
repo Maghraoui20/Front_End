@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SideNavAdmin from "../sidenavs/sidenavAdmin";
-import SideNavEtd from "../sidenavs/sidenavetd";
+import SideNavEtd from "../sidenavs/sidenavactuel";
 import MySideNavAlum from "../sidenavs/sidenavAlum";
 import SideNavEns from "../sidenavs/sidenavens";
 import SideNavDir from "../sidenavs/sidenavdir";

@@ -62,6 +62,8 @@ import MesPFA from "./components/enseignant/mesPfa";
 import ValiderPfa from "./components/pfa/validerPfa";
 import UpdateCvAlumni from "./components/update_cv/update_cv_alumni";
 import CvView from "./components/crud_pfa/read_pfa/cv_view";
+import CvViewpfe from "./components/enseignant/cv_view";
+
 import UpdateEtudiantCompte from "./components/update_etudiant/update_etudiant";
 import ReadEvenementByStudent from "./components/crud_evenement/ReadEvenementByStudent/ReadEvenementByStudent";
 import ListeEtudiants from "./components/enseignant/ListeEtudiants";
@@ -211,6 +213,8 @@ function App() {
           <Route path="/readall-pfa" element={<ReadPfa />} />
 
           <Route path="/cv-view/:id" element={<CvView />} />
+          <Route path="/cv-viewpfe/:id" element={<CvViewpfe />} />
+
 
           <Route path="/enseignant" element={<Enseignant />} />
 

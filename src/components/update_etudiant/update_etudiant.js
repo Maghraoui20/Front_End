@@ -49,6 +49,7 @@ function UpdateEtudiant() {
     setNiveau(e.target.value);
     setEtudiantData({ ...EtudiantData, niveau: niveau });
   };
+  
   const handleChangeEtat = (e) => {
     setEtat(e.target.value);
     setEtudiantData({ ...EtudiantData, etat: etat });

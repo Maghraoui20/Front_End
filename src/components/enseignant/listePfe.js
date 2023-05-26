@@ -13,6 +13,7 @@ import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import Popover from "@mui/material/Popover";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PersonIcon from "@mui/icons-material/Person";
 
 import {io} from "socket.io-client";
 
@@ -85,7 +86,26 @@ const [StagePFEData, setStagePFEData] = useState({
           );
         },
       },
-  
+      {
+        field: "cv",
+        headerName: "Voir CV",
+        width: 130,
+        renderCell: (params) => {
+          const studentName = params.value;
+          return (
+            <Button
+              variant="contained"
+              href={`/cv-viewpfe/${idSelected}`}
+              sx={{
+                backgroundColor: "#2979ff",
+                ":hover": { backgroundColor: "#2979ff" },
+              }}
+            >
+              <PersonIcon />
+            </Button>
+          );
+        },
+      },
       {
         field: "encadrer",
         headerName: "Encadrer",
