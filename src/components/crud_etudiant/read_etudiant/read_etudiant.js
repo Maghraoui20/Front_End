@@ -275,6 +275,7 @@ function ReadEtudiant() {
 
           <div style={{ display: "flex" }}>
             <IconButton
+              data-test="add-etudiant"
               aria-label="add"
               color="secondary"
               onClick={handlenavigate}

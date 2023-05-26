@@ -1,11 +1,12 @@
 /* eslint-disable no-undef */
 describe("crud pfe", () => {
     before(() => {
+
         cy.loginasetudiant().then((resp) => {
-   
+
         })
       })
-    it("should add a pfe ", () => {
+    it.only("should add a pfe ", () => {
         cy.viewport(1500, 800)
 
         cy.visit("/espace-etudiant")
@@ -25,7 +26,7 @@ describe("crud pfe", () => {
         cy.getByData("ajouter").should("exist")
 
         cy.getByData("sujet").type("sujet1")
-        cy.getByData("description").type("sujet stage ete ")
+        cy.getByData("description").type("sujet stage pfeee 2 ")
         cy.getByData("duree").type("2")
         cy.getByData("technologies").type("symphony")
         cy.getByData("dateDébutStage").type("2023-02-25")
@@ -64,7 +65,7 @@ describe("crud pfe", () => {
 
 
     })
-    it.only("should select a pfe as enseignant", () => {
+    it("should select a pfe as enseignant", () => {
         cy.viewport(1500, 800)
 
         cy.loginasenseignant()
@@ -72,7 +73,7 @@ describe("crud pfe", () => {
         cy.location("pathname").should("eq", "/enseignant")
         cy.getByData("liste-pfe").click()
         cy.location("pathname").should("eq", "/liste-pfe")
-        cy.get('[data-rowindex="0"]     ') //change the id 
+        cy.get('[data-rowindex="0"]     ') 
         .find('.MuiCheckbox-root')
         .click();
         cy.get('button[data-test="encadrer"]').first().click()
