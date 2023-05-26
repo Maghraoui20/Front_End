@@ -82,6 +82,9 @@ import UpdateAdministratif from "./components/administratif/updatedroitaccess";
 
 import ListPfa from "./components/pfa/listePfaResponsable";
 
+
+import espaceAlumniSideNav from "./components/espaceAlumni/espace_alumni"
+
 function App() {
   const [theme, setTheme] = useState("light");
 
@@ -274,6 +277,8 @@ function App() {
 
   
           <Route path="/allnotification" element={<AllNotification />} />
+
+          <Route path="/espace-alumni" element={<espaceAlumniSideNav />} />
         </Routes>
       </Router>
       <ToastContainer />
