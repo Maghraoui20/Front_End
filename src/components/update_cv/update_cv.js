@@ -27,7 +27,7 @@ import { ReactComponent as Moon } from "./Moon.svg";
 
 function UpdateCv() {
   const params = useParams();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const idu = user?._id;
   const iduser = idu;
   const [CvData, setCvData] = useState({
@@ -55,7 +55,7 @@ function UpdateCv() {
         type: "",
       },
     ],
-    id_user:iduser,
+    id_user: iduser,
   });
 
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -127,16 +127,19 @@ function UpdateCv() {
   });
 
   const [niveau, setNiveau] = React.useState("");
+  const [openNiveau, setOpenNiveau] = useState(false);
 
   const handleChange = (e) => {
     setCvData({ ...CvData, [e.target.name]: e.target.value });
   };
 
-  const handleChangeNiveau = (e) => {
+  {
+    /* const handleChangeNiveau = (e) => {
     setNiveau(e.target.value);
     setCvData({ ...CvData, niveau: niveau });
   };
-
+*/
+  }
   // Update the experiences array in CvData
   const updateExperiences = (index, field, value) => {
     const updatedExperiences = [...CvData.experiences];
@@ -214,6 +217,19 @@ function UpdateCv() {
     const updatedStages = [...CvData.stages];
     updatedStages[index][field] = value;
     setCvData({ ...CvData, stages: updatedStages });
+  };
+
+  const handleCloseNiveau = () => {
+    setOpenNiveau(false);
+  };
+
+  const handleOpenNiveau = () => {
+    setOpenNiveau(true);
+  };
+
+  const handleChangeNiveau = (e) => {
+    setNiveau(e.target.value);
+    setCvData({ ...CvData, niveau: e.target.value });
   };
 
   const handleSubmit = async (event) => {
@@ -368,7 +384,7 @@ function UpdateCv() {
                         type="date"
                         onChange={handleChange}
                       />
-                      <FormControl fullWidth sx={{ mt: 3 }}>
+                      {/* <FormControl fullWidth sx={{ mt: 3 }}>
                         <InputLabel id="Niveau">Niveau</InputLabel>
                         <Select
                           labelId="Niveau"
@@ -384,7 +400,25 @@ function UpdateCv() {
                             Cycle ingénieur
                           </MenuItem>
                         </Select>
-                      </FormControl>
+                      </FormControl> */}
+                      <label htmlFor="Niveau">Niveau</label>
+
+                      <select
+                        open={openNiveau}
+                        data-test="niveau"
+                        onClose={handleCloseNiveau}
+                        onOpen={handleOpenNiveau}
+                        value={CvData.niveau}
+                        label="Niveau"
+                        onChange={handleChangeNiveau}
+                        style={{ width: "100%", height: "50px" }}
+                      >
+                        <option value={"licence"}>Licence</option>
+                        <option value={"master"}>Master</option>
+                        <option value={"cycle ingénieur"}>
+                          Cycle ingénieur
+                        </option>
+                      </select>
                       <div>
                         <h3>Experiences</h3>
                         {/* Render input fields for each experience */}
@@ -504,7 +538,7 @@ function UpdateCv() {
                                 handleInputChange2(index, "duree", event)
                               }
                             />
-                            <FormControl fullWidth sx={{ mt: 3 }}>
+                            {/* <FormControl fullWidth sx={{ mt: 3 }}>
                               <InputLabel id="Type">Type stage</InputLabel>
                               <Select
                                 labelId="Type"
@@ -522,7 +556,23 @@ function UpdateCv() {
                                 <MenuItem value={"PFA"}>PFA</MenuItem>
                                 <MenuItem value={"PFE"}>PFE</MenuItem>
                               </Select>
-                            </FormControl>
+                              </FormControl> */}
+                            <label htmlFor="Type">Type stage</label>
+                            <select
+                              id="Type"
+                              value={stage.type}
+                              name="type"
+                              data-test="type"
+                              onChange={(event) =>
+                                handleInputChangeType(index, "type", event)
+                              }
+                              style={{ width: "100%", height: "50px" }}
+                            >
+                              <option value={"Stage d'été"}>Stage d'été</option>
+                              <option value={"PFA"}>PFA</option>
+                              <option value={"PFE"}>PFE</option>
+                            </select>
+
                             {/* Add more input fields for other properties of stage object */}
                             {/* Add a button to remove the stage object */}
                             <button onClick={() => removeStage(index)}>
