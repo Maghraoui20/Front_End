@@ -20,7 +20,7 @@ describe("Check Status", () => {
 
     const notAcceptedStatusText = "Dossier pas encore accepté";
 
-    cy.get('[data-test="code"]').type("MjE4XzE2ODIzNDk4MDM1NDBfMjM");
+    cy.get('[data-test="code"]').type("MzUzXzE2ODIzNDk3NDg3NzVfMTc2");
     cy.get("form").submit();
 
     cy.contains(notAcceptedStatusText).should("be.visible");

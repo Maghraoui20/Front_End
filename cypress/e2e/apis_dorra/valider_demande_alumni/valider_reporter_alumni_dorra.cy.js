@@ -18,7 +18,7 @@ describe("valider ou reporter demande compte alumni ", () => {
   });
 
   it("Reporter d'une demande d'alumni avec succès", () => {
-    const alumniId = "64469eeb01857e7fb80179b1";
+    const alumniId = "64469eb401857e7fb80179af";
 
     cy.request({
       method: "PUT",

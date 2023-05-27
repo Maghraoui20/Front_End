@@ -14,7 +14,7 @@ describe("Vérification du statut d alumni", () => {
   });
 
   it("Vérification du statut d'un alumni avec succès (dossier pas encore accepté)", () => {
-    const alumniCode = "MjE4XzE2ODIzNDk4MDM1NDBfMjM=";
+    const alumniCode = "MzUzXzE2ODIzNDk3NDg3NzVfMTc2";
 
     cy.request({
       method: "GET",
