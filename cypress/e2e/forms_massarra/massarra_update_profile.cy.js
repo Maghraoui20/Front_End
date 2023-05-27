@@ -1,6 +1,6 @@
 describe("UpdateEtudiant", () => {
   beforeEach(() => {
-    cy.visit("/update-etudiant");
+    cy.visit("/update-etudiant-compte");
   });
 
   it("should update student information", () => {

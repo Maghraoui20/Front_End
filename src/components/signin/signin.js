@@ -85,7 +85,7 @@ function Signin() {
         localStorage.setItem("token", token);
         const etat = data.etat ;
 
-        if (etat === "actuel")
+        if (data.model.etat === "actuel")
         navigate("/espace-etudiant");
          else {
           navigate("/espace-alumni");

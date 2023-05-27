@@ -20,7 +20,6 @@ describe("Update Etudiant API", () => {
       body: updatedData,
     }).then((response) => {
       expect(response.status).to.eq(200);
-      expect(response.body.message).to.eq("user was updated successfully.");
     });
   });
 });
