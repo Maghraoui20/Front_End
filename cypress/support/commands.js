@@ -29,7 +29,7 @@ Cypress.Commands.add("getByData", (selector) => {
       url: Cypress.env("urlBackend") + "/users/signin",
       failOnStatusCode: false,
       body: {
-        phone: "12300000",
+        phone: "12121212",
         password: "123",
       },
     }).then((resp) => {
@@ -37,7 +37,7 @@ Cypress.Commands.add("getByData", (selector) => {
       localStorage.setItem("profile", JSON.stringify({ ...resp.body?.model }));
 
       window.localStorage.setItem("token", resp.body.mytoken)
-      window.localStorage.setItem("role", resp.body.model.role)    })
+      window.localStorage.setItem("role", resp.body.model.role)     })
   })
   Cypress.Commands.add("loginasenseignant", () => {
     cy.request({

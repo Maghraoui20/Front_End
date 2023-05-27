@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-describe("cademic year", () => {
+describe("academic year", () => {
     before(() => {
       cy.loginasadmin().then((resp) => {
    
@@ -14,16 +14,18 @@ describe("cademic year", () => {
         cy.getByData("anneeUvivgenerate").should("exist")
         cy.getByData("ajouteranneeUniv").should("exist")
 
-        cy.getByData("anneeUvivgenerate").select(3)
+        cy.getByData("anneeUvivgenerate").select(2)
 
         cy.getByData("ajouteranneeUniv").click();
 
       })
 
-      it("should Switch between academic years ", () => {
+      it.only("should Switch between academic years ", () => {
         cy.viewport(1500, 800)
         cy.visit("/administratif")
         cy.getByData("readall-evenement").click() 
+        cy.location("pathname").should("eq", "/readall-evenement")
+
         cy.getByData("anneeUvivgenerate").should("exist")
         cy.getByData("anneeUvivgenerate").select(1)
 

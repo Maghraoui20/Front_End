@@ -32,7 +32,7 @@ function MySideNav() {
           </NavIcon>
           <NavText>Gestion Etudiant</NavText>
         </NavItem>
-        <NavItem eventKey="charts" data-test="gestion-etudiant">
+        <NavItem eventKey="charts" data-test="gestion-etudiant2">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
@@ -66,7 +66,7 @@ function MySideNav() {
           </NavIcon>
           <NavText>Liste des pfa</NavText>
         </NavItem>
-        <NavItem eventKey="readall-pfe">
+        <NavItem eventKey="readall-pfe"  data-test="readall-pfe">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
@@ -98,7 +98,7 @@ function MySideNav() {
           </NavIcon>
           <NavText>Demandes contrat expert</NavText>
         </NavItem>
-        <NavItem eventKey="gerer_droit_acces" data-test="anneeuniver">
+        <NavItem eventKey="gerer_droit_acces" >
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>

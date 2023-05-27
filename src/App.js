@@ -220,7 +220,7 @@ function App() {
 
             <Route path="/readall-pfe" element={<ReadPFE />} />
 
-            <Route path="/mes-stage-été" element={<MesStageEte />} />
+            <Route path="/mes-stage-ete" element={<MesStageEte />} />
 
             <Route path="/mes-stage-pfe" element={<MesStagePFE />} />
 
@@ -258,9 +258,9 @@ function App() {
           />
             
        
-          <Route path="/insérer-stage-été" element={<CreateStageEté />} />
+          <Route path="/inserer-stage-ete" element={<CreateStageEté />} />
 
-          <Route path="/insérer-stage-pfe" element={<CreateStagePfe />} />
+          <Route path="/inserer-stage-pfe" element={<CreateStagePfe />} />
 
           <Route path="/update-cv" element={<UpdateCV />} />
 

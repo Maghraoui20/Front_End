@@ -27,8 +27,8 @@ describe("crud etudiant", () => {
         cy.getByData("ajouter").should("exist")
 
         cy.getByData("firstname").type("ameni")
-        cy.getByData("phone").type("10101010")
-        cy.getByData("email").type("amenimagh200@gmail.com")
+        cy.getByData("phone").type("12121212")
+        cy.getByData("email").type("amenimagh559@gmail.com")
         cy.getByData("login").type("amenii")
         cy.getByData("password").type("123")
         cy.getByData("classe").type("1ere")
@@ -43,7 +43,7 @@ describe("crud etudiant", () => {
 
         cy.getByData("lastname").type("maghraaoui")
         cy.getByData("ajouter").click().then((res)=>{console.log(res, "resppp");})
-
+        cy.visit("/readall-etudiant")
         cy.location("pathname").should("eq", "/readall-etudiant")
 
     })
@@ -52,7 +52,7 @@ describe("crud etudiant", () => {
 
       cy.visit("/administratif")
       cy.getByData("gestion-etudiant").click()
-      cy.get('[data-rowindex="0"]     ') //change the id 
+      cy.get('[data-rowindex="1"]     ') //change the id 
       .find('.MuiCheckbox-root')
       .click();
       cy.get('a[data-test="modify-etudiant"]').first().click().then(() => {
@@ -84,7 +84,7 @@ describe("crud etudiant", () => {
 
       cy.visit("/administratif")
       cy.getByData("gestion-etudiant").click()
-      cy.get('[data-rowindex="0"]     ') //change the id 
+      cy.get('[data-rowindex="1"]     ') //change the id 
       .find('.MuiCheckbox-root')
       .click();
       cy.get('button[data-test="delete-etudiant"]').first().click()
