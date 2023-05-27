@@ -78,6 +78,7 @@ function ReadEnseignant() {
       renderCell: (params) => {
         return (
           <Button
+          data-test="update-enseignant"
             variant="contained"
             href={`/update-enseignant/${idSelected}`}
             sx={{
@@ -100,6 +101,7 @@ function ReadEnseignant() {
             {(popupState) => (
               <div>
                 <Button
+                 data-test="delete-enseignant"
                   variant="contained"
                   {...bindTrigger(popupState)}
                   sx={{
@@ -123,6 +125,7 @@ function ReadEnseignant() {
                     </Typography>
                     <div className="buttons">
                       <Button
+                         data-test="confirm-enseignant"
                         variant="contained"
                         className="confirm"
                         sx={{
@@ -180,6 +183,7 @@ function ReadEnseignant() {
           </div>
           <div style={{ float: "right" }}>
             <IconButton
+              data-test="add-enseignant"
               aria-label="add"
               color="secondary"
               onClick={handleCreate}
@@ -190,6 +194,7 @@ function ReadEnseignant() {
           </div>
 
           <DataGrid
+           data-test="row-enseignant"
             rows={rows}
             columns={columns}
             initialState={{

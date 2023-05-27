@@ -76,12 +76,20 @@ function Signin() {
         localStorage.setItem("token", token);
         navigate("/espace-alumni");
       }
+
       if (data.model.role === "etudiant") {
+
         console.log(data, "data");
         localStorage.setItem("profile", JSON.stringify({ ...data?.model }));
         const token = data.mytoken;
         localStorage.setItem("token", token);
+        const etat = data.etat ;
+
+        if (etat === "etudiant")
         navigate("/espace-etudiant");
+         else {
+          navigate("/espace-alumni");
+         }
       }
       if (data.model.role === "directeur") {
         console.log(data, "data");
