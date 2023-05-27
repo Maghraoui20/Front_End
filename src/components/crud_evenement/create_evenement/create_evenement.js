@@ -103,6 +103,7 @@ setAnnee(e.target.value);
                     id="eventName"
                     label="titre "
                     name="eventName"
+                    data-test="eventName"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -113,27 +114,29 @@ setAnnee(e.target.value);
                     id="eventDate"
                     label="date"
                     name="eventDate"
+                    data-test="eventDate"
                     autoFocus
                     type="date"
                     onChange={handleChange}
                   />
-                  <FormControl fullWidth>
-                    <InputLabel id="eventType">Type</InputLabel>
-                    <Select
+                 <label for="niveau">type</label>
+                    <select
                       labelId="eventType"
                       id="eventType"
                       value={eventType}
                       label="Type"
                       name="eventType"
+                      data-test="eventType"
                       onChange={handleChangeEventType}
+                      style={{ width: "100%", height: "50px" }}
                     >
-                      <MenuItem value={"JPO"}>JPO</MenuItem>
-                      <MenuItem value={"Formation"}>Formation</MenuItem>
-                      <MenuItem value={"Journée d'integration"}>
+                       <option value={"JPO"}>JPO</option>
+                       <option value={"Formation"}>Formation</option>
+                       <option value={"Journée d'integration"}>
                         Journée d'integration
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
+                        </option>
+                    </select>
+                
                 </Grid>
                 <Grid item xs={6}>
                   <TextField
@@ -143,6 +146,7 @@ setAnnee(e.target.value);
                     id="description"
                     label="description"
                     name="description"
+                    data-test="description"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -154,6 +158,7 @@ setAnnee(e.target.value);
                     id="location"
                     label="location"
                     name="location"
+                    data-test="location"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -208,6 +213,7 @@ setAnnee(e.target.value);
                   <Button
                     type="submit"
                     fullWidth
+                    data-test="ajouter"
                     variant="contained"
                     sx={{
                       mt: 3,

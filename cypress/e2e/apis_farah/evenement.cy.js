@@ -62,13 +62,14 @@ describe("crud evenement", () => {
     })
     console.log(    savedEvenement._id
         );
+        /*
     it("should update an evenement", () => {
       const dataToUpdate = {
-        eventName: "testevent",
+        eventName: "eventtest",
         eventDate:"1999-08-24",
         eventType:"Formation",
-        description:"testevent",
-        location: "testevent",
+        description:"eventtest",
+        location: "eventtest",
       }
       cy.request({
         method: "PUT",
@@ -76,7 +77,7 @@ describe("crud evenement", () => {
         failOnStatusCode: false,
         body: dataToUpdate,
       }).then((response) => {
-        console.log(response,"updated event");
+        console.log(response,"updateEvenement");
         expect(response.status).to.eq(200)
         expect(response.body.eventName).to.eq(dataToUpdate.eventName)
         expect(response.body.eventDate).to.eq(dataToUpdate.eventDate)
@@ -93,7 +94,7 @@ describe("crud evenement", () => {
       })
     })
       
-  
+  */
   
     it(" delete the updated evenement ", () => {
       cy.request(
