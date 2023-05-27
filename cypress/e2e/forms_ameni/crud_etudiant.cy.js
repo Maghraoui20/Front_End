@@ -47,16 +47,16 @@ describe("crud etudiant", () => {
         cy.location("pathname").should("eq", "/readall-etudiant")
 
     })
-    it("should update an etudiant ", () => {
+    it.only("should update an etudiant ", () => {
       cy.viewport(1500, 800)
 
       cy.visit("/administratif")
       cy.getByData("gestion-etudiant").click()
-      cy.get('[data-rowindex="1"]     ') //change the id 
+      cy.get('[data-rowindex="2"]     ') //change the id 
       .find('.MuiCheckbox-root')
       .click();
       cy.get('a[data-test="modify-etudiant"]').first().click().then(() => {
-        cy.url().should('include', '/update-etudiant/642f411fd22ece85822c5e17')// remplace with the id
+        cy.url().should('include', '/update-etudiant/643c17c52d030ac6e59e352a')// remplace with the id
       })
 
       cy.getByData("firstname").should("exist")
@@ -97,7 +97,7 @@ describe("crud etudiant", () => {
       
     })
 
-    it.only("should get all  etudiant ", () => {
+    it("should get all  etudiant ", () => {
       cy.viewport(1500, 800)
 
       cy.visit("/administratif")
