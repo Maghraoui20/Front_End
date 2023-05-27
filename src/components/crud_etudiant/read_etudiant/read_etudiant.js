@@ -245,6 +245,7 @@ function ReadEtudiant() {
 
           <div style={{ float: "left" }}>
             <IconButton
+              data-test="upload_file-etudiant"
               aria-label="add"
               color="secondary"
               onClick={openUploadModal}
