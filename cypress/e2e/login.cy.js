@@ -1,7 +1,10 @@
 /* eslint-disable no-undef */
 describe("login page", () => {
+  
     // to preserve localstorage between tests see https://dev.to/javierbrea/how-to-preserve-localstorage-between-cypress-tests-19o1
       it.only("connect as admin succcessfully", () => {
+        cy.viewport(1500, 800)
+
       window.localStorage.removeItem("token")
       cy.visit("/signin")
       cy.getByData("phone").should("exist")
@@ -14,6 +17,8 @@ describe("login page", () => {
       cy.location("pathname").should("eq", "/administratif")
     })
     it("connect as admin directly if I have a token of admin", () => {
+      cy.viewport(1500, 800)
+
       cy.loginasadmin()
       cy.visit("/administratif")
       cy.location("pathname").should("eq", "/administratif")
@@ -22,11 +27,13 @@ describe("login page", () => {
     })  
   
        it("connect as etudiant succcessfully", () => {
+        cy.viewport(1500, 800)
+
       window.localStorage.removeItem("token")
       cy.visit("/signin")
       cy.getByData("phone").should("exist")
       cy.getByData("password").should("exist")
-      cy.getByData("phone").type("12300000")
+      cy.getByData("phone").type("12121212")
       cy.getByData("connect").click()
       cy.getByData("password").type("123")
       cy.getByData("connect").click()
@@ -36,6 +43,8 @@ describe("login page", () => {
     }) 
 
     it("connect as etudiant directly if I have a token of etudiant", () => {
+      cy.viewport(1500, 800)
+
       cy.loginasetudiant()
       cy.visit("/espace-etudiant")
       cy.location("pathname").should("eq", "/espace-etudiant")
@@ -44,6 +53,8 @@ describe("login page", () => {
     })   
 
     it("connect as enseignant succcessfully", () => {
+      cy.viewport(1500, 800)
+
       window.localStorage.removeItem("token")
       cy.visit("/signin")
       cy.getByData("phone").should("exist")
@@ -56,6 +67,8 @@ describe("login page", () => {
     }) 
 
     it("connect as enseignant directly if I have a token of enseignant", () => {
+      cy.viewport(1500, 800)
+
       cy.loginasenseignant()
       cy.visit("/enseignant")
       cy.location("pathname").should("eq", "/enseignant")
@@ -64,6 +77,8 @@ describe("login page", () => {
     })  
 
      it("connect as alumni succcessfully", () => {
+      cy.viewport(1500, 800)
+
       window.localStorage.removeItem("token")
       cy.visit("/signin")
       cy.getByData("phone").should("exist")
@@ -76,6 +91,8 @@ describe("login page", () => {
     }) 
 
     it("connect as alumni directly if I have a token of alumni", () => {
+      cy.viewport(1500, 800)
+
       cy.loginasalumni()
       cy.visit("/espace-alumni")
       cy.location("pathname").should("eq", "/espace-alumni")
@@ -84,6 +101,8 @@ describe("login page", () => {
     }) 
 
      it("connect as directeur succcessfully", () => {
+      cy.viewport(1500, 800)
+
       window.localStorage.removeItem("token")
       cy.visit("/signin")
       cy.getByData("phone").should("exist")
@@ -96,6 +115,8 @@ describe("login page", () => {
     }) 
 
     it("connect as directeur directly if I have a token of directeur", () => {
+      cy.viewport(1500, 800)
+
       cy.loginasalumni()
       cy.visit("/espace-directeur")
       cy.location("pathname").should("eq", "/espace-directeur")

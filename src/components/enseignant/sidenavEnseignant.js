@@ -36,7 +36,7 @@ function MySideNav() {
           </NavIcon>
           <NavText>Gestion PFAs</NavText>
         </NavItem>
-        <NavItem eventKey="liste-pfe">
+        <NavItem eventKey="liste-pfe" data-test="liste-pfe">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>
