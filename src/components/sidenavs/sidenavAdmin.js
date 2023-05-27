@@ -39,7 +39,7 @@ function MySideNav() {
           <NavText>Statistiques Etudiants</NavText>
         </NavItem>
 
-        <NavItem eventKey="readall-enseignant">
+        <NavItem eventKey="readall-enseignant" data-test="gestion-enseignant">
           <NavIcon>
             <i className="fa-regular fa-hashtag" style={{ fontSize: "1em" }} />
           </NavIcon>

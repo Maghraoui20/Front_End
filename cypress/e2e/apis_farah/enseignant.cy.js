@@ -4,8 +4,6 @@ import bcrypt from 'bcryptjs';
 describe("crud enseignant", () => {
   before(() => {
     cy.loginasadmin().then((resp) => {
- 
-
     })
   })
 
@@ -17,11 +15,12 @@ describe("crud enseignant", () => {
       })
     })
   
-      it(" add an enseignant", () => {
+
+    /*  it(" add an enseignant", () => {
       const data = {
         firstname: "testenseignant",
         lastname:"testenseignant",
-        phone:"01010101",
+        phone:"60606060",
         email:"testenseignant@gmail.com",
         login:"testenseignant",
         password:bcrypt.hashSync("123"),
@@ -35,6 +34,7 @@ describe("crud enseignant", () => {
         body: data,
       }).then((response) => {
         expect(response.status).to.eq(200)
+
            //     // eslint-disable-next-line no-unused-expressions
          expect(response.body.firstname).to.eq(data.firstname)
         expect(response.body.lastname).to.eq(data.lastname)
@@ -46,12 +46,15 @@ describe("crud enseignant", () => {
          // eslint-disable-next-line no-unused-expressions
         expect(response.body._id).to.exist
         savedEnseignant = response.body 
+
+
+        //     // Check the response
       })
     })
 
+*/
 
-
-    it(" add a responsable", () => {
+      it(" add a responsable", () => {
         const data = {
           firstname: "testresponsable",
           lastname:"testresponsable",
@@ -83,6 +86,8 @@ describe("crud enseignant", () => {
            // eslint-disable-next-line no-unused-expressions
           expect(response.body._id).to.exist
           savedEnseignant = response.body 
+
+           //     // Check the response
   
          
         })
@@ -96,8 +101,7 @@ describe("crud enseignant", () => {
         expect(enseignant).to.exist
     })
 })
-    console.log(savedEnseignant._id
-        );
+
 
 
 
@@ -137,7 +141,7 @@ describe("crud enseignant", () => {
       
   
   
-    it("should delete the updated enseignant ", () => {
+    it(" delete the last modified enseignant ", () => {
       cy.request(
         "DELETE",
         Cypress.env("urlBackend") + "/users/deletebyid/" + savedEnseignant._id

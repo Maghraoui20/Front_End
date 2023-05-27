@@ -88,6 +88,7 @@ function CreateEnseignant() {
                     id="firstname"
                     label="prenom "
                     name="firstname"
+                    data-test="firstname"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -98,6 +99,7 @@ function CreateEnseignant() {
                     id="lastname"
                     label="nom"
                     name="lastname"
+                    data-test="lastname"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -109,6 +111,7 @@ function CreateEnseignant() {
                     id="email"
                     label="email"
                     name="email"
+                    data-test="email"
                     autoFocus
                     onChange={handleChange}
                   />
@@ -119,6 +122,7 @@ function CreateEnseignant() {
                     required
                     fullWidth
                     id="phone"
+                    data-test="phone"
                     label="numero de telephone"
                     name="phone"
                     autoFocus
@@ -130,6 +134,7 @@ function CreateEnseignant() {
                     fullWidth
                     id="login"
                     label="login"
+                    data-test="login"
                     name="login"
                     autoFocus
                     onChange={handleChange}
@@ -142,30 +147,36 @@ function CreateEnseignant() {
                     id="password"
                     label="password"
                     name="password"
+                    data-test="password"
                     autoFocus
                     onChange={handleChange}
                   />
-                  <FormControl fullWidth>
-                    <InputLabel id="staus">Status</InputLabel>
-                    <Select
+                  
+                  <label for="niveau">Status</label>
+                    <select
                       labelId="status"
                       id="status"
                       value={status}
+                      data-test="status"
                       label="status"
                       onChange={handleChangeStatus}
+                      style={{ width: "100%", height: "50px" }}
                     >
-                      <MenuItem value={"enseignant"}>enseignant</MenuItem>
-                      <MenuItem value={"responsable formation"}>
+                      <option value={"enseignant"}>enseignant</option>
+                      <option value={"responsable formation"}>
                         responsable formation
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
+                      </option>
+                    </select>
+
+          
+                
                 </Grid>
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6}>
                   <Button
                     type="submit"
                     fullWidth
+                    data-test="ajouter"
                     variant="contained"
                     sx={{
                       mt: 3,

@@ -141,7 +141,7 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
       multiple
       value={accessRights}
       onChange={handleAccessChange}
-      renderValue={(selected) => selected.join(", ")}
+      renderValue={(selected) => selected.join(",")}
     >
       <MenuItem value={"gestion-etudiant"}>Gestion étudiant</MenuItem>
       <MenuItem value={"gestion-enseignant"}>Gestion enseignant</MenuItem>
@@ -149,7 +149,7 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
       <MenuItem value={"gestion-pfas"}>Liste des pfas</MenuItem>
       <MenuItem value={"gestion-pfes"}>Liste des pfes</MenuItem>
       <MenuItem value={"gestion-anneeUniversitaire"}>Ajouter annee universitaire</MenuItem>
-      <MenuItem value={"gestion-administratif"}>Ajouter annee universitaire</MenuItem>
+      <MenuItem value={"gestion-administratif"}>gestion administratifs</MenuItem>
     </Select>
   </FormControl>
                   </Grid>
@@ -182,6 +182,8 @@ import MySideNavDir from "../../components/sidenavs/sidenavdir.js";
                       id="password"
                       label="password"
                       name="password"
+                      data-test="password"
+                      type={"password"}
                       autoFocus
                       onChange={handleChange}
                     />
